@@ -41,7 +41,7 @@
 
     <div class="container-fluid">
 
-      <a class="navbar-brand fontstranaBase" href="home.html">
+      <a class="navbar-brand fontstranaBase" href="index.php">
         <img src="Immagini/Logo_Stranamore_01.jpg" class="d-inline-block align-center" alt="logo stranamore">
       </a>
 
@@ -56,31 +56,31 @@
           
           <ul class="navbar-nav" id="myNavBar">
             <li class="nav-item">
-              <a class="nav-link mioActive" aria-current="page" href="home.html">Home</a>
+              <a class="nav-link mioActive" aria-current="page" href="index.php">Home</a>
             </li>
             <li class="nav-item">
               <span class="mioSpanNav">|</span>
             </li>
             <li class="nav-item">
-              <a class="nav-link mioOver" href="chisiamo.html">Chi Siamo</a>
+              <a class="nav-link mioOver" href="chisiamo.php">Chi Siamo</a>
             </li>
             <li class="nav-item"></li>
               <span class="mioSpanNav">|</span>
             </li>
             <li class="nav-item">
-              <a class="nav-link mioOver" href="lacucina.html">La Cucina</a>
+              <a class="nav-link mioOver" href="lacucina.php">La Cucina</a>
             </li>
             <li class="nav-item"></li>
               <span class="mioSpanNav">|</span>
             </li>
             <li class="nav-item">
-              <a class="nav-link mioOver" href="eventi.html">Eventi</a>
+              <a class="nav-link mioOver" href="eventi.php">Eventi</a>
             </li>
             <li class="nav-item"></li>
               <span class="mioSpanNav">|</span>
             </li>
             <li class="nav-item">
-              <a class="nav-link mioOver" href="contatti.html">Contatti</a>
+              <a class="nav-link mioOver" href="contatti.php">Contatti</a>
             </li>
           </ul>
         </div>
@@ -187,19 +187,19 @@
           <p class="fontFooter01">Navigazione</p>
           <ul class="list-unstyled">
             <li>
-              <a href="home.html">Home</a>
+              <a href="index.php">Home</a>
             </li>
             <li>
-              <a href="chisiamo.html">Chi Siamo</a>
+              <a href="chisiamo.php">Chi Siamo</a>
             </li>
             <li>
-              <a href="lacucina.html">La Cucina</a>
+              <a href="lacucina.php">La Cucina</a>
             </li>
             <li>
-              <a href="eventi.html">Eventi</a>
+              <a href="eventi.php">Eventi</a>
             </li>
             <li>
-              <a href="contatti.html">Contatti</a>
+              <a href="contatti.php">Contatti</a>
             </li>
           </ul>
         </div>
