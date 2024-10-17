@@ -121,26 +121,26 @@
         $password = $_POST["psw1"];
         if ($password == $datiUtente["password"]) { # Controllo che la password inserita sia corretta
           $_SESSION["username"] = $username;        # Setto l'username in sessione
-          ?>  
-
+          ?>
           <p>Ti sei loggato</p>
 <?php   }
-
         else {  #Psw errata
-          echo "<p>Hai inserito una psw sbagliata.";
+          echo "<p>Hai inserito una psw sbagliata.</p>";
         }
+      }
 
       else {    #Nome utente non trovato
         echo "<p>nome utente non trovato</p>";
       }
+    }
 
     else {        #Campi non compilati correttamente
       echo "<p>Non hai compilato i campi correttamente</p>";
-    }    
+    }
+  }
     
   else {
     echo "<p>Sei già loggato</p>";
-  }  
+  }
 
  ?>
-
