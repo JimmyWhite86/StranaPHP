@@ -1,3 +1,10 @@
+<?php 
+  session_start();
+  $nomePagina = "index";
+  include "function.php";
+  include "functionHTML.php";
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -91,7 +98,9 @@
         </div>
 
         <div>
-          <i class="bi bi-box-arrow-in-right pe-4"></i>
+          <a href="login.php">
+            <i class="bi bi-box-arrow-in-right pe-4 nav-link mioOver"></i>
+          </a>
         </div>
       
       </div>  
