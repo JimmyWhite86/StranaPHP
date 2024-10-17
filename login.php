@@ -111,14 +111,30 @@
   <br><hr><br>
 
   <?php 
-    if (!isset ($_SESSION["username"]))  #Verifico che l'utente non abbia ancora effettuato il login; ?>
+    if (!isset ($_SESSION["username"])) { #Verifico che l'utente non abbia ancora effettuato il login; ?>
       <p>Sei un admin della pagina?<br>Inserisci le tue credenziali</p>
 
       <div>
         <form method="POST" action="controlla_login.php">
 
-        
+          <label for="username">Inserisci il tuo username</label>
+          <input type="text" name="username" id="username">
+          <br>
+
+          <label for="psw1">Inserisci la tua password</label>
+          <input type="passeord" name="psw1" id="psw1">
+          <br>
+
+          <input type="submit" name="invio" id="invio" value="vai">
+
         </form>
       </div>
+    
+  <?php
+    }
+    else { 
+      $username = $_SESSION['username']; 
+    }
+
 
 
