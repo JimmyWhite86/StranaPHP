@@ -1,8 +1,8 @@
 <?php
-    session_start();
-    $nomePagina = "login";
-    include "function.php";
-    include "functionHTML.php";
+  session_start();
+  include "function.php";
+  include "functionHTML.php";
+  $nomePagina = "login";
 ?>
 
 <!DOCTYPE html>
@@ -108,42 +108,39 @@
   </nav>
 
 
-  <br><hr><br>
 
-  <?php 
-    if (!isset ($_SESSION["username"])) { #Verifico che l'utente non abbia ancora effettuato il login; ?>
-      <p>Sei un admin della pagina?<br>Inserisci le tue credenziali</p>
+<?php
+  if (!isset($_SESSION["username"])) { # Controllo che non sia già stato effettuato il login
+    if (isset($_POST["username"]) && $_POST["username"] && isset ($_POST["psw1"]) && $_POST["psw1"]) { #controllo che i campi siano compilati 
 
-      <div>
-        <form method="POST" action="controlla_login.php">
+      $username = $_POST["username"];
+      $datiUtente = cercaUtente ($username);  #Richiamo la funzione per cercare gli utenti all'interno del database
 
-          <label for="username">Inserisci il tuo username</label>
-          <input type="text" name="username" id="username">
-          <br>
+      if ($datiUtente) {  #Se datiUtente è true --> utente presente nel database
 
-          <label for="psw1">Inserisci la tua password</label>
-          <input type="passeord" name="psw1" id="psw1">
-          <br>
+        $password = $_POST["psw1"];
+        if ($password == $datiUtente["password"]) { # Controllo che la password inserita sia corretta
+          $_SESSION["username"] = $username;        # Setto l'username in sessione
+          ?>  
 
-          <input type="submit" name="invio" id="invio" value="vai">
+          <p>Ti sei loggato</p>
+<?php   }
 
-        </form>
-      </div>
+        else {  #Psw errata
+          echo "<p>Hai inserito una psw sbagliata.";
+        }
+
+      else {    #Nome utente non trovato
+        echo "<p>nome utente non trovato</p>";
+      }
+
+    else {        #Campi non compilati correttamente
+      echo "<p>Non hai compilato i campi correttamente</p>";
+    }    
     
-  <?php
-    }
-    else { #Se l'utente è già loggato, mostro un messaggio che lo avverte
-      $username = $_SESSION['username']; 
-      ?>
+  else {
+    echo "<p>Sei già loggato</p>";
+  }  
 
-      <p>Sei già loggato</p>
-
-  <?php
-    }
-  ?>    
-  
-  </body>
-  </html>
-
-
+ ?>
 
