@@ -18,7 +18,7 @@ function cercaUtente ($username) {
     die ("Connessione fallita: " . mysqli_connect_error());
   }
 
-  $sql = "SELECT * FROM user WHERE UserName = '$username'"; #Seleziono tutti i campi del record dove username corrisponde a $username
+  $sql = "SELECT * FROM User WHERE UserName = '$username'"; #Seleziono tutti i campi del record dove username corrisponde a $username
   $tmp = mysqli_query($conn, $sql);
 
   if (mysqli_num_rows($tmp) != 0) {

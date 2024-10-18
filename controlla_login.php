@@ -119,7 +119,7 @@
       if ($datiUtente) {  #Se datiUtente è true --> utente presente nel database
 
         $password = $_POST["psw1"];
-        if ($password == $datiUtente["password"]) { # Controllo che la password inserita sia corretta
+        if ($password == $datiUtente["Password"]) { # Controllo che la password inserita sia corretta
           $_SESSION["username"] = $username;        # Setto l'username in sessione
           ?>
           <p>Ti sei loggato</p>

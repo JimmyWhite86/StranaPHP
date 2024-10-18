@@ -122,7 +122,7 @@
           <br>
 
           <label for="psw1">Inserisci la tua password</label>
-          <input type="passeord" name="psw1" id="psw1">
+          <input type="password" name="psw1" id="psw1">
           <br>
 
           <input type="submit" name="invio" id="invio" value="vai">
