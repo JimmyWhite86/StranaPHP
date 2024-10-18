@@ -32,6 +32,37 @@ function cercaUtente ($username) {
     return false;
   }
 
+# Restituisce informazioni su tutti gli eventi presenti in tabella eventi
+function ottieniListaEventi () {
+    $conn = connetti("Strana01");
+    if (!$conn) {
+      die ("Connessione fallita: " . mysqli_connect_error());
+    }
+
+    $query = "SELECT * FROM Eventi";
+    $datiEventi = mysqli_query($conn, $query);
+    if(!$datiEventi) {
+      die("Errore db " . mysqli_error($conn));
+    }
+    return $datiEventi;
+}
+
+# Funzione che richiama la nav bar in base all'utente loggato
+function richiamaNavBar($nomePagina)  {
+    if (!isset($_SESSION['username'])) {
+      menuNavi($nomePagina);
+    }
+    else {
+      $tipoUtente = $_SESSION['admin'];
+      if ($tipoUtente == 1) {
+        adminNavBar($nomePagina);
+      }
+      if ($tipoUtente == 0) {
+        userNavBar($nomePagina);
+      }
+    }
+}
+
 }
 
 
