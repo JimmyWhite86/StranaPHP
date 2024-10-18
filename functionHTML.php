@@ -17,4 +17,16 @@ function deviEssereAdmin ($username) {
   echo "</div>";
 }
 
+#Funzione per le scelte che può effettuare l'amministratore
+#
+function azioni_amministratore () {?>
+  <div class="">
+    <ul>
+      <li><a href="aggiungievento.php">Gestisci gli utenti</a></li>
+      <li><a href="eliminaevento.php">Gestisci le prenotazioni</a></li>
+    </ul>
+  </div>
+  <?php
+}
+
 ?>
