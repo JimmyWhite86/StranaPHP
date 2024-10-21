@@ -157,7 +157,7 @@ function HTMLfooter ($nomePagina) { ?>
           <p class="fontFooter01">Navigazione</p>
           <ul class="list-unstyled">
             <li>
-              <?php $nomeLink = "home";?>
+              <?php $nomeLink = "index";?>
               <a href="index.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">Home</a>
             </li>
             <li>

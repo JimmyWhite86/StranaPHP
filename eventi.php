@@ -2,7 +2,7 @@
   session_start();
   include "function.php";
   include "functionHTML.php";
-  $nomePagina = "index";
+  $nomePagina = "eventi";
 ?>
 
 <!DOCTYPE html>
@@ -47,3 +47,6 @@
 <body>
 
 <?php richiamaNavBar($nomePagina); ?>
+
+<?php HTMLfooter($nomePagina); ?>
+</body>
