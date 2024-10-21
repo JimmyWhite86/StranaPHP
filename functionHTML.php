@@ -12,13 +12,13 @@ function deviLoggarti () {
 
 function deviEssereAdmin ($username) {
   echo "<div class='titolo'>";
-    echo "<h2>Caro <?=$username?>, questa area è riservata agli amministratori del sistema</h2>";
+    echo "<h2>Caro" . $username . "questa area è riservata agli amministratori del sistema</h2>";
     echo "<p>Puoi tornare alla <a href='index.php'>home</a> o cercare i nostri servizi tramite la barra di navigazione</p>";
   echo "</div>";
 }
 
+
 #Funzione per le scelte che può effettuare l'amministratore
-#
 function azioni_amministratore () {?>
   <div class="">
     <ul>
@@ -29,21 +29,21 @@ function azioni_amministratore () {?>
   <?php
 }
 
-# Funzione per stabile se il link  della navBar deve avere classe "active" o "non active" per poi essere gestito con CSS
+
+# Funzione per stabile se il link della navBar deve avere classe "active" o "non active" per poi essere gestito con CSS
 function statoLink ($nomePagina, $nomeLink) {
     if ($nomePagina == $nomeLink) {
         $statolink = "mioActive";
-        return $statolink;
     }
     else {
         $statolink = "mioOver";
-        return $statolink;
     }
+  return $statolink;
 }
 
 
 # Funzione per navBar utenti non loggati
-function userNavBar($nomePagina) { ?>
+function normalNavBar($nomePagina) { ?>
 <nav class="navbar navbar-expand-lg bg-nero">
 
     <a href="#mioMain" class="skip text-center" tabindex="1">Vai al contenuto principale</a> <!--Salta al contenuto principale della pagina (Accessibilità) -->
@@ -85,7 +85,7 @@ function userNavBar($nomePagina) { ?>
               </a>
             </li>
             
-            <li class="nav-item"></li>
+            <li class="nav-item">
               <span class="mioSpanNav">|</span>
             </li>
   
@@ -98,7 +98,7 @@ function userNavBar($nomePagina) { ?>
               </a>
             </li>
             
-            <li class="nav-item"></li>
+            <li class="nav-item">
               <span class="mioSpanNav">|</span>
             </li>
   
@@ -111,7 +111,7 @@ function userNavBar($nomePagina) { ?>
               </a>
             </li>
             
-            <li class="nav-item"></li>
+            <li class="nav-item">
               <span class="mioSpanNav">|</span>
             </li>
   
@@ -139,4 +139,3 @@ function userNavBar($nomePagina) { ?>
 }
 ?>
 
-?>

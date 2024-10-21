@@ -46,6 +46,8 @@
 </head>
 <body ng-app="myAppHome" ng-controller="myCtrl">
 
+
+  <?php richiamaNavBar($nomePagina);?>
   <!-- NAV BAR -->
   <nav class="navbar navbar-expand-lg bg-nero">
     
