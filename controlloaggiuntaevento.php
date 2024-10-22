@@ -14,7 +14,7 @@
   }
   else { # Utente loggato
 
-    $amministratore = $_SESSION ["amministratore"];
+    $amministratore = $_SESSION ["admin"];
     $username = $_SESSION ["username"];
 
     if ($amministratore == 0) {   # Utente non ha diritti di admin
@@ -22,13 +22,14 @@
     }
     else { # Utente è admin --> controllo che i dati inseriti siano corretti
       if ( isset($_POST["eventoNew"]) && $_POST["eventoNew"] && isset($_POST["dataNew"]) && $_POST["dataNew"] && isset($_POST["descrizioneNew"]) && $_POST["descrizioneNew"]) {
+        
         $eventoNew = $_POST["eventoNew"];
         $dataNew = $_POST["dataNew"];
         $descrizioneNew = $_POST["descrizioneNew"];
 
         $upload_percorso = "immagini/";
-        $file_tmp = $_FILES['immagini']['tmp_name'];
-        $file_nome = $_FILES['immagini']['name'];
+        $file_tmp = $_FILES['immagine']['tmp_name'];
+        $file_nome = $_FILES['immagine']['name'];
         $pathnameImmagine = "$upload_percorso"."$file_nome";
         move_uploaded_file($file_tmp, $upload_percorso.$file_nome);
 

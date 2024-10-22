@@ -12,7 +12,7 @@
   
   function deviEssereAdmin ($username) {
     echo "<div class='titolo'>";
-    echo "<h2>Caro" . $username . "questa area è riservata agli amministratori del sistema</h2>";
+    echo "<h2>Carə " . $username . " questa area è riservata agli amministratori del sistema</h2>";
     echo "<p>Puoi tornare alla <a href='index.php'>home</a> o cercare i nostri servizi tramite la barra di navigazione</p>";
     echo "</div>";
   }
