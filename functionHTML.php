@@ -137,6 +137,14 @@ function normalNavBar($nomePagina) { ?>
   </nav>
 <?php
 }
+  
+function adminNavBar ($nomePagina) {
+  echo "<p>Funge admin</p>" . $nomePagina;
+}
+
+function userNavBar ($nomePagina) {
+  echo "<p>Funge userNav</p>" . $nomePagina;
+}
 
 
 # Funzione per visualizzare il footer

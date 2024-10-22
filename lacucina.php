@@ -41,7 +41,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   
-  <title>Stranamore | Home</title>
+  <title>Stranamore | La Cucina</title>
 
 </head>
 
@@ -49,12 +49,13 @@
 <body>
   
   <!-- Richiama la nav bar -->
-  <?php richiamaNavBar($nomePagina);?>
+  <?php richiamaNavBar($nomePagina); ?>
 
   <!-- Richiama il footer -->
-  <?php HTMLfooter($nomePagina);?>
+  <?php HTMLfooter($nomePagina); ?>
 
 
 
 </body>
 
+</html>

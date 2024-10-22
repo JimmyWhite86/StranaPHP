@@ -46,8 +46,8 @@ function ottieniListaEventi () {
 }
 
 # Funzione che richiama la nav bar in base all'utente loggato
-function richiamaNavBar($nomePagina)  {
-    if (!isset($_SESSION['username'])) {
+function richiamaNavBar($nomePagina) {
+    if (!isset($_SESSION['UserName'])) {
       normalNavBar($nomePagina);
     }
     else {
@@ -55,7 +55,7 @@ function richiamaNavBar($nomePagina)  {
       if ($tipoUtente == 1) {
         adminNavBar($nomePagina);
       }
-      if ($tipoUtente == 0) {
+      if ($tipoUtente == 1) {
         userNavBar($nomePagina);
       }
     }

@@ -47,65 +47,7 @@
 <body ng-app="myAppHome" ng-controller="myCtrl">
 
   <!-- NAV BAR -->
-  <nav class="navbar navbar-expand-lg bg-nero">
-    
-    <a href="#mioMain" class="skip text-center" tabindex="1">Vai al contenuto principale</a> <!--Salta al contenuto principale della pagina (Accessibilità) -->
-
-    <div class="container-fluid">
-
-      <a class="navbar-brand fontstranaBase" href="index.php">
-        <img src="Immagini/Logo_Stranamore_01.jpg" class="d-inline-block align-center" alt="logo stranamore">
-      </a>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse fontNav" id="navbarNav" role="navigation" aria-label="main navigation">
-        <div class="d-flex justify-content-center flex-grow-1">
-          
-          <ul class="navbar-nav" id="myNavBar">
-            <li class="nav-item">
-              <a class="nav-link mioActive" aria-current="page" href="index.php">Home</a>
-            </li>
-            <li class="nav-item">
-              <span class="mioSpanNav">|</span>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link mioOver" href="chisiamo.php">Chi Siamo</a>
-            </li>
-            <li class="nav-item"></li>
-              <span class="mioSpanNav">|</span>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link mioOver" href="lacucina.php">La Cucina</a>
-            </li>
-            <li class="nav-item"></li>
-              <span class="mioSpanNav">|</span>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link mioOver" href="eventi.php">Eventi</a>
-            </li>
-            <li class="nav-item"></li>
-              <span class="mioSpanNav">|</span>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link mioOver" href="contatti.php">Contatti</a>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <a href="login.php">
-            <i class="bi bi-box-arrow-in-right pe-4 nav-link mioOver"></i>
-          </a>
-        </div>
-      
-      </div>  
-    </div>
-  </nav>
+  <?php richiamaNavBar($nomePagina) ?>
 
 
 
@@ -144,3 +86,9 @@
   }
 
  ?>
+
+
+<?php HTMLfooter($nomePagina); ?>
+
+</body>
+</html>
