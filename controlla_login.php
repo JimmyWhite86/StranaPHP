@@ -49,43 +49,43 @@
   <!-- NAV BAR -->
   <?php richiamaNavBar($nomePagina) ?>
 
+  <?php
 
-
-<?php
-  if (!isset($_SESSION["username"])) { # Controllo che non sia già stato effettuato il login
-    if (isset($_POST["username"]) && $_POST["username"] && isset ($_POST["psw1"]) && $_POST["psw1"]) { #controllo che i campi siano compilati 
-
-      $username = $_POST["username"];
-      $datiUtente = cercaUtente ($username);  #Richiamo la funzione per cercare gli utenti all'interno del database
-
-      if ($datiUtente) {  #Se datiUtente è true --> utente presente nel database
-
-        $password = $_POST["psw1"];
-        if ($password == $datiUtente["Password"]) { # Controllo che la password inserita sia corretta
-          $_SESSION["username"] = $username;        # Setto l'username in sessione
-          ?>
-          <p>Ti sei loggato</p>
-<?php   }
-        else {  #Psw errata
-          echo "<p>Hai inserito una psw sbagliata.</p>";
+    if (!isset($_SESSION["username"])) {  #L'utente non è loggato
+      if (isset($_POST["username"]) && $_POST["username"] && isset ($_POST["psw1"]) && $_POST["psw1"]) {    # Controllo che tutti i campi del form siano compilati
+        $username = $_POST["username"];
+        $datiUtente = cercaUtente($username);
+        if ($datiUtente) {    # Se dati utente = true --> utente presente del db
+          $password = $_POST["psw1"];
+          if ($password = $datiUtente["password"]) {  # Controllo che la psw sia corretta
+            $valoreAmministratore = controlloAdmin($username);
+            if (!$valoreAmministratore) { #Utente loggato come utente "normale"
+              $_SESSION["username"] = $username;
+              $_SESSION["amministratore"] = 0;
+              echo "<h1>Bentornatə $username, accessso effettuato con successo.</h1>";
+            }
+            else {  # Utente loggato come admin
+              $_SESSION["username"] = $username;
+              $_SESSION["amministratore"] = 1;
+              echo "<h1>Utente $username loggato come admin";
+            }
+          }
+          else {  # Condizione in cui si è impostata una psw errata
+            echo "hai inserito una psw errata";
+          }
+        }
+        else {  # Condizione in cui non sono stati trovati record corrispondenti all'username inserito dall'utente
+          echo "Non abbiamo trovato il tuo nome utente";
         }
       }
-
-      else {    #Nome utente non trovato
-        echo "<p>nome utente non trovato</p>";
+      else {  # Condizione in cui non sono stati compilati tutti i campi del form
+        echo "errore compilazione del form";
       }
     }
-
-    else {        #Campi non compilati correttamente
-      echo "<p>Non hai compilato i campi correttamente</p>";
+    else {    # Utente già loggato --> propongo le azioni che può compiere
+      echo "utente già loggato";  # Implementare azioni utente!!
     }
-  }
-    
-  else {
-    echo "<p>Sei già loggato</p>";
-  }
-
- ?>
+  ?>
 
 
 <?php HTMLfooter($nomePagina); ?>

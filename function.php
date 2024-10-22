@@ -30,6 +30,7 @@ function cercaUtente ($username) {
     return false;
   }
 }
+
 # Restituisce informazioni su tutti gli eventi presenti in tabella eventi
 function ottieniListaEventi () {
     $conn = connetti("Strana01");
@@ -59,5 +60,24 @@ function richiamaNavBar($nomePagina) {
         userNavBar($nomePagina);
       }
     }
+}
+
+# Funzione per controllare se utente loggato è amministratore o no
+function controlloAdmin ($username) {
+  $conn = connetti ("Strana01");
+  if (!$conn) {
+    die ("Connessione fallita: " . mysqli_connect_error());
+  }
+  
+  $sql = "SELECT admin FROM user WHERE UserName = '$username'";
+  $tmp = mysqli_query ($conn, $sql);
+  $row = mysqli_fetch_assoc($tmp);
+  $valoreAmministratore = $row['admin'];
+  
+  if ($valoreAmministratore == 1) {
+    return true;
+  } else {
+    return false;
+  }
 }
 ?>

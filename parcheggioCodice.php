@@ -109,3 +109,44 @@
     <?php
   }
   ?>
+
+
+
+<!-- ---------------------  -->
+
+<?php
+  if (!isset($_SESSION["username"])) { # Controllo che non sia già stato effettuato il login
+    if (isset($_POST["username"]) && $_POST["username"] && isset ($_POST["psw1"]) && $_POST["psw1"]) { #controllo che i campi siano compilati
+      
+      $username = $_POST["username"];
+      $datiUtente = cercaUtente ($username);  #Richiamo la funzione per cercare gli utenti all'interno del database
+      
+      if ($datiUtente) {  #Se datiUtente è true --> utente presente nel database
+        $password = $_POST["psw1"];
+        if ($password == $datiUtente["Password"]) { # Controllo che la password inserita sia corretta
+          $valoreAmministratore = controlloAdmin($username);  # Richiamo la funzione che controlla il tipo di utente
+          if (!$valoreAmministratore) {}
+          $_SESSION["username"] = $username;        # Setto l'username in sessione
+          ?>
+          <p>Ti sei loggato</p>
+        <?php   }
+        else {  #Psw errata
+          echo "<p>Hai inserito una psw sbagliata.</p>";
+        }
+      }
+      
+      else {    #Nome utente non trovato
+        echo "<p>nome utente non trovato</p>";
+      }
+    }
+    
+    else {        #Campi non compilati correttamente
+      echo "<p>Non hai compilato i campi correttamente</p>";
+    }
+  }
+  
+  else {
+    echo "<p>Sei già loggato</p>";
+  }
+
+?>
