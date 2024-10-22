@@ -38,7 +38,7 @@ function ottieniListaEventi () {
       die ("Connessione fallita: " . mysqli_connect_error());
     }
 
-    $query = "SELECT * FROM Eventi";
+    $query = "SELECT * FROM Eventi ORDER BY dataEvento ASC";
     $datiEventi = mysqli_query($conn, $query);
     if(!$datiEventi) {
       die("Errore db " . mysqli_error($conn));

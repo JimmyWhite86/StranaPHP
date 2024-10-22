@@ -344,4 +344,25 @@
     </footer>
     <?php
   }
+  
+  
+  # Funzione per generare le card eventi
+  
+  function generaCardEventi () {
+    $datiEventi = ottieniListaEventi(); # Recupero tutti gli eventi presenti nel db
+    
+    # Genero le card:
+    while ($row = mysqli_fetch_assoc($datiEventi)) { ?>
+      <div class="m-2 card col-md-4" style="width: 20em;">
+        <img src="<?= $row['Immagine']?>" class="img-fluid myImgCard" alt="Immagine evento">
+        <div class="card-body">
+          <h3><?= $row['NomeEvento']?></h3>
+          <p><strong>Data:</strong> <?= date('d M Y', strtotime($row['DataEvento'])) ?></p>
+          <p><?= $row['Descrizione']?></p>
+        </div>
+      </div>
+      <?php
+    }
+  }
 ?>
+
