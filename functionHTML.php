@@ -357,8 +357,10 @@
         <img src="<?= $row['Immagine']?>" class="img-fluid myImgCard" alt="Immagine evento">
         <div class="card-body">
           <h3><?= $row['NomeEvento']?></h3>
-          <p><strong>Data:</strong> <?= date('d M Y', strtotime($row['DataEvento'])) ?></p>
           <p><?= $row['Descrizione']?></p>
+        </div>
+        <div class="card-footer">
+          <p><?= date('d M Y', strtotime($row['DataEvento'])) ?></p>
         </div>
       </div>
       <?php

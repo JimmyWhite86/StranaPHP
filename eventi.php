@@ -48,7 +48,13 @@
 
 <?php richiamaNavBar($nomePagina); ?>
 
-<?php generaCardEventi(); ?>
+<section>
+  <div class="container-fluid text-center bg-azzurro">
+    <div class="row justify-content-center">
+      <?php generaCardEventi(); ?>
+    </div>
+  </div>
+</section>
 
 <?php HTMLfooter($nomePagina); ?>
 </body>
