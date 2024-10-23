@@ -80,4 +80,30 @@ function controlloAdmin ($username) {
     return false;
   }
 }
+
+function eliminaEvento ($idEvento) {
+  $conn = connetti ("Strna01");
+  if (!$conn) {
+    die("Connessione fallita: " . mysqli_connect_error());
+  }
+  $sql = "SELECT IDEvento, NomeEvento, DataEvento FROM Eventi WHERE IDEvento='$idEvento'";
+  $tmp = mysqli_query($conn, $sql);
+  $nRow = mysqli_num_rows($tmp):
+  if ($nRow == 0) {
+    echo "<h1>Veicolo non trovato</h1>";
+  }
+  else {
+    $sql = "DELETE FROM Eventi WHERE IDEvento='IDEvento'";
+    $tmp = mysqli_query($conn, $sql);
+    if ($tmp) {
+      return true;
+      echo "Evento $idEvento cancellato correttamente";
+    }
+    else {
+      return false;
+      echo "Erorre cancellazione evento";
+    }
+  }
+  mysqli_close($conn);
+}
 ?>

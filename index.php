@@ -36,7 +36,7 @@
   <!--  Collegamento al mio modulo JS -->
   <script src="modulo.js" type="text/javascript"></script>
 
-  <!-- Fobnt Babas Neue -->
+  <!-- Font Babas Neue -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
