@@ -68,30 +68,42 @@
       <h2><Strong>Attenzione!!</Strong> L'azione non è reversibile!</h2>
       
       <?php $listaEventi = ottieniListaEventi(); ?>
-      
+
       <form method="POST" action="controllocancellazioneevento.php">
-        <table>
-          <tr>
-            <th>ID Evento</th>
-            <th>Data</th>
-            <th>Nome Evento</th>
-            <th>Locandina</th>
-            <th>Seleziona</th>
-          </tr>
-          <?php while ($row = mysqli_fetch_assoc($listaEventi)) {?>
-          <tr>
-            <td><?=$row['IDEvento']?></td>
-            <td><?=$row['DataEvento']?></td>
-            <td><?=$row['NomeEvento']?></td>
-            <td><img src="<?=$row['Immagine']?>" class="miaImmagineTabella"></td>
-            <td><input type="radio" name="eventoSelezionato" value="<?=$row['IDEvento']?>"></td>
-          </tr>
-          <?php
-            }
-          ?>
-        </table>
-        <br><br>
-        <input type="submit" name="invio" id="invio" value="ELIMINA">
+        <div class="containerTabella my-5"> <!-- Mantiene il layout centrato e con margine verticale -->
+          <div class="row justify-content-center">  <!-- Riga per definire il layout. Centra la colonna orizzontalmente-->
+            <div class="col-10"> <!-- colonna che occupa 10 parti su 12 -->
+              <table class="table table-bordered table-striped text-center align-middle">
+                <thead>
+                  <tr style="background-color: #fed766">
+                    <th>ID Evento</th>
+                    <th>Data</th>
+                    <th>Nome Evento</th>
+                    <th>Locandina</th>
+                    <th>Seleziona</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php while ($row = mysqli_fetch_assoc($listaEventi)) {?>
+                    <tr>
+                      <td><?=$row['IDEvento']?></td>
+                      <td><?=$row['DataEvento']?></td>
+                      <td><?=$row['NomeEvento']?></td>
+                      <td><img src="<?=$row['Immagine']?>" class="miaImmagineTabella"></td>
+                      <td><input type="radio" name="eventoSelezionato" value="<?=$row['IDEvento']?>"></td>
+                    </tr>
+                    <?php
+                  }
+                  ?>
+                </tbody>
+              </table>
+            </div> <!-- Fine della colonna-->
+          </div>  <!-- Fine della riga -->
+          <!-- Pulsante centrato -->
+          <div class="text-center mt-4">
+            <input type="submit" name="invio" id="invio" value="ELIMINA" class="btn btn-danger">
+          </div>
+        </div>  <!-- Fine del container -->
       </form>
       
 
