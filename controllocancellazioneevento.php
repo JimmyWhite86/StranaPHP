@@ -62,10 +62,10 @@
       deviEssereAdmin();
     }
     else {
-      $idEvento = $_POST["IDEvento"];
+      $idEvento = $_POST["eventoSelezionato"];
       $esitoEliminazione = eliminaEvento($idEvento);
       if (!$esitoEliminazione) {
-        echo "<h1>Ci sono stati errori durante l'eliminazione dell'evento</h1>"
+        echo "<h1>Ci sono stati errori durante l'eliminazione dell'evento</h1>";
       }
       else {
         echo "<h1>Eliminazione avvenuta con successo</h1>";

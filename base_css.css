@@ -321,9 +321,7 @@ footer a {
 /* Blocchi home page */
 
 .mioBordo01 {
-  border: #009fb7;
-  border-style: solid;
-  border-width: .3rem;
+  border: .3rem solid #009fb7;
 }
 
 .mioFlowRoot {
@@ -467,7 +465,7 @@ footer a {
 
 input.ng-invalid {
   border: #e50000 solid 0.08rem;
-  background-color: rgba (201, 212, 57, .09);
+  background-color: rgba(201, 212, 57, .09);
 }
 
 input.ng-valid {
@@ -486,3 +484,9 @@ textarea.ng-valid {
 }
 
 /* ------ */
+
+.miaImmagineTabella {
+  width: 200px;
+  height: 200px;
+
+}

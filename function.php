@@ -82,18 +82,18 @@ function controlloAdmin ($username) {
 }
 
 function eliminaEvento ($idEvento) {
-  $conn = connetti ("Strna01");
+  $conn = connetti ("Strana01");
   if (!$conn) {
     die("Connessione fallita: " . mysqli_connect_error());
   }
   $sql = "SELECT IDEvento, NomeEvento, DataEvento FROM Eventi WHERE IDEvento='$idEvento'";
   $tmp = mysqli_query($conn, $sql);
-  $nRow = mysqli_num_rows($tmp):
+  $nRow = mysqli_num_rows($tmp);
   if ($nRow == 0) {
-    echo "<h1>Veicolo non trovato</h1>";
+    echo "<h1>Evento non trovato $idEvento</h1>";
   }
   else {
-    $sql = "DELETE FROM Eventi WHERE IDEvento='IDEvento'";
+    $sql = "DELETE FROM Eventi WHERE IDEvento='$idEvento'";
     $tmp = mysqli_query($conn, $sql);
     if ($tmp) {
       return true;
@@ -101,7 +101,7 @@ function eliminaEvento ($idEvento) {
     }
     else {
       return false;
-      echo "Erorre cancellazione evento";
+      echo "Errore cancellazione evento";
     }
   }
   mysqli_close($conn);

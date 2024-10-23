@@ -83,13 +83,15 @@
             <td><?=$row['IDEvento']?></td>
             <td><?=$row['DataEvento']?></td>
             <td><?=$row['NomeEvento']?></td>
-            <td><?=$row['Immagine']?></td>
+            <td><img src="<?=$row['Immagine']?>" class="miaImmagineTabella"></td>
             <td><input type="radio" name="eventoSelezionato" value="<?=$row['IDEvento']?>"></td>
           </tr>
           <?php
             }
           ?>
         </table>
+        <br><br>
+        <input type="submit" name="invio" id="invio" value="ELIMINA">
       </form>
       
 
