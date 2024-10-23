@@ -75,12 +75,12 @@
             <div class="col-10"> <!-- colonna che occupa 10 parti su 12 -->
               <table class="table table-bordered table-striped text-center align-middle">
                 <thead>
-                  <tr style="background-color: #fed766">
-                    <th>ID Evento</th>
-                    <th>Data</th>
-                    <th>Nome Evento</th>
-                    <th>Locandina</th>
-                    <th>Seleziona</th>
+                  <tr>
+                    <th class="intestazioneTabella">ID Evento</th>
+                    <th class="intestazioneTabella">Data</th>
+                    <th class="intestazioneTabella">Nome Evento</th>
+                    <th class="intestazioneTabella">Locandina</th>
+                    <th class="intestazioneTabella">Seleziona</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -89,8 +89,12 @@
                       <td><?=$row['IDEvento']?></td>
                       <td><?=$row['DataEvento']?></td>
                       <td><?=$row['NomeEvento']?></td>
-                      <td><img src="<?=$row['Immagine']?>" class="miaImmagineTabella"></td>
-                      <td><input type="radio" name="eventoSelezionato" value="<?=$row['IDEvento']?>"></td>
+                      <td>
+                        <img src="<?=$row['Immagine']?>" class="miaImmagineTabella" alt="Locandina dell'evento">
+                      </td>
+                      <td>
+                        <input type="radio" name="eventoSelezionato" value="<?=$row['IDEvento']?>">
+                      </td>
                     </tr>
                     <?php
                   }

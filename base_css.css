@@ -491,9 +491,11 @@ textarea.ng-valid {
 .miaImmagineTabella {
   width: 50px;
   height: 50px;
+  max-width: 50px;
+  max-height: 50px;
   object-fit: cover;
 }
 
-.table th {
+.intestazioneTabella {
   background-color: #fed766;
 }
