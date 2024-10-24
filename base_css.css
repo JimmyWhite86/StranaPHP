@@ -99,6 +99,13 @@ body {
   color: #fed766;
 }
 
+.titoloPaginaAdmin {
+  font-family: Strana, arial, hevetica, sans-serif;
+  font-size: 6rem;
+  color: #fed766;
+  background-color: black;
+}
+
 .testoHome {
   font-size: 1.5rem;
 }
@@ -497,5 +504,15 @@ textarea.ng-valid {
 }
 
 .intestazioneTabella {
+  background-color: #fed766 !important;
+}
+
+thead th.intestazioneTabella {
   background-color: #fed766;
+}
+
+@media (max-width: 768px) {
+  .miaImmagineTabella, .miaColonnaImmagineTabella{
+    display: none !important;
+  }
 }

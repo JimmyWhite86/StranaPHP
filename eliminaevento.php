@@ -64,8 +64,13 @@
     }
     else { ?>
       
-      <h1><?=$username?> Scegli quale evento vuoi eliminare.</h1>
-      <h2><Strong>Attenzione!!</Strong> L'azione non è reversibile!</h2>
+      <div class="my-5 row justify-content-center">
+        <div class="text-center">
+         <h1 class="titoloPaginaAdmin">elimina evento</h1>
+         <h2><?=$username?> Scegli quale evento vuoi eliminare.</h2>
+         <h3><Strong>Attenzione!!</Strong> L'azione non è reversibile!</h3>
+        </div>
+      </div>
       
       <?php $listaEventi = ottieniListaEventi(); ?>
 
@@ -74,12 +79,12 @@
           <div class="row justify-content-center">  <!-- Riga per definire il layout. Centra la colonna orizzontalmente-->
             <div class="col-10"> <!-- colonna che occupa 10 parti su 12 -->
               <table class="table table-bordered table-striped text-center align-middle">
-                <thead>
-                  <tr>
+                <thead class="intestazioneTabella">
+                  <tr class="intestazioneTabella">
                     <th class="intestazioneTabella">ID Evento</th>
                     <th class="intestazioneTabella">Data</th>
                     <th class="intestazioneTabella">Nome Evento</th>
-                    <th class="intestazioneTabella">Locandina</th>
+                    <th class="intestazioneTabella miaColonnaImmagineTabella">Locandina</th>
                     <th class="intestazioneTabella">Seleziona</th>
                   </tr>
                 </thead>
@@ -89,7 +94,7 @@
                       <td><?=$row['IDEvento']?></td>
                       <td><?=$row['DataEvento']?></td>
                       <td><?=$row['NomeEvento']?></td>
-                      <td>
+                      <td class="miaColonnaImmagineTabella">
                         <img src="<?=$row['Immagine']?>" class="miaImmagineTabella" alt="Locandina dell'evento">
                       </td>
                       <td>

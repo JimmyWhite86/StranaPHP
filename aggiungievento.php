@@ -63,8 +63,12 @@
       deviEssereAdmin($username);
     }
     else {  # Utente loggato con diritti di admin ?>
-      <div class="titolo">
-        <h2>Ciao <?=$username?>. Da questa pagina puoi aggiungere un nuovo evento al database.</h2>
+      
+      <div class="my-5 row justify-content-center">
+        <div class="text-center">
+          <h1 class="titoloPaginaAdmin">aggiungi evento</h1>
+          <h2><?=$username?> compila i dati del form sottostante</h2>
+        </div>
       </div>
       <div class="">
 
