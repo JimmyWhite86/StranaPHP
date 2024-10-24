@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="keyword" content="Fattoria didattica, bambini, centri estivi, laboratori bimbi, laboratori adulti">
+  <meta name="description" content="Laboratori per bambini e adulti in fattoria">
+  <meta name="author" content="Bianchi Andrea">
+
+  <!-- CDN CSS BOOTSTRAP -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <!-- Collegamento al mio file CSS -->
+  <link href="base_css.css" rel="stylesheet" type="text/css">
+  <!-- Libreria per le icone -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+  <!-- CDN JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <!-- CDN Angular -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <!-- Icone -->
+  <script src="https://kit.fontawesome.com/1a45214b57.js" crossorigin="anonymous"></script>
+
+  <!--  Collegamento al mio modulo JS -->
+  <script src="modulo.js" type="text/javascript"></script>
+
+  <title>Fare in Fattoria | Iscrizioni</title>
+  <link rel="stylesheet"
+        href="../../../../Users/jimmywhite/Desktop/Università/Design di applicazioni web/Progetto/base_css.css">
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-4">
+  <a href="#mioMain" class="skip text-center pl-3 bg-6">Vai al contenuto principale</a>
+  <div class="container-fluid mioNav">
+    <a class="navbar-brand mioOver p-2" href="home.html">Fare in Fattoria</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav" role="navigation" aria-label="main navigation">
+      <ul class="navbar-nav" id="myNavBar">
+        <li class="nav-item">
+          <a class="nav-link mioOver" href="home.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mioOver" href="labadulti.html">Laboratori adulti</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mioOver" href="labbambini.html">Laboratori bambini</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mioOver" href="contatti.html">Contatti</a>
+        </li>
+        <li class="nav-item mioActive">
+          <a class="nav-link" href="iscrizioni.html">Iscrizioni</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mioOver" href="chisiamo.html">Chi Siamo</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main id="mioMain" role="main">
+
+  <!-- Inizio Form Prenotazioni -->
+  <!-- XXXXXXXXXXXXXX -->
+  <div class="container-fluid bg-3" id="containerForm">
+    <h3 class="text-center mb-4">Compila il form per prenotare la tua attività</h3>
+    <div class="container-fluid formContatti bg-5">
+      <form class="mioFormContatti bg-3 col-md-8 mx-auto" id="formPrenotazioni" ng-app="myAppPrenotazioni"
+            ng-controller="validateCtrl" name="formPrenotazioni" method="post" novalidate>
+        <fieldset form="formPrenotazioni">
+          <legend class="text-center mt-3">
+            <p ng-show="formPrenotazioni.nomePrenotazione.$valid">
+              Grazie {{nomePrenotazione}}, prosegui a compilare tutti i campi obbligatori<br>
+              Per eventuali dubbi o chiarimenti su questo processo, non esitare a <a href="contatti.html">contattarci</a>.
+            </p>
+            <strong>
+              <span ng-show="formPrenotazioni.nomePrenotazione.$invalid">Compila tutti i campi obbligatori</span>
+            </strong>
+          </legend>
+
+          <hr>
+
+          <!-- Dati personali -->
+          <fieldset class="m-3" form="formPrenotazioni" title="Dati personali della persona che effettua la prenotazione">
+            <legend class="text-center mt-3">Inserisci i tuoi dati personali</legend>
+            <div class="form-group">
+              <label for="nomePrenotazione" >
+                Nome<span class="mandatory">*</span>
+              </label>
+              <span ng-show="formPrenotazioni.nomePrenotazione.$error.required" class="mioErrore01" role="alert">
+                  <em>Campo obbligatorio</em>
+              </span>
+              <input type="text" class="form-control" id="nomePrenotazione" name="nomePrenotazione"
+                     title="Inserisci il tuo nome" ng-model="nomePrenotazione" required aria-required="true"
+                     autocomplete="given-name" ng-required="true"> <!-- pattern="[a-zA-Z]+[ ][a-zA-Z]+" -->
+            </div>
+
+            <div class="form-group mt-3">
+              <label for="cognomePrenotazione">
+                Cognome<span class="mandatory">*</span>
+              </label>
+              <span ng-show="formPrenotazioni.cognomePrenotazione.$error.required" class="mioErrore01" role="alert">
+                </em>Campo obbligatorio</em>
+              </span>
+              <input type="text" class="form-control" id="cognomePrenotazione" name="cognomePrenotazione"
+                     autocomplete="family-name" ng-model="cognomePrenotazione" ng-required="true"
+                     required aria-required="true" > <!-- pattern="[a-zA-Z]+[ ][a-zA-Z]+" -->
+            </div>
+
+            <div class="form-group mt-3">
+              <label for="emailPrenotazione">
+                E-mail<span class="mandatory">*</span>
+              </label>
+              <span ng-show="formPrenotazioni.emailPrenotazione.$error.required" class="mioErrore01" role="alert">
+                Campo obbligatorio
+              </span>
+              <span ng-show="formPrenotazioni.emailPrenotazione.$error.email" class="mioErrore01" role="alert">
+                Indirizzo e-mail non valido
+              </span>
+              <input type="email" class="form-control" id="emailPrenotazione" name="emailPrenotazione"
+                     ng-model="emailPrenotazione" required aria-required="true" autocomplete="email" ng-required="true">
+            </div>
+
+            <div class="form-group mt-3">
+              <label for="telefonoPrenotazione">
+                Telefono<span class="mandatory">*</span>
+              </label>
+              <span ng-show="formPrenotazioni.telefonoPrenotazione.$error.required" class="mioErrore01" role="alert">
+                Campo obbligatorio
+              </span>
+              <input type="tel" class="form-control" id="telefonoPrenotazione" name="telefonoPrenotazione"
+                     ng-model="telefonoPrenotazione" required aria-required="true" autocomplete="tel"
+                     pattern="[0-9]{10}" ng-required="true">
+            </div>
+
+          </fieldset>
+
+          <hr>
+
+          <!-- Scelta attività -->
+          <fieldset form="formPrenotazioni" class="m-3" title="Scegli l'attività che vuoi prenotare"
+                    ng-disabled="formPrenotazioni.nomePrenotazione.$invalid ||
+                    formPrenotazioni.cognomePrenotazione.$invalid || formPrenotazioni.emailPrenotazione.$invalid ||
+                    formPrenotazioni.telefonoPrenotazione.$invalid">
+            <legend class="text-center mt-3">
+              Scegli l'attività<span class="mandatory">*</span>
+            </legend>
+            <br>
+
+            <span ng-show="formPrenotazioni.radioLab.$error.required" class="mioErrore01" role="alert">
+              Campo obbligatorio
+            </span>
+
+            <div class="form-check m-2">
+              <input type="radio" id="radioLabAdulti" name="radioLab" ng-model="radioLab"
+                     class="form-check-input" value="labAdulti" required aria-required="true">
+              <label for="radioLabAdulti" class="form-check-label">Lab. Adulti</label><br>
+            </div>
+
+            <div class="form-check m-2">
+              <input type="radio" id="radioCentriEstivi" name="radioLab" ng-model="radioLab" class="form-check-input"
+                     value="centriEstivi" required aria-required="true">
+              <label for="radioCentriEstivi" class="form-check-label">Centri estivi</label><br>
+            </div>
+
+            <div class="form-check m-2">
+              <input type="radio" id="radioLabBambini" name="radioLab" ng-model="radioLab" class="form-check-input"
+                     value="labBambini" required aria-required="true">
+              <label for="radioLabBambini" class="form-check-label">Lab Bambini</label><br>
+            </div>
+          </fieldset>
+
+          <hr>
+
+          <!-- Laboratori Adulti -->
+          <fieldset class="m-3" form="formPrenotazioni" id="opzioniLabAdulti" style="display: none;"
+                    title="Seleziona numero di partecipanti, data e il laboratorio per adulti che desideri">
+            <legend class="text-center mt-3" id="focus01">
+              Seleziona le tue preferenze<br>
+              <em>Laboratori adulti</em>
+            </legend>
+
+            <div class="form-group">
+              <label for="numeroPartecipantiAdulti">
+                Numero di partecipanti<span class="mandatory">*</span>
+              </label>
+              <span ng-show="formPrenotazioni.numeroPartecipantiAdulti.$error.required" class="mioErrore01" role="alert">
+                Campo obbligatorio
+              </span>
+              <span ng-show="formPrenotazioni.numeroPartecipantiAdulti.$error.min ||
+                             formPrenotazioni.numeroPartecipantiAdulti.$error.max"
+                    class="mioErrore01" role="alert">
+                Deve essere un numero compreso tra 0 e 15
+              </span>
+              <input type="number" class="form-control" id="numeroPartecipantiAdulti" name="numeroPartecipantiAdulti"
+                     ng-model="numeroPartecipantiAdulti" required aria-required="true" min="1" max="15"
+                     ng-required="true"> <!-- value="numeroPartecipantiAdulti" -->
+              <div class="mt-2">
+                <!--
+              <button ng-click="numeroPartecipantiAdulti = numeroPartecipantiAdulti + 1" class="btn btn-primary btn-sm">
+                Aggiungi
+              </button>
+              <button ng-click="numeroPartecipantiAdulti = numeroPartecipantiAdulti - 1" class="btn btn-primary btn-sm">
+                Rimuovi
+              </button>
+               -->
+            </div>
+
+            </div>
+
+            <div class="form-group mt-3">
+              <label for="dataAdulti">
+                Seleziona la data<span class="mandatory">*</span>
+              </label>
+              <span ng-show="formPrenotazioni.dataAdulti.$error.required" class="mioErrore01" role="alert">
+                Campo obbligatorio
+              </span>
+              <input type="date" class="form-control" id="dataAdulti" name="dataAdulti" ng-model="dataAdulti"
+                     ng-required="true" required aria-required="true">
+            </div>
+
+            <div class="form-group mt-3">
+              <label for="sceltaLabAdulti">
+                Seleziona il laboratorio<span class="mandatory">*</span>
+              </label>
+              <span ng-show="formPrenotazioni.sceltaLabAdulti.$error.required" class="mioErrore01" role="alert">
+                Campo obbligatorio
+              </span>
+              <select class="form-control" id="sceltaLabAdulti" name="sceltaLabAdulti" ng-model="sceltaLabAdulti"
+                      ng-required="true" required aria-required="true">
+                <option value="argilla">Argilla</option>
+                <option value="vetro">Vetro</option>
+                <option value="yoga">Yoga</option>
+                <option value="pilates">Pilates</option>
+                <option value="rilassamento">Rilassamento</option>
+                <option value="sartoria">Sartoria</option>
+              </select>
+            </div>
+
+            <button type="button" class="mt-2 btn btn-primary" onclick="confermaAdulti()" id="bottoneAdulti"
+                    ng-disabled="formPrenotazioni.nomePrenotazione.$invalid ||
+                                 formPrenotazioni.cognomePrenotazione.$invalid ||
+                                 formPrenotazioni.emailPrenotazione.$invalid ||
+                                 formPrenotazioni.telefonoPrenotazione.$invalid ||
+                                 formPrenotazioni.numeroPartecipantiAdulti.$invalid ||
+                                 formPrenotazioni.dataAdulti.$invalid ||
+                                 formPrenotazioni.sceltaLabAdulti.$invalid">
+              Prenota
+            </button>
+
+            <hr>
+          </fieldset>
+
+          <!-- Laboratori Bambini -->
+          <fieldset class="m-3" form="formPrenotazioni" id="opzioniLabBambini" style="display: none;"
+                    title="Seleziona il numero di partecipanti, la data e il laboratorio per bambini che desideri prenotare">
+            <legend class="text-center mt-3">Seleziona le tue preferenze<br>
+              <em>Laboratori bimbi</em>
+            </legend>
+
+            <div class="form-group">
+              <label for="numeroPartecipantiBimbi" >
+                Numero di partecipanti<span class="mandatory">*</span>
+              </label>
+              <span ng-show="formPrenotazioni.numeroPartecipantiBimbi.$error.required" class="mioErrore01" role="alert">
+                Campo obbligatorio
+              </span>
+              <span ng-show="formPrenotazioni.numeroPartecipantiBimbi.$error.min ||
+                             formPrenotazioni.numeroPartecipantiBimbi.$error.max"
+                    class="mioErrore01" role="alert">
+                Deve essere un numero compreso tra 0 e 15
+              </span>
+              <input type="number" class="form-control" id="numeroPartecipantiBimbi" name="numeroPartecipantiBimbi"
+                     ng-model="numeroPartecipantiBimbi" ng-required="true" required aria-required="true"
+                     min="1" max="15">
+            </div>
+
+            <div class="form-group mt-3">
+              <label for="dataBimbi">
+                Seleziona la data<span class="mandatory">*</span>
+              </label>
+              <span ng-show="formPrenotazioni.dataBimbi.$error.required" class="mioErrore01" role="alert">
+                Campo obbligatorio
+              </span>
+              <input type="date" class="form-control" id="dataBimbi" name="dataBimbi"
+                     ng-model="dataBimbi" ng-required="true" required aria-required="true">
+            </div>
+
+            <div class="form-group mt-3">
+              <label for="sceltaLabBimbi">
+                Seleziona il laboratorio<span class="mandatory">*</span>
+              </label>
+              <span ng-show="formPrenotazioni.sceltaLabBimbi.$error.required" class="mioErrore01" role="alert">
+                Campo obbligatorio
+              </span>
+              <select class="form-control" id="sceltaLabBimbi" name="sceltaLabBimbi"
+                      ng-model="sceltaLabBimbi" ng-required="true" required aria-required="true">
+                <option value="lana">Manipolazione lana</option>
+                <option value="yogaBimbi">Yoga bimbi</option>
+                <option value="kokedama">Kokedama</option>
+              </select>
+            </div>
+
+            <button type="button" class="mt-2" onclick="confermaBimbi()"
+                    ng-disabled="formPrenotazioni.nomePrenotazione.$invalid ||
+                                 formPrenotazioni.cognomePrenotazione.$invalid ||
+                                 formPrenotazioni.emailPrenotazione.$invalid ||
+                                 formPrenotazioni.telefonoPrenotazione.$invalid ||
+                                 formPrenotazioni.numeroPartecipantiBimbi.$invalid ||
+                                 formPrenotazioni.dataBimbi.$invalid ||
+                                 formPrenotazioni.sceltaLabBimbi.$invalid">
+              Prenota
+            </button>
+
+            <hr>
+          </fieldset>
+
+          <!-- Centri Estivi -->
+          <fieldset class="m-3" form="formPrenotazioni" id="opzioneCentriEstivi" style="display: none;"
+                    title="Seleziona il numero di partecipanti, il periodo e la fascia di età per prenotare i centri estivi">
+            <legend class="text-center mt-3">
+              Seleziona le tue preferenze<br>
+              <em>Centri estivi</em>
+            </legend>
+
+            <div class="form-group">
+              <label for="numeroPartecipantiCentri" >
+                Numero di partecipanti<span class="mandatory">*</span>
+              </label>
+              <span ng-show="formPrenotazioni.numeroPartecipantiCentri.$error.required" class="mioErrore01" role="alert">
+                Campo obbligatorio
+              </span>
+              <span class="mioErrore01" role="alert"
+                    ng-show="formPrenotazioni.numeroPartecipantiCentri.$error.min ||
+                    formPrenotazioni.numeroPartecipantiCentri.$error.max">
+                Deve essere un numero compreso tra 0 e 5
+              </span>
+              <input type="number" class="form-control" id="numeroPartecipantiCentri" name="numeroPartecipantiCentri"
+                     ng-model="numeroPartecipantiCentri" ng-required="true" required aria-required="true"
+                     min="1" max="5">
+            </div>
+
+            <h4>Seleziona il periodo</h4>
+
+            <div class="form-group mt-3">
+              <label for="dataInizioCentri">
+                Seleziona la data<span class="mandatory">*</span>
+              </label>
+              <span ng-show="formPrenotazioni.dataInizioCentri.$error.required" class="mioErrore01" role="alert">
+                Campo obbligatorio
+              </span>
+              <input type="date" class="form-control" id="dataInizioCentri" name="dataInizioCentri"
+                     ng-model="dataInizioCentri" ng-required="true" required aria-required="true">
+            </div>
+
+            <div class="form-group mt-3">
+              <label for="dataFineCentri">
+                Seleziona la data<span class="mandatory">*</span>
+              </label>
+              <span ng-show="formPrenotazioni.dataFineCentri.$error.required" class="mioErrore01" role="alert">
+                Campo obbligatorio
+              </span>
+              <input type="date" class="form-control" id="dataFineCentri" name="dataFineCentri"
+                     ng-model="dataFineCentri" ng-required="true" required aria-required="true">
+            </div>
+
+            <div class="form-group mt-3">
+              <label for="fasciaEta">
+                Seleziona la fascia di età<span class="mandatory">*</span>
+              </label>
+              <span ng-show="formPrenotazioni.fasciaEta.$error.required" class="mioErrore01" role="alert">
+                Campo obbligatorio
+              </span>
+              <select id="fasciaEta" name="fasciaEta" form="formPrenotazioni" required aria-required="true"
+                      ng-model="fasciaEta" ng-required="true" class="form-control">
+                <option value="materna">Materna (3/5)</option>
+                <option value="elementari">Elementari (6/10)</option>
+              </select>
+            </div>
+
+            <button type="button" class="mt-2" onclick="confermaCentri()"
+                    ng-disabled="formPrenotazioni.nomePrenotazione.$invalid ||
+                                 formPrenotazioni.cognomePrenotazione.$invalid ||
+                                 formPrenotazioni.emailPrenotazione.$invalid ||
+                                 formPrenotazioni.telefonoPrenotazione.$invalid ||
+                                 formPrenotazioni.numeroPartecipantiCentri.$invalid ||
+                                 formPrenotazioni.dataInizioCentri.$invalid ||
+                                 formPrenotazioni.dataFineCentri.$invalid ||
+                                 formPrenotazioni.fasciaEta.$invalid">
+              Prenota
+            </button>
+
+            <hr>
+          </fieldset>
+        </fieldset>
+
+      </form>
+
+    </div>
+  </div>
+  <!-- XXXXXXXXXXXXXX -->
+  <!-- Fine form -->
+  <!-- XXXXXXXXXXXXXX -->
+
+
+  <!-- XXXXXXXXXXXXXX -->
+  <!-- Inizio campo di conferma -->
+  <!-- XXXXXXXXXXXXXX -->
+
+  <div id="containerConferma" class="container-fluid bg-grey col-md-8 offset-md-2 bg-6 border border-dark rounded my-3"
+       style="display: none;">
+
+    <h3>Ecco la tua prenotazione</h3>
+    <br>
+
+    <div id="datiPersonali" style="display: none;">
+      <h4>I tuoi dati</h4>
+      <ul>
+        <li>Nome: <span id="nomeInserito"></span> </li>
+        <li>Cognome: <span id="cognomeInserito"></span></li>
+        <li>E-mail: <span id="emailInserito"></span></li>
+        <li>Telefono: <span id="telefonoInserito"></span></li>
+      </ul>
+      <br><br>
+    </div>
+
+    <div id="labAdulti" style="display: none;">
+      <h4> Lab Adulti </h4>
+      <ul>
+        <li>Numero partecipanti: <span id="numeroPartecipantiAdultiScelto"></span></li>
+        <li>Data: <span id="dataAdultiScelta"></span></li>
+        <li>Laboratorio: <span id="labSceltaAdulti"></span> </li>
+      </ul>
+      <br><br>
+    </div>
+
+    <div id="labBimbi" style="display: none;">
+      <h4>Laboratori Bambini</h4>
+      <ul>
+        <li>Numero partecipanti: <span id="numeroPartecipantiBimbiScelto"></span> </li>
+        <li>Data: <span id="dataBimbiScelta"></span></li>
+        <li>Laboratorio: <span id="labBimbiScelto"></span></li>
+      </ul>
+      <br><br>
+    </div>
+
+    <div id="centriEstivi" style="display: none;">
+      <h4>Centri estivi</h4>
+      <ul>
+        <li>Numero partecipanti: <span id="numeroPartecipantiCentriScelto"></span></li>
+        <li>Fascia eta: <span id="fasciaEtaScelta"></span></li>
+        <li>Data inizio: <span id="dataInizioScelta"></span> </li>
+        <li>Data fine: <span id="dataFineScelta"></span></li>
+      </ul>
+    </div>
+
+    <button onclick="window.print()">Stampa la prenotazione</button>
+
+  </div>
+
+</main>
+<!-- XXXXXXXXXXXXXX -->
+<!-- Fine campo di conferma -->
+<!-- XXXXXXXXXXXXXX -->
+
+
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-4" role="contentinfo">
+
+  <div class="p-1 border-bottom myFooter01"></div> <!-- Riga sopra footer -->
+
+  <section>
+
+    <div class="container text-center text-md-start mt-3 mb-1">
+      <div class="row">
+
+        <!-- Nome e logo -->
+        <div class="col-md-2 col-lg-4 col-xl-3 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="bi bi-tree" role="img" alt="albero stilizzato. logo azienda" title="Logo azienda stilizzato"
+               aria-label="company logo"></i>
+            Fare in Fattoria APS
+          </h6>
+          <p>Fattoria didattica dal 2018</p>
+        </div>
+
+        <!-- Link Utili -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4" role="navigation" aria-label="useful links">
+          <button id="linkUtiliButton" class="btn btn-outline-dark">
+            <h6 class="text-uppercase fw-bold text-center mb-0">Link utili</h6>
+          </button>
+          <div id="linkUtiliDiv" style="display: none">
+            <a href="http://www.comune.pinerolo.to.it/web/" class="btn btn-outline-dark mb-2"
+               title="Sito del comune di pinerolo">
+              Comune Pinerolo
+            </a>
+            <a href="https://www.fattoriedidattiche.net/" class="btn btn-outline-dark mb-2"
+               title="Sito delle fattorie didattiche">
+              Fattorie didattiche
+            </a>
+            <a href="https://www.old.icpinerolo2.edu.it/" class="btn btn-outline-dark mb-2"
+               title="Istituto comprensivo Pinerolo 2">
+              IC Pinerolo II
+            </a>
+            <a href="https://visitapinerolo.it/" class="btn btn-outline-dark mb-2"
+               title="informazioni turistiche su Pinerolo">
+              Visita Pinerolo
+            </a>
+          </div>
+        </div>
+
+        <!-- Social -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 text-center" aria-label="social links">
+          <button id="socialButton" class="btn btn-outline-dark">
+            <h6 class="text-uppercase fw-bold mb-0">I social</h6>
+          </button>
+          <div id="socialDiv" style="display: none">
+            <a href="https://www.facebook.com/groups/315511196083492" class="socialIcon" title="Link alla pagina Facebook"
+               aria-label="Facebook link">
+              <i class="fa-brands fa-square-facebook fa-3x" role="img" title="Facebook icon"></i>
+            </a>
+
+            <a href="https://twitter.com/home" class="socialIcon" title="Link alla pagine Twitter"
+               aria-label="Twitter link">
+              <i class="fa-brands fa-square-twitter fa-3x" role="img" title="Twitter Icon"></i>
+            </a>
+            <br>
+
+            <a href="https://www.instagram.com/cascina.depetris/" class="socialIcon" title="Link alla pagina Instagram"
+               aria-label="Instagram link">
+              <i class="fa-brands fa-square-instagram fa-3x" role="img" title="Instagram icon"></i>
+            </a>
+
+            <a href="https://www.youtube.com/" class="socialIcon" title="Link alla pagina YouTube"
+               aria-label="YouTube link" >
+              <i class="fa-brands fa-square-youtube fa-3x" role="img" title="YouTube Icon"></i>
+            </a>
+          </div>
+        </div>
+
+        <!--  Contatti -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-4" aria-label="contatti">
+          <address title="Contatti di Fare in fattoria">
+            <button class="btn btn-outline-dark" id="contattiButton">
+              <h6 class="text-uppercase fw-bold mb-0 text-center">Contatti</h6>
+            </button>
+            <div id="contattiDiv" style="display: none">
+              <a href="https://goo.gl/maps/VJHtKwyvQsQT2Z1j7" class="btn btn-outline-dark mb-2"
+                 title="Indicazioni geografiche. Collegamento a Google Maps">
+                <i class="fas fa-home me-3"></i>Via Molino Fossat 10, Pinerolo (TO)
+              </a>
+
+              <a href="mailto:fareinfattoria@gmail.com" class="btn btn-outline-dark mb-2"
+                 title="Indirizzo email di Fare in Fattoria">
+                <i class="fas fa-envelope me-3"></i>fareinfattoria@gmail.com
+              </a>
+
+              <a href="Tel:+393491902771" class="btn btn-outline-dark mb-2" title="Numero di telefono">
+                <i class="fas fa-phone me-3"></i>349 19 02 771
+              </a>
+            </div>
+          </address>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="text-center p-1 border-top myFooter01">
+    <p title="Autore del sito">Sito realizzato da: Bianchi Andrea (Mat. 954122)</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+</script>
+
+</body>
+</html>

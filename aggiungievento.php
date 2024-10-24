@@ -63,35 +63,43 @@
       deviEssereAdmin($username);
     }
     else {  # Utente loggato con diritti di admin ?>
-      
+
+      <!-- Titolo e sottotilo della pagina-->
       <div class="my-5 row justify-content-center">
         <div class="text-center">
           <h1 class="titoloPaginaAdmin">aggiungi evento</h1>
           <h2><?=$username?> compila i dati del form sottostante</h2>
         </div>
       </div>
-      <div class="">
+      
+      
+      <!-- Form della pagina -->
+      <div class="container-fluid" id="containerForm">
+      <form method="POST" action="controlloaggiuntaevento.php" enctype="multipart/form-data"
+            class="col-md-8 mx-auto">
+        
+        <h3 class="text-center">Compila i campi del form sottostante</h3>
 
-        <p>Compila i campi del form sottostante</p>
+        
+        
+        
+        <label for="eventoNew">Inserisci il titolo dell'evento</label>
+        <input type="text" name="eventoNew" id="eventoNew" class=""><br>
 
-        <form method="POST" action="controlloaggiuntaevento.php" enctype="multipart/form-data">
+        <label for="dataNew">Inserisci la data</label>
+        <input type="date" name="dataNew" id="dataNew" class=""><br>
 
-          <label for="eventoNew">Inserisci il titolo dell'evento</label>
-          <input type="text" name="eventoNew" id="eventoNew" class=""><br>
+        <label for="descrizioneNew">Inserisci la descrizione</label>
+        <input type="text" name="descrizioneNew" id="descrizioneNew" class=""><br>
 
-          <label for="dataNew">Inserisci la data</label>
-          <input type="date" name="dataNew" id="dataNew" class=""><br>
+        <label for="immagine">Aggiungi l'immagine dell'evento</label>
+        <input type="file" name="immagine" id="immagine">
 
-          <label for="descrizioneNew">Inserisci la descrizione</label>
-          <input type="text" name="descrizioneNew" id="descrizioneNew" class=""><br>
+        <input type="submit" value="Inserisci">
 
-          <label for="immagine">Aggiungi l'immagine dell'evento</label>
-          <input type="file" name="immagine" id="immagine">
-
-          <input type="submit" value="Inserisci">
-
-        </form>
+      </form>
       </div>
+    
     <?php   }
   }?>
 

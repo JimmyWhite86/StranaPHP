@@ -63,10 +63,11 @@
       deviEssereAdmin($username);
     }
     else { ?>
-      
+
+      <!-- Titolo e sottotilo della pagina-->
       <div class="my-5 row justify-content-center">
         <div class="text-center">
-         <h1 class="titoloPaginaAdmin">elimina evento</h1>
+         <h1 class="titoloPaginaAdmin" style="background-color: black">elimina evento</h1>
          <h2><?=$username?> Scegli quale evento vuoi eliminare.</h2>
          <h3><Strong>Attenzione!!</Strong> L'azione non è reversibile!</h3>
         </div>
@@ -74,6 +75,7 @@
       
       <?php $listaEventi = ottieniListaEventi(); ?>
 
+      <!-- Tabella della pagina -->
       <form method="POST" action="controllocancellazioneevento.php">
         <div class="containerTabella my-5"> <!-- Mantiene il layout centrato e con margine verticale -->
           <div class="row justify-content-center">  <!-- Riga per definire il layout. Centra la colonna orizzontalmente-->
