@@ -68,35 +68,63 @@
       <div class="my-5 row justify-content-center">
         <div class="text-center">
           <h1 class="titoloPaginaAdmin">aggiungi evento</h1>
-          <h2><?=$username?> compila i dati del form sottostante</h2>
+          <h2 class="mt-5"><?=$username?> compila i dati del form sottostante</h2>
         </div>
       </div>
       
       
       <!-- Form della pagina -->
-      <div class="container-fluid" id="containerForm">
+      <div class="container-fluid my-5" id="containerForm">
       <form method="POST" action="controlloaggiuntaevento.php" enctype="multipart/form-data"
             class="col-md-8 mx-auto">
         
         <h3 class="text-center">Compila i campi del form sottostante</h3>
-
         
+        <fieldset>
+          <div class="form-group">
         
-        
-        <label for="eventoNew">Inserisci il titolo dell'evento</label>
-        <input type="text" name="eventoNew" id="eventoNew" class=""><br>
+            <label for="eventoNew">
+              Inserisci il titolo dell'evento
+              <span class="mandatory">*</span>
+            </label>
+            <input type="text" name="eventoNew" id="eventoNew" class="form-control"
+                  title="Inserisci il titolo dell'evento" required aria-required="true">
+            
+            <br>
+    
+            <label for="dataNew">
+              Inserisci la data
+              <span class="mandatory">*</span>
+            </label>
+            <input type="date" name="dataNew" id="dataNew" class="form-control col-md-3" required aria-required="true"
+            title="inserisci la data dell'evento">
+            <br>
+    
+            <label for="descrizioneNew">
+              Inserisci la descrizione
+              <span class="mandatory">*</span>
+            </label>
+            <textarea name="descrizioneNew" id="descrizioneNew" class="form-control" required aria-required="true"
+                   title="Inserisci la descrizione dell'evento">
+            </textarea>
+            <!--
+            <input type="text" name="descrizioneNew" id="descrizioneNew" class="form-control" required aria-required="true"
+            title="Inserisci la descrizione dell'evento">
+            -->
+            <br>
+    
+            <label for="immagine">Aggiungi l'immagine dell'evento</label>
+            <input type="file" name="immagine" id="immagine" class="form-control">
+            
+            <br><br>
 
-        <label for="dataNew">Inserisci la data</label>
-        <input type="date" name="dataNew" id="dataNew" class=""><br>
-
-        <label for="descrizioneNew">Inserisci la descrizione</label>
-        <input type="text" name="descrizioneNew" id="descrizioneNew" class=""><br>
-
-        <label for="immagine">Aggiungi l'immagine dell'evento</label>
-        <input type="file" name="immagine" id="immagine">
-
-        <input type="submit" value="Inserisci">
-
+          </div>
+          
+         <div class="text-center">
+        <input type="submit" value="Inserisci" class="btn btn-success">
+         </div>
+         
+        </fieldset>
       </form>
       </div>
     
