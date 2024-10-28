@@ -41,7 +41,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
-  <title>AdminStrana | Aggiungi Evento</title>
+  <title>AdminStrana | Aggiungi Menu</title>
 
 </head>
 <body ng-app="myAppHome" ng-controller="myCtrl">
@@ -67,15 +67,17 @@
       <!-- Titolo e sottotilo della pagina-->
       <div class="my-5 row justify-content-center">
         <div class="text-center">
-          <h1 class="titoloPaginaAdmin">aggiungi evento</h1>
-          <h2 class="mt-5"><?=$username?> compila i dati del form sottostante</h2>
+          <h1 class="titoloPaginaAdmin">aggiungi piatto</h1>
+          <h2 class="mt-5">
+            <?=$username?>, compila i dati del form sottostante per aggiungere un singolo piatto al menu
+          </h2>
         </div>
       </div>
       
       
       <!-- Form della pagina -->
       <div class="container-fluid my-5" id="containerForm">
-      <form method="POST" action="controlloaggiuntaevento.php" enctype="multipart/form-data" class="col-md-8 mx-auto"> <!-- Attributo enctype => Serve per caricamento dei file w3schools.com/tags/att_form_enctype.asp -->
+      <form method="POST" action="controllaAggiuntaMenu.php" class="col-md-8 mx-auto">
         <!--
         <h3 class="text-center">Compila i campi del form sottostante</h3>
         -->
@@ -83,38 +85,47 @@
         <fieldset>
           <div class="form-group">
         
-            <label for="eventoNew">
-              Inserisci il titolo dell'evento
+            <label for="piattoNew">
+              Inserisci il nome del piatto
               <span class="mandatory">*</span>
             </label>
-            <input type="text" name="eventoNew" id="eventoNew" class="form-control"
-                  title="Inserisci il titolo dell'evento" required aria-required="true">
-            
+            <input type="text" name="piattoNew" id="piattoNew" class="form-control"
+                  title="Inserisci il nome del piatto" required aria-required="true">
             <br>
     
-            <label for="dataNew">
-              Inserisci la data
-              <span class="mandatory">*</span>
-            </label>
-            <input type="date" name="dataNew" id="dataNew" class="form-control col-md-3" required aria-required="true"
-            title="inserisci la data dell'evento">
-            <br>
-    
-            <label for="descrizioneNew">
+            <label for="descrizionePiattoNew">
               Inserisci la descrizione
-              <span class="mandatory">*</span>
             </label>
-            <textarea name="descrizioneNew" id="descrizioneNew" class="form-control" required aria-required="true"
-                   title="Inserisci la descrizione dell'evento">
+            <textarea name="descrizionePiattoNew" id="descrizionePiattoNew" class="form-control col-md-3"
+                   title="inserisci la descrizione del piatto">
             </textarea>
-            <!--
-            <input type="text" name="descrizioneNew" id="descrizioneNew" class="form-control" required aria-required="true"
-            title="Inserisci la descrizione dell'evento">
-            -->
             <br>
     
-            <label for="immagine">Aggiungi l'immagine dell'evento</label>
-            <input type="file" name="immagine" id="immagine" class="form-control">
+            <p >
+              Inserisci la categoria del piatto
+              <span class="mandatory">*</span>
+            </p>
+            <input type="radio" id="antipasto" name="categoriaPiattoNew" value="antipasto">
+            <label for="antipasto">Antipasto</label><br>
+            <input type="radio" id="primi" name="categoriaPiattoNew" value="primi">
+            <label for="primi">Primi</label><br>
+            <input type="radio" id="secondi" name="categoriaPiattoNew" value="secondi">
+            <label for="secondi">Secondi</label><br>
+            <input type="radio" id="contorni" name="categoriaPiattoNew" value="contorni">
+            <label for="contorni">Contorni</label><br>
+            <input type="radio" id="dolci" name="categoriaPiattoNew" value="dolci">
+            <label for="dolci">Dolci</label><br>
+            <br>
+
+            <p>
+              Inserisci il cuoco
+              <span class="mandatory">*</span>
+            </p>
+            <input type="radio" id="pino" name="cuocoPiattoNew" value="Pino">
+            <label for="pino">Pino</label><br>
+            <input type="radio" id="tarta" name="categoriaPiattoNew" value="Tarta">
+            <label for="tarta">Tarta</label><br>
+            
             
             <br><br>
 

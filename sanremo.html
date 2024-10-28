@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanremo Music Festival - Tabella Canzoni</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+    }
+    table {
+      margin: 20px auto;
+      width: 80%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Sanremo Music Festival</h1>
+
+<table class="table table-striped" id="songsTable">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Titolo della Canzone</th>
+    <th>Artista</th>
+    <th>Anno</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Le canzoni verranno aggiunte qui tramite JavaScript -->
+  </tbody>
+</table>
+
+<script>
+    // Funzione per caricare e analizzare il file XML
+    function loadXMLDoc() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "esempio.xml", true); // Assicurati che il percorso del file XML sia corretto
+        xhr.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                displaySongs(this);
+            }
+        };
+        xhr.send();
+    }
+
+    // Funzione per visualizzare le canzoni nella tabella
+    function displaySongs(xml) {
+        const xmlDoc = xml.responseXML;
+        const songs = xmlDoc.getElementsByTagName("song");
+        const tbody = document.querySelector("#songsTable tbody");
+
+        for (let i = 0; i < songs.length; i++) {
+            const title = songs[i].getElementsByTagName("title")[0].textContent;
+            const artist = songs[i].getElementsByTagName("artist")[0].textContent;
+            const year = songs[i].getElementsByTagName("year")[0].textContent;
+
+            const row = tbody.insertRow();
+            row.innerHTML = `
+                    <td>${i + 1}</td>
+                    <td>${title}</td>
+                    <td>${artist}</td>
+                    <td>${year}</td>
+                `;
+        }
+    }
+
+    // Carica il file XML al caricamento della pagina
+    window.onload = loadXMLDoc;
+</script>
+
+</body>
+</html>

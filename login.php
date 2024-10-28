@@ -1,8 +1,8 @@
 <?php
-    session_start();
-    include "function.php";
-    include "functionHTML.php";
-    $nomePagina = "login";
+  session_start();
+  include "function.php";
+  include "functionHTML.php";
+  $nomePagina = "login";
 ?>
 
 <!DOCTYPE html>
@@ -17,8 +17,8 @@
   <meta name="author" content="Bianchi Andrea">
 
   <!-- CDN CSS BOOTSTRAP -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <!-- JavaScript di Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <!-- Collegamento al mio file CSS -->
@@ -36,59 +36,78 @@
   <!--  Collegamento al mio modulo JS -->
   <script src="modulo.js" type="text/javascript"></script>
 
-  <!-- Fobnt Babas Neue -->
+  <!-- Font Babas Neue -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
-  <title>Stranamore | Home</title>
+  <title>Stranamore | LogIn</title>
 
 </head>
-<body ng-app="myAppHome" ng-controller="myCtrl">
+<body>
+
 
   <!-- NAV BAR -->
   <?php richiamaNavBar($nomePagina) ?>
 
-
-  <br><hr><br>
-
-  <?php 
+  <div class="my-5 row justify-content-center">
+    <div class="text-center">
+      <h1 class="titoloPaginaAdmin">log in</h1>
+    </div>
+  </div>
+  
+  <?php
     if (!isset ($_SESSION["username"])) { #Verifico che l'utente non abbia ancora effettuato il login; ?>
-      <p>Sei un admin della pagina?<br>Inserisci le tue credenziali</p>
 
-      <div>
-        <form method="POST" action="controlla_login.php">
-
-          <label for="username">Inserisci il tuo username</label>
-          <input type="text" name="username" id="username">
-          <br>
-
-          <label for="psw1">Inserisci la tua password</label>
-          <input type="password" name="psw1" id="psw1">
-          <br>
-
-          <input type="submit" name="invio" id="invio" value="vai">
-
+  <div class="container-fluid my-5" id="containerForm">
+    <h2 class="text-center">Sei unə admin della pagina?</h2>
+    <h3 class="text-center">Inserisci le tue credenziali</h3>
+    <div>
+        <form method="POST" action="controlla_login.php" class="col-md-8 mx-auto">
+          <fieldset>
+            
+            <label for="username">
+              Inserisci il tuo username
+              <span class="mandatory">*</span>
+            </label>
+            <input type="text" name="username" id="username" class="form-control"
+                   title="Inserisci il tuo username" required aria-required="true">
+            <br>
+  
+            <label for="psw1">
+              Inserisci la tua password
+              <span class="mandatory">*</span>
+            </label>
+            <input type="password" name="psw1" id="psw1" class="form-control"
+                   title="Inserisci la password" required aria-required="true">
+            <br>
+  
+            <div class="text-center">
+              <input type="submit" name="invio" id="invio" value="Accedi" class="btn btn-primary">
+            </div>
+            
+          </fieldset>
         </form>
-      </div>
+    </div>
+  </div>
+
+<?php
+  }
+  else { #Se l'utente è già loggato, mostro un messaggio che lo avverte
+    $username = $_SESSION['username'];
+    ?>
+
+    <p>Sei già loggato</p>
     
-  <?php
-    }
-    else { #Se l'utente è già loggato, mostro un messaggio che lo avverte
-      $username = $_SESSION['username']; 
-      ?>
+    <?php
+  }
+?>
 
-      <p>Sei già loggato</p>
+<!-- Footer -->
+<?php HTMLfooter($nomePagina) ?>
 
-  <?php
-    }
-  ?>
-  
-  <!-- Footer -->
-  <?php HTMLfooter($nomePagina) ?>
-  
-  </body>
-  </html>
+</body>
+</html>
 
 
 
