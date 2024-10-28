@@ -131,7 +131,7 @@
             </p>
             <input type="radio" id="pino" name="cuocoPiattoNew" value="Pino">
             <label for="pino">Pino</label><br>
-            <input type="radio" id="tarta" name="categoriaPiattoNew" value="Tarta">
+            <input type="radio" id="tarta" name="cuocoPiattoNew" value="Tarta">
             <label for="tarta">Tarta</label><br>
             
             

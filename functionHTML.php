@@ -235,6 +235,19 @@
                   Crea nuovo utente
                 </a>
               </li>
+
+              <li class="nav-item">
+                <span class="mioSpanNav">|</span>
+              </li>
+
+              <li class="nav-item">
+                <?php $nomeLink = "aggiungiPiatto"; ?>
+                <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
+                   href="aggiungiPiatto.php">
+                  Aggiungi Piatto
+                </a>
+              </li>
+              
             </ul>
           </div>
 
