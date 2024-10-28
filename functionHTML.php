@@ -175,21 +175,25 @@
               <li class="nav-item">
                 <span class="mioSpanNav">|</span>
               </li>
-
-
-              <li class="nav-item">
-                <?php $nomeLink = "nuovoMenu"; ?>
-                <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
-                   href="nuovoMenu.php">
-                  Nuovo Menu
+              
+              <li class="nav-item dropdown">
+                <?php $nomeLink = "gestioneCucina"; ?>
+                <a class="nav-link dropdown-toggle <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"?>"
+                   href="#" id="navDropCucina" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Gestione Cucina
                 </a>
+                <div class="dropdown-menu" aria-labelledby="navDropCucina">
+                  <a class="dropdown-item" href="nuovoMenu.php">Nuovo Menu</a>
+                  <a class="dropdown-item" href="eliminaMenu.php">Elimina Menu</a>
+                  <a class="dropdown-item" href="aggiungiPiatto.php">Aggiungi Piatto</a>
+                  <a class="dropdown-item" href="eliminaPiatto.php">Elimina Piatto</a>
+                </div>
               </li>
 
               <li class="nav-item">
                 <span class="mioSpanNav">|</span>
               </li>
-
-
+              
               <li class="nav-item">
                 <?php $nomeLink = "modificaMenu"; ?>
                 <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
@@ -202,7 +206,6 @@
                 <span class="mioSpanNav">|</span>
               </li>
 
-
               <li class="nav-item">
                 <?php $nomeLink = "aggiungiEvento"; ?>
                 <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
@@ -214,8 +217,7 @@
               <li class="nav-item">
                 <span class="mioSpanNav">|</span>
               </li>
-
-
+              
               <li class="nav-item">
                 <?php $nomeLink = "eliminaEvento"; ?>
                 <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
