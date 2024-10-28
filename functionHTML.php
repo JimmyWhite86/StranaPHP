@@ -366,5 +366,72 @@
       <?php
     }
   }
+
+
+
+
+function generaMenu () {
+    $listaPiattiDisponibili = ottieniListaPiattiDisponibili();
+    $categorie = ottieniCategoriePiattiDisponbili();
+    $row = mysqli_fetch_assoc($listaPiattiDisponibili);
+    
+    if ($categorie['antipasti'] > 0) {
+      echo "<h3>Antipasti</h3>";
+      while ($row) {
+        if ($row['categoriaPiatto'] == 'antipasti') { ?>
+          <p><?=$row['nomePiatto']?></p>
+          <p><?=$row['prezzoPiatto']?></p>
+<?php
+        }
+      }
+    }
+    
+    if ($categorie['primi'] > 0) {
+      echo "<h3>Primi</h3>";
+      while ($row) {
+        if ($row['categoriaPiatto'] == 'primi') { ?>
+          <p><?=$row['nomePiatto']?></p>
+          <p><?=$row['prezzoPiatto']?></p>
+          <?php
+        }
+      }
+    }
+    
+    if ($categorie['secondi'] > 0) {
+      echo "<h3>Secondi</h3>";
+      while ($row) {
+        if ($row['categoriaPiatto'] == 'secondi') { ?>
+          <p><?=$row['nomePiatto']?></p>
+          <p><?=$row['prezzoPiatto']?></p>
+          <?php
+        }
+      }
+    }
+    
+    if ($categorie['contorni'] > 0) {
+      echo "<h3>Contorni</h3>";
+      while ($row) {
+        if ($row['categoriaPiatto'] == 'contorni') { ?>
+          <p><?=$row['nomePiatto']?></p>
+          <p><?=$row['prezzoPiatto']?></p>
+          <?php
+        }
+      }
+    }
+    
+    if ($categorie['dolci'] > 0) {
+      echo "<h3>Dolci</h3>";
+      while ($row) {
+        if ($row['categoriaPiatto'] == 'dolci') { ?>
+          <p><?=$row['nomePiatto']?></p>
+          <p><?=$row['prezzoPiatto']?></p>
+          <?php
+        }
+      }
+    }
+    
+}
+
+
 ?>
 

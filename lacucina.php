@@ -50,6 +50,9 @@
   
   <!-- Richiama la nav bar -->
   <?php richiamaNavBar($nomePagina); ?>
+  
+  <!-- Richiamo la funzione che restituisce il menu dinamicamente -->
+  <?php generaMenu(); ?>
 
   <!-- Richiama il footer -->
   <?php HTMLfooter($nomePagina); ?>

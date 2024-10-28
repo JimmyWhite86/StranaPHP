@@ -106,4 +106,61 @@ function eliminaEvento ($idEvento) {
   }
   mysqli_close($conn);
 }
+
+
+
+# Restituisce informazioni su tutti gli eventi presenti in tabella eventi
+function ottieniListaPiattiDisponibili ()
+{
+  $conn = connetti("Strana01");
+  if (!$conn) {
+    die ("Connessione fallita: " . mysqli_connect_error());
+  }
+  
+  $query = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = '1'";
+  $listaPiattiDisponibili = mysqli_query($conn, $query);
+  if (!$listaPiattiDisponibili) {
+    die("Errore db " . mysqli_error($conn));
+  }
+  return $listaPiattiDisponibili;
+}
+
+
+# Funzione per ottenere le categorie dei piatti disponibili
+function ottieniCategoriePiattiDisponbili () {
+  $listaPiattiDisponibili = ottieniListaPiattiDisponibili();
+  
+  $qtyAntipasti = 0;
+  $qtyPrimi = 0;
+  $qtySecondi = 0;
+  $qtyContorni = 0;
+  $qtyDolci = 0;
+  
+  while ($row = mysqli_fetch_assoc($listaPiattiDisponibili)) {
+    if ($row['categoriaPiatto'] == 'antipasti') {
+      $qtyAntipasti++;
+    }if ($row['categoriaPiatto'] == 'primi') {
+      $qtyPrimi++;
+    }
+    if ($row['categoriaPiatto'] == 'secondi') {
+      $qtySecondi++;
+    }
+    if ($row['categoriaPiatto'] == 'contorni'){
+      $qtyContorni++;
+    }
+    if ($row['categoriaPiatto'] == 'dolci') {
+      $qtyDolci++;
+    }
+  }
+  
+  return [
+    'antipasti' => $qtyAntipasti,
+    'primi' => $qtyPrimi,
+    'secondi' => $qtySecondi,
+    'contorni' => $qtyContorni,
+    'dolci' => $qtyDolci,
+    
+  ];
+}
+
 ?>

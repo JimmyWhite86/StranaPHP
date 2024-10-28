@@ -2,7 +2,7 @@
   session_start();
   include "functionHTML.php";
   include "function.php";
-  $nomePagina = "aggiungievento";
+  $nomePagina = "aggiungiPiatto";
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +41,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
-  <title>AdminStrana | Aggiungi Menu</title>
+  <title>AdminStrana | Aggiungi Piatto</title>
 
 </head>
 <body ng-app="myAppHome" ng-controller="myCtrl">
@@ -77,7 +77,7 @@
       
       <!-- Form della pagina -->
       <div class="container-fluid my-5" id="containerForm">
-      <form method="POST" action="controllaAggiuntaMenu.php" class="col-md-8 mx-auto">
+      <form method="POST" action="controlloaggiuntapiatto.php" class="col-md-8 mx-auto">
         <!--
         <h3 class="text-center">Compila i campi del form sottostante</h3>
         -->
@@ -85,11 +85,11 @@
         <fieldset>
           <div class="form-group">
         
-            <label for="piattoNew">
+            <label for="nomePiattoNew">
               Inserisci il nome del piatto
               <span class="mandatory">*</span>
             </label>
-            <input type="text" name="piattoNew" id="piattoNew" class="form-control"
+            <input type="text" name="nomePiattoNew" id="nomePiattoNew" class="form-control"
                   title="Inserisci il nome del piatto" required aria-required="true">
             <br>
     
@@ -105,7 +105,7 @@
               Inserisci la categoria del piatto
               <span class="mandatory">*</span>
             </p>
-            <input type="radio" id="antipasto" name="categoriaPiattoNew" value="antipasto">
+            <input type="radio" id="antipasto" name="categoriaPiattoNew" value="antipasti">
             <label for="antipasto">Antipasto</label><br>
             <input type="radio" id="primi" name="categoriaPiattoNew" value="primi">
             <label for="primi">Primi</label><br>
@@ -117,6 +117,14 @@
             <label for="dolci">Dolci</label><br>
             <br>
 
+            <label for="prezzoPiattoNew">
+              Inserisci il prezzo del piatto
+              <span class="mandatory">*</span>
+            </label>
+            <input type="number" name="prezzoPiattoNew" id="prezzoPiattoNew" class="form-control"
+                   title="Inserisci il prezzo del piatto" required aria-required="true">
+            <br>
+            
             <p>
               Inserisci il cuoco
               <span class="mandatory">*</span>
