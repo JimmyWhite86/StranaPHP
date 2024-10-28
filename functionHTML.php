@@ -347,7 +347,6 @@
   
   
   # Funzione per generare le card eventi
-  
   function generaCardEventi () {
     $datiEventi = ottieniListaEventi(); # Recupero tutti gli eventi presenti nel db
     
@@ -366,72 +365,40 @@
       <?php
     }
   }
-
-
-
-
-function generaMenu () {
-    $listaPiattiDisponibili = ottieniListaPiattiDisponibili();
-    $categorie = ottieniCategoriePiattiDisponbili();
-    $row = mysqli_fetch_assoc($listaPiattiDisponibili);
-    
-    if ($categorie['antipasti'] > 0) {
-      echo "<h3>Antipasti</h3>";
-      while ($row) {
-        if ($row['categoriaPiatto'] == 'antipasti') { ?>
-          <p><?=$row['nomePiatto']?></p>
-          <p><?=$row['prezzoPiatto']?></p>
-<?php
+  
+ #Funzione per generare il menu in maniera dinamica
+function generaMenu() {
+  $listaPiattiDisponibili = piattiInArray();
+  $categorie = ottieniCategoriePiattiDisponbili();
+  
+  $categorieOrdinate = [
+    'antipasti' => "Antipasti",
+    'primi' => "Primi",
+    'secondi' => "Secondi",
+    'contorni' => "Contorni",
+    'dolci' => "Dolci"
+  ];
+  
+  #print_r($listaPiattiDisponibili);
+  
+  foreach ($categorieOrdinate as $categoria => $titolo) {
+    if ($categorie[$categoria] > 0) {
+      echo "<h3>{$titolo }</h3>";
+      foreach ($listaPiattiDisponibili as $piatto) {
+        if ($piatto['categoriaPiatto'] == $categoria) {
+          echo "<p>{$piatto['nomePiatto']}";
+          echo "<br>";
+          echo "<p>{$piatto['prezzoPiatto']}</p>";
         }
       }
     }
-    
-    if ($categorie['primi'] > 0) {
-      echo "<h3>Primi</h3>";
-      while ($row) {
-        if ($row['categoriaPiatto'] == 'primi') { ?>
-          <p><?=$row['nomePiatto']?></p>
-          <p><?=$row['prezzoPiatto']?></p>
-          <?php
-        }
-      }
-    }
-    
-    if ($categorie['secondi'] > 0) {
-      echo "<h3>Secondi</h3>";
-      while ($row) {
-        if ($row['categoriaPiatto'] == 'secondi') { ?>
-          <p><?=$row['nomePiatto']?></p>
-          <p><?=$row['prezzoPiatto']?></p>
-          <?php
-        }
-      }
-    }
-    
-    if ($categorie['contorni'] > 0) {
-      echo "<h3>Contorni</h3>";
-      while ($row) {
-        if ($row['categoriaPiatto'] == 'contorni') { ?>
-          <p><?=$row['nomePiatto']?></p>
-          <p><?=$row['prezzoPiatto']?></p>
-          <?php
-        }
-      }
-    }
-    
-    if ($categorie['dolci'] > 0) {
-      echo "<h3>Dolci</h3>";
-      while ($row) {
-        if ($row['categoriaPiatto'] == 'dolci') { ?>
-          <p><?=$row['nomePiatto']?></p>
-          <p><?=$row['prezzoPiatto']?></p>
-          <?php
-        }
-      }
-    }
-    
+  }
 }
 
 
+
+  
+  
+  
 ?>
 

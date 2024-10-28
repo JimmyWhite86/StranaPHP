@@ -170,7 +170,7 @@ function piattiInArray () {
     die("Connessione fallita: " . mysqli_connect_error());
   }
   
-  $query = "SELECT * FORM menuCucina WHERE disponibilitaPiatto = '1'";
+  $query = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = '1'";
   $tmp = mysqli_query($conn, $query);
   
   if (!$tmp) {
@@ -179,7 +179,7 @@ function piattiInArray () {
   
   $piattiDisponibili = [];
   while ($row = mysqli_fetch_assoc($tmp)) {
-    $listaPiattiDisponibili = $row;
+    $listaPiattiDisponibili[] = $row;
   }
   
   mysqli_close($conn);
