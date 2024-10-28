@@ -163,4 +163,28 @@ function ottieniCategoriePiattiDisponbili () {
   ];
 }
 
+# Funzione che trasforma i piattidisponibili in un array associativo
+function piattiInArray () {
+  $conn = connetti("Strana01");
+  if (!$conn) {
+    die("Connessione fallita: " . mysqli_connect_error());
+  }
+  
+  $query = "SELECT * FORM menuCucina WHERE disponibilitaPiatto = '1'";
+  $tmp = mysqli_query($conn, $query);
+  
+  if (!$tmp) {
+    die("Errore nella query " . mysqli_error($conn));
+  }
+  
+  $piattiDisponibili = [];
+  while ($row = mysqli_fetch_assoc($tmp)) {
+    $listaPiattiDisponibili = $row;
+  }
+  
+  mysqli_close($conn);
+  return $listaPiattiDisponibili;
+  
+}
+
 ?>
