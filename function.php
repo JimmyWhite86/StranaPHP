@@ -15,7 +15,7 @@ function cercaUtente ($username) {
   
   $conn = connetti("Strana01");
   if (!$conn) {
-    die ("Connessione fallita: " . mysqli_connect_error());
+    die ("[cercaUtente] => Connessione fallita: " . mysqli_connect_error());
   }
   
   $sql = "SELECT * FROM User WHERE UserName = '$username'"; #Seleziono tutti i campi del record dove username corrisponde a $username
@@ -35,7 +35,7 @@ function cercaUtente ($username) {
 function ottieniListaEventi () {
     $conn = connetti("Strana01");
     if (!$conn) {
-      die ("Connessione fallita: " . mysqli_connect_error());
+      die ("[ottieniListaEventi] => Connessione fallita: " . mysqli_connect_error());
     }
 
     $query = "SELECT * FROM Eventi ORDER BY dataEvento ASC";
@@ -66,7 +66,7 @@ function richiamaNavBar($nomePagina) {
 function controlloAdmin ($username) {
   $conn = connetti ("Strana01");
   if (!$conn) {
-    die ("Connessione fallita: " . mysqli_connect_error());
+    die ("[controlloAdmin] => Connessione fallita: " . mysqli_connect_error());
   }
   
   $sql = "SELECT admin FROM user WHERE UserName = '$username'";
@@ -84,7 +84,7 @@ function controlloAdmin ($username) {
 function eliminaEvento ($idEvento) {
   $conn = connetti ("Strana01");
   if (!$conn) {
-    die("Connessione fallita: " . mysqli_connect_error());
+    die("[eliminaEvento] => Connessione fallita: " . mysqli_connect_error());
   }
   $sql = "SELECT IDEvento, NomeEvento, DataEvento FROM Eventi WHERE IDEvento='$idEvento'";
   $tmp = mysqli_query($conn, $sql);
@@ -114,7 +114,7 @@ function ottieniListaPiattiDisponibili ()
 {
   $conn = connetti("Strana01");
   if (!$conn) {
-    die ("Connessione fallita: " . mysqli_connect_error());
+    die ("[ottieniListaPiattiDisponibili] => Connessione fallita: " . mysqli_connect_error());
   }
   
   $query = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = '1'";
@@ -167,7 +167,7 @@ function ottieniCategoriePiattiDisponbili () {
 function piattiInArray () {
   $conn = connetti("Strana01");
   if (!$conn) {
-    die("Connessione fallita: " . mysqli_connect_error());
+    die("[piattiInArray] => Connessione fallita: " . mysqli_connect_error());
   }
   
   $query = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = '1'";
