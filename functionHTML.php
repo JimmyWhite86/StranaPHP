@@ -193,61 +193,35 @@
               <li class="nav-item">
                 <span class="mioSpanNav">|</span>
               </li>
-              
-              <li class="nav-item">
-                <?php $nomeLink = "modificaMenu"; ?>
-                <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
-                   href="modificaMenu.php">
-                  Modifica Menu
+
+              <li class="nav-item dropdown">
+                <?php $nomeLink = "gestioneEventi"; ?>
+                <a class="nav-link dropdown-toggle <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"?>"
+                   href="#" id="navDropCucina" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Gestione Eventi
                 </a>
+                <div class="dropdown-menu" aria-labelledby="navDropEventi">
+                  <a class="dropdown-item" href="aggiungievento.php">Nuovo Evento</a>
+                  <a class="dropdown-item" href="eliminaevento.php">Elimina Evento</a>
+                  <a class="dropdown-item" href="modificaEvento.php">Modifica Evento</a>
+                </div>
               </li>
 
               <li class="nav-item">
                 <span class="mioSpanNav">|</span>
               </li>
 
-              <li class="nav-item">
-                <?php $nomeLink = "aggiungiEvento"; ?>
-                <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
-                   href="aggiungievento.php">
-                  Aggiungi Evento
+              <li class="nav-item dropdown">
+                <?php $nomeLink = "gestioneEventi"; ?>
+                <a class="nav-link dropdown-toggle <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"?>"
+                   href="#" id="navDropCucina" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Gestione Utenti
                 </a>
-              </li>
-
-              <li class="nav-item">
-                <span class="mioSpanNav">|</span>
-              </li>
-              
-              <li class="nav-item">
-                <?php $nomeLink = "eliminaEvento"; ?>
-                <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
-                   href="eliminaevento.php">
-                  Elimina Evento
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <span class="mioSpanNav">|</span>
-              </li>
-
-              <li class="nav-item">
-                <?php $nomeLink = "creaUtente"; ?>
-                <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
-                   href="creaUtente.php">
-                  Crea nuovo utente
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <span class="mioSpanNav">|</span>
-              </li>
-
-              <li class="nav-item">
-                <?php $nomeLink = "aggiungiPiatto"; ?>
-                <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
-                   href="aggiungiPiatto.php">
-                  Aggiungi Piatto
-                </a>
+                <div class="dropdown-menu" aria-labelledby="navDropUtenti">
+                  <a class="dropdown-item" href="aggiungiUtente">Nuovo Utente</a>
+                  <a class="dropdown-item" href="eliminaUtente.php">Elimina Utente</a>
+                  <a class="dropdown-item" href="modificaUtente.php">Modifica Utente</a>
+                </div>
               </li>
               
             </ul>
