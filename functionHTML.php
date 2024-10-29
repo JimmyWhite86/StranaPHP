@@ -398,7 +398,7 @@ function generaMenu() {
   
   foreach ($categorieOrdinate as $categoria => $titolo) {
     if ($categorie[$categoria] > 0) {
-      echo "<h3>{$titolo }</h3>";
+      echo "<h3>$titolo</h3>";
       foreach ($listaPiattiDisponibili as $piatto) {
         if ($piatto['categoriaPiatto'] == $categoria) {
           echo "<p>{$piatto['nomePiatto']}";
