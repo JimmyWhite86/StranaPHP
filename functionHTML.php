@@ -165,62 +165,62 @@
             <ul class="navbar-nav" id="myNavBar">
 
               <li class="nav-item">
-                <?php $nomeLink = "index"; ?>
+                <?php $nomeLink = "homeAdmin"; ?>
                 <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
-                   aria-current="page" href="index.php">
-                  Home
+                   aria-current="page" href="homeadmin.php">
+                  Home Admin
                 </a>
               </li>
 
-              <li class="nav-item">
-                <span class="mioSpanNav">|</span>
-              </li>
-              
               <li class="nav-item dropdown">
                 <?php $nomeLink = "gestioneCucina"; ?>
-                <a class="nav-link dropdown-toggle <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"?>"
-                   href="#" id="navDropCucina" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Gestione Cucina
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navDropCucina">
-                  <a class="dropdown-item" href="nuovoMenu.php">Nuovo Menu</a>
-                  <a class="dropdown-item" href="eliminaMenu.php">Elimina Menu</a>
-                  <a class="dropdown-item" href="aggiungiPiatto.php">Aggiungi Piatto</a>
-                  <a class="dropdown-item" href="eliminaPiatto.php">Elimina Piatto</a>
+                <div class="btn-group">
+                  <!-- <button type="button" class="btn">Gestione Cucina</button>-->
+                  <a href="gestioneCucina.php" class="btn myAdminButton">Gestione cucina</a>
+                  <button type="button" class="btn myAdminButton dropdown-toggle dropdown-toggle-split"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="navDropCucina">
+                    <a class="dropdown-item" href="nuovoMenu.php">Nuovo Menu</a>
+                    <a class="dropdown-item" href="eliminaMenu.php">Elimina Menu</a>
+                    <a class="dropdown-item" href="aggiungiPiatto.php">Aggiungi Piatto</a>
+                    <a class="dropdown-item" href="eliminaPiatto.php">Elimina Piatto</a>
+                  </div>
                 </div>
-              </li>
-
-              <li class="nav-item">
-                <span class="mioSpanNav">|</span>
               </li>
 
               <li class="nav-item dropdown">
                 <?php $nomeLink = "gestioneEventi"; ?>
-                <a class="nav-link dropdown-toggle <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"?>"
-                   href="#" id="navDropCucina" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Gestione Eventi
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navDropEventi">
-                  <a class="dropdown-item" href="aggiungievento.php">Nuovo Evento</a>
-                  <a class="dropdown-item" href="eliminaevento.php">Elimina Evento</a>
-                  <a class="dropdown-item" href="modificaEvento.php">Modifica Evento</a>
+                <div class="btn-group">
+                  <!-- <button type="button" class="btn">Gestione Cucina</button>-->
+                  <a href="gestioneEventi.php" class="btn btn-primary">Gestione Eventi</a>
+                  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="navDropCucina">
+                    <a class="dropdown-item" href="aggiungievento.php">Nuovo Evento</a>
+                    <a class="dropdown-item" href="eliminaevento.php">Elimina Evento</a>
+                    <a class="dropdown-item" href="modificaEvento.php">Modifica Evento</a>
+                  </div>
                 </div>
               </li>
 
-              <li class="nav-item">
-                <span class="mioSpanNav">|</span>
-              </li>
-
               <li class="nav-item dropdown">
-                <?php $nomeLink = "gestioneEventi"; ?>
-                <a class="nav-link dropdown-toggle <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"?>"
-                   href="#" id="navDropCucina" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Gestione Utenti
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navDropUtenti">
-                  <a class="dropdown-item" href="aggiungiUtente">Nuovo Utente</a>
-                  <a class="dropdown-item" href="eliminaUtente.php">Elimina Utente</a>
-                  <a class="dropdown-item" href="modificaUtente.php">Modifica Utente</a>
+                <?php $nomeLink = "gestioneUtenti"; ?>
+                <div class="btn-group">
+                  <!-- <button type="button" class="btn">Gestione Cucina</button>-->
+                  <a href="gestioneUtenti.php" class="btn btn-primary">Gestione Utenti</a>
+                  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="navDropCucina">
+                    <a class="dropdown-item" href="nuovoUtente.php">Nuovo Utente</a>
+                    <a class="dropdown-item" href="eliminaUtente.php">Elimina Utente</a>
+                    <a class="dropdown-item" href="modificaUtente.php">Modifica Utente</a>
+                  </div>
                 </div>
               </li>
               

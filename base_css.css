@@ -520,5 +520,12 @@ thead th.intestazioneTabella {
 
 
 /* ------ */
-/* Form inserimento eventi */
+/* Admin Nav Bar */
 
+.myAdminButton {
+  background-color: #fed766 !important;
+  font-size: 2rem !important;
+  padding: 15px;
+  margin: 15px;
+  text-align: center;
+}
