@@ -19,8 +19,13 @@
   src: url(FONT/BebasNeue-Regular.ttf);
 }
 
+@font-face {
+  font-family: Lato-Regular;
+  src: url(FONT/Lato-Regular.ttf);
+}
+
 body {
-  font-family: easy, arial, hevetica, sans-serif;
+  font-family: Lato-Regular, arial, hevetica, sans-serif;
   line-height: 1.8;
 }
 
@@ -108,6 +113,7 @@ body {
 }
 
 .testoHome {
+  font-family: Lato-Regular, arial, hevetica, sans-serif;
   font-size: 1.5rem;
 }
 /* @media (max-width: 768px) {
