@@ -142,7 +142,7 @@
   
   # Funzione per richiamare la navBar per utenti loggati come admin
   function adminNavBar($nomePagina) { ?>
-    <nav class="navbar navbar-expand-lg bg-nero">
+    <nav class="navbar navbar-expand-lg bg-giallo">
 
       <a href="#mioMain" class="skip text-center" tabindex="1">Vai al contenuto principale</a> <!--Salta al contenuto principale della pagina (Accessibilità) -->
 
@@ -164,65 +164,60 @@
 
             <ul class="navbar-nav" id="myNavBar">
 
-              <li class="nav-item">
-                <?php $nomeLink = "homeAdmin"; ?>
-                <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
-                   aria-current="page" href="homeadmin.php">
-                  Home Admin
-                </a>
-              </li>
+              <ul class="navbar-nav" id="myNavBar">
+                
+                <li class="nav-item">
+                  <?php $nomeLink = "homeAdmin"; ?>
+                  <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
+                     aria-current="page" href="homeAdmin.php">
+                    Home Admin
+                  </a>
+                </li>
 
-              <li class="nav-item dropdown">
-                <?php $nomeLink = "gestioneCucina"; ?>
-                <div class="btn-group">
-                  <!-- <button type="button" class="btn">Gestione Cucina</button>-->
-                  <a href="gestioneCucina.php" class="btn myAdminButton">Gestione cucina</a>
-                  <button type="button" class="btn myAdminButton dropdown-toggle dropdown-toggle-split"
-                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="navDropCucina">
-                    <a class="dropdown-item" href="nuovoMenu.php">Nuovo Menu</a>
-                    <a class="dropdown-item" href="eliminaMenu.php">Elimina Menu</a>
-                    <a class="dropdown-item" href="aggiungiPiatto.php">Aggiungi Piatto</a>
-                    <a class="dropdown-item" href="eliminaPiatto.php">Elimina Piatto</a>
-                  </div>
-                </div>
-              </li>
+                <li class="nav-item">
+                  <span class="mioSpanNav">|</span>
+                </li>
 
-              <li class="nav-item dropdown">
-                <?php $nomeLink = "gestioneEventi"; ?>
-                <div class="btn-group">
-                  <!-- <button type="button" class="btn">Gestione Cucina</button>-->
-                  <a href="gestioneEventi.php" class="btn btn-primary">Gestione Eventi</a>
-                  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="navDropCucina">
-                    <a class="dropdown-item" href="aggiungievento.php">Nuovo Evento</a>
-                    <a class="dropdown-item" href="eliminaevento.php">Elimina Evento</a>
-                    <a class="dropdown-item" href="modificaEvento.php">Modifica Evento</a>
-                  </div>
-                </div>
-              </li>
 
-              <li class="nav-item dropdown">
-                <?php $nomeLink = "gestioneUtenti"; ?>
-                <div class="btn-group">
-                  <!-- <button type="button" class="btn">Gestione Cucina</button>-->
-                  <a href="gestioneUtenti.php" class="btn btn-primary">Gestione Utenti</a>
-                  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="navDropCucina">
-                    <a class="dropdown-item" href="nuovoUtente.php">Nuovo Utente</a>
-                    <a class="dropdown-item" href="eliminaUtente.php">Elimina Utente</a>
-                    <a class="dropdown-item" href="modificaUtente.php">Modifica Utente</a>
-                  </div>
-                </div>
-              </li>
+                <li class="nav-item">
+                  <?php $nomeLink = "gestioneCucina"; ?>
+                  <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
+                     href="gestioneCucina.php">
+                    Gestione Cucina
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <span class="mioSpanNav">|</span>
+                </li>
+
+
+                <li class="nav-item">
+                  <?php $nomeLink = "gestioneEventi"; ?>
+                  <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
+                     href="gestioneEventi.php">
+                    Gestione Eventi
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <span class="mioSpanNav">|</span>
+                </li>
+
+
+                <li class="nav-item">
+                  <?php $nomeLink = "gestioneUtenti"; ?>
+                  <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
+                     href="gestioneUtenti.php">
+                    Gestione Utenti
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <span class="mioSpanNav">|</span>
+                </li>
+                
+              </ul>
               
             </ul>
           </div>
