@@ -64,9 +64,11 @@
   </div>
   
   <!-- Richiamo la funzione che restituisce il menu dinamicamente -->
-  <div class="container-fluid col-md-8">
-    <div class="row justify-content-center">
-      <?php generaMenu(); ?>
+  <div class="container-fluid bg-giallo pb-4 pt-4 mt-4 mb-4">
+    <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
+      <div class="row justify-content-center">
+        <?php generaMenu(); ?>
+      </div>
     </div>
   </div>
 

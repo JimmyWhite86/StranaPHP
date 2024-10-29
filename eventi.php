@@ -52,8 +52,15 @@
 
 <?php richiamaNavBar($nomePagina); ?>
 
+<!-- "Titolo" della pagina -->
+<div class="my-5 row justify-content-center">
+  <div class="text-center">
+    <h1 class="titoloPaginaAdmin">gli eventi di stranamore</h1>
+  </div>
+</div>
+
 <section>
-  <div class="container-fluid text-center bg-azzurro">
+  <div class="container-fluid text-center bg-giallo">
     <div class="row justify-content-center">
       <?php generaCardEventi(); ?>
     </div>

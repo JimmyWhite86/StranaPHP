@@ -46,11 +46,16 @@
 <body ng-app="myAppHome" ng-controller="myCtrl">
 
   <!-- NAV BAR -->
-  
   <?php richiamaNavBar($nomePagina);?>
 
   <main id="mioMain" role="main">
 
+    <!-- "Titolo" della pagina -->
+    <div class="my-5 row justify-content-center">
+      <div class="text-center">
+        <h1 class="titoloPaginaAdmin">cosa vuol dire strana</h1>
+      </div>
+    </div>
 
   <!-- START THE FEATURETTES -->
   <div class="container marketing">
