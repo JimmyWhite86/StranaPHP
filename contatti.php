@@ -49,10 +49,17 @@
 
   <main id="mioMain" role="main">
 
+    <!-- "Titolo" della pagina -->
+    <div class="my-5 row justify-content-center">
+      <div class="text-center">
+        <h1 class="titoloPaginaAdmin">mettiti in contatto con strana</h1>
+      </div>
+    </div>
+
 
 <!-- Sezione Card -->
 <div class="container-fluid bg-giallo text-center mioContainerContatti">
-    <h3 class="mioMargin01 fontContatti01">mettiti in contatto con noi!</h3>
+    <!--<h3 class="mioMargin01 fontContatti01">mettiti in contatto con noi!</h3>-->
     <p class="testoHome">Contattaci, siamo a tua disposizione per qualsiasi chiarimento e per raccontarvi la nostra attività.
       <br> Saremo felici di ascoltare le tue richieste per offrirti il nostro miglior servizio.</p>
 

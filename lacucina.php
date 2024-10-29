@@ -54,9 +54,21 @@
   
   <!-- Richiama la nav bar -->
   <?php richiamaNavBar($nomePagina); ?>
+
+  <!-- "Titolo" della pagina -->
+  <div class="my-5 row justify-content-center">
+  <div class="text-center">
+    <h1 class="titoloPaginaAdmin">il menu della settimana</h1>
+    <h2 class="">Scopri il menu che Stranamore propone per questa settimana</h2>
+  </div>
+  </div>
   
   <!-- Richiamo la funzione che restituisce il menu dinamicamente -->
-  <?php generaMenu(); ?>
+  <div class="container-fluid col-md-8">
+    <div class="row justify-content-center">
+      <?php generaMenu(); ?>
+    </div>
+  </div>
 
   <!-- Richiama il footer -->
   <?php HTMLfooter($nomePagina); ?>

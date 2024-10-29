@@ -356,18 +356,18 @@ function generaMenu() {
   $categorie = ottieniCategoriePiattiDisponbili();
   
   $categorieOrdinate = [
-    'antipasti' => "Antipasti",
-    'primi' => "Primi",
-    'secondi' => "Secondi",
-    'contorni' => "Contorni",
-    'dolci' => "Dolci"
+    'antipasti' => "antipasti",
+    'primi' => "primi",
+    'secondi' => "secondi",
+    'contorni' => "contorni",
+    'dolci' => "dolci"
   ];
   
   #print_r($listaPiattiDisponibili);
   
   foreach ($categorieOrdinate as $categoria => $titolo) {
     if ($categorie[$categoria] > 0) {
-      echo "<h3>$titolo</h3>";
+      echo "<h3 class='fontChiSiamo01'>$titolo</h3>";
       foreach ($listaPiattiDisponibili as $piatto) {
         if ($piatto['categoriaPiatto'] == $categoria) {
           echo "<p>{$piatto['nomePiatto']}";
