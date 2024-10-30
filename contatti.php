@@ -52,7 +52,7 @@
     <!-- "Titolo" della pagina -->
     <div class="my-5 row justify-content-center">
       <div class="text-center">
-        <h1 class="titoloPaginaAdmin">mettiti in contatto con strana</h1>
+        <h1 class="titoloPagina">mettiti in contatto con strana</h1>
       </div>
     </div>
 

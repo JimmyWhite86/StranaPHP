@@ -104,12 +104,11 @@ body {
   color: #fed766;
 }
 
-.titoloPaginaAdmin {
+.titoloPagina {
   font-family: Strana, arial, hevetica, sans-serif;
   font-size: 6rem;
   color: #fed766;
   background-color: black;
-
 }
 
 .testoHome {
@@ -121,7 +120,6 @@ body {
   font-family: Lato-Regular, arial, hevetica, sans-serif;
   font-size: 2.5rem;
 }
-
 
 /* @media (max-width: 768px) {
   .fontstranaTitoli {
@@ -157,12 +155,9 @@ body {
   #fontHeroCentro {
     font-size: 4rem;
   }
-
   .babasTitolo {
     font-size: 2rem;
   }
-
- 
 }
 
 /* Schermi sotto i 768px */
@@ -185,6 +180,14 @@ body {
 
   .testoHome {
     font-size: 1rem;
+  }
+
+  .titoloPagina {
+    font-size: 4rem;
+  }
+
+  .mioH3contatti {
+    font-size: 3rem !important;
   }
 }
 
@@ -367,6 +370,12 @@ footer a {
   margin-top: 10%;
   margin-bottom: 5%;
   width: 70%;
+}
+
+@media (max-width: 768px) {
+  .contact-form {
+    width: 100% !important;
+  }
 }
 
 .contact-form .mioH3contatti {
