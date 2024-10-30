@@ -271,6 +271,10 @@ body {
   color: #ffffff;
 }
 
+.navLinkAdmin {
+  color: #000000;
+}
+
 .nav-link:hover {
   color:#009fb7 !important;
 }
@@ -282,6 +286,10 @@ body {
 .navbar-brand img { /* Imposto la grandezza del logo */
   width: 8vw;
   height: auto;
+}
+
+.mioSpanNav {
+  color: #009fb7;
 }
 
 /* Aumento la dimensione del logo su dispositivi mobili */

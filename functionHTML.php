@@ -168,7 +168,7 @@
                 
                 <li class="nav-item">
                   <?php $nomeLink = "homeAdmin"; ?>
-                  <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
+                  <a class="nav-link navLinkAdmin <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
                      aria-current="page" href="homeAdmin.php">
                     Home Admin
                   </a>
@@ -181,7 +181,7 @@
 
                 <li class="nav-item">
                   <?php $nomeLink = "gestioneCucina"; ?>
-                  <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
+                  <a class="nav-link navLinkAdmin <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
                      href="gestioneCucina.php">
                     Gestione Cucina
                   </a>
@@ -194,7 +194,7 @@
 
                 <li class="nav-item">
                   <?php $nomeLink = "gestioneEventi"; ?>
-                  <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
+                  <a class="nav-link navLinkAdmin <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
                      href="gestioneEventi.php">
                     Gestione Eventi
                   </a>
@@ -207,7 +207,7 @@
 
                 <li class="nav-item">
                   <?php $nomeLink = "gestioneUtenti"; ?>
-                  <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
+                  <a class="nav-link navLinkAdmin <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
                      href="gestioneUtenti.php">
                     Gestione Utenti
                   </a>
@@ -224,7 +224,7 @@
 
           <div>
             <a href="logout.php">
-              <i class="bi bi-box-arrow-left pe-4 nav-link mioOver"></i>
+              <i class="bi bi-box-arrow-left pe-4 nav-link navLinkAdmin mioOver"></i>
             </a>
           </div>
 
