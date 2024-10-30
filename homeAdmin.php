@@ -45,37 +45,58 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   
-  <title>Stranamore | Home</title>
+  <title>Strana HomeAdmin</title>
 
 </head>
-
 <body>
+
+<?php $userName = $_SESSION['username'] ?>
 
 <!-- Funzione per creare dinamicamente la NavBar -->
 <?php richiamaNavBar($nomePagina) ?>
 
-<h2>Gestione Cucina</h2>
-<ul>
-  <li><a href="nuovoMenu.php">Crea un nuovo menù</a></li>
-  <li><a href="cancellaMenu.php">Elimina il menu presente</a></li>
-  <li><a href="aggiungiPiatto.php">Aggiungi un singolo piatto al menu</a></li>
-  <li><a href="eliminaPiatto.php.php">Elimina un singolo piatto dal menu</a></li>
-</ul>
-<br><hr><br>
+<!-- "Titolo" della pagina -->
+<div class="my-5 row justify-content-center">
+  <div class="text-center">
+    <h1 class="titoloPagina">home page admin</h1>
+  </div>
+</div>
 
-<h2>Gestione Eventi</h2>
-<ul>
-  <li><a href="aggiungievento.php">Aggiungi un nuovo evento</a></li>
-  <li><a href="eliminaevento.php.php">Elimina un evento</a></li>
-  <li><a href="modificaEvento.php">Modifica un evento</a></li>
-</ul>
-<br><hr><br>
-
-<h2>Gestione Utenti</h2>
-<ul>
-  <li><a href="creaUtente.php">Crea un nuovo utente con privilegi da Admin</a></li>
-  <li><a href="eliminaUtente.php">Elimina un utente</a></li>
-</ul>
+<section>
+  <div class="container-fluid bg-rosso">
+    <div class="row justify-content-center">
+<!--      <h2 class="text-center m-3">, scegli un'azione </h2>-->
+      
+      <div class="bg-bianco m-3 p-3 col-md-4 col-lg-3 col-11">
+        <h2 class="text-center">Gestione Cucina</h2>
+        <ul class="list-unstyled">
+          <li><a href="nuovoMenu.php">Crea un nuovo menù</a></li>
+          <li><a href="cancellaMenu.php">Elimina il menu presente</a></li>
+          <li><a href="aggiungiPiatto.php">Aggiungi un singolo piatto al menu</a></li>
+          <li><a href="eliminaPiatto.php.php">Elimina un singolo piatto dal menu</a></li>
+        </ul>
+      </div>
+      
+      <div class="bg-bianco m-3 p-3 col-md-4 col-lg-3 col-11">
+        <h2 class="text-center">Gestione Eventi</h2>
+        <ul class="list-unstyled">
+          <li><a href="aggiungievento.php">Aggiungi un nuovo evento</a></li>
+          <li><a href="eliminaevento.php.php">Elimina un evento</a></li>
+          <li><a href="modificaEvento.php">Modifica un evento</a></li>
+        </ul>
+      </div>
+      
+      <div class="bg-bianco m-3 p-3 col-md-4 col-lg-3 col-11">
+        <h2 class="text-center">Gestione Utenti</h2>
+        <ul class="list-unstyled">
+          <li><a href="creaUtente.php">Crea un nuovo utente con privilegi da Admin</a></li>
+          <li><a href="eliminaUtente.php">Elimina un utente</a></li>
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+</section>
 
 <!-- Funzione per creare dinamicamente il footer -->
 <?php HTMLfooter($nomePagina) ?>

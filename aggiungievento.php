@@ -24,7 +24,7 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-  
+
   <!-- Collegamento al mio file CSS -->
   <link href="base_css.css" rel="stylesheet" type="text/css">
   <!-- Libreria per le icone -->
@@ -68,68 +68,73 @@
     }
     else {  # Utente loggato con diritti di admin ?>
 
-      <!-- Titolo e sottotilo della pagina-->
+      <!-- "Titolo" della pagina -->
       <div class="my-5 row justify-content-center">
         <div class="text-center">
-          <h1 class="titoloPaginaAdmin">aggiungi evento</h1>
-          <h2 class="mt-5"><?=$username?> compila i dati del form sottostante</h2>
+          <h1 class="titoloPagina">aggiungi un evento</h1>
         </div>
       </div>
-      
-      
+
       <!-- Form della pagina -->
-      <div class="container-fluid my-5" id="containerForm">
-      <form method="POST" action="controlloaggiuntaevento.php" enctype="multipart/form-data" class="col-md-8 mx-auto"> <!-- Attributo enctype => Serve per caricamento dei file w3schools.com/tags/att_form_enctype.asp -->
-        <!--
-        <h3 class="text-center">Compila i campi del form sottostante</h3>
-        -->
-        
-        <fieldset>
-          <div class="form-group">
-        
-            <label for="eventoNew">
-              Inserisci il titolo dell'evento
-              <span class="mandatory">*</span>
-            </label>
-            <input type="text" name="eventoNew" id="eventoNew" class="form-control"
-                  title="Inserisci il titolo dell'evento" required aria-required="true">
-            
-            <br>
-    
-            <label for="dataNew">
-              Inserisci la data
-              <span class="mandatory">*</span>
-            </label>
-            <input type="date" name="dataNew" id="dataNew" class="form-control col-md-3" required aria-required="true"
-            title="inserisci la data dell'evento">
-            <br>
-    
-            <label for="descrizioneNew">
-              Inserisci la descrizione
-              <span class="mandatory">*</span>
-            </label>
-            <textarea name="descrizioneNew" id="descrizioneNew" class="form-control" required aria-required="true"
-                   title="Inserisci la descrizione dell'evento">
+      <div class="container-fluid bg-rosso pb-4 pt-4 mt-4 mb-4">
+        <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
+          <div class="row justify-content-center">
+            <div class="container-fluid my-5" id="containerForm">
+              <form method="POST" action="controlloaggiuntaevento.php" enctype="multipart/form-data" class="col-md-8 mx-auto"> <!-- Attributo enctype => Serve per caricamento dei file w3schools.com/tags/att_form_enctype.asp -->
+                <h2 class="mb-5 text-center">
+                  <?=$username?>, compila i dati del form sottostante per aggiungere un singolo piatto al menu
+                </h2>
+
+                <fieldset>
+                  <div class="form-group">
+
+                    <label for="eventoNew">
+                      Inserisci il titolo dell'evento
+                      <span class="mandatory">*</span>
+                    </label>
+                    <input type="text" name="eventoNew" id="eventoNew" class="form-control"
+                           title="Inserisci il titolo dell'evento" required aria-required="true">
+
+                    <br>
+
+                    <label for="dataNew">
+                      Inserisci la data
+                      <span class="mandatory">*</span>
+                    </label>
+                    <input type="date" name="dataNew" id="dataNew" class="form-control col-md-3" required aria-required="true"
+                           title="inserisci la data dell'evento">
+                    <br>
+
+                    <label for="descrizioneNew">
+                      Inserisci la descrizione
+                      <span class="mandatory">*</span>
+                    </label>
+                    <textarea name="descrizioneNew" id="descrizioneNew" class="form-control" required aria-required="true"
+                              title="Inserisci la descrizione dell'evento">
             </textarea>
-            <!--
-            <input type="text" name="descrizioneNew" id="descrizioneNew" class="form-control" required aria-required="true"
-            title="Inserisci la descrizione dell'evento">
-            -->
-            <br>
-    
-            <label for="immagine">Aggiungi l'immagine dell'evento</label>
-            <input type="file" name="immagine" id="immagine" class="form-control">
-            
-            <br><br>
+                    <!--
+                    <input type="text" name="descrizioneNew" id="descrizioneNew" class="form-control" required aria-required="true"
+                    title="Inserisci la descrizione dell'evento">
+                    -->
+                    <br>
+
+                    <label for="immagine">Aggiungi l'immagine dell'evento</label>
+                    <input type="file" name="immagine" id="immagine" class="form-control">
+
+                    <br><br>
+
+                  </div>
+
+                  <div class="text-center">
+                    <input type="submit" value="Inserisci" class="btn btn-success">
+                  </div>
+
+                </fieldset>
+              </form>
+            </div>
 
           </div>
-          
-         <div class="text-center">
-        <input type="submit" value="Inserisci" class="btn btn-success">
-         </div>
-         
-        </fieldset>
-      </form>
+        </div>
       </div>
     
     <?php   }

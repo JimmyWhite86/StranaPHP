@@ -24,7 +24,7 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-  
+
   <!-- Collegamento al mio file CSS -->
   <link href="base_css.css" rel="stylesheet" type="text/css">
   <!-- Libreria per le icone -->
@@ -45,14 +45,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
-  <title>AdminStrana | Aggiungi Piatto</title>
+  <title>Strana AggiungiPiatto</title>
 
 </head>
 <body ng-app="myAppHome" ng-controller="myCtrl">
 
 <!-- NAV BAR -->
 <?php richiamaNavBar($nomePagina); ?>
-
 
 <?php
   if (!isset($_SESSION["username"])) {    # Utente non loggato
@@ -67,89 +66,94 @@
       deviEssereAdmin($username);
     }
     else {  # Utente loggato con diritti di admin ?>
-
-      <!-- Titolo e sottotilo della pagina-->
+      
+      <!-- "Titolo" della pagina -->
       <div class="my-5 row justify-content-center">
         <div class="text-center">
-          <h1 class="titoloPaginaAdmin">aggiungi piatto</h1>
-          <h2 class="mt-5">
-            <?=$username?>, compila i dati del form sottostante per aggiungere un singolo piatto al menu
-          </h2>
+          <h1 class="titoloPagina">aggiungi piatto</h1>
         </div>
       </div>
-      
-      
-      <!-- Form della pagina -->
-      <div class="container-fluid my-5" id="containerForm">
-      <form method="POST" action="controlloaggiuntapiatto.php" class="col-md-8 mx-auto">
-        <!--
-        <h3 class="text-center">Compila i campi del form sottostante</h3>
-        -->
-        
-        <fieldset>
-          <div class="form-group">
-        
-            <label for="nomePiattoNew">
-              Inserisci il nome del piatto
-              <span class="mandatory">*</span>
-            </label>
-            <input type="text" name="nomePiattoNew" id="nomePiattoNew" class="form-control"
-                  title="Inserisci il nome del piatto" required aria-required="true">
-            <br>
-    
-            <label for="descrizionePiattoNew">
-              Inserisci la descrizione
-            </label>
-            <textarea name="descrizionePiattoNew" id="descrizionePiattoNew" class="form-control col-md-3"
-                   title="inserisci la descrizione del piatto">
-            </textarea>
-            <br>
-    
-            <p >
-              Inserisci la categoria del piatto
-              <span class="mandatory">*</span>
-            </p>
-            <input type="radio" id="antipasto" name="categoriaPiattoNew" value="antipasti">
-            <label for="antipasto">Antipasto</label><br>
-            <input type="radio" id="primi" name="categoriaPiattoNew" value="primi">
-            <label for="primi">Primi</label><br>
-            <input type="radio" id="secondi" name="categoriaPiattoNew" value="secondi">
-            <label for="secondi">Secondi</label><br>
-            <input type="radio" id="contorni" name="categoriaPiattoNew" value="contorni">
-            <label for="contorni">Contorni</label><br>
-            <input type="radio" id="dolci" name="categoriaPiattoNew" value="dolci">
-            <label for="dolci">Dolci</label><br>
-            <br>
 
-            <label for="prezzoPiattoNew">
-              Inserisci il prezzo del piatto
-              <span class="mandatory">*</span>
-            </label>
-            <input type="number" name="prezzoPiattoNew" id="prezzoPiattoNew" class="form-control"
-                   title="Inserisci il prezzo del piatto" required aria-required="true">
-            <br>
-            
-            <p>
-              Inserisci il cuoco
-              <span class="mandatory">*</span>
-            </p>
-            <input type="radio" id="pino" name="cuocoPiattoNew" value="Pino">
-            <label for="pino">Pino</label><br>
-            <input type="radio" id="tarta" name="cuocoPiattoNew" value="Tarta">
-            <label for="tarta">Tarta</label><br>
-            
-            
-            <br><br>
+      <!-- Form della pagina -->
+      <div class="container-fluid bg-rosso pb-4 pt-4 mt-4 mb-4">
+        <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
+          <div class="row justify-content-center">
+            <div class="container-fluid my-5" id="containerForm">
+              <form method="POST" action="controlloaggiuntapiatto.php" class="col-md-8 mx-auto">
+
+                <h2 class="mb-5 text-center">
+                  <?=$username?>, compila i dati del form sottostante per aggiungere un singolo piatto al menu
+                </h2>
+
+                <fieldset>
+                  <div class="form-group">
+
+                    <label for="nomePiattoNew">
+                      Inserisci il nome del piatto
+                      <span class="mandatory">*</span>
+                    </label>
+                    <input type="text" name="nomePiattoNew" id="nomePiattoNew" class="form-control"
+                           title="Inserisci il nome del piatto" required aria-required="true">
+                    <br>
+
+                    <label for="descrizionePiattoNew">
+                      Inserisci la descrizione
+                    </label>
+                    <textarea name="descrizionePiattoNew" id="descrizionePiattoNew" class="form-control col-md-3"
+                              title="inserisci la descrizione del piatto">
+                    </textarea>
+                    <br>
+
+                    <p>
+                      Inserisci la categoria del piatto
+                      <span class="mandatory">*</span>
+                    </p>
+                    <input type="radio" id="antipasto" name="categoriaPiattoNew" value="antipasti">
+                    <label for="antipasto">Antipasto</label><br>
+                    <input type="radio" id="primi" name="categoriaPiattoNew" value="primi">
+                    <label for="primi">Primi</label><br>
+                    <input type="radio" id="secondi" name="categoriaPiattoNew" value="secondi">
+                    <label for="secondi">Secondi</label><br>
+                    <input type="radio" id="contorni" name="categoriaPiattoNew" value="contorni">
+                    <label for="contorni">Contorni</label><br>
+                    <input type="radio" id="dolci" name="categoriaPiattoNew" value="dolci">
+                    <label for="dolci">Dolci</label><br>
+                    <br>
+
+                    <label for="prezzoPiattoNew">
+                      Inserisci il prezzo del piatto
+                      <span class="mandatory">*</span>
+                    </label>
+                    <input type="number" name="prezzoPiattoNew" id="prezzoPiattoNew" class="form-control"
+                           title="Inserisci il prezzo del piatto" required aria-required="true">
+                    <br>
+
+                    <p>
+                      Inserisci il cuoco
+                      <span class="mandatory">*</span>
+                    </p>
+                    <input type="radio" id="pino" name="cuocoPiattoNew" value="Pino">
+                    <label for="pino">Pino</label><br>
+                    <input type="radio" id="tarta" name="cuocoPiattoNew" value="Tarta">
+                    <label for="tarta">Tarta</label><br>
+
+
+                    <br><br>
+
+                  </div>
+
+                  <div class="text-center">
+                    <input type="submit" value="Inserisci" class="btn btn-success">
+                  </div>
+
+                </fieldset>
+              </form>
+            </div>
 
           </div>
-          
-         <div class="text-center">
-        <input type="submit" value="Inserisci" class="btn btn-success">
-         </div>
-         
-        </fieldset>
-      </form>
+        </div>
       </div>
+    
     
     <?php   }
   }?>

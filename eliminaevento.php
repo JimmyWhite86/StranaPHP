@@ -45,11 +45,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
-  <title>Stranamore | Home</title>
+  <title>Stran EliminaEvento</title>
   
-
 </head>
-
 <body>
 
 <!-- Richiamo la nav bar -->
@@ -68,10 +66,16 @@
     }
     else { ?>
 
-      <!-- Titolo e sottotilo della pagina-->
+      <!-- "Titolo" della pagina -->
       <div class="my-5 row justify-content-center">
         <div class="text-center">
-         <h1 class="titoloPaginaAdmin" style="background-color: black">elimina evento</h1>
+          <h1 class="titoloPagina">elimina evento</h1>
+        </div>
+      </div>
+      
+      <!-- Sottotilo della pagina-->
+      <div class="my-5 row justify-content-center">
+        <div class="text-center">
          <h2><?=$username?> Scegli quale evento vuoi eliminare.</h2>
          <h3><Strong>Attenzione!!</Strong> L'azione non è reversibile!</h3>
         </div>

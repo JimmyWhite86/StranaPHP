@@ -551,3 +551,11 @@ thead th.intestazioneTabella {
     display: none !important;
   }
 }
+
+
+
+@media (max-width: 768px) {
+  .divHomeAdmin {
+
+  }
+}
