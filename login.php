@@ -56,42 +56,46 @@
 
   <div class="my-5 row justify-content-center">
     <div class="text-center">
-      <h1 class="titoloPaginaAdmin">log in</h1>
+      <h1 class="titoloPagina">log in</h1>
     </div>
   </div>
   
   <?php
     if (!isset ($_SESSION["username"])) { #Verifico che l'utente non abbia ancora effettuato il login; ?>
 
-  <div class="container-fluid my-5" id="containerForm">
-    <h2 class="text-center">Sei unə admin della pagina?</h2>
-    <h3 class="text-center">Inserisci le tue credenziali</h3>
-    <div>
-        <form method="POST" action="controlla_login.php" class="col-md-8 mx-auto">
-          <fieldset>
-            
-            <label for="username">
-              Inserisci il tuo username
-              <span class="mandatory">*</span>
-            </label>
-            <input type="text" name="username" id="username" class="form-control"
-                   title="Inserisci il tuo username" required aria-required="true">
-            <br>
-  
-            <label for="psw1">
-              Inserisci la tua password
-              <span class="mandatory">*</span>
-            </label>
-            <input type="password" name="psw1" id="psw1" class="form-control"
-                   title="Inserisci la password" required aria-required="true">
-            <br>
-  
-            <div class="text-center">
-              <input type="submit" name="invio" id="invio" value="Accedi" class="btn btn-primary">
-            </div>
-            
-          </fieldset>
-        </form>
+  <div class="container-fluid bg-rosso pb-4 pt-4 mt-4 mb-4">
+    <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
+      <div class="row justify-content-center">
+        <h2 class="text-center">Sei unə admin della pagina?</h2>
+        <h3 class="text-center">Inserisci le tue credenziali</h3>
+        <div>
+            <form method="POST" action="controlla_login.php" class="col-md-8 mx-auto">
+              <fieldset>
+                
+                <label for="username">
+                  Inserisci il tuo username
+                  <span class="mandatory">*</span>
+                </label>
+                <input type="text" name="username" id="username" class="form-control"
+                       title="Inserisci il tuo username" required aria-required="true">
+                <br>
+      
+                <label for="psw1">
+                  Inserisci la tua password
+                  <span class="mandatory">*</span>
+                </label>
+                <input type="password" name="psw1" id="psw1" class="form-control"
+                       title="Inserisci la password" required aria-required="true">
+                <br>
+      
+                <div class="text-center">
+                  <input type="submit" name="invio" id="invio" value="Accedi" class="btn btn-primary">
+                </div>
+                
+              </fieldset>
+            </form>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -100,9 +104,13 @@
   else { #Se l'utente è già loggato, mostro un messaggio che lo avverte
     $username = $_SESSION['username'];
     ?>
-
-    <p>Sei già loggato</p>
-    
+  <div class="container-fluid bg-rosso pb-4 pt-4 mt-4 mb-4">
+    <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
+      <div class="row justify-content-center">
+        <h1 class="text-center"><?=$username?>, hai già effettuato il login</h1>
+      </div>
+    </div>
+  </div>
     <?php
   }
 ?>

@@ -61,7 +61,7 @@
 
 <section>
   <div class="container-fluid text-center bg-giallo">
-    <div class="row justify-content-center">
+    <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
       <?php generaCardEventi(); ?>
     </div>
   </div>

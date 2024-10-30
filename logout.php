@@ -56,12 +56,24 @@
   <!-- Nav Bar -->
   <?php richiamaNavBar($nomePagina); ?>
 
-    <div>
-      <h1>Logout effettuato correttamente</h1>
-      <a href="index.php">Puoi tornare alla home page</a>
+  <!-- "Titolo" della pagina -->
+  <div class="my-5 row justify-content-center">
+    <div class="text-center">
+      <h1 class="titoloPagina">log out</h1>
     </div>
+  </div>
+
+  <div class="container-fluid bg-giallo pb-4 pt-4 mt-4 mb-4">
+    <div class="row justify-content-center bg-bianco col-6">
+      <div class="row justify-content-center">
+        <h1>Logout effettuato correttamente</h1>
+        <a href="index.php">Puoi tornare alla home page</a>
+      </div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <?php HTMLfooter($nomePagina); ?>
 
 </body>
+</html>
