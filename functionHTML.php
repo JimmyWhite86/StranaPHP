@@ -335,7 +335,8 @@
     $datiEventi = ottieniListaEventi(); # Recupero tutti gli eventi presenti nel db
     
     # Genero le card:
-    while ($row = mysqli_fetch_assoc($datiEventi)) { ?>
+    while ($row = mysqli_fetch_assoc($datiEventi)) {
+      if ($row['eliminato'] == 0) { ?>
       <div class="m-2 card col-md-4" style="width: 20em;">
         <img src="<?= $row['Immagine']?>" class="img-fluid myImgCard" alt="Immagine evento">
         <div class="card-body">
@@ -347,6 +348,7 @@
         </div>
       </div>
       <?php
+      }
     }
   }
   

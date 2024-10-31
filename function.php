@@ -41,8 +41,9 @@ function ottieniListaEventi () {
     $query = "SELECT * FROM Eventi ORDER BY dataEvento ASC";
     $datiEventi = mysqli_query($conn, $query);
     if(!$datiEventi) {
-      die("Errore db " . mysqli_error($conn));
+      die("[ottieniListaEventi] => Errore db " . mysqli_error($conn));
     }
+    mysqli_close($conn);
     return $datiEventi;
 }
 

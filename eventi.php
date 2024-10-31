@@ -68,5 +68,6 @@
 </section>
 
 <?php HTMLfooter($nomePagina); ?>
+
 </body>
 </html>
