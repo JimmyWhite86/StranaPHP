@@ -69,8 +69,14 @@
             }
             else {  # Utente loggato come admin
               $_SESSION["username"] = $username;
-              $_SESSION["admin"] = 1;
-              echo "<h1>Utente $username loggato come admin</h1>";
+              $_SESSION["admin"] = 1; ?><!-- "Titolo" della pagina -->
+              <div class="my-5 row justify-content-center">
+                <div class="text-center">
+                  <h1 class="titoloPagina">log in avvenuto con successo</h1>
+                </div>
+              </div>
+              <h1 class="text-center m-3 p-3">Utente <?=$username?> loggato come admin</h1>
+            <?php
             }
           }
           else {  # Condizione in cui si è impostata una psw errata

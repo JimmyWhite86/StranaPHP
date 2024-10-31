@@ -63,12 +63,10 @@
     </div>
   </div>
 
-  <div class="container-fluid bg-giallo pb-4 pt-4 mt-4 mb-4">
-    <div class="row justify-content-center bg-bianco col-6">
-      <div class="row justify-content-center">
+  <div class="container-fluid d-flex justify-content-center bg-giallo pb-4 pt-4 mt-4 mb-4">
+    <div class="row bg-bianco justify-content-center col-6 text-center">
         <h1>Logout effettuato correttamente</h1>
         <a href="index.php">Puoi tornare alla home page</a>
-      </div>
     </div>
   </div>
 
