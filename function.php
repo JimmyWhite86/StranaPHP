@@ -90,18 +90,25 @@ function eliminaEvento ($idEvento) {
   $tmp = mysqli_query($conn, $sql);
   $nRow = mysqli_num_rows($tmp);
   if ($nRow == 0) {
-    echo "<h1>Evento non trovato $idEvento</h1>";
+    //echo "<h1>Evento non trovato $idEvento</h1>";
+    return ['successo' => false, 'nomeEvento' => ''];
   }
   else {
-    $sql = "DELETE FROM Eventi WHERE IDEvento='$idEvento'";
+    //ottengo i dati dell'evento per poi comunicarli all'utente
+    $datiEvento = mysqli_fetch_assoc($tmp);
+    $nomeEvento = $datiEvento['NomeEvento'];
+    
+    $sql = "UPDATE Eventi SET eliminato=TRUE WHERE IDEvento='$idEvento'";
     $tmp = mysqli_query($conn, $sql);
     if ($tmp) {
-      return true;
-      echo "Evento $idEvento cancellato correttamente";
+      //echo "Evento $nomeEvento (ID: $idEvento) cancellato correttamente";
+      //return true;
+      return ['successo' => true, 'nomeEvento' => $nomeEvento];
     }
     else {
-      return false;
-      echo "Errore cancellazione evento";
+      //echo "Errore cancellazione evento $nomeEvento (ID: $idEvento)";
+      //return false;
+      return ['successo' => false, 'nomeEvento' => $nomeEvento];
     }
   }
   mysqli_close($conn);
