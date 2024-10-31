@@ -59,9 +59,16 @@
   </div>
 </div>
 
+
+
 <section>
   <div class="container-fluid text-center bg-giallo">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-4">
+      <button onclick="filtraEventi('futuri')" class="btn btn-primary">Futuri</button>
+      <button onclick="filtraEventi('passati')" class="btn btn-primary">Passati</button>
+      <button onclick="filtraEventi('tutti')" class="btn btn-primary">Tutti</button>
+    </div>
+    <div class="row justify-content-center" id="containerEventi">
       <?php generaCardEventi(); ?>
     </div>
   </div>
