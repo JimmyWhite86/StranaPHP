@@ -47,6 +47,7 @@ function ottieniListaEventi () {
     if(!$datiEventi) {
       die("[ottieniListaEventi] => Errore db " . mysqli_error($conn));
     }
+    
     mysqli_close($conn);
     return $datiEventi;
 }
@@ -205,7 +206,7 @@ function piattiInArray () {
   }
   
   mysqli_close($conn);
-  return $listaPiattiDisponibili;
+  return $listaPiattiDisponibili;  //FIXME: verificare come mai l'IDE me lo segnala come arancione (ChatGPT non ha aiutato)
   
 }
 # ------------------------------------
