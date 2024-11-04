@@ -40,7 +40,7 @@
   <!--  Collegamento al mio modulo JS -->
   <script src="modulo.js" type="text/javascript"></script>
 
-  <!-- Fobnt Babas Neue -->
+  <!-- Font Babas Neue -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -59,22 +59,33 @@
   </div>
 </div>
 
-
-
 <section>
   <div class="container-fluid text-center bg-giallo">
-    <div class="row justify-content-center mb-4">
-      <button type="button" onclick="filtraEventi('futuri')" class="btn btn-primary">Futuri</button>
-      <button type="button" onclick="filtraEventi('passati')" class="btn btn-primary">Passati</button>
-      <button type="button" onclick="filtraEventi('tutti')" class="btn btn-primary">Tutti</button>
+    <div class="">
+      <h2 class="" id="titoloEventi"></h2>
     </div>
     <div class="row justify-content-center" id="containerEventi">
       <?php generaCardEventi(); ?>
+    </div>
+    <div class="row justify-content-center mb-4">
+      <div class="d-flex flex-wrap gap-2 justify-content-center col-12 col-md-4 mt-5 mb-5">
+        <button type="button" onclick="aggiornaTitolo(filtraEventi('futuri'))" class="btn btn-primary">Cosa ci sarà nelle prossime settimane</button>
+        <button type="button" onclick="aggiornaTitolo(filtraEventi('passati'))" class="btn btn-primary">Cosa abbiamo organizzato fino ad ora</button>
+        <button type="button" onclick="aggiornaTitolo(filtraEventi('tutti'))" class="btn btn-primary">Tutti gli eventi</button>
+      </div>
     </div>
   </div>
 </section>
 
 <?php HTMLfooter($nomePagina); ?>
+
+<!-- Funzione per mostrare solo eventi futuri al caricamento della pagina -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    filtraEventi('futuri');
+    aggiornaTitolo(0);
+  });
+</script>
 
 </body>
 </html>
