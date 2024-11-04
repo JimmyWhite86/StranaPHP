@@ -364,17 +364,26 @@ function generaMenu() {
     'contorni' => "contorni",
     'dolci' => "dolci"
   ];
-  
-  #print_r($listaPiattiDisponibili);
-  
-  foreach ($categorieOrdinate as $categoria => $titolo) {
+
+  /*foreach ($categorieOrdinate as $categoria => $titolo) {
     if ($categorie[$categoria] > 0) {
       echo "<h3 class='fontChiSiamo01 text-center'>$titolo</h3>";
       foreach ($listaPiattiDisponibili as $piatto) {
         if ($piatto['categoriaPiatto'] == $categoria) {
           echo "<p class='fontNomePiatto pb-0 mb-0 pl-5 ml-5'>{$piatto['nomePiatto']}";
-//          echo "<br>";
           echo "<p class='fontPrezzoPiatto pt-0 mt-0 pl-5 ml-5'>{$piatto['prezzoPiatto']} €</p>";
+        }
+      }
+      echo "<br><hr><br>";
+    }
+  }*/
+  
+  foreach ($categorieOrdinate as $categoria => $titolo) {
+    if ($categorie[$categoria] > 0) {
+      echo "<h3 class='fontTipoPiattiMenu text-center'>$titolo</h3>";
+      foreach ($listaPiattiDisponibili as $piatto) {
+        if ($piatto['categoriaPiatto'] == $categoria) {
+          echo "<p class='fontNomePiatto pb-0 mb-0 pl-5 ml-5 mr-5'>{$piatto['nomePiatto']} <span class='fontPrezzoPiatto ml-3'>{$piatto['prezzoPiatto']}€</span></p>";
         }
       }
       echo "<br><hr><br>";

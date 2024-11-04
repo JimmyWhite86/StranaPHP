@@ -75,6 +75,12 @@ body {
   font-size: 4rem;
 }
 
+.fontTipoPiattiMenu {
+  font-family: strana, Arial, Helvetica, sans-serif;
+  color: #000000;
+  font-size: 4rem;
+}
+
 .fontContatti01 {
   font-family: Strana, Arial, Helvetica, sans-serif;
   color: #000000;
@@ -188,6 +194,14 @@ body {
 
   .mioH3contatti {
     font-size: 3rem !important;
+  }
+
+  .fontTipoPiattiMenu {
+    font-size: 3rem;
+  }
+
+  .fontNomePiatto {
+    font-size: 2rem;
   }
 }
 
@@ -557,3 +571,4 @@ thead th.intestazioneTabella {
   .divHomeAdmin {
   }
 }
+
