@@ -1,5 +1,5 @@
 <?php
-
+# ------------------------------------
 # Funzione per connettersi al DataBase.
 # Il nome del DB deve essere riportato in un secondo momento all'interno del codice.
 function connetti($db) {
@@ -9,7 +9,9 @@ function connetti($db) {
     $conn = mysqli_connect ($dbserver, $dbuser, $dbpass, $db);
     return $conn;
 }
+# ------------------------------------
 
+# ------------------------------------
 # Funzione cerca utente
 function cercaUtente ($username) {
   
@@ -30,7 +32,9 @@ function cercaUtente ($username) {
     return false;
   }
 }
+# ------------------------------------
 
+# ------------------------------------
 # Restituisce informazioni su tutti gli eventi presenti in tabella eventi
 function ottieniListaEventi () {
     $conn = connetti("Strana01");
@@ -46,7 +50,9 @@ function ottieniListaEventi () {
     mysqli_close($conn);
     return $datiEventi;
 }
+# ------------------------------------
 
+# ------------------------------------
 # Funzione che richiama la nav bar in base all'utente loggato
 function richiamaNavBar($nomePagina) {
     if (!isset($_SESSION['username'])) {
@@ -62,7 +68,9 @@ function richiamaNavBar($nomePagina) {
       }
     }
 }
+# ------------------------------------
 
+# ------------------------------------
 # Funzione per controllare se utente loggato è amministratore o no
 function controlloAdmin ($username) {
   $conn = connetti ("Strana01");
@@ -81,7 +89,10 @@ function controlloAdmin ($username) {
     return false;
   }
 }
+# ------------------------------------
 
+# ------------------------------------
+# Funzione per eliminare un evento già salvato
 function eliminaEvento ($idEvento) {
   $conn = connetti ("Strana01");
   if (!$conn) {
@@ -114,9 +125,9 @@ function eliminaEvento ($idEvento) {
   }
   mysqli_close($conn);
 }
+# ------------------------------------
 
-
-
+# ------------------------------------
 # Restituisce informazioni su tutti gli eventi presenti in tabella eventi
 function ottieniListaPiattiDisponibili ()
 {
@@ -132,8 +143,9 @@ function ottieniListaPiattiDisponibili ()
   }
   return $listaPiattiDisponibili;
 }
+# ------------------------------------
 
-
+# ------------------------------------
 # Funzione per ottenere le categorie dei piatti disponibili
 function ottieniCategoriePiattiDisponbili () {
   $listaPiattiDisponibili = ottieniListaPiattiDisponibili();
@@ -170,8 +182,10 @@ function ottieniCategoriePiattiDisponbili () {
     
   ];
 }
+# ------------------------------------
 
-# Funzione che trasforma i piattidisponibili in un array associativo
+# ------------------------------------
+# Funzione che trasforma i piatti disponibili in un array associativo
 function piattiInArray () {
   $conn = connetti("Strana01");
   if (!$conn) {
@@ -194,5 +208,7 @@ function piattiInArray () {
   return $listaPiattiDisponibili;
   
 }
+# ------------------------------------
+
 
 ?>
