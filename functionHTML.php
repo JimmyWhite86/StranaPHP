@@ -337,7 +337,8 @@
     # Genero le card:
     while ($row = mysqli_fetch_assoc($datiEventi)) {
       if ($row['eliminato'] == 0) { ?>
-      <div class="m-2 card col-md-4 evento-card" style="width: 20em;" data-evento="<?= date(Y-m-d, strtotime($row['DataEvento']))?>">
+      <div class="m-2 card col-md-4 evento-card" style="width: 20em;" data-evento="<?= date('Y-m-d', strtotime($row['DataEvento']))?>">
+        <?= date('Y-m-d', strtotime($row['DataEvento'])) ?>
         <img src="<?= $row['Immagine']?>" class="img-fluid myImgCard" alt="Immagine evento">
         <div class="card-body">
           <h3><?= $row['NomeEvento']?></h3>
