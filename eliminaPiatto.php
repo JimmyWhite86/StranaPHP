@@ -60,6 +60,19 @@
   </div>
 </div>
 
+<form method="POST" action="controlloCancellazionePiatto.php">
+  <div class="containerTabella my-5"> <!-- Mantiene il layout centrato e con margine verticale -->
+    <div class="row justify-content-center">  <!-- Riga per definire il layout. Centra la colonna orizzontalmente-->
+      <div class="col-10"> <!-- colonna che occupa 10 parti su 12 -->
+        <?php generaTabellaPiattiDisponibili() ?>
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <input type="submit" name="invio" id="invio" value="ELIMINA" class="btn btn-danger">
+    </div>
+  </div>
+</form>
+
 <!-- Richiamo il footer -->
 <?php HTMLfooter($nomePagina); ?>
 

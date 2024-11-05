@@ -162,7 +162,7 @@
         <div class="collapse navbar-collapse fontNav" id="navbarNav" role="navigation" aria-label="main navigation">
           <div class="d-flex justify-content-center flex-grow-1">
 
-            <ul class="navbar-nav" id="myNavBar">
+            <ul class="navbar-nav" id="myNavBar"> <!-- FIXME: come mai ci sono due <ul>?? -->
 
               <ul class="navbar-nav" id="myNavBar">
                 
@@ -364,19 +364,6 @@ function generaMenu() {
     'contorni' => "contorni",
     'dolci' => "dolci"
   ];
-
-  /*foreach ($categorieOrdinate as $categoria => $titolo) {
-    if ($categorie[$categoria] > 0) {
-      echo "<h3 class='fontChiSiamo01 text-center'>$titolo</h3>";
-      foreach ($listaPiattiDisponibili as $piatto) {
-        if ($piatto['categoriaPiatto'] == $categoria) {
-          echo "<p class='fontNomePiatto pb-0 mb-0 pl-5 ml-5'>{$piatto['nomePiatto']}";
-          echo "<p class='fontPrezzoPiatto pt-0 mt-0 pl-5 ml-5'>{$piatto['prezzoPiatto']} €</p>";
-        }
-      }
-      echo "<br><hr><br>";
-    }
-  }*/
   
   foreach ($categorieOrdinate as $categoria => $titolo) {
     if ($categorie[$categoria] > 0) {
@@ -391,35 +378,42 @@ function generaMenu() {
   }
 }
 
+
 function generaTabellaPiattiDisponibili() {
-  $listaPiattiDisponibili = piattiInArray();
-  $categorie = ottieniCategoriePiattiDisponbili();
+  $listaPiattiDisponibili = piattiInArray(); ?>
   
-  $categorieOrdinate = [
-    'antipasti' => "antipasti",
-    'primi' => "primi",
-    'secondi' => "secondi",
-    'contorni' => "contorni",
-    'dolci' => "dolci"
-  ];
-  
-  foreach ($categorieOrdinate as $categoria => $titolo) {
-    if ($categorie[$categoria] > 0) {
-      echo "<h3 class='fontChiSiamo01 text-center'>$titolo</h3>";
-      foreach ($listaPiattiDisponibili as $piatto) {
-        if ($piatto['categoriaPiatto'] == $categoria) {
-          echo "<p class='fontNomePiatto pb-0 mb-0 pl-5 ml-5'>{$piatto['nomePiatto']}";
-          echo "<p class='fontPrezzoPiatto pt-0 mt-0 pl-5 ml-5'>{$piatto['prezzoPiatto']} €</p>";
-        }
+  <table class="table table-striped table-bordered text-center align-midle">
+    <thead class="intestazioneTabella">
+      <tr class="intestazioneTabella">
+        <th class="intestazioneTabella">ID Piatto</th>
+        <th class="intestazioneTabella">Nome Piatto</th>
+        <th class="intestazioneTabella">Prezzo</th>
+        <th class="intestazioneTabella">Categoria</th>
+        <th class="intestazioneTabella">Cuoco</th>
+        <th class="intestazioneTabella">Data inserimento</th>
+        <th class="intestazioneTabella">Seleziona per eliminare</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <?php foreach ($listaPiattiDisponibili as $piatto) { ?>
+        <tr>
+          <td><?= $piatto['idPiatto']?></td>
+          <td><?= $piatto['nomePiatto']?></td>
+          <td><?= $piatto['prezzoPiatto']?></td>
+          <td><?= $piatto['categoriaPiatto']?></td>
+          <td><?= $piatto['cuoco']?></td>
+          <td><?= $piatto['dataInserimento']?></td>
+          <td class="text-center">
+            <input type="radio" name="piattoSelezionatoElimina" value="<?= $piatto['idPiatto'] ?>">
+          </td>
+        </tr>
+      <?php
       }
-      echo "<br><hr><br>";
-    }
-  }
+      ?>
+      
+    </tbody>
+  </table>
+  <?php
 }
-
-
-  
-  
-  
 ?>
-

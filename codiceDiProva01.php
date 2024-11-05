@@ -85,4 +85,53 @@
   }
   }
 
+
+
+
+
+  function generaTabellaPiattiDisponibili() {
+  $listaPiattiDisponibili = piattiInArray();
+  $categorie = ottieniCategoriePiattiDisponbili();
+
+  $categorieOrdinate = [
+  'antipasti' => "antipasti",
+  'primi' => "primi",
+  'secondi' => "secondi",
+  'contorni' => "contorni",
+  'dolci' => "dolci"
+  ];
+
+  foreach ($categorieOrdinate as $categoria => $titolo) {
+  if ($categorie[$categoria] > 0) { ?>
+  <!-- <h3 class='fontChiSiamo01 text-center'>$titolo</h3> -->
+<table class="table table-striped table-bordered">
+  <thead>
+  <tr>
+    <th>Nome Piatto</th>
+    <th>Prezzo</th>
+    <th>Seleziona per eliminare</th>
+  </tr>
+  </thead>
+  <tbody>
+
+<?php
+  foreach ($listaPiattiDisponibili as $piatto) {
+    if ($piatto['categoriaPiatto'] == $categoria) { ?>
+      <tr>
+        <td class="fontNomePiatto">
+          <?= $piatto["nomePiatto"] ?>
+        </td>
+        <td class="fontNomePiatto">
+          <?= $piatto["prezzoPiatto"] ?>
+        </td>
+        <td class="text-center">
+          <input type="radio" name="piattoDaEliminare" value="<?= $piatto['$idPiatto'] ?>">
+        </td>
+      </tr
+      <?php
+    }
+  }
+  }
+  }
+  }
 ?>
