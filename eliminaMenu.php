@@ -1,8 +1,8 @@
 <?php
   session_start();
-  $nomePagina = "gestioneCucina";
-  include "function.php";
   include "functionHTML.php";
+  include "function.php";
+  $nomePagina = "eliminaMenu";
 ?>
 
 <!DOCTYPE html>
@@ -45,41 +45,67 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   
-  <title>Stran GestioneCucina</title>
+  <title>Stran EliminaEvento</title>
 
 </head>
 <body>
 
-<?php $userName = $_SESSION['username']; ?>
+<!-- Richiamo la nav bar -->
+<?php richiamaNavBar($nomePagina); ?>
 
-<!-- Funzione per creare dinamicamente la NavBar -->
-<?php richiamaNavBar($nomePagina) ?>
+<?php
+  if (!isset($_SESSION["username"])) {
+    deviLoggarti();
+  }
+  else {
+    $amministratore = $_SESSION["admin"];
+    $username = $_SESSION["username"];
+    
+    if ($amministratore == 0) {
+      deviEssereAdmin($username);
+    }
+    else { ?>
+      
+      <!-- "Titolo" della pagina -->
+      <div class="my-5 row justify-content-center">
+        <div class="text-center">
+          <h1 class="titoloPagina">elimina intero menu</h1>
+        </div>
+      </div>
+      
+      <!-- Sottotilo della pagina-->
+      <div class="my-5 row justify-content-center">
+        <div class="text-center">
+          <h2><?=$username?>, da questa pagina puoi eliminare l'intero menu ad ora presente</h2>
+        </div>
+      </div>
+      
+      <?php $listaEventi = ottieniListaEventi(); ?>
+      
+      <!-- Come lo chiamo?? TODO: Dare un nome sensato a questo commento -->
+      <form method="POST" action="controlloEliminazioneMenu.php">
+        <div class="containerTabella my-5"> <!-- Mantiene il layout centrato e con margine verticale -->
+          <div class="row justify-content-center">  <!-- Riga per definire il layout. Centra la colonna orizzontalmente-->
+            <div class="col-10"> <!-- colonna che occupa 10 parti su 12 -->
+              <h3>Attenzione</h3>
+              <p>Continuando questa operazione eliminerai tutto il menu</p>
+            </div> <!-- Fine della colonna-->
+          </div>  <!-- Fine della riga -->
+          <!-- Pulsante centrato -->
+          <div class="text-center mt-4">
+            <input type="submit" name="invio" id="invio" value="ELIMINA" class="btn btn-danger">
+          </div>
+        </div>
+      </form>
+      <?php
+    }
+  }
+?>
 
 
-<!-- "Titolo" della pagina -->
-<div class="my-5 row justify-content-center">
-  <div class="text-center">
-    <h1 class="titoloPagina">gestione cucina</h1>
-  </div>
-</div>
+<!-- Richiamo il footer -->
+<?php HTMLfooter($nomePagina); ?>
 
-<div class="container-fluid bg-rosso pb-4 pt-4 mt-4 mb-4">
-  <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
-    <div class="row justify-content-center">
-      <h2 class="text-center">Ciao <?= $userName ?>, scegli un azione:</h2>
-      <ul class="list-unstyled ml-5 pl-5">
-        <li><a href="nuovoMenu.php">Crea un nuovo menù</a></li>
-        <li><a href="eliminaMenu.php">Elimina il menu presente</a></li>
-        <li><a href="aggiungiPiatto.php">Aggiungi un singolo piatto al menu</a></li>
-        <li><a href="eliminaPiatto.php">Elimina un singolo piatto dal menu</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-
-<!-- Funzione per creare dinamicamente il footer -->
-<?php HTMLfooter($nomePagina) ?>
 
 </body>
 </html>

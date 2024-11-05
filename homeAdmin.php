@@ -73,7 +73,7 @@
         <h2 class="text-center">Gestione Cucina</h2>
         <ul class="list-unstyled">
           <li><a href="nuovoMenu.php">Crea un nuovo menù</a></li>
-          <li><a href="cancellaMenu.php">Elimina il menu presente</a></li>
+          <li><a href="eliminaMenu.php">Elimina il menu presente</a></li>
           <li><a href="aggiungiPiatto.php">Aggiungi un singolo piatto al menu</a></li>
           <li><a href="eliminaPiatto.php.php">Elimina un singolo piatto dal menu</a></li>
         </ul>

@@ -210,7 +210,7 @@ function piattiInArray () {
   
 }
 # ------------------------------------
-  
+# Funzione per eliminare un singolo piatto dal menu
   function eliminaPiatto ($idPiatto) {
     $conn = connetti ("Strana01");
     if (!$conn) {
@@ -247,5 +247,41 @@ function piattiInArray () {
       }
     mysqli_close($conn);
   }
+# ------------------------------------
+
+# ------------------------------------
+# Funzione per eliminare un singolo piatto dal menu
+function eliminaInteroMenu () {
+  $conn = connetti ("Strana01");
+  if (!$conn) {
+    die("[eliminaInteroMenu] => Connessione fallita: " . mysqli_connect_error());
+  }
+  
+  $sql = "SELECT * FROM menuCucina";
+  $tmp = mysqli_query($conn, $sql);
+  
+  if (!$tmp) {
+    die("[eliminaInteroMenu] => Errore nelal query di selezione: " . mysqli_error($conn));
+  }
+  
+  $nRow = mysqli_num_rows($tmp);
+  
+  if ($nRow == 0) {
+    return ['successo' => false];
+  } else {
+    $sql = "UPDATE menuCucina SET disponibilitaPiatto = FALSE";
+    $tmp = mysqli_query($conn, $sql);
+    
+    if (!$tmp) {
+      die("[eliminaInteroMenu] => Errore nella query di aggiornamento: " . mysqli_error($conn));
+    }
+    if ($tmp) {
+      return ['successo' => true];
+    } else {
+      return ['successo' => false];
+    }
+  }
+  mysqli_close($conn);
+}
 # ------------------------------------
 ?>
