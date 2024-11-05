@@ -76,8 +76,7 @@
       <!-- Sottotilo della pagina-->
       <div class="my-5 row justify-content-center">
         <div class="text-center">
-         <h2><?=$username?> Scegli quale evento vuoi eliminare.</h2>
-         <h3><Strong>Attenzione!!</Strong> L'azione non è reversibile!</h3>
+         <h2><?=$username?> Scegli quale evento vuoi eliminare</h2>
         </div>
       </div>
       

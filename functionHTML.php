@@ -405,7 +405,7 @@ function generaTabellaPiattiDisponibili() {
           <td><?= $piatto['cuoco']?></td>
           <td><?= $piatto['dataInserimento']?></td>
           <td class="text-center">
-            <input type="radio" name="piattoSelezionatoElimina" value="<?= $piatto['idPiatto'] ?>">
+            <input type="radio" name="piattoSelezionatoElimina" id="piattoSelezionatoElimina" value="<?= $piatto['idPiatto'] ?>">
           </td>
         </tr>
       <?php

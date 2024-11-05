@@ -55,6 +55,8 @@
 <!-- Funzione per creare dinamicamente la NavBar -->
 <?php richiamaNavBar($nomePagina) ?>
 
+<!-- TODO: Manca controllo utente come admin -->
+
 <!-- "Titolo" della pagina -->
 <div class="my-5 row justify-content-center">
   <div class="text-center">
@@ -65,8 +67,8 @@
 <section>
   <div class="container-fluid bg-rosso">
     <div class="row justify-content-center">
-<!--      <h2 class="text-center m-3">, scegli un'azione </h2>-->
-      
+      <!--      <h2 class="text-center m-3">, scegli un'azione </h2>-->
+
       <div class="bg-bianco m-3 p-3 col-md-4 col-lg-3 col-11">
         <h2 class="text-center">Gestione Cucina</h2>
         <ul class="list-unstyled">
@@ -76,7 +78,7 @@
           <li><a href="eliminaPiatto.php.php">Elimina un singolo piatto dal menu</a></li>
         </ul>
       </div>
-      
+
       <div class="bg-bianco m-3 p-3 col-md-4 col-lg-3 col-11">
         <h2 class="text-center">Gestione Eventi</h2>
         <ul class="list-unstyled">
@@ -85,7 +87,7 @@
           <li><a href="modificaEvento.php">Modifica un evento</a></li>
         </ul>
       </div>
-      
+
       <div class="bg-bianco m-3 p-3 col-md-4 col-lg-3 col-11">
         <h2 class="text-center">Gestione Utenti</h2>
         <ul class="list-unstyled">
@@ -93,7 +95,7 @@
           <li><a href="eliminaUtente.php">Elimina un utente</a></li>
         </ul>
       </div>
-      
+
     </div>
   </div>
 </section>
