@@ -45,7 +45,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   
-  <title>Stran EliminaEvento</title>
+  <title>Strana EliminaEvento</title>
 
 </head>
 <body>
@@ -73,7 +73,7 @@
         </div>
       </div>
       
-      <!-- Sottotilo della pagina-->
+      <!-- Sottotitolo della pagina-->
       <div class="my-5 row justify-content-center">
         <div class="text-center">
           <h2><?=$username?>, da questa pagina puoi eliminare l'intero menu ad ora presente</h2>
