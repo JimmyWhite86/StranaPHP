@@ -62,70 +62,74 @@ function aggiornaTitolo (tipo) {
 // Funzione per aggiungere una nuova riga per creare un nuovo menu
 
 document.addEventListener("DOMContentLoaded", function () {
-  let piattiCounter = 0; // Incrementa per ogni nuovo piatto aggiunto
+  let piattiCounter = 1; // Variabile contatore per i piatti
 
-  // Funzione per creare una nuova sezione di piatto
+  // Funzione per aggiungere una nuova form di piatto
   function creaFormPiatto() {
-    piattiCounter++; // Incrementa contatore
-    const container = document.createElement("div"); // Crea div container
-    container.className = "container-fluid bg-rosso pb-4 pt-4 mt-4 mb-4";
-    container.id = `piatto-${piattiCounter}`; // ID univoco per il piatto
+    const container = document.createElement("div");
+    container.className = "mb-4";
+    container.id = `piatto-${piattiCounter}`;
 
+    // Creiamo il contenuto HTML per un nuovo piatto
     container.innerHTML = `
-      <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
-        <div class="row justify-content-center">
-          <div class="container-fluid my-5">
-            <form class="col-md-8 mx-auto">
-              <h2 class="mb-5 text-center">Compila i dati per aggiungere un piatto al menu</h2>
-              <fieldset>
-                <div class="form-group">
-                  <label for="nomePiatto-${piattiCounter}">Inserisci il nome del piatto<span class="mandatory">*</span></label>
-                  <input type="text" name="piatti[${piattiCounter}][nome]" class="form-control" required>
-                  <br>
-                  <label for="descrizionePiatto-${piattiCounter}">Inserisci la descrizione</label>
-                  <textarea name="piatti[${piattiCounter}][descrizione]" class="form-control col-md-3"></textarea>
-                  <br>
-                  <p>Inserisci la categoria del piatto<span class="mandatory">*</span></p>
-                  <input type="radio" name="piatti[${piattiCounter}][categoria]" value="antipasti"> Antipasto<br>
-                  <input type="radio" name="piatti[${piattiCounter}][categoria]" value="primi"> Primi<br>
-                  <input type="radio" name="piatti[${piattiCounter}][categoria]" value="secondi"> Secondi<br>
-                  <input type="radio" name="piatti[${piattiCounter}][categoria]" value="contorni"> Contorni<br>
-                  <input type="radio" name="piatti[${piattiCounter}][categoria]" value="dolci"> Dolci<br>
-                  <br>
-                  <label for="prezzoPiatto-${piattiCounter}">Inserisci il prezzo del piatto<span class="mandatory">*</span></label>
-                  <input type="number" name="piatti[${piattiCounter}][prezzo]" class="form-control" required>
-                  <br>
-                  <p>Inserisci il cuoco<span class="mandatory">*</span></p>
-                  <input type="radio" name="piatti[${piattiCounter}][cuoco]" value="Pino"> Pino<br>
-                  <input type="radio" name="piatti[${piattiCounter}][cuoco]" value="Tarta"> Tarta<br>
-                  <br>
-                </div>
-                <div class="text-center">
-                  <button type="button" class="btn btn-danger btn-rimuovi" data-target="${container.id}">Rimuovi Piatto</button>
-                </div>
-              </fieldset>
-            </form>
+          <div class="container-fluid col-md-8 bg-white p-4 mb-4">
+            <h2 class="mb-3 text-center">Piatto ${piattiCounter}</h2>
+            <label for="nomePiatto-${piattiCounter}">Nome del piatto<span class="mandatory">*</span></label>
+            <input type="text" name="piatti[${piattiCounter}][nome]" class="form-control mb-3" required>
+            
+            <label for="descrizionePiatto-${piattiCounter}">Descrizione</label>
+            <textarea name="piatti[${piattiCounter}][descrizione]" class="form-control mb-3"></textarea>
+            
+            <p>Categoria del piatto<span class="mandatory">*</span></p>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="piatti[${piattiCounter}][categoria]" value="antipasti" required> Antipasto
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="piatti[${piattiCounter}][categoria]" value="primi" required> Primi
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="piatti[${piattiCounter}][categoria]" value="secondi" required> Secondi
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="piatti[${piattiCounter}][categoria]" value="contorni" required> Contorni
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="piatti[${piattiCounter}][categoria]" value="dolci" required> Dolci
+            </div>
+            
+            <label for="prezzoPiatto-${piattiCounter}" class="mt-3">Prezzo del piatto<span class="mandatory">*</span></label>
+            <input type="number" name="piatti[${piattiCounter}][prezzo]" class="form-control mb-3" required>
+            
+            <p>Cuoco<span class="mandatory">*</span></p>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="piatti[${piattiCounter}][cuoco]" value="Pino" required> Pino
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="piatti[${piattiCounter}][cuoco]" value="Tarta" required> Tarta
+            </div>
+            
+            <div class="text-center mt-4">
+              <button type="button" class="btn btn-danger rimuoviRiga" data-id="${piattiCounter}">Rimuovi Piatto</button>
+            </div>
           </div>
-        </div>
-      </div>`;
+        `;
 
-    document.getElementById("containerForm").appendChild(container); // Aggiungi alla pagina
+    document.getElementById("containerForm").appendChild(container);
+    piattiCounter++; // Incrementa il contatore per i piatti
   }
 
-  // Event listener per aggiungere/rimuovere piatti
-  document.addEventListener("click", function (e) {
-    if (e.target.id === "btnAggiungiRiga") { // Bottone aggiungi
-      creaFormPiatto();
-    }
-    else if (e.target.classList.contains("btn-rimuovi")) { // Bottone rimuovi
-      const targetID = e.target.getAttribute("data-target");
-      const targetElement = document.getElementById(targetID);
-      if (targetElement) {
-        targetElement.remove();
-      }
+  // Listener per aggiungere un nuovo piatto quando si clicca su "Aggiungi nuovo piatto"
+  document.getElementById("btnAggiungiRiga").addEventListener("click", creaFormPiatto);
+
+  // Event delegation per rimuovere un piatto
+  document.getElementById("containerForm").addEventListener("click", function (e) {
+    if (e.target.classList.contains("rimuoviRiga")) {
+      const id = e.target.getAttribute("data-id");
+      const piattoDaRimuovere = document.getElementById(`piatto-${id}`);
+      piattoDaRimuovere.remove();
     }
   });
 
-  // Aggiungi un piatto iniziale al caricamento
+  // Aggiunge una prima form di piatto all'inizio
   creaFormPiatto();
 });

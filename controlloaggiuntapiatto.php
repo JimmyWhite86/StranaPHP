@@ -84,7 +84,7 @@
         
         $conn = connetti ("Strana01");
         if (!$conn) {
-          echo "<p>La connessione ha avuto problemi".mysqli_error($conn);
+          echo "<p>La connessione ha avuto problemi".mysqli_error($conn)."</p>";
           azioni_amministratore();
         }
         else {
@@ -97,11 +97,29 @@
             $sql = "INSERT INTO menuCucina (nomePiatto, descrizionePiatto, categoriaPiatto, prezzoPiatto, cuoco, disponibilitaPiatto, dataInserimento)
                     VALUES ('$nomePiattoNew', '$descrizionePiattoNew', '$categoriaPiattoNew', '$prezzoPiattoNew', '$cuocoPiattoNew', '$disponibilitaPiatto', '$dataInserimentoPiatto')";
             $tmp = mysqli_query($conn, $sql);
-            if ($tmp) {
-              echo "<div class='titolo'>";
-                echo "<h2>Nuovo Piatto memorizzato</h2>";
-              echo "</div>";
-              azioni_amministratore();
+            if ($tmp) { ?>
+
+              <div class="my-5 row justify-content-center">
+                <div class="text-center">
+                  <h1 class="titoloPagina">piatto salvato correttamente</h1>
+                </div>
+              </div>
+
+              <section>
+                <div class="container-fluid text-center bg-rosso">
+                  <div class="">
+                    <h2 class="" id="titoloEventi">
+                      Il piatto <strong><?= $nomePiattoNew ?></strong> è stato aggiunto correttamente al menu
+                    </h2>
+                    <a href="aggiungiPiatto.php">Aggiungi un altro piatto al menu </a><br>
+                    <a href="eliminaPiatto.php">Elimina un piatto dal menu </a><br>
+                    <!-- <p>Elimina il piatto appena aggiunto</p> TODO: Eliminare o implementare la funzione -->
+                  </div>
+                </div>
+              </section>
+              
+            
+            <?php
             }
             else {
               echo "<p>Ci sono stati problemi con l'inserimento del nuovo piatto</p>";
