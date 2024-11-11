@@ -38,7 +38,7 @@
   <script src="https://kit.fontawesome.com/1a45214b57.js" crossorigin="anonymous"></script>
   
   <!--  Collegamento al mio modulo JS -->
-  <script src="modulo.js" type="text/javascript"></script>
+  <script src="modulo.js" type="text/javascript" defer></script>
   
   <!-- Font Babas Neue -->
   <link rel="preconnect" href="https://fonts.googleapis.com">

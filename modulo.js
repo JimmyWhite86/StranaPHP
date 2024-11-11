@@ -62,18 +62,70 @@ function aggiornaTitolo (tipo) {
 // Funzione per aggiungere una nuova riga per creare un nuovo menu
 
 document.addEventListener("DOMContentLoaded", function () {
-  let piattiCounter = 0; // Tengo conto del numero di piatti che vengono aggiunti
+  let piattiCounter = 0; // Incrementa per ogni nuovo piatto aggiunto
+
+  // Funzione per creare una nuova sezione di piatto
   function creaFormPiatto() {
-    piattiCounter++; // Incremento la variabile che conta i piatti che vengono aggiunti
-    const container = document.createElement("div"); // Creo un elemento <div> che conterrà la form per il piatto
-    container.className = "container-fluid bg-rosso pb-4 pt-4 mt-4 mb-4" // Aggiungo le classe per lo stile
-    container.id = `piatto-${piattiCounter}`;
+    piattiCounter++; // Incrementa contatore
+    const container = document.createElement("div"); // Crea div container
+    container.className = "container-fluid bg-rosso pb-4 pt-4 mt-4 mb-4";
+    container.id = `piatto-${piattiCounter}`; // ID univoco per il piatto
 
-    //imposto il contenuto HTML del form per inserire il piatto all'interno del <div> appena creato
+    container.innerHTML = `
+      <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
+        <div class="row justify-content-center">
+          <div class="container-fluid my-5">
+            <form class="col-md-8 mx-auto">
+              <h2 class="mb-5 text-center">Compila i dati per aggiungere un piatto al menu</h2>
+              <fieldset>
+                <div class="form-group">
+                  <label for="nomePiatto-${piattiCounter}">Inserisci il nome del piatto<span class="mandatory">*</span></label>
+                  <input type="text" name="piatti[${piattiCounter}][nome]" class="form-control" required>
+                  <br>
+                  <label for="descrizionePiatto-${piattiCounter}">Inserisci la descrizione</label>
+                  <textarea name="piatti[${piattiCounter}][descrizione]" class="form-control col-md-3"></textarea>
+                  <br>
+                  <p>Inserisci la categoria del piatto<span class="mandatory">*</span></p>
+                  <input type="radio" name="piatti[${piattiCounter}][categoria]" value="antipasti"> Antipasto<br>
+                  <input type="radio" name="piatti[${piattiCounter}][categoria]" value="primi"> Primi<br>
+                  <input type="radio" name="piatti[${piattiCounter}][categoria]" value="secondi"> Secondi<br>
+                  <input type="radio" name="piatti[${piattiCounter}][categoria]" value="contorni"> Contorni<br>
+                  <input type="radio" name="piatti[${piattiCounter}][categoria]" value="dolci"> Dolci<br>
+                  <br>
+                  <label for="prezzoPiatto-${piattiCounter}">Inserisci il prezzo del piatto<span class="mandatory">*</span></label>
+                  <input type="number" name="piatti[${piattiCounter}][prezzo]" class="form-control" required>
+                  <br>
+                  <p>Inserisci il cuoco<span class="mandatory">*</span></p>
+                  <input type="radio" name="piatti[${piattiCounter}][cuoco]" value="Pino"> Pino<br>
+                  <input type="radio" name="piatti[${piattiCounter}][cuoco]" value="Tarta"> Tarta<br>
+                  <br>
+                </div>
+                <div class="text-center">
+                  <button type="button" class="btn btn-danger btn-rimuovi" data-target="${container.id}">Rimuovi Piatto</button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>`;
 
+    document.getElementById("containerForm").appendChild(container); // Aggiungi alla pagina
   }
-})
 
+  // Event listener per aggiungere/rimuovere piatti
+  document.addEventListener("click", function (e) {
+    if (e.target.id === "btnAggiungiRiga") { // Bottone aggiungi
+      creaFormPiatto();
+    }
+    else if (e.target.classList.contains("btn-rimuovi")) { // Bottone rimuovi
+      const targetID = e.target.getAttribute("data-target");
+      const targetElement = document.getElementById(targetID);
+      if (targetElement) {
+        targetElement.remove();
+      }
+    }
+  });
 
-
-
+  // Aggiungi un piatto iniziale al caricamento
+  creaFormPiatto();
+});
