@@ -417,3 +417,17 @@ function generaTabellaPiattiDisponibili() {
   <?php
 }
 ?>
+
+
+<?php
+  function erroreConnessioneHTML () {?>
+    <div class="my-5 row justify-content-center">
+      <div class="text-center">
+        <h1 class="titoloPagina">Errore di connessione</h1>
+      </div>
+    </div>
+<?php
+  }
+  
+  
+  ?>

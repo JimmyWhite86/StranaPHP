@@ -83,8 +83,12 @@
         $dataInserimentoPiatto = date("d/m/y");
         
         $conn = connetti ("Strana01");
-        if (!$conn) {
-          echo "<p>La connessione ha avuto problemi".mysqli_error($conn)."</p>";
+        if (!$conn) { ?>
+          
+          
+          
+          <?php
+          //echo "<p>La connessione ha avuto problemi".mysqli_error($conn)."</p>";
           azioni_amministratore();
         }
         else {
