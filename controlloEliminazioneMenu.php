@@ -56,7 +56,7 @@
 <!-- "Titolo" della pagina -->
 <div class="my-5 row justify-content-center">
   <div class="text-center">
-    <h1 class="titoloPagina">elimina evento</h1>
+    <h1 class="titoloPagina">elimina intero menu</h1>
   </div>
 </div>
 
@@ -86,7 +86,7 @@
         
       }
       else {?>
-        <div class="container-fluid d-flex justify-content-center bg-giallo pb-4 pt-4 mt-4 mb-4">
+        <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
           <div class="row bg-bianco justify-content-center col-6 text-center">
             <h1> Eliminazione dell'intero menù avvenuta con successo </h1>
             <a href="gestioneCucina.php">Torna alla pagina gestione cucina</a>
