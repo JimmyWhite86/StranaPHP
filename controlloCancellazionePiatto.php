@@ -76,26 +76,28 @@
       $esitoEliminazione = eliminaPiatto($idPiatto);
       
       if (!$esitoEliminazione['successo']) { ?>
-        <div class="container-fluid d-flex justify-content-center bg-giallo pb-4 pt-4 mt-4 mb-4">
-          <div class="row bg-bianco justify-content-center col-6 text-center">
-            <h1> Ci sono stati errori durante l'eliminazione del piatto </h1>
-            <p>Hai cercato di eliminare il piatto <?=$esitoEliminazione['nomePiatto']?></p>
+        <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+          <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+            <h2>Ci sono stati errori durante l'eliminazione del piatto</h2>
+            <h3>Il piatto selezionato non è stato eliminato</h3>
             <hr>
-            <a href="gestioneCucina.php">Torna alla pagina gestione cucina</a>
-            <a href="homeAdmin.php">Oppure torna alla home per admin</a>
+            <a href="homeAdmin.php" class="btn btn-primary mb-3">Home Adimn</a><br>
+            <a href="eliminaPiatto.php" class="btn btn-primary mb-3">Elimina altro piatto</a><br>
+            <a href="gestioneCucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
           </div>
         </div>
         <?php
         
       }
       else {?>
-        <div class="container-fluid d-flex justify-content-center bg-giallo pb-4 pt-4 mt-4 mb-4">
-          <div class="row bg-bianco justify-content-center col-6 text-center">
-            <h1> Eliminazione piatto avvenuta con successo </h1>
-            <p>Hai eliminato: <strong><?= $esitoEliminazione['nomePiatto']?></strong></p>
+        <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+          <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+            <h2> Eliminazione piatto avvenuta con successo </h2>
+            <h3>Hai eliminato: <strong><?= $esitoEliminazione['nomePiatto']?></strong></h3>
             <hr>
-            <a href="gestioneCucina.php">Torna alla pagina gestione cucina</a>
-            <a href="homeAdmin.php">Oppure torna alla home per admin</a>
+            <a href="homeAdmin.php" class="btn btn-primary mb-3">Home Adimn</a><br>
+            <a href="eliminaPiatto.php" class="btn btn-primary mb-3">Elimina altro piatto</a><br>
+            <a href="gestioneCucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
           </div>
         </div>
         <?php

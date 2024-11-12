@@ -1,15 +1,20 @@
 <?php
   
   # Avviso l'utente che deve essere loggato per accedere alla pagina
-  function deviLoggarti () {
-    echo "<div class='titolo'>";
-    echo "Devi essere loggato per accedere a questa pagina";
-    echo "<p>Puoi tornare alla <a href='index.php'>home</a> o cercare i nostri servizi tramite la barra di navigazione</p>";
-    echo "</div>";
+  function deviLoggarti () { ?>
+    <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+          <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+            <h2>Devi essere loggatə per accedere a questa pagina</h2>
+            <p>
+              Puoi tornare alla <a href="index.php">home page</a>
+              o cercare usare la barra di navigazione per cercare la pagina che ti serve
+            </p>
+          </div>
+        </div>
+    <?php
   }
   
   # Avviso che utente normale sta cercando di accedere a pagine consentite solo per amministratori
-  
   function deviEssereAdmin ($username) {
     echo "<div class='titolo'>";
     echo "<h2>Carə " . $username . " questa area è riservata agli amministratori del sistema</h2>";
@@ -420,12 +425,23 @@ function generaTabellaPiattiDisponibili() {
 
 
 <?php
-  function erroreConnessioneHTML () {?>
+  function erroreConnessioneHTML ($conn) {?>
     <div class="my-5 row justify-content-center">
       <div class="text-center">
         <h1 class="titoloPagina">Errore di connessione</h1>
       </div>
     </div>
+
+    <section>
+      <div class="container-fluid text-center bg-rosso">
+        <div class="m-5">
+          <h2 class="m-3 p-3" id="titoloEventi">La connessione ha avuto problemi</h2>
+          <p><?= mysqli_error($conn) ?></p>
+          <a href="homeAdmin.php" class="btn btn-primary mb-3">Home Page Admin</a><br>
+          <!-- <a href="eliminaPiatto.php" class="btn btn-primary mb-3">Elimina un piatto dal menu </a>-->
+        </div>
+      </div>
+    </section>
 <?php
   }
   
