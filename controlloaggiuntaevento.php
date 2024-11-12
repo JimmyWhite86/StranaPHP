@@ -51,10 +51,15 @@
 
 <body>
 
+<!-- Richiamo la navBar-->
 <?php richiamaNavBar($nomePagina) ?>
 
-
-
+<!-- "Titolo" della pagina -->
+<div class="my-5 row justify-content-center">
+  <div class="text-center">
+    <h1 class="titoloPagina">aggiungi un evento</h1>
+  </div>
+</div>
 
 <?php
 
@@ -84,28 +89,43 @@
 
         $conn = connetti ("Strana01");
         if (!$conn) {
-          echo "<p>La connessione ha avuto problemi".mysqli_error($conn);
-          azioni_amministratore();
+          erroreConnessioneHTML($conn);
+          /*echo "<p>La connessione ha avuto problemi".mysqli_error($conn);
+          azioni_amministratore();*/
         }
         else {
 
+          // TODO: Far diventare questo pezzo una funzione da inserire nel file esterno!
           $sql = "SELECT nomeEvento FROM Eventi WHERE nomeEvento = 'eventoNew'";
           $tmp = mysqli_query($conn,$sql);
           $numeroRighe = mysqli_num_rows($tmp);
 
           if ($numeroRighe == 0) {  # Vuol dire che nella tabella non ci sono altri eventi con quel nome
-            $sql = "INSERT INTO Eventi (NomeEvento, DataEvento, Immagine, Descrizione)
-                    VALUES ('$eventoNew', '$dataNew', '$pathnameImmagine', '$descrizioneNew')";
+            $sql = "INSERT INTO Eventi (NomeEvento, DataEvento, Immagine, Descrizione, eliminato)
+                    VALUES ('$eventoNew', '$dataNew', '$pathnameImmagine', '$descrizioneNew', '0')";
             $tmp = mysqli_query($conn, $sql);
-            if ($tmp) {
-              echo "<div class='titolo'>";
-                echo "<h2>Nuovo evento memorizzato</h2>";
-              echo "</div>";
-              azioni_amministratore();
+            if ($tmp) { ?>
+              <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+                <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+                  <h2>L'evento <strong>"<?=$eventoNew?>"</strong> è stato inserito correttamente</h2>
+                  <hr>
+                  <a href="aggiungievento.php" class="btn btn-primary mb-3">Aggiungi un altro evento</a><br>
+                  <a href="gestioneEventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
+                </div>
+              </div>
+            <?php
             }
-            else {
-              echo "<p>Ci sono stati problemi con l'inserimento del nuovo evento</p>";
-              azioni_amministratore();
+            else { ?>
+              <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+                <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+                  <h2><?=$username?>, ci sono stati problemi con l'inserimento del nuovo evento!</h2>
+                  <h3>[controlloaggiungievento] => Errore: <?=mysqli_error($conn)?></h3>
+                  <hr>
+                  <a href="aggiungievento.php" class="btn btn-primary mb-3">Aggiungi evento</a><br>
+                  <a href="gestioneEventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
+                </div>
+              </div>
+<?php
             }
           }
             else {
