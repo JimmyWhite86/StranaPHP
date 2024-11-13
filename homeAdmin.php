@@ -75,7 +75,7 @@
           <li><a href="nuovoMenu.php">Crea un nuovo menù</a></li>
           <li><a href="eliminaMenu.php">Elimina il menu presente</a></li>
           <li><a href="aggiungiPiatto.php">Aggiungi un singolo piatto al menu</a></li>
-          <li><a href="eliminaPiatto.php.php">Elimina un singolo piatto dal menu</a></li>
+          <li><a href="eliminaPiatto.php">Elimina un singolo piatto dal menu</a></li>
         </ul>
       </div>
 
@@ -83,7 +83,7 @@
         <h2 class="text-center">Gestione Eventi</h2>
         <ul class="list-unstyled">
           <li><a href="aggiungievento.php">Aggiungi un nuovo evento</a></li>
-          <li><a href="eliminaevento.php.php">Elimina un evento</a></li>
+          <li><a href="eliminaevento.php">Elimina un evento</a></li>
           <li><a href="modificaEvento.php">Modifica un evento</a></li>
         </ul>
       </div>

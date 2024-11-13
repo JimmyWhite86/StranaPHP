@@ -53,6 +53,13 @@
 <!-- Richiamo la nav bar -->
 <?php richiamaNavBar($nomePagina); ?>
 
+<!-- "Titolo" della pagina -->
+<div class="my-5 row justify-content-center">
+  <div class="text-center">
+    <h1 class="titoloPagina">elimina evento</h1>
+  </div>
+</div>
+
 <?php
   if (!isset($_SESSION["username"])) {
     deviLoggarti();
@@ -65,18 +72,11 @@
       deviEssereAdmin($username);
     }
     else { ?>
-
-      <!-- "Titolo" della pagina -->
-      <div class="my-5 row justify-content-center">
-        <div class="text-center">
-          <h1 class="titoloPagina">elimina evento</h1>
-        </div>
-      </div>
       
       <!-- Sottotilo della pagina-->
       <div class="my-5 row justify-content-center">
         <div class="text-center">
-         <h2><?=$username?> Scegli quale evento vuoi eliminare</h2>
+         <h2><?=$username?>, scegli quale evento vuoi eliminare</h2>
         </div>
       </div>
       

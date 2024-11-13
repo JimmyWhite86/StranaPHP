@@ -148,7 +148,7 @@ function ottieniListaPiattiDisponibili ()
 
 # ------------------------------------
 # Funzione per ottenere le categorie dei piatti disponibili
-function ottieniCategoriePiattiDisponbili () {
+function ottieniCategoriePiattiDisponbili () { // TODO: correggere errore battitura
   $listaPiattiDisponibili = ottieniListaPiattiDisponibili();
   
   $qtyAntipasti = 0;
@@ -283,5 +283,51 @@ function eliminaInteroMenu () {
   }
   mysqli_close($conn);
 }
+# ------------------------------------
+
+
+# ------------------------------------
+# Funzione per verifica utente loggato come admin TODO: la prova l'ho fatta nella pagina modificaEvento. Al primo tentativo non funzionava. o la implemento o la tolgo da tutte e due le pagine
+                                                    // Eventualmente provare con un if
+  /*function verificaUtenteLoggato ($_SESSION) {
+    if (!isset($_SESSION["username"])) {
+      return 0; // Utente non loggato
+    }
+    else {
+      $amministratore = $_SESSION["admin"];
+      $username = $_SESSION["username"];
+      if ($amministratore == 0) {
+        return 1; // Utente loggato senza privilegi di admin
+      }
+      else {
+        return 2; // Utente loggato come admin
+      }
+    }
+  }*/
+# ------------------------------------
+# ------------------------------------
+  
+  
+  # ------------------------------------
+# Funzione per richiamare i dati dell'evento selezionato da modificare
+  function eventoDaModificareSelezionato ($idEvento) {
+    $conn = connetti ("Strana01");
+    if (!$conn) {
+      die("[eliminaEvento] => Connessione fallita: " . mysqli_connect_error());
+    }
+    $sql = "SELECT * FROM Eventi WHERE IDEvento='$idEvento'";
+    $tmp = mysqli_query($conn, $sql);
+    $nRow = mysqli_num_rows($tmp);
+    if ($nRow == 0) {
+      //echo "<h1>Evento non trovato $idEvento</h1>";
+      return ['successo' => false, 'nomeEvento' => ''];
+    }
+    else {
+      //ottengo i dati dell'evento per poi comunicarli all'utente
+      $datiEvento = mysqli_fetch_assoc($tmp);
+      mysqli_close($conn);
+      return $datiEvento;
+    }
+  }
 # ------------------------------------
 ?>
