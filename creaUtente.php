@@ -103,7 +103,7 @@
                       <span class="mandatory">*</span>
                     </label>
                     <input type="password" name="psw1" id="psw1" class="form-control" title="Inserisci una password"
-                           required aria-required="trure">
+                           required aria-required="true">
                     <br>
 
                     <label for="psw2">
@@ -111,7 +111,7 @@
                       <span class="mandatory">*</span>
                     </label>
                     <input type="password" name="psw2" id="psw2" class="form-control" title="Ripeti la password"
-                           required aria-required="trure">
+                           required aria-required="true">
                     <br>
 
                     <br><br>
