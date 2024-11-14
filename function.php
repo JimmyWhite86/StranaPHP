@@ -43,7 +43,7 @@ function ottieniListaEventi () {
     }
 
     $query = "SELECT * FROM Eventi ORDER BY dataEvento ASC"; //TODO: Forse dovrei richiamare solo eventi attivi?
-    $datiEventi = mysqli_query($conn, $query);
+    $datiEventi = mysqli_query($conn, $query); // TODO: per essere piu consistente dovrei chiamare la variabili sql e non query
     if(!$datiEventi) {
       die("[ottieniListaEventi] => Errore db " . mysqli_error($conn));
     }
