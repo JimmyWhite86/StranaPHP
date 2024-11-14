@@ -2,7 +2,7 @@
   session_start();
   include "function.php";
   include "functionHTML.php";
-  $nomePagina = "aggiungiEvento";
+  $nomePagina = "aggiungiUtente";
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +45,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   
-  <title>Stranamore | Home</title>
+  <title>AdminStrana | Aggiungi Utente</title>
 
 </head>
 
@@ -57,111 +57,119 @@
 <!-- "Titolo" della pagina -->
 <div class="my-5 row justify-content-center">
   <div class="text-center">
-    <h1 class="titoloPagina">aggiungi un evento</h1>
+    <h1 class="titoloPagina">aggiungi un nuovo utente</h1>
   </div>
 </div>
 
 <?php
-
+  
   if (!isset($_SESSION["username"])) {  # Utente non loggato
     deviLoggarti();
   }
   else { # Utente loggato
-
+    
     $amministratore = $_SESSION ["admin"];
     $username = $_SESSION ["username"];
-
+    
     if ($amministratore == 0) {   # Utente non ha diritti di admin
       deviEssereAdmin($username);
     }
     else { # Utente è admin --> controllo che i dati inseriti siano corretti
-      if ( isset($_POST["eventoNew"]) && $_POST["eventoNew"] && isset($_POST["dataNew"]) && $_POST["dataNew"] && isset($_POST["descrizioneNew"]) && $_POST["descrizioneNew"]) {
+      
+      if (isset($_POST["usernameNew"]) && $_POST["usernameNew"] && isset($_POST["psw1"]) && $_POST["psw1"] && isset($_POST["psw2"]) && $_POST["psw2"] ) {
         
-        $eventoNew = $_POST["eventoNew"];
-        $dataNew = $_POST["dataNew"];
-        $descrizioneNew = $_POST["descrizioneNew"];
-
-        $upload_percorso = "immagini/";
-        $file_tmp = $_FILES['immagine']['tmp_name'];
-        $file_nome = $_FILES['immagine']['name'];
-        $pathnameImmagine = "$upload_percorso"."$file_nome";
-        move_uploaded_file($file_tmp, $upload_percorso.$file_nome);
-
-        $conn = connetti ("Strana01");
-        if (!$conn) {
-          erroreConnessioneHTML($conn);
-          /*echo "<p>La connessione ha avuto problemi".mysqli_error($conn);
-          azioni_amministratore();*/
-        }
-        else {
-
-          // TODO: Far diventare questo pezzo una funzione da inserire nel file esterno!
-          $sql = "SELECT nomeEvento FROM Eventi WHERE nomeEvento = 'eventoNew'";
-          $tmp = mysqli_query($conn,$sql);
-          $numeroRighe = mysqli_num_rows($tmp);
-
-          if ($numeroRighe == 0) {  # Vuol dire che nella tabella non ci sono altri eventi con quel nome
-            $sql = "INSERT INTO Eventi (NomeEvento, DataEvento, Immagine, Descrizione, eliminato)
-                    VALUES ('$eventoNew', '$dataNew', '$pathnameImmagine', '$descrizioneNew', '0')";
+        $usernameNew = $_POST["usernameNew"];
+        $psw1 = $_POST["psw1"];
+        $psw2 = $_POST["psw2"];
+        
+        if ($psw1 === $psw2) {
+          
+          $conn = connetti("Strana01");
+          if (!$conn) {
+            erroreConnessioneHTML($conn);
+          } else {
+            
+            $sql = "SELECT UserName FROM User WHERE UserName = '$usernameNew'";
             $tmp = mysqli_query($conn, $sql);
-            if ($tmp) { ?>
+            $numeroRighe = mysqli_num_rows($tmp);
+            
+            if ($numeroRighe == 0) {  // Non ci sono altri utenti con questo username
+              
+              $sql = "INSERT INTO User (UserName, Password, admin) VALUES ('$usernameNew', '$psw1', '1')";
+              $tmp = mysqli_query($conn, $tmp);
+              
+              if ($tmp) { ?>
+
+                <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+                  <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+                    <h2>L'utente <strong>"<?=$usernameNew?>"</strong> è stato inserito correttamente</h2>
+                    <hr>
+                    <a href="creaUtente.php" class="btn btn-primary mb-3">Aggiungi un altro utente</a><br>
+                    <a href="gestioneUtenti.php" class="btn btn-primary mb-3">Gestione utenti</a><br>
+                  </div>
+                </div>
+                
+              <?php
+              } else { ?>
+
+                <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+                  <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+                    <h2><?=$username?>, ci sono stati problemi con l'inserimento del nuovo utente!</h2>
+                    <h3>[controlloAggiunteUtente] => Errore: <?=mysqli_error($conn)?></h3>
+                    <hr>
+                    <a href="creaUtente.php" class="btn btn-primary mb-3">Aggiungi un altro utente</a><br>
+                    <a href="gestioneUtenti.php" class="btn btn-primary mb-3">Gestione utenti</a><br>
+                  </div>
+                </div>
+<?php
+              }
+            } else { ?>
+             
               <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
                 <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-                  <h2>L'evento <strong>"<?=$eventoNew?>"</strong> è stato inserito correttamente</h2>
+                  <h2><?=$username?>, l'utente che hai cercato di inserire è già presente a sistema</h2>
                   <hr>
-                  <a href="aggiungievento.php" class="btn btn-primary mb-3">Aggiungi un altro evento</a><br>
-                  <a href="gestioneEventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
+                  <a href="creaUtente.php" class="btn btn-primary mb-3">Aggiungi un altro utente</a><br>
+                  <a href="gestioneUtenti.php" class="btn btn-primary mb-3">Gestione utenti</a><br>
                 </div>
               </div>
+
             <?php
             }
-            else { ?>
-              <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-                <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-                  <h2><?=$username?>, ci sono stati problemi con l'inserimento del nuovo evento!</h2>
-                  <h3>[controlloaggiungievento] => Errore: <?=mysqli_error($conn)?></h3>
-                  <hr>
-                  <a href="aggiungievento.php" class="btn btn-primary mb-3">Aggiungi evento</a><br>
-                  <a href="gestioneEventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
-                </div>
-              </div>
-<?php
-            }
           }
-            else { ?>
-              
-              <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-                <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-                  <h2><?=$username?>, l'evento che hai provato ad inserire è già presente a sistema</h2>
-                  <hr>
-                  <a href="aggiungievento.php" class="btn btn-primary mb-3">Aggiungi evento</a><br>
-                  <a href="gestioneEventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
-                </div>
-              </div>
-              
-              <?php
-            }
-            mysqli_close($conn);
+        } else { ?>
+
+          <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+            <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+              <h2><?=$username?>, le password non corrispondono.</h2>
+              <p>Per creare correttamente un nuovo utente, psw1 e psw2 devono essere uguali</p>
+              <hr>
+              <a href="creaUtente.php" class="btn btn-primary mb-3">Aggiungi un altro utente</a><br>
+              <a href="gestioneUtenti.php" class="btn btn-primary mb-3">Gestione utenti</a><br>
+            </div>
+          </div>
+          
+        <?php
         }
-      }
-      else { ?>
-        
+      } else { ?>
+
         <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
           <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-            <h2><?=$username?>, devi compilare tutti i campi del form precedente</h2>
+            <h2><?=$username?>, devi compilare tutti i campi del form precedente.</h2>
             <p>Per creare correttamente un nuovo utente, devi compilare tutti i campi del form precedente</p>
             <hr>
-            <a href="aggiungievento.php" class="btn btn-primary mb-3">Aggiungi evento</a><br>
-            <a href="gestioneEventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
+            <a href="creaUtente.php" class="btn btn-primary mb-3">Aggiungi un altro utente</a><br>
+            <a href="gestioneUtenti.php" class="btn btn-primary mb-3">Gestione utenti</a><br>
           </div>
         </div>
-      
+        
       <?php
       }
     }
   }
-
-
+  
+  
+  
   HTMLfooter($nomePagina);?>
 
 </body>
