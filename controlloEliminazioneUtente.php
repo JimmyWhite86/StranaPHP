@@ -2,7 +2,7 @@
   session_start();
   include "function.php";
   include "functionHTML.php";
-  $nomePagina = "eliminaEvento";
+  $nomePagina = "eliminaUtente";
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +45,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   
-  <title>Strana eliminaEvento</title>
+  <title>StranaAdmin | eliminaUtente</title>
 
 </head>
 <body>
@@ -56,7 +56,7 @@
 <!-- "Titolo" della pagina -->
 <div class="my-5 row justify-content-center">
   <div class="text-center">
-    <h1 class="titoloPagina">elimina evento</h1>
+    <h1 class="titoloPagina">elimina utente</h1>
   </div>
 </div>
 
@@ -72,40 +72,37 @@
       deviEssereAdmin($username);
     }
     else {
-      $idEvento = $_POST["eventoSelezionato"];
-      $esitoEliminazione = eliminaEvento($idEvento);
+      $idUtente = $_POST["utenteSelezionato"];
+      $esitoEliminazione = eliminaEvento($idUtente);
       
       if (!$esitoEliminazione['successo']) { ?>
         <div class="container-fluid d-flex justify-content-center bg-giallo pb-4 pt-4 mt-4 mb-4">
           <div class="row bg-bianco justify-content-center col-6 text-center">
-            <h2> Ci sono stati errori durante l'eliminazione dell'evento </h2>
-            <p>Hai cercato di eliminare l'evento <?=$esitoEliminazione['nomeEvento']?></p>
+            <h2> Ci sono stati errori durante l'eliminazione dell'utente </h2>
+            <p>Hai cercato di eliminare l'utente <?=$esitoEliminazione['UserName']?></p>
             <hr>
-            <a href="gestioneEventi.php">Torna alla pagina gestione eventi</a>
+            <a href="eliminaUtente.php">Elimina un altro utente</a>
+            <a href="gestioneUtenti.php">Torna alla pagina gestione utenti</a>
             <a href="homeAdmin.php">Oppure torna alla home per admin</a>
           </div>
         </div>
-      <?php
-      
-      }
-      else {?>
-        <div class="container-fluid d-flex justify-content-center bg-giallo pb-4 pt-4 mt-4 mb-4">
-          <div class="row bg-bianco justify-content-center col-6 text-center">
-            <h1> Eliminazione evento avvenuta con successo </h1>
-            <p>Hai eliminato: <strong><?= $esitoEliminazione['nomeEvento']?></strong></p>
-            <hr>
-            <a href="gestioneEventi.php">Torna alla pagina gestione eventi</a>
-            <a href="homeAdmin.php">Oppure torna alla home per admin</a>
+        <?php
+      } else {?>
+          <div class="container-fluid d-flex justify-content-center bg-giallo pb-4 pt-4 mt-4 mb-4">
+            <div class="row bg-bianco justify-content-center col-6 text-center">
+              <h1> Eliminazione utente avvenuta con successo </h1>
+              <p>Hai eliminato: <strong><?= $esitoEliminazione['UserName']?></strong></p>
+              <hr>
+              <a href="eliminaUtente.php">Elimina un altro utente</a>
+              <a href="gestioneUtenti.php">Torna alla pagina gestione utenti</a>
+              <a href="homeAdmin.php">Oppure torna alla home per admin</a>
+            </div>
           </div>
-        </div>
-<?php
-      }
+          <?php
+        }
     }
   }
 ?>
-
-
-
 
 <!-- Richiamo il footer -->
 <?php HTMLfooter($nomePagina);?>

@@ -1,8 +1,8 @@
 <?php
   session_start();
-  include "function.php";
   include "functionHTML.php";
-  $nomePagina = "eliminaEvento";
+  include "function.php";
+  $nomePagina = "eliminaUtente";
 ?>
 
 <!DOCTYPE html>
@@ -45,70 +45,91 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   
-  <title>Strana eliminaEvento</title>
+  <title>StranaAdmin | eliminaUtente</title>
 
 </head>
 <body>
 
-<!-- Richiamo la nav bar-->
-<?php richiamaNavBar($nomePagina);?>
+<!-- Richiamo la nav bar -->
+<?php richiamaNavBar($nomePagina); ?>
 
 <!-- "Titolo" della pagina -->
 <div class="my-5 row justify-content-center">
   <div class="text-center">
-    <h1 class="titoloPagina">elimina evento</h1>
+    <h1 class="titoloPagina">elimina un utente</h1>
   </div>
 </div>
 
 <?php
-  
   if (!isset($_SESSION["username"])) {
     deviLoggarti();
   }
   else {
     $amministratore = $_SESSION["admin"];
-    $username = $_SESSION["UserName"];
+    $username = $_SESSION["username"];
+    
     if ($amministratore == 0) {
       deviEssereAdmin($username);
     }
-    else {
-      $idEvento = $_POST["eventoSelezionato"];
-      $esitoEliminazione = eliminaEvento($idEvento);
+    else { ?> <!-- Utente loggato come admin -->
       
-      if (!$esitoEliminazione['successo']) { ?>
-        <div class="container-fluid d-flex justify-content-center bg-giallo pb-4 pt-4 mt-4 mb-4">
-          <div class="row bg-bianco justify-content-center col-6 text-center">
-            <h2> Ci sono stati errori durante l'eliminazione dell'evento </h2>
-            <p>Hai cercato di eliminare l'evento <?=$esitoEliminazione['nomeEvento']?></p>
-            <hr>
-            <a href="gestioneEventi.php">Torna alla pagina gestione eventi</a>
-            <a href="homeAdmin.php">Oppure torna alla home per admin</a>
-          </div>
+      <!-- Sottotilo della pagina-->
+      <div class="my-5 row justify-content-center">
+        <div class="text-center">
+          <h2><?=$username?>, scegli quale utente vuoi eliminare</h2>
         </div>
+      </div>
+      
+      <?php $listaUtenti = ottieniListaUtenti(); ?>
+      
+      <!-- Tabella della pagina -->
+      <form method="POST" action="controlloEliminazioneUtente.php">
+        <div class="containerTabella my-5"> <!-- Mantiene il layout centrato e con margine verticale -->
+          <div class="row justify-content-center">  <!-- Riga per definire il layout. Centra la colonna orizzontalmente-->
+            <div class="col-10"> <!-- colonna che occupa 10 parti su 12 -->
+              <table class="table table-bordered table-striped text-center align-middle">
+                <thead class="intestazioneTabella">
+                <tr class="intestazioneTabella">
+                  <th class="intestazioneTabella">ID Utente</th>
+                  <th class="intestazioneTabella">Nome Utente</th>
+                  <th class="intestazioneTabella">Admin</th>
+                  <th class="intestazioneTabella">Seleziona</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php while ($row = mysqli_fetch_assoc($listaUtenti)) {?>
+                  <tr>
+                    <td><?=$row['IDUser']?></td>
+                    <td><?=$row['NomeUtente']?></td>
+                    <td><?=$row['admin']?></td>
+                    <td>
+                      <input type="radio" name="utenteSelezionato" value="<?=$row['IDUser']?>">
+                    </td>
+                  </tr>
+                  <?php
+                }
+                ?>
+                </tbody>
+              </table>
+            </div> <!-- Fine della colonna-->
+          </div>  <!-- Fine della riga -->
+          <!-- Pulsante centrato -->
+          <div class="text-center mt-4">
+            <input type="submit" name="invio" id="invio" value="ELIMINA" class="btn btn-danger">
+          </div>
+        </div>  <!-- Fine del container -->
+      </form>
+      
+      
       <?php
-      
-      }
-      else {?>
-        <div class="container-fluid d-flex justify-content-center bg-giallo pb-4 pt-4 mt-4 mb-4">
-          <div class="row bg-bianco justify-content-center col-6 text-center">
-            <h1> Eliminazione evento avvenuta con successo </h1>
-            <p>Hai eliminato: <strong><?= $esitoEliminazione['nomeEvento']?></strong></p>
-            <hr>
-            <a href="gestioneEventi.php">Torna alla pagina gestione eventi</a>
-            <a href="homeAdmin.php">Oppure torna alla home per admin</a>
-          </div>
-        </div>
-<?php
-      }
     }
   }
 ?>
 
 
-
-
 <!-- Richiamo il footer -->
-<?php HTMLfooter($nomePagina);?>
+<?php HTMLfooter($nomePagina); ?>
+
 
 </body>
 </html>

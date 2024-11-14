@@ -93,7 +93,7 @@
             
             if ($numeroRighe == 0) {  // Non ci sono altri utenti con questo username
               
-              $sql = "INSERT INTO User (UserName, Password, admin) VALUES ('$usernameNew', '$psw1', '1')";
+              $sql = "INSERT INTO User (UserName, Password, admin, utenteAttivo) VALUES ('$usernameNew', '$psw1', '1', '1')";
               $tmp = mysqli_query($conn, $sql);
               
               if ($tmp) { ?>

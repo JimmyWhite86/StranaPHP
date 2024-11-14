@@ -42,7 +42,7 @@ function ottieniListaEventi () {
       die ("[ottieniListaEventi] => Connessione fallita: " . mysqli_connect_error());
     }
 
-    $query = "SELECT * FROM Eventi ORDER BY dataEvento ASC";
+    $query = "SELECT * FROM Eventi ORDER BY dataEvento ASC"; //TODO: Forse dovrei richiamare solo eventi attivi?
     $datiEventi = mysqli_query($conn, $query);
     if(!$datiEventi) {
       die("[ottieniListaEventi] => Errore db " . mysqli_error($conn));
@@ -238,7 +238,7 @@ function piattiInArray () {
         if (!$tmp) {
           die("[eliminaPiatto] => Errore nella query di aggiornamento: " . mysqli_error($conn));
         }
-        if ($tmp) {
+        if ($tmp) { // TODO: è necessario questo if? Non posso usare direttamente l'else dopo?
           return ['successo' => true, 'nomePiatto' => $nomePiatto];
         }
         else {
@@ -330,6 +330,53 @@ function eliminaInteroMenu () {
     }
   }
 # ------------------------------------
-
+  
+# ------------------------------------
+# Funzione per eliminare un utente
+  function eliminaUtente($idUtente) {
+    $conn = connetti ("Strana01");
+    if(!$conn) {
+      die ("[eliminaUtente] => Connessione fallita: " . mysqli_connect_error());
+    }
+    $sql = "SELECT * FROM User WHERE IDUser = '$idUtente'";
+    $tmp = mysqli_query($conn, $sql);
+    if (!$tmp) {
+      die ("[eliminaUtente] => Errore nella query di selezione: " . mysqli_error($conn));
+    }
+    $nRow = mysqli_num_rows($tmp);
+    if ($nRow == 0) {
+      return ['successo' => false, 'nomeUtente' => ''];
+    } else {
+      // Ottengo i dati dell'utente per comunicarli all'utente
+      $datiUtente = mysqli_fetch_assoc($tmp);
+      $nomeUtente = $datiUtente['UserName'];
+      $sql = "UPDATE User SET utenteAttivo = FALSE WHRE IDUser = '$idUtente'";
+      $tmp = mysqli_query($conn, $sql);
+      if (!$tmp) {
+        die ("[eliminaUtente] => Errore nella query di aggiornamento" . mysqli_error($conn));
+      } else {
+        return ['successo' => true, 'nomeUtente' => $nomeUtente];
+      }
+    }
+    mysqli_close($conn);
+  }
+  
+# ------------------------------------
+# Funzione per richiamare una lista di utenti
+  
+  function ottieniListaUtenti () {
+    $conn = connetti("Stran01");
+    if (!$conn) {
+      die ("[ottieniListaUtenti] => Connessione fallita " . mysqli_connect_error());
+    }
+    $sql = "SELECT * FROM User WHERE utenteAttivo = '1' ORDER BY IDUser ASC";
+    $datiUtenti = mysqli_query($conn, $sql);
+    if (!$datiUtenti) {
+      die ("[ottieniListaUtenti] => Errore nella query di ricerca " . mysqli_error($conn));
+    }
+    
+    mysqli_close($conn);
+    return $datiUtenti;
+  }
 
 ?>
