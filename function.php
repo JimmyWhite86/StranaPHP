@@ -350,7 +350,7 @@ function eliminaInteroMenu () {
       // Ottengo i dati dell'utente per comunicarli all'utente
       $datiUtente = mysqli_fetch_assoc($tmp);
       $nomeUtente = $datiUtente['UserName'];
-      $sql = "UPDATE User SET utenteAttivo = FALSE WHRE IDUser = '$idUtente'";
+      $sql = "UPDATE User SET utenteAttivo = FALSE WHERE IDUser = '$idUtente'";
       $tmp = mysqli_query($conn, $sql);
       if (!$tmp) {
         die ("[eliminaUtente] => Errore nella query di aggiornamento" . mysqli_error($conn));
@@ -365,7 +365,7 @@ function eliminaInteroMenu () {
 # Funzione per richiamare una lista di utenti
   
   function ottieniListaUtenti () {
-    $conn = connetti("Stran01");
+    $conn = connetti("Strana01");
     if (!$conn) {
       die ("[ottieniListaUtenti] => Connessione fallita " . mysqli_connect_error());
     }
@@ -374,7 +374,6 @@ function eliminaInteroMenu () {
     if (!$datiUtenti) {
       die ("[ottieniListaUtenti] => Errore nella query di ricerca " . mysqli_error($conn));
     }
-    
     mysqli_close($conn);
     return $datiUtenti;
   }

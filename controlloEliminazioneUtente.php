@@ -91,7 +91,7 @@
           <div class="container-fluid d-flex justify-content-center bg-giallo pb-4 pt-4 mt-4 mb-4">
             <div class="row bg-bianco justify-content-center col-6 text-center">
               <h1> Eliminazione utente avvenuta con successo </h1>
-              <p>Hai eliminato: <strong><?= $esitoEliminazione['UserName']?></strong></p>
+              <p>Hai eliminato: <strong><?= $esitoEliminazione['nomeUtente'] ?></strong></p>
               <hr>
               <a href="eliminaUtente.php">Elimina un altro utente</a>
               <a href="gestioneUtenti.php">Torna alla pagina gestione utenti</a>

@@ -100,7 +100,7 @@
                 <?php while ($row = mysqli_fetch_assoc($listaUtenti)) {?>
                   <tr>
                     <td><?=$row['IDUser']?></td>
-                    <td><?=$row['NomeUtente']?></td>
+                    <td><?=$row['UserName']?></td>
                     <td><?=$row['admin']?></td>
                     <td>
                       <input type="radio" name="utenteSelezionato" value="<?=$row['IDUser']?>">
