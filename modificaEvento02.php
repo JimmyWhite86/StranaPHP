@@ -76,6 +76,12 @@
       $idEvento = $_POST["eventoSelezionato"];
       $datiEventoSelezionato = eventoDaModificareSelezionato($idEvento);
       
+      // Cambio formato alla data (da YYYYMMDD a DDMMYYYY)
+      $dataFormatoOld = $datiEventoSelezionato["DataEvento"];
+      $timeStamp = strtotime($dataFormatoOld);
+      $dataFormatoNew = date("d-m-Y", $timeStamp);
+      $datiEventoSelezionato["DataEvento"] = $dataFormatoNew;
+      
       ?>
 
 
@@ -92,15 +98,15 @@
                 <fieldset>
                   <div class="form-group">
                     
-                    <input type="hidden" name="idEvento" value="<?= htmlspecialchars($idEvento) ?>">
+                    <input type="hidden" name="idEvento" value="<?= $idEvento ?>">
                     
                     <label for="eventoNew">
                       Inserisci il titolo dell'evento
                       <span class="mandatory">*</span>
                     </label>
                     <input type="text" name="eventoNew" id="eventoNew" class="form-control"
-                           title="Inserisci il titolo dell'evento" required aria-required="true"
-                           placeholder="<?= htmlspecialchars($datiEventoSelezionato['nomeEvento'])?>">
+                           title="Inserisci il titolo dell'evento"
+                           placeholder="<?= $datiEventoSelezionato['nomeEvento'] ?>">
                     <br>
 
                     <label for="dataNew">
@@ -108,17 +114,17 @@
                       <span class="mandatory">*</span>
                     </label>
                     <input type="date" name="dataNew" id="dataNew" class="form-control col-md-3"
-                           required aria-required="true" title="inserisci la data dell'evento"
-                          placeholder="<?= htmlspecialchars($datiEventoSelezionato['DataEvento']) ?>">
+                            title="inserisci la data dell'evento"
+                          placeholder="<?= $datiEventoSelezionato['DataEvento'] ?>">
                     <br>
 
                     <label for="descrizioneNew">
                       Inserisci la descrizione
                       <span class="mandatory">*</span>
                     </label>
-                    <textarea name="descrizioneNew" id="descrizioneNew" class="form-control" required aria-required="true"
+                    <textarea name="descrizioneNew" id="descrizioneNew" class="form-control"
                               title="Inserisci la descrizione dell'evento"
-                              placeholder="<?= htmlspecialchars($datiEventoSelezionato['Descrizione']) ?>">
+                              placeholder="<?= $datiEventoSelezionato['Descrizione'] ?>">
                     </textarea>
                     <br>
 
@@ -130,7 +136,7 @@
                   </div>
 
                   <div class="text-center">
-                    <input type="submit" value="Inserisci" class="btn btn-success">
+                    <input type="submit" value="Modifica" class="btn btn-success">
                   </div>
 
                 </fieldset>
