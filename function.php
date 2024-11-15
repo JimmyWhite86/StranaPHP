@@ -34,24 +34,43 @@ function cercaUtente ($username) {
 }
 # ------------------------------------
 
+
 # ------------------------------------
 # Restituisce informazioni su tutti gli eventi presenti in tabella eventi
-function ottieniListaEventi () {
-    $conn = connetti("Strana01");
+  function ottieniListaEventi ($attivi) {
+    $conn = connetti ("Strana01");
     if (!$conn) {
       die ("[ottieniListaEventi] => Connessione fallita: " . mysqli_connect_error());
     }
-
-    $query = "SELECT * FROM Eventi ORDER BY dataEvento ASC"; //TODO: Forse dovrei richiamare solo eventi attivi?
-    $datiEventi = mysqli_query($conn, $query); // TODO: per essere piu consistente dovrei chiamare la variabili sql e non query
-    if(!$datiEventi) {
-      die("[ottieniListaEventi] => Errore db " . mysqli_error($conn));
+    
+    // Prepara la query in base al valore di $attivi
+    $sql = "";
+    switch ($attivi) {
+      case 0: // Eventi non attivi
+        $sql = "SELECT * FROM Eventi WHERE Eliminato = TRUE ORDER BY dataEvento ASC";
+        break;
+      case 1: // Eventi attivi
+        $sql = "SELECT * FROM Eventi WHERE Eliminato = FALSE ORDER BY dataEvento ASC";
+        break;
+      case 2: // Tutti gli eventi
+        $sql = "SELECT * FROM Eventi ORDER BY dataEvento ASC";
+        break;
+      default:
+        die ("[ottieniListaEventi] => Valore di \$attivi non valido");
     }
     
+    // Eseguo la query:
+    $datiEventi = mysqli_query($conn, $sql);
+    if (!$datiEventi) {
+      die ("[ottieniListaEventi] => Errore db: " . mysqli_error($conn));
+    }
+    
+    // Chiudo sessione e ritorno i dati
     mysqli_close($conn);
     return $datiEventi;
-}
+  }
 # ------------------------------------
+
 
 # ------------------------------------
 # Funzione che richiama la nav bar in base all'utente loggato
@@ -129,27 +148,49 @@ function eliminaEvento ($idEvento) {
 # ------------------------------------
 
 # ------------------------------------
-# Restituisce informazioni su tutti gli eventi presenti in tabella eventi
-function ottieniListaPiattiDisponibili ()
-{
+# RESTITUISCE I VALORI DEI PIATTI PRESENTI NEL DB
+# A seconda del valore che viene passato nella funzione restituisce
+# 0 => I piatti che sono "non attivi"
+# 1 => I piatti che sono "attivi"
+# 2 => Tutti i piatti, attivi e non attivi"
+function ottieniListaPiatti ($attivi) {
   $conn = connetti("Strana01");
   if (!$conn) {
     die ("[ottieniListaPiattiDisponibili] => Connessione fallita: " . mysqli_connect_error());
   }
   
-  $query = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = '1'";
-  $listaPiattiDisponibili = mysqli_query($conn, $query);
-  if (!$listaPiattiDisponibili) {
-    die("Errore db " . mysqli_error($conn));
+  // Preparo le query in base ai valori di attivi
+  $sql = "";
+  switch ($attivi) {
+    case 0: // Seleziono i piatti non attivi
+      $sql = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = 0";
+      break;
+    case 1: // Seleziono i piatti attivi
+      $sql = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = 1";
+      break;
+    case 2: // Seleziono tutti i piatti
+      $sql = "SELECT * FROM menuCucina";
+      break;
+    default:
+      die ("[ottieniListaPiatti] => Valore di \$attivi non valido");
   }
-  return $listaPiattiDisponibili;
+  
+  // Eseguo la query
+  $listaPiatti = mysqli_query($conn, $sql);
+  if (!$listaPiatti) {
+    die ("[ottieniListaPiatti] => Errore db: " . mysqli_error($conn));
+  }
+  
+  // Chiudo la connessione e restituisco i dati
+  mysqli_close($conn);
+  return $listaPiatti;
 }
 # ------------------------------------
 
 # ------------------------------------
 # Funzione per ottenere le categorie dei piatti disponibili
-function ottieniCategoriePiattiDisponbili () { // TODO: correggere errore battitura
-  $listaPiattiDisponibili = ottieniListaPiattiDisponibili();
+function ottieniCategoriePiatti ($attivi) {
+  $listaPiattiDisponibili = ottieniListaPiatti($attivi);
   
   $qtyAntipasti = 0;
   $qtyPrimi = 0;
@@ -364,11 +405,23 @@ function eliminaInteroMenu () {
 # ------------------------------------
 # Funzione per richiamare una lista di utenti
   
-  function ottieniListaUtenti () {
+  function ottieniListaUtenti ($attivi) {
     $conn = connetti("Strana01");
     if (!$conn) {
       die ("[ottieniListaUtenti] => Connessione fallita " . mysqli_connect_error());
     }
+    
+    // Prepara la query in base al valore di $attivi
+    $sql = "";
+    switch ($attivi) {
+      case 0:
+        $sql = "SELECT * FROM User WHERE utenteAttivo = FALSE";
+        break;
+    }
+    
+    
+    
+    
     $sql = "SELECT * FROM User WHERE utenteAttivo = '1' ORDER BY IDUser ASC";
     $datiUtenti = mysqli_query($conn, $sql);
     if (!$datiUtenti) {

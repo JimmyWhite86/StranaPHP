@@ -90,7 +90,10 @@
        </div>
      </div>
   
-     <?php $listaEventi = ottieniListaEventi(); ?>
+     <?php
+      $attivi = 2; // Seleziono tutti gli eventi
+      $listaEventi = ottieniListaEventi($attivi);
+     ?>
 
      <!-- Tabella della pagina -->
      <form method="POST" action="modificaEvento02.php">

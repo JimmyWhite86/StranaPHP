@@ -80,7 +80,10 @@
         </div>
       </div>
       
-      <?php $listaEventi = ottieniListaEventi(); ?>
+      <?php
+        $attivi = 1; // Seleziono solo eventi attivi
+        $listaEventi = ottieniListaEventi($attivi);
+      ?>
 
       <!-- Tabella della pagina -->
       <form method="POST" action="controllocancellazioneevento.php">

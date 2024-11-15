@@ -79,8 +79,6 @@
         </div>
       </div>
       
-      <?php $listaEventi = ottieniListaEventi(); ?>
-      
       <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
         <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
           <form method="POST" action="controlloEliminazioneMenu.php">

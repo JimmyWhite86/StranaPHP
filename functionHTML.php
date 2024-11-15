@@ -332,7 +332,8 @@
   
   # Funzione per generare le card eventi
   function generaCardEventi () {
-    $datiEventi = ottieniListaEventi(); # Recupero tutti gli eventi presenti nel db
+    $attivi = 2; // Seleziono tutti gli eventi, attivi e non.
+    $datiEventi = ottieniListaEventi($attivi );
     
     # Genero le card:
     while ($row = mysqli_fetch_assoc($datiEventi)) {
@@ -355,8 +356,9 @@
   
   #Funzione per generare il menu in maniera dinamica
   function generaMenu() {
+    $attivi = 1;
     $listaPiattiDisponibili = piattiInArray();
-    $categorie = ottieniCategoriePiattiDisponbili();
+    $categorie = ottieniCategoriePiatti($attivi);
     
     $categorieOrdinate = [
       'antipasti' => "antipasti",
