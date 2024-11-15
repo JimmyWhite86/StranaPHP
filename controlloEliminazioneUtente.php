@@ -73,7 +73,7 @@
     }
     else {
       $idUtente = $_POST["utenteSelezionato"];
-      $esitoEliminazione = eliminaEvento($idUtente);
+      $esitoEliminazione = eliminaUtente($idUtente);
       
       if (!$esitoEliminazione['successo']) { ?>
         <div class="container-fluid d-flex justify-content-center bg-giallo pb-4 pt-4 mt-4 mb-4">
