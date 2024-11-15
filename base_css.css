@@ -1,5 +1,9 @@
+/* FILE CSS PER SITO DI STRANAMORE */
+/* Bianchi Andrea */
+/* 2024 _ UniTo */
+
 /* ------------------------------------------------ */
-/* FONT */
+/* // GESTIONE DEI FONT */
 
 /* FONT EASYRIDING  */
 @font-face {
@@ -18,11 +22,13 @@
   font-family: Babas;
   src: url(FONT/BebasNeue-Regular.ttf);
 }
+
 /* FONT LATO*/
 @font-face {
   font-family: Lato-Regular;
   src: url(FONT/Lato-Regular.ttf);
 }
+
 
 body {
   font-family: Lato-Regular, arial, hevetica, sans-serif;
@@ -127,34 +133,7 @@ body {
   font-size: 2.5rem;
 }
 
-/* @media (max-width: 768px) {
-  .fontstranaTitoli {
-    font-size: 3rem;
-  } 
-
-  .babasTitolo {
-    font-size: 2rem;
-  }
-
-  #fontHeroCentro {
-    font-size: 3rem;
-    /* padding: 0.2rem 0.5rem; 
-    display: inline-block;
-  }
-
-  #fontHeroSopra {
-    font-size: 1rem;
-  }
-
- 
-} */
-
-/* @media (max-width: 1199px) and (min-width: 767px) {
-  #fontHeroCentro {
-    font-size: 5rem;
-  }
-  
-} */
+/* // Font per schermi con differenti formati  */
 
 /* Schermi tra 768px e 1199px */
 @media (max-width: 1199px) and (min-width: 769px) {
@@ -204,12 +183,10 @@ body {
     font-size: 2rem;
   }
 }
-
-
 /* ------------------------------------------------ */
 
 /* ------------------------------------------------ */
-/* COLORI DI SFONDO */
+/* // COLORI DI SFONDO */
 
 .bg-azzurro {
   background-color: #009fb7;
@@ -233,8 +210,8 @@ body {
 /* ------------------------------------------------ */
 
 
-/* -------- */
-/* Colori icone */
+/* ------------------------------------------------ */
+/* // COLORI ICONE */
 
 .iconeGialle {
   color: #fed766;
@@ -249,8 +226,8 @@ body {
 }
 
 
-/* ------------- */
-/* Nascondo il link per accedere al contenuto principale */
+/* --------------------------------------------------- */
+/* // Nascondo il link per accedere al contenuto principale */
 .skip {
   position: absolute;
   left: -1000px;
@@ -265,11 +242,11 @@ body {
   width: auto;
   height: auto;
 }
-/* ------------- */
+/* ----------------------------------------------------- */
 
 
-/* ------------- */
-/* Stile Nav Bar */
+/* ----------------------------------------------------- */
+/* // NAV BAR */
 
 .navbar-nav {
   flex-grow: 1;
@@ -298,25 +275,12 @@ body {
 }
 
 .navbar-brand img { /* Imposto la grandezza del logo */
-  width: 8vw;
+  width: 10vw;
   height: auto;
 }
 
 .mioSpanNav {
   color: #009fb7;
-}
-
-/* Aumento la dimensione del logo su dispositivi mobili */
-@media (max-width: 768px) {
-  .navbar-brand img {
-    width: 22vw; /* Aumenta la dimensione al 20% della larghezza dello schermo */
-    height: auto;
-  }
-
-  .mioSpanNav {
-    display: none;
-  }
-
 }
 
 .dropdown-menu {
@@ -337,16 +301,22 @@ body {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23009fb7' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
 }
 
+/* Aumento la dimensione del logo su dispositivi mobili */
+@media (max-width: 768px) {
+  .navbar-brand img {
+    width: 22vw; /* Aumenta la dimensione al 20% della larghezza dello schermo */
+    height: auto;
+  }
+  .mioSpanNav { /* In schermi piccoli, quando i link diventano buerger menu, nascondo il carattere "|" */
+    display: none;
+  }
+}
+/* ------------------------------------------------------ */
 
 
-/* --------- */
-/* ------------- */
 
-
-
-/* ------------- */
-/* Hero Section */
-
+/* ------------------------------------------------------- */
+/* // HERO SECTION */
 .hero-section {
   position: relative;
   background-image: url('Immagini/Giardino02.jpeg');
@@ -354,21 +324,18 @@ body {
   background-position: center;
   min-height: 80vh; /*Imposta altezza minima della sesione all'80% dello schermo*/
 }
+/* -------------------------------------------------------- */
 
 
-/* --------- */
-/* ------------- */
-
-
-/* --------- */
-/* Footer */
+/* -------------------------------------------------------- */
+/* // FOOTER */
 footer a {
   color: #ffffff !important;
 }
-/* --------- */
+/* -------------------------------------------------------- */
 
-/* --------- */
-/* Blocchi home page */
+/* -------------------------------------------------------- */
+/* // BLOCCHI HOMEPAGE */
 
 .mioBordo01 {
   border: .3rem solid #009fb7;
@@ -377,12 +344,10 @@ footer a {
 .mioFlowRoot {
   display: flow-root;
 }
+/* --------------------------------------------------------- */
 
-/* --------- */
-/* ------------- */
-
-/* --------- */
-/* Pagina contatti */
+/* --------------------------------------------------------- */
+/* // PAGINA CONTATTI */
 .mioMargin01 {
   margin-bottom: 2.813rem;
 }
@@ -392,12 +357,6 @@ footer a {
   margin-top: 10%;
   margin-bottom: 5%;
   width: 70%;
-}
-
-@media (max-width: 768px) {
-  .contact-form {
-    width: 100% !important;
-  }
 }
 
 .contact-form .mioH3contatti {
@@ -468,10 +427,16 @@ footer a {
     padding-bottom: 4.375rem;
 }
 
+@media (max-width: 768px) {
+  .contact-form {
+    width: 100% !important;
+  }
+}
+/* --------------------------------------------------------- */
 
 
-/* -------- */
-/* Bottoni */
+/* --------------------------------------------------------- */
+/* // BOTTONI */
 
 .bottoneRosso {
   border-color: #fe4a49;
@@ -510,10 +475,10 @@ footer a {
   background-color: #009fb7;
   border-radius: .3rem;
 }
+/* --------------------------------------------------------- */
 
-
-/* ----- */
-/* Stile degli errori */
+/* --------------------------------------------------------- */
+/* // STILE DEGLI ERRORI */
  
 .mioErrore01 {
   color: #e50000;
@@ -538,12 +503,10 @@ textarea.ng-valid {
   border: rgb(69, 123, 47) solid 0.08rem;
   background-color: rgba(201, 212, 57, .09);
 }
+/* --------------------------------------------------------- */
 
-/* ------ */
-
-
-/* ------ */
-/* Tabella eliminazione eventi */
+/* --------------------------------------------------------- */
+/* // TABELLE */
 .miaImmagineTabella {
   width: 50px;
   height: 50px;
@@ -566,9 +529,14 @@ thead th.intestazioneTabella {
   }
 }
 
+
+
+/* --------------------------------------------------------- */
+/* TODO: Verificare a cosa si riferiscono queste classi */
 /*Che cavolo è questo???????*/
 @media (max-width: 768px) {
   .divHomeAdmin {
   }
 }
+/* --------------------------------------------------------- */
 

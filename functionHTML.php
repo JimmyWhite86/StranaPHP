@@ -3,16 +3,17 @@
   # Avviso l'utente che deve essere loggato per accedere alla pagina
   function deviLoggarti () { ?>
     <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-          <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-            <h2>Devi essere loggatə per accedere a questa pagina</h2>
-            <p>
-              Puoi tornare alla <a href="index.php">home page</a>
-              o cercare usare la barra di navigazione per cercare la pagina che ti serve
-            </p>
-          </div>
-        </div>
+      <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+        <h2>Devi essere loggatə per accedere a questa pagina</h2>
+        <p>
+          Puoi tornare alla <a href="index.php">home page</a>
+          o cercare usare la barra di navigazione per cercare la pagina che ti serve
+        </p>
+      </div>
+    </div>
     <?php
   }
+  
   
   # Avviso che utente normale sta cercando di accedere a pagine consentite solo per amministratori
   function deviEssereAdmin ($username) {
@@ -56,7 +57,7 @@
       <div class="container-fluid">
 
         <a class="navbar-brand fontstranaBase" href="index.php">
-          <img src="Immagini/Logo_Stranamore_01.jpg" class="d-inline-block align-center" alt="logo stranamore">
+          <img src="Immagini/Logo_Stranamore_01.jpg" class="d-inline-block align-center" alt="Logo Stranamore">
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -80,8 +81,7 @@
               <li class="nav-item">
                 <span class="mioSpanNav">|</span>
               </li>
-
-
+              
               <li class="nav-item">
                 <?php $nomeLink = "chisiamo"; ?>
                 <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
@@ -93,7 +93,6 @@
               <li class="nav-item">
                 <span class="mioSpanNav">|</span>
               </li>
-
 
               <li class="nav-item">
                 <?php $nomeLink = "lacucina"; ?>
@@ -107,7 +106,6 @@
                 <span class="mioSpanNav">|</span>
               </li>
 
-
               <li class="nav-item">
                 <?php $nomeLink = "eventi"; ?>
                 <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
@@ -119,7 +117,6 @@
               <li class="nav-item">
                 <span class="mioSpanNav">|</span>
               </li>
-
 
               <li class="nav-item">
                 <?php $nomeLink = "contatti"; ?>
@@ -144,7 +141,6 @@
   }
   
   
-  
   # Funzione per richiamare la navBar per utenti loggati come admin
   function adminNavBar($nomePagina) { ?>
     <nav class="navbar navbar-expand-lg bg-giallo">
@@ -162,15 +158,14 @@
                 aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
-
+        
         <div class="collapse navbar-collapse fontNav" id="navbarNav" role="navigation" aria-label="main navigation">
           <div class="d-flex justify-content-center flex-grow-1">
 
             <ul class="navbar-nav" id="myNavBar"> <!-- FIXME: come mai ci sono due <ul>?? -->
 
               <ul class="navbar-nav" id="myNavBar">
-                
+
                 <li class="nav-item">
                   <?php $nomeLink = "homeAdmin"; ?>
                   <a class="nav-link navLinkAdmin <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
@@ -182,8 +177,7 @@
                 <li class="nav-item">
                   <span class="mioSpanNav">|</span>
                 </li>
-
-
+                
                 <li class="nav-item">
                   <?php $nomeLink = "gestioneCucina"; ?>
                   <a class="nav-link navLinkAdmin <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
@@ -195,8 +189,7 @@
                 <li class="nav-item">
                   <span class="mioSpanNav">|</span>
                 </li>
-
-
+                
                 <li class="nav-item">
                   <?php $nomeLink = "gestioneEventi"; ?>
                   <a class="nav-link navLinkAdmin <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
@@ -208,8 +201,7 @@
                 <li class="nav-item">
                   <span class="mioSpanNav">|</span>
                 </li>
-
-
+                
                 <li class="nav-item">
                   <?php $nomeLink = "gestioneUtenti"; ?>
                   <a class="nav-link navLinkAdmin <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
@@ -221,9 +213,9 @@
                 <li class="nav-item">
                   <span class="mioSpanNav">|</span>
                 </li>
-                
+
               </ul>
-              
+
             </ul>
           </div>
 
@@ -239,97 +231,100 @@
     <?php
   }
   
+  
   # Funzione per visualizzare il footer
   function HTMLfooter ($nomePagina) { ?>
 
     <footer class="text-center bg-nero">
-
-      <div class="p-1 border-bottom"></div> <!-- Riga sopra footer -->
-
-      <div class="row justify-content-center">
-
-        <div class="col d-flex flex-column align-items-center d-flex">
-          <!-- <p class="fontFooter02">Associazione Culturale</p> -->
-          <h1 class="fontstranaFooter">stranamore</h1>
+      <div class="container-fluid">
+        
+        <div class="p-1 border-bottom" style="border-color: #009fb7"></div> <!-- Riga sopra footer -->
+  
+        <div class="row justify-content-center">
+  
+          <div class="col d-flex flex-column align-items-center justify-content-center">
+            <h1 class="fontstranaFooter pl-3 ml-3">stranamore</h1>
+          </div>
+  
+          <div class="col text-center">
+            <p class="fontFooter01">Navigazione</p>
+            <ul class="list-unstyled">
+              <li>
+                <?php $nomeLink = "index";?>
+                <a href="index.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">Home</a>
+              </li>
+              <li>
+                <?php $nomeLink = "chisiamo";?>
+                <a href="chisiamo.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">Chi Siamo</a>
+              </li>
+              <li>
+                <?php $nomeLink = "lacucina";?>
+                <a href="lacucina.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">La Cucina</a>
+              </li>
+              <li>
+                <?php $nomeLink = "eventi";?>
+                <a href="eventi.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">Eventi</a>
+              </li>
+              <li>
+                <?php $nomeLink = "contatti";?>
+                <a href="contatti.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">Contatti</a>
+              </li>
+            </ul>
+          </div>
+  
+          <div class="col text-center">
+            <p class="fontFooter01">Social</p>
+            <a href="" class="socialIcon" title="Link alla pagina Facebook"
+               aria-label="Facebook link" tabindex="15">
+              <i class="fa-brands fa-square-facebook fa-3x" role="img" title="Facebook icon"></i>
+            </a>
+  
+            <a href="" class="socialIcon" title="Link alla pagine Twitter"
+               aria-label="Twitter link" tabindex="16">
+              <i class="fa-brands fa-square-twitter fa-3x" role="img" title="Twitter Icon"></i>
+            </a>
+            <br>
+  
+            <a href="" class="socialIcon" title="Link alla pagina Instagram"
+               aria-label="Instagram link" tabindex="17">
+              <i class="fa-brands fa-square-instagram fa-3x" role="img" title="Instagram icon"></i>
+            </a>
+  
+            <a href="" class="socialIcon" title="Link alla pagina YouTube"
+               aria-label="YouTube link" tabindex="18">
+              <i class="fa-brands fa-square-youtube fa-3x" role="img" title="YouTube Icon"></i>
+            </a>
+          </div>
+  
+          <div class="col text-center">
+            <p class="fontFooter01">Contatti</p>
+            <ul class="list-unstyled">
+              <li>
+                <a href="https://maps.app.goo.gl/mb7UeN8NNaJD1kC78">
+                  <i class="fas fa-home me-3"></i>Via Ettore Bignone, 89, 10064 Pinerolo TO
+                </a>
+              </li>
+              <li>
+                <a href="mailto:associazione.stranamore@gmail.com">
+                  <i class="fa fa-envelope me-3"></i>associazione.stranamore@gmail.com
+                </a>
+              </li>
+              <li>
+                <a href="Tel:+393516230176">
+                  <i class="fas fa-phone me-3"></i>3516230176
+                </a>
+              </li>
+            </ul>
+          </div>
+  
         </div>
-
-        <div class="col text-center">
-          <p class="fontFooter01">Navigazione</p>
-          <ul class="list-unstyled">
-            <li>
-              <?php $nomeLink = "index";?>
-              <a href="index.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">Home</a>
-            </li>
-            <li>
-              <?php $nomeLink = "chisiamo";?>
-              <a href="chisiamo.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">Chi Siamo</a>
-            </li>
-            <li>
-              <?php $nomeLink = "lacucina";?>
-              <a href="lacucina.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">La Cucina</a>
-            </li>
-            <li>
-              <?php $nomeLink = "eventi";?>
-              <a href="eventi.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">Eventi</a>
-            </li>
-            <li>
-              <?php $nomeLink = "contatti";?>
-              <a href="contatti.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">Contatti</a>
-            </li>
-          </ul>
+  
+        <div class="row bg-giallo align-middle">
+          <div class="col d-flex flex-column align-items-center justify-content-center">
+            <p class="align-middle">Sito realizzato da Bianchi Andrea</p>
+          </div>
         </div>
-
-        <div class="col text-center">
-          <p class="fontFooter01">Social</p>
-          <a href="" class="socialIcon" title="Link alla pagina Facebook"
-             aria-label="Facebook link" tabindex="15">
-            <i class="fa-brands fa-square-facebook fa-3x" role="img" title="Facebook icon"></i>
-          </a>
-
-          <a href="" class="socialIcon" title="Link alla pagine Twitter"
-             aria-label="Twitter link" tabindex="16">
-            <i class="fa-brands fa-square-twitter fa-3x" role="img" title="Twitter Icon"></i>
-          </a>
-          <br>
-
-          <a href="" class="socialIcon" title="Link alla pagina Instagram"
-             aria-label="Instagram link" tabindex="17">
-            <i class="fa-brands fa-square-instagram fa-3x" role="img" title="Instagram icon"></i>
-          </a>
-
-          <a href="" class="socialIcon" title="Link alla pagina YouTube"
-             aria-label="YouTube link" tabindex="18">
-            <i class="fa-brands fa-square-youtube fa-3x" role="img" title="YouTube Icon"></i>
-          </a>
-        </div>
-
-        <div class="col text-center">
-          <p class="fontFooter01">Contatti</p>
-          <ul class="list-unstyled">
-            <li>
-              <a href="https://maps.app.goo.gl/mb7UeN8NNaJD1kC78">
-                <i class="fas fa-home me-3"></i>Via Ettore Bignone, 89, 10064 Pinerolo TO
-              </a>
-            </li>
-            <li>
-              <a href="mailto:associazione.stranamore@gmail.com">
-                <i class="fa fa-envelope me-3"></i>associazione.stranamore@gmail.com
-              </a>
-            </li>
-            <li>
-              <a href="Tel:+393516230176">
-                <i class="fas fa-phone me-3"></i>3516230176
-              </a>
-            </li>
-          </ul>
-        </div>
-
       </div>
-
-      <div class="row bg-giallo align-middle">
-        <p class="align-middle">Sito realizzato da Bianchi Andrea</p>
-      </div>
-
     </footer>
     <?php
   }
@@ -342,53 +337,55 @@
     # Genero le card:
     while ($row = mysqli_fetch_assoc($datiEventi)) {
       if ($row['eliminato'] == 0) { ?>
-      <div class="m-2 card col-md-4 evento-card" style="width: 20em;" data-evento="<?= date('Y-m-d', strtotime($row['DataEvento']))?>">
-        <img src="<?= $row['Immagine']?>" class="img-fluid myImgCard mt-2" alt="Immagine evento">
-        <div class="card-body">
-          <h3><?= $row['NomeEvento']?></h3>
-          <p><?= $row['Descrizione']?></p>
+        <div class="m-2 card col-md-4 evento-card" style="width: 20em;" data-evento="<?= date('Y-m-d', strtotime($row['DataEvento']))?>">
+          <img src="<?= $row['Immagine']?>" class="img-fluid myImgCard mt-2" alt="Immagine evento">
+          <div class="card-body">
+            <h3><?= $row['NomeEvento']?></h3>
+            <p><?= $row['Descrizione']?></p>
+          </div>
+          <div class="card-footer">
+            <p><?= date('d M Y', strtotime($row['DataEvento'])) ?></p>
+          </div>
         </div>
-        <div class="card-footer">
-          <p><?= date('d M Y', strtotime($row['DataEvento'])) ?></p>
-        </div>
-      </div>
-      <?php
+        <?php
       }
     }
   }
   
- #Funzione per generare il menu in maniera dinamica
-function generaMenu() {
-  $listaPiattiDisponibili = piattiInArray();
-  $categorie = ottieniCategoriePiattiDisponbili();
   
-  $categorieOrdinate = [
-    'antipasti' => "antipasti",
-    'primi' => "primi",
-    'secondi' => "secondi",
-    'contorni' => "contorni",
-    'dolci' => "dolci"
-  ];
-  
-  foreach ($categorieOrdinate as $categoria => $titolo) {
-    if ($categorie[$categoria] > 0) {
-      echo "<h3 class='fontTipoPiattiMenu text-center'>$titolo</h3>";
-      foreach ($listaPiattiDisponibili as $piatto) {
-        if ($piatto['categoriaPiatto'] == $categoria) {
-          echo "<p class='fontNomePiatto pb-0 mb-0 pl-5 ml-5 mr-5'>{$piatto['nomePiatto']} <span class='fontPrezzoPiatto ml-3'>{$piatto['prezzoPiatto']}€</span></p>";
+  #Funzione per generare il menu in maniera dinamica
+  function generaMenu() {
+    $listaPiattiDisponibili = piattiInArray();
+    $categorie = ottieniCategoriePiattiDisponbili();
+    
+    $categorieOrdinate = [
+      'antipasti' => "antipasti",
+      'primi' => "primi",
+      'secondi' => "secondi",
+      'contorni' => "contorni",
+      'dolci' => "dolci"
+    ];
+    
+    foreach ($categorieOrdinate as $categoria => $titolo) {
+      if ($categorie[$categoria] > 0) {
+        echo "<h3 class='fontTipoPiattiMenu text-center'>$titolo</h3>";
+        foreach ($listaPiattiDisponibili as $piatto) {
+          if ($piatto['categoriaPiatto'] == $categoria) {
+            echo "<p class='fontNomePiatto pb-0 mb-0 pl-5 ml-5 mr-5'>{$piatto['nomePiatto']} <span class='fontPrezzoPiatto ml-3'>{$piatto['prezzoPiatto']}€</span></p>";
+          }
         }
+        echo "<br><hr><br>";
       }
-      echo "<br><hr><br>";
     }
   }
-}
-
-
-function generaTabellaPiattiDisponibili() {
-  $listaPiattiDisponibili = piattiInArray(); ?>
   
-  <table class="table table-striped table-bordered text-center align-midle">
-    <thead class="intestazioneTabella">
+  
+  # Funzione per generare dinamicamente la tabella con i piatti disponibili
+  function generaTabellaPiattiDisponibili() {
+    $listaPiattiDisponibili = piattiInArray(); ?>
+
+    <table class="table table-striped table-bordered text-center align-midle">
+      <thead class="intestazioneTabella">
       <tr class="intestazioneTabella">
         <th class="intestazioneTabella">ID Piatto</th>
         <th class="intestazioneTabella">Nome Piatto</th>
@@ -398,9 +395,9 @@ function generaTabellaPiattiDisponibili() {
         <th class="intestazioneTabella">Data inserimento</th>
         <th class="intestazioneTabella">Seleziona per eliminare</th>
       </tr>
-    </thead>
-    
-    <tbody>
+      </thead>
+
+      <tbody>
       <?php foreach ($listaPiattiDisponibili as $piatto) { ?>
         <tr>
           <td><?= $piatto['idPiatto']?></td>
@@ -413,18 +410,17 @@ function generaTabellaPiattiDisponibili() {
             <input type="radio" name="piattoSelezionatoElimina" id="piattoSelezionatoElimina" value="<?= $piatto['idPiatto'] ?>">
           </td>
         </tr>
-      <?php
+        <?php
       }
       ?>
-      
-    </tbody>
-  </table>
-  <?php
-}
-?>
 
+      </tbody>
+    </table>
+    <?php
+  }
 
-<?php
+  
+  # Funzione per generare automaticamente avvisi di errore connessione
   function erroreConnessioneHTML ($conn) {?>
     <div class="my-5 row justify-content-center">
       <div class="text-center">
@@ -442,8 +438,8 @@ function generaTabellaPiattiDisponibili() {
         </div>
       </div>
     </section>
-<?php
+    <?php
   }
-  
-  
-  ?>
+
+
+?>
