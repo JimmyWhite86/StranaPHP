@@ -53,16 +53,14 @@
 
 <?php richiamaNavBar($nomePagina) ?>
 
-
 <!-- "Titolo" della pagina -->
 <div class="my-5 row justify-content-center">
   <div class="text-center">
-    <h1 class="titoloPagina">Aggiungi un singolo piatto al menu</h1>
+    <h1 class="titoloPagina">aggiungi piatto</h1>
   </div>
 </div>
 
 <?php
-
   if (!isset($_SESSION["username"])) {  # Utente non loggato
     deviLoggarti();
   }
@@ -104,20 +102,6 @@
                     VALUES ('$nomePiattoNew', '$descrizionePiattoNew', '$categoriaPiattoNew', '$prezzoPiattoNew', '$cuocoPiattoNew', '$disponibilitaPiatto', '$dataInserimentoPiatto')";
             $tmp = mysqli_query($conn, $sql);
             if ($tmp) { ?>
-              
-
-              <!--<section>
-                <div class="container-fluid text-center bg-rosso">
-                  <div class="m-5">
-                    <h2 class="m-3 p-3" id="titoloEventi">
-                      Il piatto <strong>"<?php /*= $nomePiattoNew */?>"</strong> è stato aggiunto correttamente al menu
-                    </h2>
-                    <a href="aggiungiPiatto.php" class="btn btn-primary mb-3">Aggiungi un altro piatto al menu </a><br>
-                    <a href="eliminaPiatto.php" class="btn btn-primary mb-3">Elimina un piatto dal menu </a>
-                  </div>
-                </div>
-              </section>-->
-
               <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
                 <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
                   <h2>Il piatto è stato aggiunto al menu con successo!</h2>
@@ -128,8 +112,6 @@
                   <a href="gestioneCucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
                 </div>
               </div>
-              
-            
             <?php
             }
             else {

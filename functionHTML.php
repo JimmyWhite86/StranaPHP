@@ -443,5 +443,82 @@
     <?php
   }
 
-
+# -------------------------------------------------------
+# FUNZIONI PER LA PAGINA controlla_login.php
+# Creo dinamicamente gli avvisi della pagina che viene visualizzata quando l'utente effettua il login
+  
+  # Utente Loggato senza privilegi da admin
+  function loginUtenteStandard ($username) { ?>
+    <div class="container-fluid d-flex justify-content-center bg-giallo pb-4 pt-4 mt-4 mb-4">
+      <div class="row bg-bianco justify-content-center col-6 text-center">
+        <h2> Bentornatə <?= $username ?>, accesso effettuato correttamente </h2>
+      </div>
+    </div>
+    <?php
+  }
+  
+  #Utente loggato con privilegi da admin
+  function loginUtenteAdmin ($username) { ?>
+    <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+      <div class="row bg-bianco justify-content-center col-6 text-center">
+        <h1> Ciao <?= $username ?>! Accesso effettuato come Admin </h1>
+        <hr>
+        <h3></h3>
+        <a href="homeAdmin.php">Homepage per Admin</a>
+        <a href="gestioneEventi.php">Gestione eventi</a>
+        <a href="gestioneCucina.php">Gestione cucina</a>
+        <a href="gestioneUtenti.php">Gestione utenti</a>
+      </div>
+    </div>
+  <?php
+  }
+  
+  # Utente ha inserito password errata
+  function inseritoPswErrata () {   ?>
+    <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+      <div class="row bg-bianco justify-content-center col-6 text-center">
+        <h2> Hai inserito una password errata </h2>
+        <hr>
+        <h3>Prova nuovamente ad effettuare il login</h3>
+        <a href="login.php">LogIn</a>
+      </div>
+    </div>
+<?php
+  }
+  
+  # Il nome utente inserito durante il login non è stato trovato nel db
+  function nomeUtenteNonTrovato () { ?>
+    <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+      <div class="row bg-bianco justify-content-center col-6 text-center">
+        <h2> Non abbiamo trovato lo username da te inserito </h2>
+        <hr>
+        <h3>Prova nuovamente ad effettuare il login</h3>
+        <a href="login.php">LogIn</a>
+      </div>
+    </div>
+<?php
+  }
+  
+  # Il form non è stato compilato correttamente
+  function erroreCompilazioneForm () { ?>
+    <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+      <div class="row bg-bianco justify-content-center col-6 text-center">
+        <h2 class="m-3 p-3"> Non abbiamo trovato lo username da te inserito </h2>
+        <hr>
+        <h3>Prova nuovamente ad effettuare il login</h3>
+        <a href="login.php">LogIn</a>
+      </div>
+    </div>
+  <?php
+  }
+  
+  # Utente già loggato
+  function utenteGiaLoggato ($username) { ?>
+    <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+      <div class="row bg-bianco justify-content-center col-6 text-center">
+        <h2 class="m-3 p-3"> <?= $username ?>, hai già effettuato l'accesso!</h2>
+      </div>
+    </div>
+<?php
+  }
 ?>

@@ -53,6 +53,13 @@
   <!-- NAV BAR -->
   <?php richiamaNavBar($nomePagina) ?>
 
+  <!-- "Titolo" della pagina -->
+  <div class="my-5 row justify-content-center">
+    <div class="text-center">
+      <h1 class="titoloPagina">log in</h1>
+    </div>
+  </div>
+
   <?php
     if (!isset($_SESSION["username"])) {  #L'utente non è loggato
       if (isset($_POST["username"]) && $_POST["username"] && isset ($_POST["psw1"]) && $_POST["psw1"]) {    # Controllo che tutti i campi del form siano compilati
@@ -60,39 +67,46 @@
         $datiUtente = cercaUtente($username);
         if ($datiUtente) {    # Se dati utente = true --> utente presente del db
           $password = $_POST["psw1"];
-          if ($password = $datiUtente["Password"]) {  # Controllo che la psw sia corretta
+          if ($password == $datiUtente["Password"]) {  # Controllo che la psw sia corretta
             $valoreAmministratore = controlloAdmin($username);
             if (!$valoreAmministratore) { #Utente loggato come utente "normale"
               $_SESSION["username"] = $username;
               $_SESSION["admin"] = 0;
-              echo "<h1>Bentornatə $username, accessso effettuato con successo.</h1>";
+              // echo "<h1>Bentornatə $username, accesso effettuato con successo.</h1>";
+              loginUtenteStandard($username);
             }
             else {  # Utente loggato come admin
               $_SESSION["username"] = $username;
-              $_SESSION["admin"] = 1; ?><!-- "Titolo" della pagina -->
-              <div class="my-5 row justify-content-center">
+              $_SESSION["admin"] = 1; ?>
+              <!--<div class="my-5 row justify-content-center">
                 <div class="text-center">
                   <h1 class="titoloPagina">log in avvenuto con successo</h1>
                 </div>
               </div>
-              <h1 class="text-center m-3 p-3">Utente <?=$username?> loggato come admin</h1>
+              <h1 class="text-center m-3 p-3">Utente <?php /*=$username*/?> loggato come admin</h1>-->
             <?php
+              loginUtenteAdmin($username);
             }
           }
           else {  # Condizione in cui si è impostata una psw errata
-            echo "<h1>hai inserito una psw errata</h1>";
+            // echo "<h1>hai inserito una psw errata</h1>";
+            inseritoPswErrata();
           }
         }
         else {  # Condizione in cui non sono stati trovati record corrispondenti all'username inserito dall'utente
-          echo "<h1>Non abbiamo trovato il tuo nome utente</h1>";
+          // echo "<h1>Non abbiamo trovato il tuo nome utente</h1>";
+          nomeUtenteNonTrovato();
         }
       }
       else {  # Condizione in cui non sono stati compilati tutti i campi del form
-        echo "<h1>errore compilazione del form</h1>";
+        //echo "<h1>errore compilazione del form</h1>";
+        erroreCompilazioneForm();
       }
     }
     else {    # Utente già loggato --> propongo le azioni che può compiere
-      echo "<h1>utente già loggato</h1>";  # Implementare azioni utente!!
+      //echo "<h1>utente già loggato</h1>";  # Implementare azioni utente!!
+      $username = $_SESSION['username'];
+      utenteGiaLoggato($username);
     }
   ?>
 
