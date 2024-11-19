@@ -117,6 +117,18 @@
               <li class="nav-item">
                 <span class="mioSpanNav">|</span>
               </li>
+              
+              <li class="nav-item">
+                <?php $nomeLink = "gallery"; ?>
+                <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
+                   href="gallery.php">
+                  Gallery
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <span class="mioSpanNav">|</span>
+              </li>
 
               <li class="nav-item">
                 <?php $nomeLink = "contatti"; ?>
