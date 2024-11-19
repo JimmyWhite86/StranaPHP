@@ -40,12 +40,25 @@
   <!--  Collegamento al mio modulo JS -->
   <script src="modulo.js" type="text/javascript"></script>
 
+  <!-- Font Babas Neue -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
   <title>Stranamore | Gallery</title>
 
 </head>
 <body>
 
 <?php richiamaNavBar($nomePagina);?>
+
+<!-- "Titolo" della pagina -->
+<div class="my-5 row justify-content-center">
+  <div class="text-center">
+    <h1 class="titoloPagina">gallery fotografica</h1>
+  </div>
+</div>
+
 
 <main id="mioMain" role="main">
 
@@ -124,11 +137,11 @@
   <div class="modal fade" id="carouselModal" tabindex="-1" aria-labelledby="carouselModalLabel" aria-hidden="true">   <!-- Nota 00 -->
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="carouselModalLabel">Photo Gallery di Stranamore</h5>
+        <div class="modal-header bg-giallo text-center justify-content-center align-item-center">
+          <h5 class="modal-title fontTitoloCarosello" id="carouselModalLabel">le foto di strana</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body bg-nero">
           <!-- Carosello -->
           <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">

@@ -29,6 +29,12 @@
 -
 
 
+      // TODO: Lavori lasciati in sospeso
+- Devo commentare a fondo codice tutti gli attributi dei tag del carosello. Vedi ChatGPT del 19.11.24
+- Perfezionare carosello e pagina gallery
+- verificare mobile carosello e pagina gallery
+
+
 
                               ######################
                               ### PER LO SCRITTO ###

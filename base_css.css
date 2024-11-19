@@ -540,3 +540,29 @@ thead th.intestazioneTabella {
 }
 /* --------------------------------------------------------- */
 
+/* --------------------------------------------------------- */
+/* // CAROSELLO */
+
+/* Titolo della finestra del carosello */
+.fontTitoloCarosello {
+  font-family: Strana, Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  color: #000000;
+  text-align: center;
+  margin: 0 auto; /* Centra il titolo orizzontalmente */
+  line-height: 1.2; /* Regola lo spazio tra le righe */
+}
+
+.modal-header .btn-close {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+/* --------------------------------------------------------- */
