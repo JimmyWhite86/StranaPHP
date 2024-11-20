@@ -2,6 +2,8 @@
 /* Bianchi Andrea */
 /* 2024 _ UniTo */
 
+
+
 /* ------------------------------------------------ */
 /* // GESTIONE DEI FONT */
 
@@ -182,8 +184,13 @@ body {
   .fontNomePiatto {
     font-size: 2rem;
   }
+
+  #titoloPaginaGallery {
+    font-size: 2.8rem !important;
+  }
 }
 /* ------------------------------------------------ */
+
 
 /* ------------------------------------------------ */
 /* // COLORI DI SFONDO */
@@ -564,5 +571,35 @@ thead th.intestazioneTabella {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+@media (min-width: 992px) {
+  .modal-content {
+    max-width: 80%; /* Aumenta la larghezza del modal */
+  }
+
+  #galleryCarousel {
+    width: 100%; /* Larghezza massima del carosello */
+  }
+
+  .carousel-item img {
+    width: 100%; /* Assicura che l'immagine occupi tutta la larghezza */
+    height: auto; /* Mantiene le proporzioni originali */
+    max-height: 90vh; /* Limita l'altezza per evitare immagini troppo grandi */
+    margin: 0 auto; /* Centra l'immagine orizzontalmente */
+    object-fit: contain; /* Adatta l'immagine senza tagliarla */
+  }
+
+  .carousel-inner {
+    display: flex;
+    align-items: center;
+  }
+
+  .carousel-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+  }
 }
 /* --------------------------------------------------------- */
