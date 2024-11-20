@@ -10,6 +10,7 @@
 - Calendario
 => - Registrare chi fa cosa
 - Creare nuovo cuoco
+- Sostituire la parola aggiungere con creare
 - Storico cucina
 - Gestione dei menu a buffet => Creare landing page ad hoc?
 - SQLi
@@ -19,7 +20,7 @@
 - Verifica accessibilità
 - Dare consistenza ai commenti ripetuti (per esempio "richiamo la navbar")
 - nel tag body è necessario il richiamo ad angular in tutte le pagine?
-
+- Verificare come funziona mysqli_real_escape_string
 
 
 

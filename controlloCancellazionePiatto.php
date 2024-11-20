@@ -2,7 +2,7 @@
   session_start();
   include "function.php";
   include "functionHTML.php";
-  $nomePagina = "eliminaEvento";
+  $nomePagina = "eliminaPiatto";
 ?>
 
 <!DOCTYPE html>
@@ -66,8 +66,11 @@
     deviLoggarti();
   }
   else {
+    
     $amministratore = $_SESSION["admin"];
     $username = $_SESSION["UserName"];
+    $idAdmin = $_SESSION["IDUser"];
+    
     if ($amministratore == 0) {
       deviEssereAdmin($username);
     }
@@ -75,7 +78,10 @@
       $idPiatto = $_POST["piattoSelezionatoElimina"];
       $esitoEliminazione = eliminaPiatto($idPiatto);
       
-      if (!$esitoEliminazione['successo']) { ?>
+      if (!$esitoEliminazione['successo']) {
+        $errore = 1;
+        registraLogAdmin($nomePagina, $errore, $esitoEliminazione['nomePiatto'], $idPiatto);
+        ?>
         <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
           <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
             <h2>Ci sono stati errori durante l'eliminazione del piatto</h2>
@@ -89,7 +95,10 @@
         <?php
         
       }
-      else {?>
+      else {
+        $errore = 0;
+        registraLogAdmin($nomePagina, $errore, $esitoEliminazione['nomePiatto'], $idPiatto);
+        ?>
         <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
           <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
             <h2> Eliminazione piatto avvenuta con successo </h2>

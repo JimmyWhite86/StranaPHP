@@ -430,5 +430,63 @@ function eliminaInteroMenu () {
     mysqli_close($conn);
     return $datiUtenti;
   }
+  
+  
+  # ------------------------------------
+# Funzione per registrare le azioni degli admin
+  function registraLogAdmin ($nomePagina, $errore, $azione, $entitaCoinvolta, $idEntita, $descrizioneAzione) {
+    $conn = connetti("Strana01");
+    if (!$conn) {
+      die ("[registraLogAdmin] => Connessione fallita: " . mysqli_connect_error());
+    }
+    
+    switch ($nomePagina) {
+      case 'eliminaMenu':
+        $azione = "Menu eliminato";
+        break;
+      case 'eliminaPiatto':
+        $azione = "Piatto eliminato";
+        break;
+      case 'aggiungiPiatto':
+        $azione = "Piatto creato";
+        break;
+      case 'eliminaEvento':
+        $azione = "Evento eliminato";
+        break;
+      case 'aggiungiEvento':
+        $azione = "Evento creato";
+        break;
+      case 'creaUtente':
+        $azione = "Utente creato";
+        break;
+      case 'eliminaUtente':
+        $azione = "Utente eliminato";
+        break;
+      case 'login':
+        $azione = "Login effettuato";
+        break;
+      case 'logout':
+        $azione = "Logout effettuato";
+        break;
+      default:
+        echo "<h4>[RegistraLogAdmin] => Caso non presente nello switch!!</h4>";
+        break;
+    }
+    
+    $idAdmin = $_SESSION["IDUser"];
+    $nomeUser = $_SESSION["UserName"];
+    
+    $sql = "INSERT INTO admin_logs (adminId, nomeUser, azione, entitaCoinvolta, idEntita, errore)
+            VALUES ('$idAdmin', '$nomeUser', '$azione', '$entitaCoinvolta', '$idEntita', $errore)";
+    $tmp = mysqli_query($conn, $sql);
+    
+    if (!$tmp) {
+      die ("[registraLogAdmin] => Errore durante l'inserimento del log " . mysqli_error($conn));
+    }
+    
+    mysqli_close($conn);
+    
+  }
+  
 
 ?>

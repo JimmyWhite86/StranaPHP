@@ -2,7 +2,7 @@
   session_start();
   include "function.php";
   include "functionHTML.php";
-  $nomePagina = "aggiungiUtente";
+  $nomePagina = "creaUtente";
 ?>
 
 <!DOCTYPE html>

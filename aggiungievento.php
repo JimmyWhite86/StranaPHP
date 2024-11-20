@@ -2,7 +2,7 @@
   session_start();
   include "functionHTML.php";
   include "function.php";
-  $nomePagina = "aggiungievento";
+  $nomePagina = "aggiungiEvento";
 ?>
 
 <!DOCTYPE html>

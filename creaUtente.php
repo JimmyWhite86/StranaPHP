@@ -2,7 +2,7 @@
   session_start();
   include "functionHTML.php";
   include "function.php";
-  $nomePagina = "aggiungiUtente";
+  $nomePagina = "creaUtente";
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +45,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   
-  <title>AdminStrana | Aggiungi Utente</title>
+  <title>AdminStrana | Crea Utente</title>
 
 </head>
 <body ng-app="myAppHome" ng-controller="myCtrl">
