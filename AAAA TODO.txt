@@ -4,12 +4,11 @@
 
 
       // TODO: DA FARE
-- Inserire link gallery al nav
 - Titolo dinamico per ogni pagina => Passare il nome come variabile e poi richiamo funzione.
     Per sottotilo quando presente? => Usare un booleano come parametro? => Devo passare un array? Se si, posso farlo?
-- Pagina Gallery
+- Pagina Gallery => dimensioni per immagini widescreen
 - Calendario
-- Registrare chi fa cosa
+=> - Registrare chi fa cosa
 - Creare nuovo cuoco
 - Storico cucina
 - Gestione dei menu a buffet => Creare landing page ad hoc?
@@ -30,9 +29,7 @@
 
 
       // TODO: Lavori lasciati in sospeso
-- Devo commentare a fondo codice tutti gli attributi dei tag del carosello. Vedi ChatGPT del 19.11.24
-- Perfezionare carosello e pagina gallery
-- verificare mobile carosello e pagina gallery
+
 
 
 
