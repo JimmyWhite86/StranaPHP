@@ -419,9 +419,6 @@ function eliminaInteroMenu () {
         break;
     }
     
-    
-    
-    
     $sql = "SELECT * FROM User WHERE utenteAttivo = '1' ORDER BY IDUser ASC";
     $datiUtenti = mysqli_query($conn, $sql);
     if (!$datiUtenti) {
@@ -434,45 +431,11 @@ function eliminaInteroMenu () {
   
   # ------------------------------------
 # Funzione per registrare le azioni degli admin
-  function registraLogAdmin ($idAdmin, $nomeUtente, $nomePagina, $idEntita, $errore) {
+  function registraLogAdmin ($idAdmin, $username, $nomePagina, $idEntita, $nomeEntita, $errore) {
     $conn = connetti("Strana01");
     if (!$conn) {
       die ("[registraLogAdmin] => Connessione fallita: " . mysqli_connect_error());
     }
-    
-    /*$azione = ""; TODO: Eliminare se non viene usato
-    switch ($nomePagina) {
-      case 'eliminaMenu':
-        $azione = "Menu eliminato";
-        break;
-      case 'eliminaPiatto':
-        $azione = "Piatto eliminato";
-        break;
-      case 'aggiungiPiatto':
-        $azione = "Piatto creato";
-        break;
-      case 'eliminaEvento':
-        $azione = "Evento eliminato";
-        break;
-      case 'aggiungiEvento':
-        $azione = "Evento creato";
-        break;
-      case 'creaUtente':
-        $azione = "Utente creato";
-        break;
-      case 'eliminaUtente':
-        $azione = "Utente eliminato";
-        break;
-      case 'login':
-        $azione = "Login effettuato";
-        break;
-      case 'logout':
-        $azione = "Logout effettuato";
-        break;
-      default:
-        echo "<h4>[RegistraLogAdmin] => Caso non presente nello switch!!</h4>";
-        break;
-    }*/
     
     // Creo un array associativo per identificare l'azione compiuta dall'utente in base al nome della pagina
     $azioni = [
@@ -486,14 +449,27 @@ function eliminaInteroMenu () {
       'login' => "Login effettuato",
       'logout' => "Logout effettuato",
     ];
-    
     // Recupero del valore associato
     // Cerco la chiave $nomePagina nell'array $azioni.
     // ?? => Operatore di coalescenza nulla = restituisce il valore di sx se presente, altrimenti il valore di dx
     $azione = $azioni[$nomePagina] ?? "Azione sconosciuta ($nomePagina)";
+  
+    // Creo un array associativo per identificare l'azione compiuta dall'utente in base al nome della pagina
+    $categorie = [
+      'eliminaMenu' => "Cucina",
+      'eliminaPiatto' => "Cucina",
+      'aggiungiPiatto' => "Cucina",
+      'eliminaEvento' => "Eventi",
+      'aggiungiEvento' => "Eventi",
+      'creaUtente' => "Utenti",
+      'eliminaUtente' => "Utenti",
+      'login' => "Accessi",
+      'logout' => "Accessi",
+    ];
+    $categoria = $categorie[$nomePagina] ?? "Categoria sconosciuta ($nomePagina)";
     
-    $sql = "INSERT INTO admin_logs (admin_id, nomeUser, azione, idEntita, errore)
-            VALUES ('$idAdmin', $nomeUtente, '$azione', '$idEntita', $errore)";
+    $sql = "INSERT INTO logsAdmin (idAdmin, nomeAdmin, azione, categoria, idEntita, nomeEntita, errore)
+            VALUES                ('$idAdmin', '$username', '$azione', '$categoria', '$idEntita', '$nomeEntita' '$errore')";
     $tmp = mysqli_query($conn, $sql);
     
     if (!$tmp) {

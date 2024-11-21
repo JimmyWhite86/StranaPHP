@@ -67,6 +67,8 @@
   }
   else {
     
+    var_dump($_SESSION);
+    
     $amministratore = $_SESSION["admin"];
     $username = $_SESSION["UserName"];
     $idAdmin = $_SESSION["IDUser"];
