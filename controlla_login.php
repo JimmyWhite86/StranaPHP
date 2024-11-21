@@ -67,6 +67,7 @@
         $datiUtente = cercaUtente($username);
         if ($datiUtente) {    # Se dati utente = true --> utente presente del db
           $password = $_POST["psw1"];
+          $_SESSION["idUser"] = $datiUtente["IDUser"];
           if ($password == $datiUtente["Password"]) {  # Controllo che la psw sia corretta
             $valoreAmministratore = controlloAdmin($username);
             if (!$valoreAmministratore) { #Utente loggato come utente "normale"

@@ -431,7 +431,7 @@ function eliminaInteroMenu () {
   
   # ------------------------------------
 # Funzione per registrare le azioni degli admin
-  function registraLogAdmin ($idAdmin, $username, $nomePagina, $idEntita, $nomeEntita, $errore) {
+  function registraLogAdmin ($nomePagina, $idUser, $username, $idEntita, $nomeEntita, $errore) {
     $conn = connetti("Strana01");
     if (!$conn) {
       die ("[registraLogAdmin] => Connessione fallita: " . mysqli_connect_error());
@@ -469,7 +469,7 @@ function eliminaInteroMenu () {
     $categoria = $categorie[$nomePagina] ?? "Categoria sconosciuta ($nomePagina)";
     
     $sql = "INSERT INTO logsAdmin (idAdmin, nomeAdmin, azione, categoria, idEntita, nomeEntita, errore)
-            VALUES                ('$idAdmin', '$username', '$azione', '$categoria', '$idEntita', '$nomeEntita' '$errore')";
+            VALUES                ('$idUser', '$username', '$azione', '$categoria', '$idEntita', '$nomeEntita' '$errore')";
     $tmp = mysqli_query($conn, $sql);
     
     if (!$tmp) {
