@@ -80,7 +80,7 @@
       
       if (!$esitoEliminazione['successo']) {
         $errore = 1;
-        registraLogAdmin($nomePagina, $errore, $esitoEliminazione['nomePiatto'], $idPiatto);
+        registraLogAdmin($nomePagina, $idAdmin, $username, $idPiatto, $errore);
         ?>
         <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
           <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
@@ -93,18 +93,17 @@
           </div>
         </div>
         <?php
-        
       }
       else {
         $errore = 0;
-        registraLogAdmin($nomePagina, $errore, $esitoEliminazione['nomePiatto'], $idPiatto);
+        registraLogAdmin($nomePagina, $idAdmin, $username, $idPiatto, $errore);
         ?>
         <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
           <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
             <h2> Eliminazione piatto avvenuta con successo </h2>
             <h3>Hai eliminato: <strong><?= $esitoEliminazione['nomePiatto']?></strong></h3>
             <hr>
-            <a href="homeAdmin.php" class="btn btn-primary mb-3">Home Adimn</a><br>
+            <a href="homeAdmin.php" class="btn btn-primary mb-3">Home Admin</a><br>
             <a href="eliminaPiatto.php" class="btn btn-primary mb-3">Elimina altro piatto</a><br>
             <a href="gestioneCucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
           </div>
@@ -114,9 +113,6 @@
     }
   }
 ?>
-
-
-
 
 <!-- Richiamo il footer -->
 <?php HTMLfooter($nomePagina);?>

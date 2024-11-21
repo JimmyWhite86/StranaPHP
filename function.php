@@ -434,12 +434,13 @@ function eliminaInteroMenu () {
   
   # ------------------------------------
 # Funzione per registrare le azioni degli admin
-  function registraLogAdmin ($nomePagina, $errore, $azione, $entitaCoinvolta, $idEntita, $descrizioneAzione) {
+  function registraLogAdmin ($idAdmin, $nomeUtente, $nomePagina, $idEntita, $errore) {
     $conn = connetti("Strana01");
     if (!$conn) {
       die ("[registraLogAdmin] => Connessione fallita: " . mysqli_connect_error());
     }
     
+    /*$azione = ""; TODO: Eliminare se non viene usato
     switch ($nomePagina) {
       case 'eliminaMenu':
         $azione = "Menu eliminato";
@@ -471,22 +472,33 @@ function eliminaInteroMenu () {
       default:
         echo "<h4>[RegistraLogAdmin] => Caso non presente nello switch!!</h4>";
         break;
-    }
+    }*/
     
-    $idAdmin = $_SESSION["IDUser"];
-    $nomeUser = $_SESSION["UserName"];
+    // Creo un array associativo per identificare l'azione compiuta dall'utente in base al nome della pagina
+    $azioni = [
+      'eliminaMenu' => "Menu eliminato",
+      'eliminaPiatto' => "Piatto eliminato",
+      'aggiungiPiatto' => "Piatto creato",
+      'eliminaEvento' => "Evento eliminato",
+      'aggiungiEvento' => "Evento creato",
+      'creaUtente' => "Utente creato",
+      'eliminaUtente' => "Utente eliminato",
+      'login' => "Login effettuato",
+      'logout' => "Logout effettuato",
+    ];
     
-    $sql = "INSERT INTO admin_logs (adminId, nomeUser, azione, entitaCoinvolta, idEntita, errore)
-            VALUES ('$idAdmin', '$nomeUser', '$azione', '$entitaCoinvolta', '$idEntita', $errore)";
+    // Recupero del valore associato
+    // Cerco la chiave $nomePagina nell'array $azioni.
+    // ?? => Operatore di coalescenza nulla = restituisce il valore di sx se presente, altrimenti il valore di dx
+    $azione = $azioni[$nomePagina] ?? "Azione sconosciuta ($nomePagina)";
+    
+    $sql = "INSERT INTO admin_logs (admin_id, nomeUser, azione, idEntita, errore)
+            VALUES ('$idAdmin', $nomeUtente, '$azione', '$idEntita', $errore)";
     $tmp = mysqli_query($conn, $sql);
     
     if (!$tmp) {
       die ("[registraLogAdmin] => Errore durante l'inserimento del log " . mysqli_error($conn));
     }
-    
     mysqli_close($conn);
-    
   }
-  
-
 ?>
