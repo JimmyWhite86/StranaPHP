@@ -39,3 +39,15 @@
                               ### PER LO SCRITTO ###
                               ######################
 
+
+
+
+                              ###############################
+                              ### DUBBI E APPROFONDIMENTI ###
+                              ###############################
+
+- Come debaggare?
+- Cosa vuol dire var_dump()
+- Collegare il db a phpStorm?
+- possibile debaggare con l'IDE?
+
