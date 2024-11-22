@@ -430,7 +430,7 @@ function eliminaInteroMenu () {
   
   
   # ------------------------------------
-# Funzione per registrare le azioni degli admin
+# Funzione per registrare le azioni degli admin TODO: se non la uso la posso anche cancellare
   function registraLogAdmin ($nomePagina, $idUser, $username, $idEntita, $nomeEntita, $errore) {
     $conn = connetti("Strana01");
     if (!$conn) {
@@ -469,7 +469,7 @@ function eliminaInteroMenu () {
     $categoria = $categorie[$nomePagina] ?? "Categoria sconosciuta ($nomePagina)";
     
     $sql = "INSERT INTO logsAdmin (idAdmin, nomeAdmin, azione, categoria, idEntita, nomeEntita, errore)
-            VALUES                ('$idUser', '$username', '$azione', '$categoria', '$idEntita', '$nomeEntita' '$errore')";
+            VALUES                ('$idUser', '$username', '$azione', '$categoria', '$idEntita', '$nomeEntita', '$errore')";
     $tmp = mysqli_query($conn, $sql);
     
     if (!$tmp) {

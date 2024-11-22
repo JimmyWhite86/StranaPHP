@@ -67,8 +67,6 @@
   }
   else {
     
-    var_dump($_SESSION);
-    
     $amministratore = $_SESSION["admin"];
     $username = $_SESSION["username"];
     $idUser = $_SESSION["idUser"];
@@ -78,13 +76,9 @@
     }
     else {
       $idPiatto = $_POST["piattoSelezionatoElimina"];
-      $idEntita = $idPiatto;
-      $nomeEntita = "Prova";
       $esitoEliminazione = eliminaPiatto($idPiatto);
       
       if (!$esitoEliminazione['successo']) {
-        $errore = 1;
-        registraLogAdmin($nomePagina, $idUser, $username, $idEntita, $nomeEntita, $errore);
         ?>
         <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
           <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
@@ -99,8 +93,6 @@
         <?php
       }
       else {
-        $errore = 0;
-        registraLogAdmin($nomePagina, $idUser, $username, $idEntita, $nomeEntita, $errore);
         ?>
         <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
           <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">

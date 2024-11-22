@@ -67,13 +67,11 @@
   }
   else {
     $amministratore = $_SESSION["admin"];
-    $username = $_SESSION["UserName"];
     if ($amministratore == 0) {
       deviEssereAdmin($username);
     }
     else {
       $esitoEliminazione = eliminaInteroMenu();
-      
       if (!$esitoEliminazione['successo']) { ?>
         <div class="container-fluid d-flex justify-content-center bg-giallo pb-4 pt-4 mt-4 mb-4">
           <div class="row bg-bianco justify-content-center col-6 text-center">
@@ -83,9 +81,8 @@
           </div>
         </div>
         <?php
-        
       }
-      else {?>
+      else { ?>
         <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
           <div class="row bg-bianco justify-content-center col-6 text-center">
             <h1> Eliminazione dell'intero menù avvenuta con successo </h1>
@@ -98,9 +95,6 @@
     }
   }
 ?>
-
-
-
 
 <!-- Richiamo il footer -->
 <?php HTMLfooter($nomePagina);?>

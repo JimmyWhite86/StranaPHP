@@ -67,7 +67,6 @@
   }
   else {
     $amministratore = $_SESSION["admin"];
-    $username = $_SESSION["UserName"];
     if ($amministratore == 0) {
       deviEssereAdmin($username);
     }

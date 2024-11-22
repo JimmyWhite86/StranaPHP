@@ -68,6 +68,7 @@
     
     $amministratore = $_SESSION ["admin"];
     $username = $_SESSION ["username"];
+    $idUser = $_SESSION["idUser"];
     
     if ($amministratore == 0) {   # Utente non ha diritti di admin
       deviEssereAdmin($username);
@@ -90,7 +91,6 @@
           erroreConnessioneHTML($conn);
         }
         else {
-          
           if ($prezzoPiattoNew < 0) { ?>
             <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
               <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
@@ -137,11 +137,10 @@
         }
       }
       else {
-        echo "<p> Attenzione $username! Devi compilare tutti i campi per aggiungere l'evento</p>";
+        echo "<p> Attenzione $username! Devi compilare tutti i campi per aggiungere il piatto</p>";
       }
     }
   }
-  
   
   HTMLfooter($nomePagina);?>
 
