@@ -1,0 +1,23 @@
+
+            PROTEGGERSI DALLE SQLi
+
+  https://www.html.it/pag/16880/evitare-ogni-tipo-di-sql-injection/
+- Impostare la direttiva magic_quotes_gpc del php.ini ad ON. => Dove la trovo??
+- Caratteri di escape?
+
+
+
+https://www.w3schools.com/php/php_mysql_connect.asp
+PDO??
+
+
+
+Da https://www.w3schools.com/php/php_mysql_connect.asp
+PDO funziona con 12 differenti sistemi di database, mentre MySQL solo con database SQL.
+So, if you have to switch your project to use another database, PDO makes the process easy. You only have to change the
+connection string and a few queries. With MySQLi, you will need to rewrite the entire code - queries included.
+Entrambi sono OO.
+Entrambi supportano i Prapared Statements che servono a prevenire SQLi.
+
+
+

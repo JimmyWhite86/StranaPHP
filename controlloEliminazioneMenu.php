@@ -66,6 +66,7 @@
     deviLoggarti();
   }
   else {
+    $username = $_SESSION["username"];
     $amministratore = $_SESSION["admin"];
     if ($amministratore == 0) {
       deviEssereAdmin($username);

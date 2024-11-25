@@ -8,7 +8,7 @@
     Per sottotilo quando presente? => Usare un booleano come parametro? => Devo passare un array? Se si, posso farlo?
 - Pagina Gallery => dimensioni per immagini widescreen
 - Calendario
-=> - Registrare chi fa cosa
+- Registrare chi fa cosa
 - Creare nuovo cuoco
 - Sostituire la parola aggiungere con creare
 - Storico cucina
@@ -27,7 +27,9 @@
 
       // TODO: DA VERIFICARE
 - Attributi "alt" delle immagini?
--
+- Cos è charset utf8mb4;
+
+
 
 
       // TODO: Lavori lasciati in sospeso

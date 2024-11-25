@@ -80,7 +80,11 @@
         </div>
       </div>
       
-      <?php $listaUtenti = ottieniListaUtenti(); ?>
+      
+      <?php
+        $attivi = 1; // Per generare la tabella richiamo solo gli utenti attivi.
+        $listaUtenti = ottieniListaUtenti($attivi);
+      ?>
       
       <!-- Tabella della pagina -->
       <form method="POST" action="controlloEliminazioneUtente.php">
