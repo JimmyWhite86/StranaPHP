@@ -81,11 +81,14 @@
       </div>
 
 
-      <form method="POST" action="controlloCancellazionePiatto.php" class="">
+      <form method="POST" action="controlloEliminazionePiatto.php" class="">
         <div class="containerTabella my-5"> <!-- Mantiene il layout centrato e con margine verticale -->
           <div class="row justify-content-center">  <!-- Riga per definire il layout. Centra la colonna orizzontalmente-->
             <div class="col-10"> <!-- colonna che occupa 10 parti su 12 -->
-              <?php generaTabellaPiattiDisponibili() ?>
+              <?php
+                $disponibilitaPiatto = 1;
+                generaTabellaPiatti($disponibilitaPiatto);
+              ?>
             </div>
           </div>
           <div class="text-center mt-4">

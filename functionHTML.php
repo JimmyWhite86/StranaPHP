@@ -15,7 +15,7 @@
   }
   
   
-  # Avviso che utente normale sta cercando di accedere a pagine consentite solo per amministratori
+  # Avviso che utente normale sta cercando di accedere a pagine consentite solo per amministratori TODO: Farlo senza echo
   function deviEssereAdmin ($username) {
     echo "<div class='titolo'>";
     echo "<h2>Carə " . $username . " questa area è riservata agli amministratori del sistema</h2>";
@@ -81,7 +81,7 @@
               <li class="nav-item">
                 <span class="mioSpanNav">|</span>
               </li>
-              
+
               <li class="nav-item">
                 <?php $nomeLink = "chisiamo"; ?>
                 <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
@@ -117,7 +117,7 @@
               <li class="nav-item">
                 <span class="mioSpanNav">|</span>
               </li>
-              
+
               <li class="nav-item">
                 <?php $nomeLink = "gallery"; ?>
                 <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
@@ -170,7 +170,7 @@
                 aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        
+
         <div class="collapse navbar-collapse fontNav" id="navbarNav" role="navigation" aria-label="main navigation">
           <div class="d-flex justify-content-center flex-grow-1">
 
@@ -189,7 +189,7 @@
                 <li class="nav-item">
                   <span class="mioSpanNav">|</span>
                 </li>
-                
+
                 <li class="nav-item">
                   <?php $nomeLink = "gestioneCucina"; ?>
                   <a class="nav-link navLinkAdmin <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
@@ -201,7 +201,7 @@
                 <li class="nav-item">
                   <span class="mioSpanNav">|</span>
                 </li>
-                
+
                 <li class="nav-item">
                   <?php $nomeLink = "gestioneEventi"; ?>
                   <a class="nav-link navLinkAdmin <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
@@ -213,7 +213,7 @@
                 <li class="nav-item">
                   <span class="mioSpanNav">|</span>
                 </li>
-                
+
                 <li class="nav-item">
                   <?php $nomeLink = "gestioneUtenti"; ?>
                   <a class="nav-link navLinkAdmin <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
@@ -249,15 +249,15 @@
 
     <footer class="text-center bg-nero">
       <div class="container-fluid">
-        
+
         <div class="p-1 border-bottom" style="border-color: #009fb7"></div> <!-- Riga sopra footer -->
-  
+
         <div class="row justify-content-center">
-  
+
           <div class="col d-flex flex-column align-items-center justify-content-center">
             <h1 class="fontstranaFooter pl-3 ml-3">stranamore</h1>
           </div>
-  
+
           <div class="col text-center">
             <p class="fontFooter01">Navigazione</p>
             <ul class="list-unstyled">
@@ -283,31 +283,31 @@
               </li>
             </ul>
           </div>
-  
+
           <div class="col text-center">
             <p class="fontFooter01">Social</p>
             <a href="" class="socialIcon" title="Link alla pagina Facebook"
                aria-label="Facebook link" tabindex="15">
               <i class="fa-brands fa-square-facebook fa-3x" role="img" title="Facebook icon"></i>
             </a>
-  
+
             <a href="" class="socialIcon" title="Link alla pagine Twitter"
                aria-label="Twitter link" tabindex="16">
               <i class="fa-brands fa-square-twitter fa-3x" role="img" title="Twitter Icon"></i>
             </a>
             <br>
-  
+
             <a href="" class="socialIcon" title="Link alla pagina Instagram"
                aria-label="Instagram link" tabindex="17">
               <i class="fa-brands fa-square-instagram fa-3x" role="img" title="Instagram icon"></i>
             </a>
-  
+
             <a href="" class="socialIcon" title="Link alla pagina YouTube"
                aria-label="YouTube link" tabindex="18">
               <i class="fa-brands fa-square-youtube fa-3x" role="img" title="YouTube Icon"></i>
             </a>
           </div>
-  
+
           <div class="col text-center">
             <p class="fontFooter01">Contatti</p>
             <ul class="list-unstyled">
@@ -328,9 +328,9 @@
               </li>
             </ul>
           </div>
-  
+
         </div>
-  
+
         <div class="row bg-giallo align-middle">
           <div class="col d-flex flex-column align-items-center justify-content-center">
             <p class="align-middle">Sito realizzato da Bianchi Andrea</p>
@@ -345,19 +345,19 @@
   # Funzione per generare le card eventi
   function generaCardEventi () {
     $attivi = 2; // Seleziono tutti gli eventi, attivi e non.
-    $datiEventi = ottieniListaEventi($attivi );
+    $datiEventi = ottieniListaEventi($attivi);
     
     # Genero le card:
-    while ($row = mysqli_fetch_assoc($datiEventi)) {
-      if ($row['eliminato'] == 0) { ?>
-        <div class="m-2 card col-md-4 evento-card" style="width: 20em;" data-evento="<?= date('Y-m-d', strtotime($row['DataEvento']))?>">
-          <img src="<?= $row['Immagine']?>" class="img-fluid myImgCard mt-2" alt="Immagine evento">
+    foreach ($datiEventi as $evento) {
+      if ($evento['eliminato'] == 0) { ?>
+        <div class="m-2 card col-md-4 evento-card" style="width: 20em;" data-evento="<?= date('Y-m-d', strtotime($evento['DataEvento']))?>">
+          <img src="<?= $evento['Immagine']?>" class="img-fluid myImgCard mt-2" alt="Immagine evento">
           <div class="card-body">
-            <h3><?= $row['NomeEvento']?></h3>
-            <p><?= $row['Descrizione']?></p>
+            <h3><?= $evento['NomeEvento']?></h3>
+            <p><?= $evento['Descrizione']?></p>
           </div>
           <div class="card-footer">
-            <p><?= date('d M Y', strtotime($row['DataEvento'])) ?></p>
+            <p><?= date('d M Y', strtotime($evento['DataEvento'])) ?></p>
           </div>
         </div>
         <?php
@@ -394,8 +394,8 @@
   
   
   # Funzione per generare dinamicamente la tabella con i piatti disponibili
-  function generaTabellaPiattiDisponibili() {
-    $listaPiattiDisponibili = piattiInArray(); ?>
+  function generaTabellaPiatti($disponbilitaPiatto) {
+    $listaPiattiDisponibili = piattiInArray($disponbilitaPiatto); ?>
 
     <table class="table table-striped table-bordered text-center align-midle">
       <thead class="intestazioneTabella">
@@ -431,7 +431,7 @@
     </table>
     <?php
   }
-
+  
   
   # Funzione per generare automaticamente avvisi di errore connessione
   function erroreConnessioneHTML ($conn) {?>
@@ -453,10 +453,10 @@
     </section>
     <?php
   }
-
-# -------------------------------------------------------
-# FUNZIONI PER LA PAGINA controlla_login.php
-# Creo dinamicamente gli avvisi della pagina che viene visualizzata quando l'utente effettua il login
+  
+  # -------------------------------------------------------
+  # FUNZIONI PER LA PAGINA controlla_login.php
+  # Creo dinamicamente gli avvisi della pagina che viene visualizzata quando l'utente effettua il login
   
   # Utente Loggato senza privilegi da admin
   function loginUtenteStandard ($username) { ?>
@@ -481,7 +481,7 @@
         <a href="gestioneUtenti.php">Gestione utenti</a>
       </div>
     </div>
-  <?php
+    <?php
   }
   
   # Utente ha inserito password errata
@@ -494,7 +494,7 @@
         <a href="login.php">LogIn</a>
       </div>
     </div>
-<?php
+    <?php
   }
   
   # Il nome utente inserito durante il login non è stato trovato nel db
@@ -507,7 +507,7 @@
         <a href="login.php">LogIn</a>
       </div>
     </div>
-<?php
+    <?php
   }
   
   # Il form non è stato compilato correttamente
@@ -520,7 +520,7 @@
         <a href="login.php">LogIn</a>
       </div>
     </div>
-  <?php
+    <?php
   }
   
   # Utente già loggato
@@ -530,6 +530,6 @@
         <h2 class="m-3 p-3"> <?= $username ?>, hai già effettuato l'accesso!</h2>
       </div>
     </div>
-<?php
+    <?php
   }
 ?>

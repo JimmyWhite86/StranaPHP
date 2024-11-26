@@ -28,6 +28,8 @@
       // TODO: DA VERIFICARE
 - Attributi "alt" delle immagini?
 - Cos è charset utf8mb4;
+- Aggiungere void a funzioni che non restituiscono valori???  ___ Dichiarazione dei tipi di variabile ritornata??
+
 
 
 

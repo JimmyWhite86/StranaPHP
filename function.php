@@ -55,36 +55,34 @@
 # ------------------------------------
 # Restituisce informazioni su tutti gli eventi presenti in tabella eventi
   function ottieniListaEventi ($attivi) {
-    $conn = connetti ("Strana01");
-    if (!$conn) {
-      die ("[ottieniListaEventi] => Connessione fallita: " . mysqli_connect_error());
+    
+    try {
+      $conn = connetti();
+      
+      // Prepara la query in base al valore di $attivi
+      switch ($attivi) {
+        case 0: // Eventi non attivi
+          $sql = "SELECT * FROM Eventi WHERE Eliminato = TRUE ORDER BY dataEvento ASC";
+          break;
+        case 1: // Eventi attivi
+          $sql = "SELECT * FROM Eventi WHERE Eliminato = FALSE ORDER BY dataEvento ASC";
+          break;
+        case 2: // Tutti gli eventi
+          $sql = "SELECT * FROM Eventi ORDER BY dataEvento ASC";
+          break;
+        default:
+          die ("[ottieniListaEventi] => Valore di \$attivi non valido");
+      }
+      
+      $smt = $conn->query($sql);
+      $listaEventi = $smt->fetchAll();
+      
+      return $listaEventi;
+      
+    } catch (PDOException $e) {
+      die("[cercaUtente] => Errore: " . $e->getMessage());
     }
     
-    // Prepara la query in base al valore di $attivi
-    $sql = "";
-    switch ($attivi) {
-      case 0: // Eventi non attivi
-        $sql = "SELECT * FROM Eventi WHERE Eliminato = TRUE ORDER BY dataEvento ASC";
-        break;
-      case 1: // Eventi attivi
-        $sql = "SELECT * FROM Eventi WHERE Eliminato = FALSE ORDER BY dataEvento ASC";
-        break;
-      case 2: // Tutti gli eventi
-        $sql = "SELECT * FROM Eventi ORDER BY dataEvento ASC";
-        break;
-      default:
-        die ("[ottieniListaEventi] => Valore di \$attivi non valido");
-    }
-    
-    // Eseguo la query:
-    $datiEventi = mysqli_query($conn, $sql);
-    if (!$datiEventi) {
-      die ("[ottieniListaEventi] => Errore db: " . mysqli_error($conn));
-    }
-    
-    // Chiudo sessione e ritorno i dati
-    mysqli_close($conn);
-    return $datiEventi;
   }
 # ------------------------------------
 
@@ -168,80 +166,10 @@
 
 
 # ------------------------------------
-# RESTITUISCE I VALORI DEI PIATTI PRESENTI NEL DB
-# A seconda del valore che viene passato nella funzione restituisce
-# 0 => I piatti che sono "non attivi"
-# 1 => I piatti che sono "attivi"
-# 2 => Tutti i piatti, attivi e non attivi"
-  function ottieniListaPiatti ($attivi) {
-    try {
-      $conn = connetti();
-      
-      switch ($attivi) {
-        case 0: // Seleziono i piatti non attivi
-          $sql = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = 0";
-          break;
-        case 1: // Seleziono i piatti attivi
-          $sql = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = 1";
-          break;
-        case 2: // Seleziono tutti i piatti
-          $sql = "SELECT * FROM menuCucina";
-          break;
-        default:
-          die ("[ottieniListaPiatti] => Valore di \$attivi non valido");
-      }
-      
-      $stmt = $conn->prepare($sql);
-      $listaPiatti = $stmt->execute();
-      
-      return $listaPiatti;
-      
-    } catch (PDOException $e) {
-      die ("[ottieniListaPiatti] => Errore: " . $e->getMessage());
-    }
-  }
-  
-  function provaOttieniListaPiatti ($attivi) {
-    $conn = connetti("Strana01");
-    if (!$conn) {
-      die ("[ottieniListaPiattiDisponibili] => Connessione fallita: " . mysqli_connect_error());
-    }
-    
-    // Preparo le query in base ai valori di attivi
-    $sql = "";
-    switch ($attivi) {
-      case 0: // Seleziono i piatti non attivi
-        $sql = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = 0";
-        break;
-      case 1: // Seleziono i piatti attivi
-        $sql = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = 1";
-        break;
-      case 2: // Seleziono tutti i piatti
-        $sql = "SELECT * FROM menuCucina";
-        break;
-      default:
-        die ("[ottieniListaPiatti] => Valore di \$attivi non valido");
-    }
-    
-    // Eseguo la query
-    $listaPiatti = mysqli_query($conn, $sql);
-    if (!$listaPiatti) {
-      die ("[ottieniListaPiatti] => Errore db: " . mysqli_error($conn));
-    }
-    
-    // Chiudo la connessione e restituisco i dati
-    mysqli_close($conn);
-    return $listaPiatti;
-  }
-# ------------------------------------
-
-
-# ------------------------------------
 # Funzione per ottenere contare quanti piatti appartengono ad una determinata categoria
   function contaCategoriePiatti ($attivi) {
     try {
-      $listaPiattiDisponibili = ottieniListaPiatti($attivi);
-      $conn = connetti();
+      $listaPiattiDisponibili = piattiInArray($attivi);
       
       $categorie = [
         'antipasti' => 0,
@@ -251,52 +179,19 @@
         'dolci' => 0,
       ];
       
-      while ($listaPiattiDisponibili) {
-        if (isset($categorie[$listaPiattiDisponibili['categoriaPiatto']])) {
-          $categorie[$listaPiattiDisponibili['categoriaPiatto']]++;
+      foreach ($listaPiattiDisponibili as $piatto) {
+        if(isset($categorie[$piatto['categoriaPiatto']])) {
+          $categorie[$piatto['categoriaPiatto']]++;
         }
       }
+      
       return $categorie;
     } catch (PDOException $e) {
-      die ("contaCategoriePiatti -> Errore " . $e->getMessage());
+      die ("[contaCategoriePiatti] => Errore: " . $e->getMessage());
     }
   }
 # ------------------------------------
-  function ProvaContaCategoriePiatti ($attivi) {
-    $listaPiattiDisponibili = ottieniListaPiatti($attivi);
-    
-    $qtyAntipasti = 0;
-    $qtyPrimi = 0;
-    $qtySecondi = 0;
-    $qtyContorni = 0;
-    $qtyDolci = 0;
-    
-    while ($row = mysqli_fetch_assoc($listaPiattiDisponibili)) {
-      if ($row['categoriaPiatto'] == 'antipasti') {
-        $qtyAntipasti++;
-      }if ($row['categoriaPiatto'] == 'primi') {
-        $qtyPrimi++;
-      }
-      if ($row['categoriaPiatto'] == 'secondi') {
-        $qtySecondi++;
-      }
-      if ($row['categoriaPiatto'] == 'contorni'){
-        $qtyContorni++;
-      }
-      if ($row['categoriaPiatto'] == 'dolci') {
-        $qtyDolci++;
-      }
-    }
-    
-    return [
-      'antipasti' => $qtyAntipasti,
-      'primi' => $qtyPrimi,
-      'secondi' => $qtySecondi,
-      'contorni' => $qtyContorni,
-      'dolci' => $qtyDolci,
-    
-    ];
-  }
+
 
 
 # ------------------------------------
@@ -334,7 +229,42 @@
 
 # ------------------------------------
 # Funzione per eliminare un singolo piatto dal menu
-  function eliminaPiatto ($idPiatto) {
+function eliminaPiatto ($idPiatto) {
+  try {
+    $conn = connetti();
+    if (!$conn) {
+      throw new PDOException("[eliminaPiatto] => Connessione fallita: " . mysqli_connect_error());
+    }
+    
+    // Controllo se il piatto esiste
+    $sqlSelect = "SELECT * FROM menuCucina WHERE idPiatto= :idPiatto";
+    $stmtSelect = $conn->prepare($sqlSelect);
+    $stmtSelect->execute(['idPiatto' => $idPiatto]);
+    
+    if ($stmtSelect->rowCount() === 0) { // Il piatto non è stato trovato all'interno del db
+      return ['successo' => false, 'nomePiatto' => ''];
+    } else {
+      
+      // Recupero i dati del piatto
+      $datiPiatto = $stmtSelect->fetch();
+      $nomePiatto = $datiPiatto['nomePiatto'];
+      
+      // Aggiorno la disponibilità del piatto
+      $sqlUpdate = "UPDATE menuCucina SET disponibilitaPiatto=FALSE WHERE idPiatto= :idPiatto";
+      $stmtUpdate = $conn->prepare($sqlUpdate);
+      $stmtUpdate->execute(['idPiatto' => $idPiatto]);
+      
+      if ($stmtUpdate->rowCount() > 0) {
+        return ['successo' => true, 'nomePiatto' => $nomePiatto];
+      } else {
+        return ['successo' => false, 'nomePiatto' => $nomePiatto];
+      }
+    }
+  } catch (PDOException $e) {
+    return ['successo' => false, 'errore' => $e->getMessage()];
+  }
+}
+  function provaEliminaPiatto ($idPiatto) {
     $conn = connetti ("Strana01");
     if (!$conn) {
       die("[eliminaPiatto] => Connessione fallita: " . mysqli_connect_error());
@@ -376,36 +306,24 @@
 # ------------------------------------
 # Funzione per eliminare un singolo piatto dal menu
   function eliminaInteroMenu () {
-    $conn = connetti ("Strana01");
-    if (!$conn) {
-      die("[eliminaInteroMenu] => Connessione fallita: " . mysqli_connect_error());
-    }
-    
-    $sql = "SELECT * FROM menuCucina";
-    $tmp = mysqli_query($conn, $sql);
-    
-    if (!$tmp) {
-      die("[eliminaInteroMenu] => Errore nelal query di selezione: " . mysqli_error($conn));
-    }
-    
-    $nRow = mysqli_num_rows($tmp);
-    
-    if ($nRow == 0) {
-      return ['successo' => false];
-    } else {
-      $sql = "UPDATE menuCucina SET disponibilitaPiatto = FALSE";
-      $tmp = mysqli_query($conn, $sql);
-      
-      if (!$tmp) {
-        die("[eliminaInteroMenu] => Errore nella query di aggiornamento: " . mysqli_error($conn));
+    try {
+      $conn = connetti();
+      if (!$conn) {
+        throw new PDOException("[eliminaInteroMenu] => Connessione fallita: " . mysqli_connect_error());
       }
-      if ($tmp) {
+      $sql = "UPDATE menuCucina SET disponibilitaPiatto=FALSE";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+      
+      if ($stmt->rowCount() > 0) {
         return ['successo' => true];
       } else {
         return ['successo' => false];
       }
+      
+    } catch (PDOException $e) {
+      return ['successo' => false, 'errore' => $e->getMessage()];
     }
-    mysqli_close($conn);
   }
 # ------------------------------------
 
