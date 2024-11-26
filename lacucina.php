@@ -67,7 +67,10 @@
   <div class="container-fluid bg-giallo pb-4 pt-4 mt-4 mb-4">
     <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
       <div class="row justify-content-center">
-        <?php generaMenu(); ?>
+        <?php
+          $attivi = '1';
+          generaMenu($attivi);
+        ?>
       </div>
     </div>
   </div>

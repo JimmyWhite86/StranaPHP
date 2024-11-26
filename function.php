@@ -26,24 +26,29 @@
 # ------------------------------------
 # Funzione cerca utente
   function cercaUtente ($username) {
-    
-    $conn = connetti("Strana01");
-    if (!$conn) {
-      die ("[cercaUtente] => Connessione fallita: " . mysqli_connect_error());
+    try {
+      // Uso la funzione connetti() per connettermi al database
+      $conn = connetti(); // Usa la funzione connetti per preparare la connessione
+      
+      // Preparo la query SQL
+      $sql = "SELECT * FROM User WHERE UserName = :username"; // Seleziono tutti i campi del record dove username corrisponde a $username
+      $stmt = $conn->prepare($sql);
+      
+      // Associo i parametri e lo eseguo
+      $stmt->bindParam('username', $username, PDO::PARAM_STR);
+      $stmt->execute();
+      
+      // Recupero il risultato
+      $utente = $stmt->fetch(); // Restituisce un singolo record
+      
+      // Restituisco il risultato
+      return $utente ? $utente : null; // Se non trova risultati restituisce il valore null
+    } catch (PDOException $e) {
+        die ("Errore nella funzione cercaUtente: " . $e->getMessage());
+      } finally { // Chiusura esplicita della connessione. La connessione viene altrimenti chiusa quando finisce la funzione. TODO: Lascio la chiusura esplicita?
+      $conn = null;
     }
-    
-    $sql = "SELECT * FROM User WHERE UserName = '$username'"; #Seleziono tutti i campi del record dove username corrisponde a $username
-    $tmp = mysqli_query($conn, $sql);
-    
-    if (mysqli_num_rows($tmp) != 0) {
-      $row = mysqli_fetch_assoc($tmp); #Recupera la riga del risultato come array associativo.
-      mysqli_close($conn);
-      return $row;
-    } else {
-      mysqli_close($conn);
-      return false;
-    }
-  }
+}
 # ------------------------------------
 
 
@@ -106,20 +111,20 @@
 # ------------------------------------
 # Funzione per controllare se utente loggato è amministratore o no
   function controlloAdmin ($username) {
-    $conn = connetti ("Strana01");
-    if (!$conn) {
-      die ("[controlloAdmin] => Connessione fallita: " . mysqli_connect_error());
-    }
-    
-    $sql = "SELECT admin FROM user WHERE UserName = '$username'";
-    $tmp = mysqli_query ($conn, $sql);
-    $row = mysqli_fetch_assoc($tmp);
-    $valoreAmministratore = $row['admin'];
-    
-    if ($valoreAmministratore == 1) {
-      return true;
-    } else {
-      return false;
+    try {
+      $conn = connetti();
+      $sql = "SELECT admin FROM user WHERE UserName = :username";
+      $stmt = $conn->prepare($sql);
+      $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+      $stmt->execute();
+      $row = $stmt->fetch(); // Recuper il risultato della query
+      if ($row && $row['admin'] == 1) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (PDOException $e) {
+      die("Errore nella funzione controlloAdmin: " . $e->getMessage());
     }
   }
 # ------------------------------------
@@ -169,6 +174,34 @@
 # 1 => I piatti che sono "attivi"
 # 2 => Tutti i piatti, attivi e non attivi"
   function ottieniListaPiatti ($attivi) {
+    try {
+      $conn = connetti();
+      
+      switch ($attivi) {
+        case 0: // Seleziono i piatti non attivi
+          $sql = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = 0";
+          break;
+        case 1: // Seleziono i piatti attivi
+          $sql = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = 1";
+          break;
+        case 2: // Seleziono tutti i piatti
+          $sql = "SELECT * FROM menuCucina";
+          break;
+        default:
+          die ("[ottieniListaPiatti] => Valore di \$attivi non valido");
+      }
+      
+      $stmt = $conn->prepare($sql);
+      $listaPiatti = $stmt->execute();
+      
+      return $listaPiatti;
+      
+    } catch (PDOException $e) {
+      die ("[ottieniListaPiatti] => Errore: " . $e->getMessage());
+    }
+  }
+  
+  function provaOttieniListaPiatti ($attivi) {
     $conn = connetti("Strana01");
     if (!$conn) {
       die ("[ottieniListaPiattiDisponibili] => Connessione fallita: " . mysqli_connect_error());
@@ -204,8 +237,32 @@
 
 
 # ------------------------------------
-# Funzione per ottenere le categorie dei piatti disponibili
-  function ottieniCategoriePiatti ($attivi) {
+# Funzione per ottenere contare quanti piatti appartengono ad una determinata categoria
+  function contaCategoriePiatti ($attivi) {
+    try {
+      $listaPiattiDisponibili = ottieniListaPiatti($attivi);
+      $conn = connetti();
+      
+      $categorie = [
+        'antipasti' => 0,
+        'primi' => 0,
+        'secondi' => 0,
+        'contorni' => 0,
+        'dolci' => 0,
+      ];
+      
+      while ($listaPiattiDisponibili) {
+        if (isset($categorie[$listaPiattiDisponibili['categoriaPiatto']])) {
+          $categorie[$listaPiattiDisponibili['categoriaPiatto']]++;
+        }
+      }
+      return $categorie;
+    } catch (PDOException $e) {
+      die ("contaCategoriePiatti -> Errore " . $e->getMessage());
+    }
+  }
+# ------------------------------------
+  function ProvaContaCategoriePiatti ($attivi) {
     $listaPiattiDisponibili = ottieniListaPiatti($attivi);
     
     $qtyAntipasti = 0;
@@ -240,31 +297,37 @@
     
     ];
   }
-# ------------------------------------
 
 
 # ------------------------------------
 # Funzione che trasforma i piatti disponibili in un array associativo
-  function piattiInArray () {
-    $conn = connetti("Strana01");
-    if (!$conn) {
-      die("[piattiInArray] => Connessione fallita: " . mysqli_connect_error());
+  function piattiInArray ($disponibilitaPiatto) {
+    try {
+      $conn = connetti();
+      
+      $sql = '';
+      switch ($disponibilitaPiatto) {
+        case 0:
+          $sql = "SELECT * FROM menuCucina WHERE disponibilitaPiattto = '0'";
+          break;
+        case 1:
+          $sql = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = '1'";
+          break;
+        case 2:
+          $sql = "SELECT * FROM menuCucina";
+          break;
+        default:
+          die ("[piattiInArray] => Valore di \$attivi non valido");
+      }
+      
+      $stmt = $conn->query($sql);
+      $listaPiattiInArray = $stmt->fetchAll();
+      
+      return $listaPiattiInArray;
+      
+    } catch (PDOException $e) {
+      die("Piatti in array => Errore nella connessione o query: " . $e->getMessage());
     }
-    
-    $query = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = '1'";
-    $tmp = mysqli_query($conn, $query);
-    
-    if (!$tmp) {
-      die("Errore nella query " . mysqli_error($conn));
-    }
-    
-    $piattiDisponibili = [];
-    while ($row = mysqli_fetch_assoc($tmp)) {
-      $listaPiattiDisponibili[] = $row;
-    }
-    
-    mysqli_close($conn);
-    return $listaPiattiDisponibili;  //FIXME: verificare come mai l'IDE me lo segnala come arancione (ChatGPT non ha aiutato)
   }
 # ------------------------------------
 
