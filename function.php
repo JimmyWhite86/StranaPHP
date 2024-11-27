@@ -466,7 +466,7 @@ function creaEvento($nomeEvento, $dataEvento, $descrizioneEvento) {
   try {
     $conn = connetti();
     if(!$conn) {
-      throw new Exception ("Connessione fallita: " . mysqli_connect_error());
+      throw new Exception ("Connessione fallita: " . mysqli_connect_error() . "Numero errore: " . mysqli_connect_errno());
     }
     
     // Verifico che l'evento non sia già presente nel db
@@ -510,7 +510,7 @@ function caricaImmagini($file) {
   
   // Percorso e nome del file
   $file_tmp = $file['tmp_name'];
-  $nomeFile = uuniqid() . "_" . preg_replace('/[^a-zA-Z0-9\._-]/', '_', basename($file["name"]));
+  $nomeFile = uniqid() . "_" . preg_replace('/[^a-zA-Z0-9\._-]/', '_', basename($file["name"]));
   $pathnameImmagine = $uploadPercorso . $nomeFile;
   
   // Controllo il tipo di mime del file

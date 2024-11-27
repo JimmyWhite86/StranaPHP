@@ -111,7 +111,7 @@
                     </label>
                     <textarea name="descrizioneNew" id="descrizioneNew" class="form-control" required aria-required="true"
                               title="Inserisci la descrizione dell'evento">
-            </textarea>
+                    </textarea>
                     <!--
                     <input type="text" name="descrizioneNew" id="descrizioneNew" class="form-control" required aria-required="true"
                     title="Inserisci la descrizione dell'evento">

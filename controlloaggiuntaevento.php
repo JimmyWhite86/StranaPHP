@@ -62,92 +62,63 @@
 </div>
 
 <?php
-
-if (!isset($_SESSION["username"])) {  # Utente non loggato
-  deviLoggarti();
-}
-else { # Utente loggato
-
-$amministratore = $_SESSION ["admin"];
-$username = $_SESSION ["username"];
-
-if ($amministratore == 0) {   # Utente non ha diritti di admin
-  deviEssereAdmin($username);
-}
-else { # Utente è admin --> controllo che i dati inseriti siano corretti
-if (
-isset($_POST["eventoNew"]) && $_POST["eventoNew"] &&
-isset($_POST["dataNew"]) && $_POST["dataNew"] &&
-isset($_POST["descrizioneNew"]) && $_POST["descrizioneNew"]) {
-
-$eventoNew = htmlspecialchars($_POST["eventoNew"], ENT_QUOTES, "UTF-8");
-$dataNew = htmlspecialchars($_POST["dataNew"], ENT_QUOTES, "UTF-8");
-$descrizioneNew = htmlspecialchars($_POST["descrizioneNew"], ENT_QUOTES, "UTF-8");
-
-if (creaEvento($eventoNew, $dataNew, $descrizioneNew) && caricaImmagini($_FILES['immagini'])) { ?>
-<div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-  <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-    <h2>L'evento <strong>"<?=$eventoNew?>"</strong> è stato inserito correttamente</h2>
-    <hr>
-    <a href="aggiungievento.php" class="btn btn-primary mb-3">Aggiungi un altro evento</a><br>
-    <a href="gestioneEventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
-  </div>
-</div>
-
-<?php
   
-}
-
-?>
-
-
-
-
-
-<?php
-}
-else { ?>
-<div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-  <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-    <h2><?=$username?>, ci sono stati problemi con l'inserimento del nuovo evento!</h2>
-    <h3>[controlloaggiungievento] => Errore: <?=mysqli_error($conn)?></h3>
-    <hr>
-    <a href="aggiungievento.php" class="btn btn-primary mb-3">Aggiungi evento</a><br>
-    <a href="gestioneEventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
-  </div>
-</div>
-<?php
-}
-}
-else { ?>
-
-<div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-  <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-    <h2><?=$username?>, l'evento che hai provato ad inserire è già presente a sistema</h2>
-    <hr>
-    <a href="aggiungievento.php" class="btn btn-primary mb-3">Aggiungi evento</a><br>
-    <a href="gestioneEventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
-  </div>
-</div>
-
-<?php
+  if (!isset($_SESSION["username"])) {  # Utente non loggato
+    deviLoggarti();
+  } else { # Utente loggato
+    
+    $amministratore = $_SESSION ["admin"];
+    $username = $_SESSION ["username"];
+    
+    if ($amministratore == 0) {   # Utente non ha diritti di admin
+      deviEssereAdmin($username);
+    } else { # Utente è admin --> controllo che i dati inseriti siano corretti
+      if (
+        isset($_POST["eventoNew"]) && $_POST["eventoNew"] &&
+        isset($_POST["dataNew"]) && $_POST["dataNew"] &&
+        isset($_POST["descrizioneNew"]) && $_POST["descrizioneNew"]
+      ) {
+        
+        $eventoNew = htmlspecialchars($_POST["eventoNew"], ENT_QUOTES, "UTF-8");
+        $dataNew = htmlspecialchars($_POST["dataNew"], ENT_QUOTES, "UTF-8");
+        $descrizioneNew = htmlspecialchars($_POST["descrizioneNew"], ENT_QUOTES, "UTF-8");
+        
+        if (isset($_FILES['immagine']) && $_FILES['immagine']['error'] == UPLOAD_ERR_OK) {
+          $immagineCaricata = caricaImmagini($_FILES['immagine']);
+          if ($immagineCaricata['successo']) {
+            $pathNameImmagine = $immagineCaricata['pathname'];
+          } else {
+            echo "Errore nell'immagine caricata";
+            exit; // TODO: verificare l'uso di exit
           }
-          mysqli_close($conn);
+        } else {
+          $pathNameImmagine = null;
         }
-      }
-      else { ?>
-
-<div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-  <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-    <h2><?=$username?>, devi compilare tutti i campi del form precedente</h2>
-    <p>Per creare correttamente un nuovo utente, devi compilare tutti i campi del form precedente</p>
-    <hr>
-    <a href="aggiungievento.php" class="btn btn-primary mb-3">Aggiungi evento</a><br>
-    <a href="gestioneEventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
-  </div>
-</div>
-
-<?php
+        
+        $eventoCreato = creaEvento($eventoNew, $dataNew, $descrizioneNew);
+        
+        if ($eventoCreato['successo']) { ?>
+          <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+            <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+              <h2>L'evento <strong>"<?=$eventoNew?>"</strong> è stato inserito correttamente</h2>
+              <hr>
+              <a href="aggiungievento.php" class="btn btn-primary mb-3">Aggiungi un altro evento</a><br>
+              <a href="gestioneEventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
+            </div>
+          </div>
+          <?php
+        } else { ?>
+          <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+            <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+              <h2><?=$username?>, ci sono stati problemi con l'inserimento del nuovo evento!</h2>
+              <hr>
+              <a href="aggiungievento.php" class="btn btn-primary mb-3">Aggiungi evento</a><br>
+              <a href="gestioneEventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
+            </div>
+          </div>
+          <?php
+        }
+        
       }
     }
   }
