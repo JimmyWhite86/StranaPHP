@@ -24,7 +24,7 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-  
+
   <!-- Collegamento al mio file CSS -->
   <link href="base_css.css" rel="stylesheet" type="text/css">
   <!-- Libreria per le icone -->
@@ -46,7 +46,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
   <title>Stran EliminaEvento</title>
-  
+
 </head>
 <body>
 
@@ -72,50 +72,51 @@
       deviEssereAdmin($username);
     }
     else { ?>
-      
+
       <!-- Sottotilo della pagina-->
       <div class="my-5 row justify-content-center">
         <div class="text-center">
-         <h2><?=$username?>, scegli quale evento vuoi eliminare</h2>
+          <h2><?=$username?>, scegli quale evento vuoi eliminare</h2>
         </div>
       </div>
       
       <?php
-        $attivi = 1; // Seleziono solo eventi attivi
-        $listaEventi = ottieniListaEventi($attivi);
+      $attivi = 1; // Seleziono solo eventi attivi
+      $listaEventi = ottieniListaEventi($attivi);
       ?>
 
       <!-- Tabella della pagina -->
-      <form method="POST" action="controllocancellazioneevento.php">
+      <form method="POST" action="controlloEliminazioneEvento.php">
         <div class="containerTabella my-5"> <!-- Mantiene il layout centrato e con margine verticale -->
           <div class="row justify-content-center">  <!-- Riga per definire il layout. Centra la colonna orizzontalmente-->
             <div class="col-10"> <!-- colonna che occupa 10 parti su 12 -->
               <table class="table table-bordered table-striped text-center align-middle">
                 <thead class="intestazioneTabella">
-                  <tr class="intestazioneTabella">
-                    <th class="intestazioneTabella">ID Evento</th>
-                    <th class="intestazioneTabella">Data</th>
-                    <th class="intestazioneTabella">Nome Evento</th>
-                    <th class="intestazioneTabella miaColonnaImmagineTabella">Locandina</th>
-                    <th class="intestazioneTabella">Seleziona</th>
-                  </tr>
+                <tr class="intestazioneTabella">
+                  <th class="intestazioneTabella">ID Evento</th>
+                  <th class="intestazioneTabella">Data</th>
+                  <th class="intestazioneTabella">Nome Evento</th>
+                  <th class="intestazioneTabella miaColonnaImmagineTabella">Locandina</th>
+                  <th class="intestazioneTabella">Seleziona</th>
+                </tr>
                 </thead>
                 <tbody>
-                  <?php while ($row = mysqli_fetch_assoc($listaEventi)) {?>
+                <?php
+                  foreach ($listaEventi as $evento) {?>
                     <tr>
-                      <td><?=$row['IDEvento']?></td>
-                      <td><?=$row['DataEvento']?></td>
-                      <td><?=$row['NomeEvento']?></td>
+                      <td><?=$evento['IDEvento']?></td>
+                      <td><?=$evento['DataEvento']?></td>
+                      <td><?=$evento['NomeEvento']?></td>
                       <td class="miaColonnaImmagineTabella">
-                        <img src="<?=$row['Immagine']?>" class="miaImmagineTabella" alt="Locandina dell'evento">
+                        <img src="<?=$evento['Immagine']?>" class="miaImmagineTabella" alt="Locandina dell'evento">
                       </td>
                       <td>
-                        <input type="radio" name="eventoSelezionato" value="<?=$row['IDEvento']?>">
+                        <input type="radio" name="eventoSelezionato" value="<?=$evento['IDEvento']?>">
                       </td>
                     </tr>
                     <?php
                   }
-                  ?>
+                ?>
                 </tbody>
               </table>
             </div> <!-- Fine della colonna-->
@@ -126,17 +127,13 @@
           </div>
         </div>  <!-- Fine del container -->
       </form>
-      
-
-<?php
+      <?php
     }
-}
+  }
 ?>
-
 
 <!-- Richiamo il footer -->
 <?php HTMLfooter($nomePagina); ?>
-
 
 </body>
 </html>

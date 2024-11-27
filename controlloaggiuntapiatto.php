@@ -74,66 +74,54 @@
       deviEssereAdmin($username);
     }
     else { # Utente è admin --> controllo che i dati inseriti siano corretti
-      if ( isset($_POST["nomePiattoNew"]) && $_POST["nomePiattoNew"] &&
+      if (
+        isset($_POST["nomePiattoNew"]) && $_POST["nomePiattoNew"] &&
         isset($_POST["categoriaPiattoNew"]) && $_POST["categoriaPiattoNew"] &&
-        isset($_POST["prezzoPiattoNew"]) && $_POST["prezzoPiattoNew"]) {
+        isset($_POST["prezzoPiattoNew"]) && $_POST["prezzoPiattoNew"]
+      ) {
         
         $nomePiattoNew = $_POST["nomePiattoNew"];
-        $descrizionePiattoNew = $_POST["descrizionePiattoNew"];
+        $descrizionePiattoNew = $_POST["descrizionePiattoNew"] ?? '';
         $categoriaPiattoNew = $_POST["categoriaPiattoNew"];
         $prezzoPiattoNew = $_POST["prezzoPiattoNew"];
-        $cuocoPiattoNew = $_POST['cuocoPiattoNew'];
+        $cuocoPiattoNew = $_POST['cuocoPiattoNew'] ?? '';
         $disponibilitaPiatto = 1;
         $dataInserimentoPiatto = date("d/m/y");
         
-        $conn = connetti ("Strana01");
-        if (!$conn) {
-          erroreConnessioneHTML($conn);
-        }
-        else {
-          if ($prezzoPiattoNew < 0) { ?>
+        if ($prezzoPiattoNew < 0) { ?>
+          <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+            <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+              <h2>Attenzione</h2>
+              <h3>Hai inserito un prezzo inferiore a zero!</h3>
+              <p>Prova nuovamente ad inserire il piatto</p>
+              <hr>
+              <a href="homeAdmin.php" class="btn btn-primary mb-3">Home Admin</a><br>
+              <a href="aggiungiPiatto.php" class="btn btn-primary mb-3">Aggiungi un altro piatto</a><br>
+              <a href="gestioneCucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+            </div>
+          </div>
+          <?php
+        } else {
+          
+          $risultatoAggiuntaPiatto = aggiungiPiatto($nomePiattoNew, $descrizionePiattoNew, $categoriaPiattoNew, $prezzoPiattoNew, $cuocoPiattoNew, $disponibilitaPiatto, $dataInserimentoPiatto);
+          
+          if ($risultatoAggiuntaPiatto) { ?>
             <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
               <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-                <h2>Attenzione</h2>
-                <h3>Hai inserito un prezzo inferiore a zero!</h3>
-                <p>Prova nuovamente ad inserire il piatto</p>
+                <h2>Il piatto è stato aggiunto al menu con successo!</h2>
+                <h3>Hai aggiunto: <strong><?=$nomePiattoNew?></strong> al menu</h3>
                 <hr>
                 <a href="homeAdmin.php" class="btn btn-primary mb-3">Home Admin</a><br>
                 <a href="aggiungiPiatto.php" class="btn btn-primary mb-3">Aggiungi un altro piatto</a><br>
                 <a href="gestioneCucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
               </div>
             </div>
-          <?php
-          } else {
-          
-          $sql = "SELECT nomePiatto FROM menuCucina WHERE nomePiatto = '$nomePiattoNew'";
-          $tmp = mysqli_query($conn,$sql);
-          $numeroRighe = mysqli_num_rows($tmp);
-          
-            $sql = "INSERT INTO menuCucina (nomePiatto, descrizionePiatto, categoriaPiatto, prezzoPiatto, cuoco, disponibilitaPiatto, dataInserimento)
-                    VALUES ('$nomePiattoNew', '$descrizionePiattoNew', '$categoriaPiattoNew', '$prezzoPiattoNew', '$cuocoPiattoNew', '$disponibilitaPiatto', '$dataInserimentoPiatto')";
-            $tmp = mysqli_query($conn, $sql);
-            if ($tmp) { ?>
-              <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-                <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-                  <h2>Il piatto è stato aggiunto al menu con successo!</h2>
-                  <h3>Hai aggiunto: <strong><?=$nomePiattoNew?></strong> al menu</h3>
-                  <hr>
-                  <a href="homeAdmin.php" class="btn btn-primary mb-3">Home Admin</a><br>
-                  <a href="aggiungiPiatto.php" class="btn btn-primary mb-3">Aggiungi un altro piatto</a><br>
-                  <a href="gestioneCucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
-                </div>
-              </div>
-              <?php
-            }
-            else {
-              echo "<p>Ci sono stati problemi con l'inserimento del nuovo piatto</p>";
-              azioni_amministratore();
-              echo mysqli_error($conn);
-              echo mysqli_error($tmp);
-            }
+            <?php
           }
-          mysqli_close($conn);
+          else {
+            echo "<p>Ci sono stati problemi con l'inserimento del nuovo piatto</p>";
+            azioni_amministratore();
+          }
         }
       }
       else {

@@ -58,6 +58,9 @@
     
     try {
       $conn = connetti();
+      if (!$conn) {
+        throw new PDOException("[ottieniListaEventi] => Connessione fallita: " . mysqli_connect_error());
+      }
       
       // Prepara la query in base al valore di $attivi
       switch ($attivi) {
@@ -82,7 +85,6 @@
     } catch (PDOException $e) {
       die("[cercaUtente] => Errore: " . $e->getMessage());
     }
-    
   }
 # ------------------------------------
 
@@ -131,6 +133,46 @@
 # ------------------------------------
 # Funzione per eliminare un evento già salvato
   function eliminaEvento ($idEvento) {
+    try {
+      
+      // Mi connetto al db
+      $conn = connetti();
+      if (!$conn) {
+        throw new PDOException();
+      }
+      
+      // Controllo che l'evento selezionato sia presente nel db
+      $sqlCheck = "SELECT * FROM Eventi WHERE idEvento = :idEvento";
+      $stmtCheck = $conn->prepare($sqlCheck);
+      $stmtCheck->execute(['idEvento' => $idEvento]);
+      if ($stmtCheck->rowCount() == 0) {
+        return ['successo' => false, 'nomeEvento' => '']; // L'evento selezionato non è stato trovato all'interno del db
+      }
+      
+      // ottengo i dati dell'evento
+      $datiEvento = $stmtCheck->fetch();
+      $nomeEvento = $datiEvento['NomeEvento'];
+      //var_dump($datiEvento);
+      
+      // Aggiorno lo stato dell'evento a eliminato
+      $sqlUpdate = "UPDATE Eventi SET eliminato = TRUE WHERE idEvento = :idEvento";
+      $stmtUpdate = $conn->prepare($sqlUpdate);
+      $stmtUpdate->execute(['idEvento' => $idEvento]);
+      
+      // Ritorno il risultato della query di update
+      if ($stmtUpdate->rowCount() > 0) {
+        // Evento eliminato correttamente
+        return ['successo' => true, 'nomeEvento' => $nomeEvento];
+      } else {
+        return ['successo' => false, 'nomeEvento' => $nomeEvento];
+      }
+      
+    } catch (PDOException $e) {
+      return ['successo' => false, 'errore' => $e->getMessage()];
+    }
+  }
+  
+  function provaEliminaEvento ($idEvento) {
     $conn = connetti ("Strana01");
     if (!$conn) {
       die("[eliminaEvento] => Connessione fallita: " . mysqli_connect_error());
@@ -264,42 +306,6 @@ function eliminaPiatto ($idPiatto) {
     return ['successo' => false, 'errore' => $e->getMessage()];
   }
 }
-  function provaEliminaPiatto ($idPiatto) {
-    $conn = connetti ("Strana01");
-    if (!$conn) {
-      die("[eliminaPiatto] => Connessione fallita: " . mysqli_connect_error());
-    }
-    $sql = "SELECT * FROM menuCucina WHERE idPiatto='$idPiatto'";
-    $tmp = mysqli_query($conn, $sql);
-    
-    if (!$tmp) {
-      die("[eliminaPiatto] => Errore nella query di selezione: " . mysqli_error($conn));
-    }
-    
-    $nRow = mysqli_num_rows($tmp);
-    
-    if ($nRow == 0) {
-      return ['successo' => false, 'nomePiatto' => ''];
-    } else {
-      //ottengo i dati del piatto per poi comunicarli all'utente
-      $datiPiatto = mysqli_fetch_assoc($tmp);
-      $nomePiatto = $datiPiatto['nomePiatto'];
-      
-      $sql = "UPDATE menuCucina SET disponibilitaPiatto=FALSE WHERE idPiatto='$idPiatto'";
-      $tmp = mysqli_query($conn, $sql);
-      
-      if (!$tmp) {
-        die("[eliminaPiatto] => Errore nella query di aggiornamento: " . mysqli_error($conn));
-      }
-      if ($tmp) { // TODO: è necessario questo if? Non posso usare direttamente l'else dopo?
-        return ['successo' => true, 'nomePiatto' => $nomePiatto];
-      }
-      else {
-        return ['successo' => false, 'nomePiatto' => $nomePiatto];
-      }
-    }
-    mysqli_close($conn);
-  }
 # ------------------------------------
 
 
@@ -417,4 +423,111 @@ function eliminaPiatto ($idPiatto) {
   }
 # ------------------------------------
 
+
+# ------------------------------------
+# Funzione per aggiungere un piatto al menu
+  function aggiungiPiatto ($nomePiatto, $descrizionePiatto, $categoriaPiatto, $prezzoPiatto, $cuoco, $disponibilitaPiatto, $dataInserimento) {
+    try {
+      $conn = connetti();
+      
+      if(!$conn) {
+        die ("[aggiungiPiatto] => Connessione fallita: " . mysqli_connect_error());
+      }
+      
+      $sqlInsert = "INSERT INTO menuCucina (nomePiatto, descrizionePiatto, categoriaPiatto, prezzoPiatto, cuoco, disponibilitaPiatto, dataInserimento)
+                    VALUES (:nomePiatto, :descrizionePiatto, :categoriaPiatto, :prezzoPiatto, :cuoco, :disponibilitaPiatto, :dataInserimento)";
+      $stmtInsert = $conn->prepare($sqlInsert);
+      $stmtInsert->execute([
+        ':nomePiatto' => $nomePiatto,
+        ':descrizionePiatto' => $descrizionePiatto,
+        ':categoriaPiatto' => $categoriaPiatto,
+        ':prezzoPiatto' => $prezzoPiatto,
+        ':cuoco' => $cuoco,
+        ':disponibilitaPiatto' => $disponibilitaPiatto,
+        ':dataInserimento' => $dataInserimento,
+      ]);
+      
+      if ($stmtInsert->rowCount() > 0) {
+        return true;
+      } else {
+        return false;
+      }
+      
+    } catch (PDOException $e) {
+      return false;
+    }
+  }
+# ------------------------------------
+
+
+# ------------------------------------
+# Funzione per creare un evento
+function creaEvento($nomeEvento, $dataEvento, $descrizioneEvento) {
+  try {
+    $conn = connetti();
+    if(!$conn) {
+      throw new Exception ("Connessione fallita: " . mysqli_connect_error());
+    }
+    
+    // Verifico che l'evento non sia già presente nel db
+    $sqlCheck = "SELECT * FROM Evento WHERE NomeEvento = :nomeEvento AND DataEvento = :dataEvento"; // Controllo che non ci siano eventi con lo stesso nome e la stessa data. Un evento può ripetersi in date diverse.
+    $stmtCheck = $conn->prepare($sqlCheck);
+    $stmtCheck->execute([':nomeEvento' => $nomeEvento, ':dataEvento' => $dataEvento]);
+    if ($stmtCheck->rowCount() > 0) {
+      return ['successo' => false, 'messaggio' => 'Evento già presente'];
+    }
+    
+    // Inserisco l'evento
+    $sqlInsert = "INSERT INTO Eventi (NomeEvento, DataEvento, Descrizione, eliminato)
+                  VALUES (:nomeEvento, :dataEvento, :descrizioneEvento, :eliminato ) ";
+    $stmtInsert = $conn->prepare($sqlInsert);
+    $stmtInsert->execute([
+      ':nomeEvento' => $nomeEvento,
+      ':dataEvento' => $dataEvento,
+      //':pathNameImmagine' => $immagine,
+      ':descrizioneEvento' => $descrizioneEvento,
+      ':eliminato' => 0,
+    ]);
+    
+    if ($stmtInsert->rowCount() > 0) {
+      return ['successo' => true, 'messaggio' => 'Evento creato'];
+    } else {
+      return ['successo' => false, 'messaggio' => 'Errore creazione'];
+    }
+  } catch (PDOException $e) {
+    return ['successo' => false, 'messaggio' => $e->getMessage()];
+  }
+}
+# ------------------------------------
+
+
+# ------------------------------------
+# Funzione per importare le immagini negli eventi
+function caricaImmagini($file) {
+  $uploadPercorso = "immagini/";
+  $dimensioneMassima = 500000;
+  $estensioniConsentite = ["jpg", "jpeg", "png"];
+  
+  // Percorso e nome del file
+  $file_tmp = $file['tmp_name'];
+  $nomeFile = uuniqid() . "_" . preg_replace('/[^a-zA-Z0-9\._-]/', '_', basename($file["name"]));
+  $pathnameImmagine = $uploadPercorso . $nomeFile;
+  
+  // Controllo il tipo di mime del file
+  $tipoFile = mime_content_type($file_tmp);
+  
+  if (in_array(pathinfo($pathnameImmagine, PATHINFO_EXTENSION), $estensioniConsentite)) {
+    if (filesize($file_tmp) <= $dimensioneMassima) {
+      if (move_uploaded_file($file_tmp, $pathnameImmagine)) {
+        return ['successo' => true, 'messaggio' => 'Immagine caricata', 'pathname' => $pathnameImmagine];
+      } else {
+        return ['successo' => false, 'messaggio' => 'Errore caricamento immagine', 'pathname' => '', 'codiceErrore' => 0];
+      }
+    } else {
+      return ['successo' => false, 'messaggio' => 'Immagine troppo grande', 'pathname' => '', 'codiceErrore' => 1];
+    }
+  } else {
+    return ['successo' => false, 'messaggio' => 'Il file caricato non è un immagine', 'pathname' => '', 'codiceErrore' => 2];
+  }
+}
 ?>

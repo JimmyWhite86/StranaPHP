@@ -104,9 +104,6 @@
   }
 ?>
 
-
-
-
 <!-- Richiamo il footer -->
 <?php HTMLfooter($nomePagina);?>
 

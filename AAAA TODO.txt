@@ -4,6 +4,7 @@
 
 
       // TODO: DA FARE
+- Inserire i throw nei cicli try
 - Titolo dinamico per ogni pagina => Passare il nome come variabile e poi richiamo funzione.
     Per sottotilo quando presente? => Usare un booleano come parametro? => Devo passare un array? Se si, posso farlo?
 - Pagina Gallery => dimensioni per immagini widescreen
@@ -25,11 +26,12 @@
 
 
 
+
       // TODO: DA VERIFICARE
 - Attributi "alt" delle immagini?
 - Cos è charset utf8mb4;
 - Aggiungere void a funzioni che non restituiscono valori???  ___ Dichiarazione dei tipi di variabile ritornata??
-
+- Differenza tra Exceptìon e PDOexception
 
 
 
