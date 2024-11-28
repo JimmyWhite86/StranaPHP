@@ -575,6 +575,20 @@ function gestisciImmagine() {
 function inserisciEvento($nomeEventoNew, $dataEventoNew, $descrizioneNew, $imagePath) {
   try {
     $conn = connetti();
+    
+    // Controllo se esistono già eventi con stessa data && stesso nome
+    $sqlCheck = "SELECT COUNT(*) FROM Eventi WHERE NomeEvento = :nomeEvento AND DataEvento = :dataEvento AND eliminato = 0";
+    $stmtCheck = $conn->prepare($sqlCheck);
+    $stmtCheck->execute([
+      ':nomeEvento' => $nomeEventoNew,
+      ':dataEvento' => $dataEventoNew,
+    ]);
+    $eventoEsiste = $stmtCheck->fetchColumn();
+    if ($eventoEsiste > 0) {
+      return ["successo" => false, 'messaggio' => "Evento già presente a sistema", 'codiceErrore' => 0];
+    }
+    
+    // Inserisco il nuovo evento a sistema
     $sqlInsert = "INSERT INTO Eventi (NomeEvento, DataEvento, Descrizione, eliminato, Immagine)
                     VALUES (:nomeEvento, :dataEvento, :descrizioneEvento, :eliminato, :pathNameImmagine ) ";
     $stmtInsert = $conn->prepare($sqlInsert);
@@ -588,15 +602,15 @@ function inserisciEvento($nomeEventoNew, $dataEventoNew, $descrizioneNew, $image
     try {
       $stmtInsert->execute($parametri);
     } catch (Exception $e) {
-      return ['successo' => false, 'messaggio' => 'Errore: ' . $e->getMessage()];
+      return ['successo' => false, 'messaggio' => 'Errore: ' . $e->getMessage(), 'codiceErrore' => 1];
     }
     if ($stmtInsert->rowCount() > 0) {
       return ['successo' => true, 'messaggio' => 'Evento creato'];
     } else {
-      return ['successo' => false, 'messaggio' => 'Errore creazione'];
+      return ['successo' => false, 'messaggio' => 'Errore creazione', 'codiceErrore' => 2];
     }
   } catch (Exception $e) {
-    return ['successo' => false, 'messaggio' => $e->getMessage()];
+    return ['successo' => false, 'messaggio' => $e->getMessage(), 'codiceErrore' => 3];
   }
 }
 

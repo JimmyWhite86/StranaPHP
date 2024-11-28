@@ -94,15 +94,46 @@
         exit;
       }
       
-      $messaggio = inserisciEvento($evento, $data, $descrizione, $imagePath);
-      print_r($messaggio);
+      // Richiamo la funzione che inserisce l'evento nel db e associo il risultato ad una variabile
+      $esitoInserimentoEvento = inserisciEvento($evento, $data, $descrizione, $imagePath);
       
-      // Inserimento dell'evento nel database
-//      if (inserisciEvento($evento, $descrizione, $data, $imagePath)) {
-//        echo "Evento inserito correttamente";
-//      } else {
-//        echo "Errore durante il caricamento del file";
-//      }
+      // Controllo il risultato dell'operazione:
+      if (!$esitoInserimentoEvento['successo']) {
+        if ($esitoInserimentoEvento['codiceErrore'] == 0 ) {
+          ?>
+          <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+            <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+              <h2>L'evento che hai provato ad inserire esiste già con lo stesso nome nella stessa data!</h2>
+              <hr>
+              <a href="aggiungievento.php" class="btn btn-primary mb-3">Aggiungi evento</a><br>
+              <a href="gestioneEventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
+            </div>
+          </div>
+          <?php
+        } else {
+          ?>
+          <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+            <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+              <h2>Ci sono stati problemi con l'inserimento del nuovo evento!</h2>
+              <hr>
+              <a href="aggiungievento.php" class="btn btn-primary mb-3">Aggiungi evento</a><br>
+              <a href="gestioneEventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
+            </div>
+          </div>
+          <?php
+        }
+      } else { ?>
+        <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+            <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+              <h2>L'evento <strong>"<?=$evento?>"</strong> è stato inserito correttamente</h2>
+              <hr>
+              <a href="aggiungievento.php" class="btn btn-primary mb-3">Aggiungi un altro evento</a><br>
+              <a href="gestioneEventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
+            </div>
+          </div>
+<?php
+      }
+      
     }
   }
   
