@@ -462,7 +462,7 @@ function eliminaPiatto ($idPiatto) {
 
 # ------------------------------------
 # Funzione per creare un evento
-function creaEvento($nomeEvento, $dataEvento, $descrizioneEvento) {
+function creaEvento($nomeEvento, $dataEvento, $descrizioneEvento, $immagine) {
   try {
     $conn = connetti();
     if(!$conn) {
@@ -477,17 +477,31 @@ function creaEvento($nomeEvento, $dataEvento, $descrizioneEvento) {
       return ['successo' => false, 'messaggio' => 'Evento già presente'];
     }
     
+    // Preparo la variabile per l'immagine
+    $pathNameImmagine = null;
+    
+    // Processo l'immagine se caricata
+    if (isset($immagine) && $immagine['error'] === UPLOAD_ERR_OK) {
+      $immagineCaricata = caricaImmagini($immagine);
+      if ($immagineCaricata['successo']) {
+        $pathNameImmagine = $immagineCaricata['pathname'];
+      } else {
+        return ['successo' => false, 'messaggio' => $immagineCaricata['messaggio']];
+      }
+    }
+    
     // Inserisco l'evento
-    $sqlInsert = "INSERT INTO Eventi (NomeEvento, DataEvento, Descrizione, eliminato)
-                  VALUES (:nomeEvento, :dataEvento, :descrizioneEvento, :eliminato ) ";
+    $sqlInsert = "INSERT INTO Eventi (NomeEvento, DataEvento, Descrizione, eliminato, immagine)
+                  VALUES (:nomeEvento, :dataEvento, :descrizioneEvento, :eliminato, :pathNameImmagine ) ";
     $stmtInsert = $conn->prepare($sqlInsert);
-    $stmtInsert->execute([
+    $parametri = [
       ':nomeEvento' => $nomeEvento,
       ':dataEvento' => $dataEvento,
-      //':pathNameImmagine' => $immagine,
+      ':pathNameImmagine' => $pathNameImmagine,
       ':descrizioneEvento' => $descrizioneEvento,
       ':eliminato' => 0,
-    ]);
+    ];
+    $stmtInsert->execute($parametri);
     
     if ($stmtInsert->rowCount() > 0) {
       return ['successo' => true, 'messaggio' => 'Evento creato'];
@@ -530,4 +544,67 @@ function caricaImmagini($file) {
     return ['successo' => false, 'messaggio' => 'Il file caricato non è un immagine', 'pathname' => '', 'codiceErrore' => 2];
   }
 }
+
+
+
+  # ------------------------------------
+  # Funzione per importare le immagini negli eventi
+function gestisciImmagine() {
+  if (isset($_FILES['immagine']) && $_FILES['immagine']['error'] === 0) {
+    $imageName = $_FILES['immagine']['name'];
+    $imageTmp = $_FILES['immagine']['tmp_name'];
+    $imageType = $_FILES['immagine']['type'];
+    
+    $estensioniAmmesse = ["image/jpg", "image/jpeg", "image/png"];
+    if (in_array($imageType, $estensioniAmmesse)) {
+      $uploadPercorso = "immagini/";
+      $imagePath = $uploadPercorso . basename($imageName);
+      
+      if (move_uploaded_file($imageTmp, $imagePath)) {
+        return $imagePath;
+      } else {
+        return false;
+      }
+    }
+  }
+  return null;
+}
+
+
+
+function inserisciEvento($nomeEventoNew, $dataEventoNew, $descrizioneNew, $imagePath) {
+  $conn = connetti();
+  
+  $sqlInsert = "INSERT INTO Eventi (NomeEvento, DataEvento, Descrizione, eliminato, immagine)
+                  VALUES (:nomeEvento, :dataEvento, :descrizioneEvento, :eliminato, :pathNameImmagine ) ";
+  $stmtInsert = $conn->prepare($sqlInsert);
+  $parametri = [
+    ':nomeEvento' => $nomeEventoNew,
+    ':dataEvento' => $dataEventoNew,
+    ':pathNameImmagine' => $imagePath,
+    ':descrizioneEvento' => $descrizioneNew,
+    ':eliminato' => 0,
+  ];
+  
+  
+  try {
+    $stmtInsert->execute($parametri);
+  } catch (Exception $e) {
+    return ['successo' => false, 'messaggio' => 'Errore: ' . $e->getMessage()];
+  }
+  
+  if ($stmtInsert->rowCount() > 0) {
+    return ['successo' => true, 'messaggio' => 'Evento creato'];
+  } else {
+    return ['successo' => false, 'messaggio' => 'Errore creazione'];
+  }
+}
+
+
+
+
+
 ?>
+
+
+

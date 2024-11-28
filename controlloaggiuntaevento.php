@@ -83,17 +83,17 @@
         $dataNew = htmlspecialchars($_POST["dataNew"], ENT_QUOTES, "UTF-8");
         $descrizioneNew = htmlspecialchars($_POST["descrizioneNew"], ENT_QUOTES, "UTF-8");
         
-        if (isset($_FILES['immagine']) && $_FILES['immagine']['error'] == UPLOAD_ERR_OK) {
-          $immagineCaricata = caricaImmagini($_FILES['immagine']);
-          if ($immagineCaricata['successo']) {
-            $pathNameImmagine = $immagineCaricata['pathname'];
-          } else {
-            echo "Errore nell'immagine caricata";
-            exit; // TODO: verificare l'uso di exit
-          }
-        } else {
-          $pathNameImmagine = null;
-        }
+//        if (isset($_FILES['immagine']) && $_FILES['immagine']['error'] == UPLOAD_ERR_OK) {
+//          $immagineCaricata = caricaImmagini($_FILES['immagine']);
+//          if ($immagineCaricata['successo']) {
+//            $pathNameImmagine = $immagineCaricata['pathname'];
+//          } else {
+//            echo "Errore nell'immagine caricata";
+//            exit; // TODO: verificare l'uso di exit
+//          }
+//        } else {
+//          $pathNameImmagine = null;
+//        }
         
         $eventoCreato = creaEvento($eventoNew, $dataNew, $descrizioneNew);
         
