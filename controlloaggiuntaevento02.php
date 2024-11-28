@@ -72,37 +72,54 @@
     
     if ($amministratore == 0) {   # Utente non ha diritti di admin
       deviEssereAdmin($username);
-    } else {
-      
-      // verifico che il modulo sia stato inviato
-      if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        //Recupero i dati inviati dal form
-        $evento = $_POST["eventoNew"];
-        $data = $_POST["dataNew"];
-        $descrizione = $_POST["descrizioneNew"];
+    } else { # Utente è admin --> controllo che i dati inseriti siano corretti
+      if (
+        isset($_POST["eventoNew"]) && $_POST["eventoNew"] &&
+        isset($_POST["dataNew"]) && $_POST["dataNew"] &&
+        isset($_POST["descrizioneNew"]) && $_POST["descrizioneNew"]
+      ) {
+        
+        $eventoNew = htmlspecialchars($_POST["eventoNew"], ENT_QUOTES, "UTF-8");
+        $dataNew = htmlspecialchars($_POST["dataNew"], ENT_QUOTES, "UTF-8");
+        $descrizioneNew = htmlspecialchars($_POST["descrizioneNew"], ENT_QUOTES, "UTF-8");
+        
+//        if (isset($_FILES['immagine']) && $_FILES['immagine']['error'] == UPLOAD_ERR_OK) {
+//          $immagineCaricata = caricaImmagini($_FILES['immagine']);
+//          if ($immagineCaricata['successo']) {
+//            $pathNameImmagine = $immagineCaricata['pathname'];
+//          } else {
+//            echo "Errore nell'immagine caricata";
+//            exit; // TODO: verificare l'uso di exit
+//          }
+//        } else {
+//          $pathNameImmagine = null;
+//        }
+        
+        $eventoCreato = creaEvento($eventoNew, $dataNew, $descrizioneNew);
+        
+        if ($eventoCreato['successo']) { ?>
+          <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+            <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+              <h2>L'evento <strong>"<?=$eventoNew?>"</strong> è stato inserito correttamente</h2>
+              <hr>
+              <a href="aggiungievento.php" class="btn btn-primary mb-3">Aggiungi un altro evento</a><br>
+              <a href="gestioneEventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
+            </div>
+          </div>
+          <?php
+        } else { ?>
+          <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+            <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+              <h2><?=$username?>, ci sono stati problemi con l'inserimento del nuovo evento!</h2>
+              <hr>
+              <a href="aggiungievento.php" class="btn btn-primary mb-3">Aggiungi evento</a><br>
+              <a href="gestioneEventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
+            </div>
+          </div>
+          <?php
+        }
+        
       }
-      
-      // Controllo che i campi obbligatori non siano vuoti
-      if (empty($evento) || empty($descrizione) || empty($data)) {
-        echo "Tutti i campi devono essere compilati";
-      }
-      
-      // Gestisco l'immagine
-      $imagePath = gestisciImmagine();
-      if ($imagePath === false) {
-        echo "Errore durante il caricamento del file";
-        exit;
-      }
-      
-      $messaggio = inserisciEvento($evento, $data, $descrizione, $imagePath);
-      print_r($messaggio);
-      
-      // Inserimento dell'evento nel database
-//      if (inserisciEvento($evento, $descrizione, $data, $imagePath)) {
-//        echo "Evento inserito correttamente";
-//      } else {
-//        echo "Errore durante il caricamento del file";
-//      }
     }
   }
   

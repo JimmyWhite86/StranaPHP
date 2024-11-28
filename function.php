@@ -573,30 +573,30 @@ function gestisciImmagine() {
 
 
 function inserisciEvento($nomeEventoNew, $dataEventoNew, $descrizioneNew, $imagePath) {
-  $conn = connetti();
-  
-  $sqlInsert = "INSERT INTO Eventi (NomeEvento, DataEvento, Descrizione, eliminato, immagine)
-                  VALUES (:nomeEvento, :dataEvento, :descrizioneEvento, :eliminato, :pathNameImmagine ) ";
-  $stmtInsert = $conn->prepare($sqlInsert);
-  $parametri = [
-    ':nomeEvento' => $nomeEventoNew,
-    ':dataEvento' => $dataEventoNew,
-    ':pathNameImmagine' => $imagePath,
-    ':descrizioneEvento' => $descrizioneNew,
-    ':eliminato' => 0,
-  ];
-  
-  
   try {
-    $stmtInsert->execute($parametri);
+    $conn = connetti();
+    $sqlInsert = "INSERT INTO Eventi (NomeEvento, DataEvento, Descrizione, eliminato, Immagine)
+                    VALUES (:nomeEvento, :dataEvento, :descrizioneEvento, :eliminato, :pathNameImmagine ) ";
+    $stmtInsert = $conn->prepare($sqlInsert);
+    $parametri = [
+      ':nomeEvento' => $nomeEventoNew,
+      ':dataEvento' => $dataEventoNew,
+      ':pathNameImmagine' => $imagePath,
+      ':descrizioneEvento' => $descrizioneNew,
+      ':eliminato' => 0,
+    ];
+    try {
+      $stmtInsert->execute($parametri);
+    } catch (Exception $e) {
+      return ['successo' => false, 'messaggio' => 'Errore: ' . $e->getMessage()];
+    }
+    if ($stmtInsert->rowCount() > 0) {
+      return ['successo' => true, 'messaggio' => 'Evento creato'];
+    } else {
+      return ['successo' => false, 'messaggio' => 'Errore creazione'];
+    }
   } catch (Exception $e) {
-    return ['successo' => false, 'messaggio' => 'Errore: ' . $e->getMessage()];
-  }
-  
-  if ($stmtInsert->rowCount() > 0) {
-    return ['successo' => true, 'messaggio' => 'Evento creato'];
-  } else {
-    return ['successo' => false, 'messaggio' => 'Errore creazione'];
+    return ['successo' => false, 'messaggio' => $e->getMessage()];
   }
 }
 
