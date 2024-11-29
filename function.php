@@ -517,38 +517,6 @@ function creaEvento($nomeEvento, $dataEvento, $descrizioneEvento, $immagine) {
 
 # ------------------------------------
 # Funzione per importare le immagini negli eventi
-function caricaImmagini($file) {
-  $uploadPercorso = "immagini/";
-  $dimensioneMassima = 500000;
-  $estensioniConsentite = ["jpg", "jpeg", "png"];
-  
-  // Percorso e nome del file
-  $file_tmp = $file['tmp_name'];
-  $nomeFile = uniqid() . "_" . preg_replace('/[^a-zA-Z0-9\._-]/', '_', basename($file["name"]));
-  $pathnameImmagine = $uploadPercorso . $nomeFile;
-  
-  // Controllo il tipo di mime del file
-  $tipoFile = mime_content_type($file_tmp);
-  
-  if (in_array(pathinfo($pathnameImmagine, PATHINFO_EXTENSION), $estensioniConsentite)) {
-    if (filesize($file_tmp) <= $dimensioneMassima) {
-      if (move_uploaded_file($file_tmp, $pathnameImmagine)) {
-        return ['successo' => true, 'messaggio' => 'Immagine caricata', 'pathname' => $pathnameImmagine];
-      } else {
-        return ['successo' => false, 'messaggio' => 'Errore caricamento immagine', 'pathname' => '', 'codiceErrore' => 0];
-      }
-    } else {
-      return ['successo' => false, 'messaggio' => 'Immagine troppo grande', 'pathname' => '', 'codiceErrore' => 1];
-    }
-  } else {
-    return ['successo' => false, 'messaggio' => 'Il file caricato non è un immagine', 'pathname' => '', 'codiceErrore' => 2];
-  }
-}
-
-
-
-  # ------------------------------------
-  # Funzione per importare le immagini negli eventi
 function gestisciImmagine() {
   if (isset($_FILES['immagine']) && $_FILES['immagine']['error'] === 0) {
     $imageName = $_FILES['immagine']['name'];
@@ -569,9 +537,10 @@ function gestisciImmagine() {
   }
   return null;
 }
-
-
-
+  # ------------------------------------
+  
+  # ------------------------------------
+  # Funzione per inserire nuovo evento
 function inserisciEvento($nomeEventoNew, $dataEventoNew, $descrizioneNew, $imagePath) {
   try {
     $conn = connetti();
@@ -613,10 +582,52 @@ function inserisciEvento($nomeEventoNew, $dataEventoNew, $descrizioneNew, $image
     return ['successo' => false, 'messaggio' => $e->getMessage(), 'codiceErrore' => 3];
   }
 }
-
-
-
-
+  # ------------------------------------
+  
+  
+  # ------------------------------------
+  # Funzione per creare un nuovo utente
+  function creaUtente($usernameNew, $passwordNew) {
+    try {
+      $conn = connetti();
+      
+      // Verifico che non ci siano utenti con lo stesso username
+      $sqlCheck = "SELECT COUNT(*) FROM User WHERE Username = :username AND utenteAttivo = 1";
+      $stmtCheck = $conn->prepare($sqlCheck);
+      $stmtCheck->execute([':username' => $usernameNew]);
+      $utenteEsiste = $stmtCheck->fetchColumn();
+      if ($utenteEsiste > 0) {
+        return ["successo" => false, 'messaggio' => "Utente già presente a sistema", 'codiceErrore' => 0];
+      }
+      
+      // Hash della password
+      $passwordHash = password_hash($passwordNew, PASSWORD_DEFAULT); // TODO: Quale algo devo usare?
+      
+      // Inserisco l'utente
+      $sqlInsert = "INSERT INTO User (Username, Password, admin, utenteAttivo) VALUES (:username, :password, :admin, :utenteAttivo)";
+      $stmtInsert = $conn->prepare($sqlInsert);
+      $parametri = [
+        ':username' => $usernameNew,
+        ':password' => $passwordHash,
+        ':admin' => 1,
+        ':utenteAttivo' => 1,
+      ];
+      try {
+        $stmtInsert->execute($parametri);
+      } catch (Exception $e) {
+        return ['successo' => false, 'messaggio' => 'Errore: ' . $e->getMessage(), 'codiceErrore' => 1];
+      }
+      
+      if ($stmtInsert->rowCount() > 0) {
+        return ['successo' => true, 'messaggio' => 'Utente creato'];
+      } else {
+        return ['successo' => false, 'messaggio' => 'Errore creazione'];
+      }
+      
+    } catch (Exception $e) {
+      return ['successo' => false, 'messaggio' => 'Errore durante l\'esecuzione: ' . $e->getMessage()];
+    }
+  }
 
 ?>
 

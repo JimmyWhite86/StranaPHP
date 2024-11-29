@@ -82,24 +82,48 @@
         
         if ($psw1 === $psw2) {
           
-          $risultatoCreazioneUtente = creaUtente($usernameNew, $psw1);
-          
-          if ($risultatoCreazioneUtente['successo']) {
-            //echo "utente creato con successo";
-            //print_r($risultatoCreazioneUtente); ?>
-            <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-              <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-                <h2>L'utente <strong>"<?=$usernameNew?>"</strong> è stato inserito correttamente</h2>
-                <hr>
-                <a href="creaUtente.php" class="btn btn-primary mb-3">Aggiungi un altro utente</a><br>
-                <a href="gestioneUtenti.php" class="btn btn-primary mb-3">Gestione utenti</a><br>
-              </div>
-            </div>
-          <?php
+          $conn = connetti("Strana01");
+          if (!$conn) {
+            erroreConnessioneHTML($conn);
           } else {
-            if ($risultatoCreazioneUtente['codiceErrore'] == 0) {
-              //echo "utente già esistente";
-              //print_r($risultatoCreazioneUtente); ?>
+            
+            $sql = "SELECT UserName FROM User WHERE UserName = '$usernameNew'";
+            $tmp = mysqli_query($conn, $sql);
+            $numeroRighe = mysqli_num_rows($tmp);
+            
+            if ($numeroRighe == 0) {  // Non ci sono altri utenti con questo username
+              
+              $sql = "INSERT INTO User (UserName, Password, admin, utenteAttivo)
+                      VALUES ('$usernameNew', '$psw1', '1', '1')";
+              $tmp = mysqli_query($conn, $sql);
+              
+              if ($tmp) { ?>
+
+                <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+                  <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+                    <h2>L'utente <strong>"<?=$usernameNew?>"</strong> è stato inserito correttamente</h2>
+                    <hr>
+                    <a href="creaUtente.php" class="btn btn-primary mb-3">Aggiungi un altro utente</a><br>
+                    <a href="gestioneUtenti.php" class="btn btn-primary mb-3">Gestione utenti</a><br>
+                  </div>
+                </div>
+                
+                <?php
+              } else { ?>
+
+                <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+                  <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+                    <h2><?=$username?>, ci sono stati problemi con l'inserimento del nuovo utente!</h2>
+                    <h3>[controlloAggiunteUtente] => Errore: <?=mysqli_error($conn)?></h3>
+                    <hr>
+                    <a href="creaUtente.php" class="btn btn-primary mb-3">Aggiungi un altro utente</a><br>
+                    <a href="gestioneUtenti.php" class="btn btn-primary mb-3">Gestione utenti</a><br>
+                  </div>
+                </div>
+                <?php
+              }
+            } else { ?>
+
               <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
                 <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
                   <h2><?=$username?>, l'utente che hai cercato di inserire è già presente a sistema</h2>
@@ -108,23 +132,10 @@
                   <a href="gestioneUtenti.php" class="btn btn-primary mb-3">Gestione utenti</a><br>
                 </div>
               </div>
-            <?php
-            } else {
-              //echo "Errore creazione utente";
-              //print_r($risultatoCreazioneUtente); ?>
-              <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-                <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-                  <h2><?=$username?>, ci sono stati problemi con l'inserimento del nuovo utente!</h2>
-                  <h3>[controlloAggiunteUtente] => Errore: <?=mysqli_error($conn)?></h3>
-                  <hr>
-                  <a href="creaUtente.php" class="btn btn-primary mb-3">Aggiungi un altro utente</a><br>
-                  <a href="gestioneUtenti.php" class="btn btn-primary mb-3">Gestione utenti</a><br>
-                </div>
-              </div>
-            <?php
+              
+              <?php
             }
           }
-          
         } else { ?>
 
           <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
