@@ -68,7 +68,7 @@
         // var_dump($datiUtente);
         if ($datiUtente) {                              // Se dati utente = true --> utente presente del db
           $password = $_POST["psw1"];
-          if ($password == $datiUtente["Password"]) {   // Controllo che la psw sia corretta
+          if (password_verify($password, $datiUtente['Password'])) {   // Controllo che la psw sia corretta
             $valoreAmministratore = controlloAdmin($username);
             $_SESSION["username"] = $username;
             $_SESSION["idUser"] = $datiUtente["IDUser"];
