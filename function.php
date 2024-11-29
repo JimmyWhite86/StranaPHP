@@ -21,12 +21,25 @@
     }
   }
 # ------------------------------------
+  
+  
+# ------------------------------------
+# Funzione cerca utente
+  function sanificaInput($inputDaSanificare) {
+    return htmlspecialchars(trim($inputDaSanificare), ENT_QUOTES, 'UTF-8');
+  }
+# ------------------------------------
 
 
 # ------------------------------------
 # Funzione cerca utente
   function cercaUtente ($username) {
     try {
+      // Validazione dell'ìnput
+      if (empty($username)) {
+        return ['successo' => false, 'errore' => 'Username non può essere vuoto'];
+      }
+      
       // Uso la funzione connetti() per connettermi al database
       $conn = connetti(); // Usa la funzione connetti per preparare la connessione
       
@@ -139,6 +152,11 @@
         return ['success' => false, 'errore' => 'errore di connessione'];
       }
       
+      // Validazione dell'idEvento
+      if (!filter_var($idEvento, FILTER_VALIDATE_INT)) {
+        return ['success' => false, 'errore' => 'id non valido'];
+      }
+      
       // Controllo che l'evento selezionato sia presente nel db
       $sqlCheck = "SELECT * FROM Eventi WHERE idEvento = :idEvento";
       $stmtCheck = $conn->prepare($sqlCheck);
@@ -169,45 +187,17 @@
       return ['successo' => false, 'errore' => $e->getMessage()];
     }
   }
-  
-  function provaEliminaEvento ($idEvento) {
-    $conn = connetti ("Strana01");
-    if (!$conn) {
-      die("[eliminaEvento] => Connessione fallita: " . mysqli_connect_error());
-    }
-    $sql = "SELECT IDEvento, NomeEvento, DataEvento FROM Eventi WHERE IDEvento='$idEvento'";
-    $tmp = mysqli_query($conn, $sql);
-    $nRow = mysqli_num_rows($tmp);
-    if ($nRow == 0) {
-      //echo "<h1>Evento non trovato $idEvento</h1>";
-      return ['successo' => false, 'nomeEvento' => ''];
-    }
-    else {
-      //ottengo i dati dell'evento per poi comunicarli all'utente
-      $datiEvento = mysqli_fetch_assoc($tmp);
-      $nomeEvento = $datiEvento['NomeEvento'];
-      
-      $sql = "UPDATE Eventi SET eliminato=TRUE WHERE IDEvento='$idEvento'";
-      $tmp = mysqli_query($conn, $sql);
-      if ($tmp) {
-        //echo "Evento $nomeEvento (ID: $idEvento) cancellato correttamente";
-        //return true;
-        return ['successo' => true, 'nomeEvento' => $nomeEvento];
-      }
-      else {
-        //echo "Errore cancellazione evento $nomeEvento (ID: $idEvento)";
-        //return false;
-        return ['successo' => false, 'nomeEvento' => $nomeEvento];
-      }
-    }
-    mysqli_close($conn);
-  }
 # ------------------------------------
 
 
 # ------------------------------------
 # Funzione per ottenere contare quanti piatti appartengono ad una determinata categoria
   function contaCategoriePiatti ($attivi) {
+    // Validazione dell'input ($attivi)
+    if (!is_int($attivi) || !in_array($attivi, [1, 2, 3])) {
+      throw new InvalidArgumentException("Valore di attivi non valido");
+    }
+    
     try {
       $listaPiattiDisponibili = piattiInArray($attivi);
       
@@ -227,7 +217,9 @@
       
       return $categorie;
     } catch (PDOException $e) {
-      die ("[contaCategoriePiatti] => Errore: " . $e->getMessage());
+     // die ("[contaCategoriePiatti] => Errore: " . $e->getMessage());
+        error_log("Errore in contacategoria piatti: " . $e->getMessage());
+        throw new RuntimeException("Errore in contacategoria piatti: " . $e->getMessage());
     }
   }
 # ------------------------------------
@@ -243,7 +235,7 @@
       $sql = '';
       switch ($disponibilitaPiatto) {
         case 0:
-          $sql = "SELECT * FROM menuCucina WHERE disponibilitaPiattto = '0'";
+          $sql = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = '0'";
           break;
         case 1:
           $sql = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = '1'";
@@ -337,7 +329,7 @@ function eliminaPiatto ($idPiatto) {
   function eventoDaModificareSelezionato ($idEvento) {
     $conn = connetti ("Strana01");
     if (!$conn) {
-      die("[eliminaEvento] => Connessione fallita: " . mysqli_connect_error());
+      return ['successo' => false, 'errore' => 'Errore di connessione'];
     }
     $sql = "SELECT * FROM Eventi WHERE IDEvento='$idEvento'";
     $tmp = mysqli_query($conn, $sql);
@@ -444,6 +436,11 @@ function eliminaPiatto ($idPiatto) {
         die ("[aggiungiPiatto] => Connessione fallita: " . mysqli_connect_error());
       }
       
+      // Validazione input
+      if (empty($nomePiatto) || empty($categoriaPiatto) || !is_numeric($prezzoPiatto) || $prezzoPiatto < 0) {
+        return false;
+      }
+      
       $sqlInsert = "INSERT INTO menuCucina (nomePiatto, descrizionePiatto, categoriaPiatto, prezzoPiatto, cuoco, disponibilitaPiatto, dataInserimento)
                     VALUES (:nomePiatto, :descrizionePiatto, :categoriaPiatto, :prezzoPiatto, :cuoco, :disponibilitaPiatto, :dataInserimento)";
       $stmtInsert = $conn->prepare($sqlInsert);
@@ -471,67 +468,17 @@ function eliminaPiatto ($idPiatto) {
 
 
 # ------------------------------------
-# Funzione per creare un evento
-function creaEvento($nomeEvento, $dataEvento, $descrizioneEvento, $immagine) {
-  try {
-    $conn = connetti();
-    if(!$conn) {
-      throw new Exception ("Connessione fallita: " . mysqli_connect_error() . "Numero errore: " . mysqli_connect_errno());
-    }
-    
-    // Verifico che l'evento non sia già presente nel db
-    $sqlCheck = "SELECT * FROM Evento WHERE NomeEvento = :nomeEvento AND DataEvento = :dataEvento"; // Controllo che non ci siano eventi con lo stesso nome e la stessa data. Un evento può ripetersi in date diverse.
-    $stmtCheck = $conn->prepare($sqlCheck);
-    $stmtCheck->execute([':nomeEvento' => $nomeEvento, ':dataEvento' => $dataEvento]);
-    if ($stmtCheck->rowCount() > 0) {
-      return ['successo' => false, 'messaggio' => 'Evento già presente'];
-    }
-    
-    // Preparo la variabile per l'immagine
-    $pathNameImmagine = null;
-    
-    // Processo l'immagine se caricata
-    if (isset($immagine) && $immagine['error'] === UPLOAD_ERR_OK) {
-      $immagineCaricata = caricaImmagini($immagine);
-      if ($immagineCaricata['successo']) {
-        $pathNameImmagine = $immagineCaricata['pathname'];
-      } else {
-        return ['successo' => false, 'messaggio' => $immagineCaricata['messaggio']];
-      }
-    }
-    
-    // Inserisco l'evento
-    $sqlInsert = "INSERT INTO Eventi (NomeEvento, DataEvento, Descrizione, eliminato, immagine)
-                  VALUES (:nomeEvento, :dataEvento, :descrizioneEvento, :eliminato, :pathNameImmagine ) ";
-    $stmtInsert = $conn->prepare($sqlInsert);
-    $parametri = [
-      ':nomeEvento' => $nomeEvento,
-      ':dataEvento' => $dataEvento,
-      ':pathNameImmagine' => $pathNameImmagine,
-      ':descrizioneEvento' => $descrizioneEvento,
-      ':eliminato' => 0,
-    ];
-    $stmtInsert->execute($parametri);
-    
-    if ($stmtInsert->rowCount() > 0) {
-      return ['successo' => true, 'messaggio' => 'Evento creato'];
-    } else {
-      return ['successo' => false, 'messaggio' => 'Errore creazione'];
-    }
-  } catch (PDOException $e) {
-    return ['successo' => false, 'messaggio' => $e->getMessage()];
-  }
-}
-# ------------------------------------
-
-
-# ------------------------------------
 # Funzione per importare le immagini negli eventi
 function gestisciImmagine() {
   if (isset($_FILES['immagine']) && $_FILES['immagine']['error'] === 0) {
     $imageName = $_FILES['immagine']['name'];
     $imageTmp = $_FILES['immagine']['tmp_name'];
     $imageType = $_FILES['immagine']['type'];
+    
+    $dimensioneMassima = 1048576 * 3;
+    if ($_FILES['immagine']['size'] > $dimensioneMassima) {
+      return false;
+    }
     
     $estensioniAmmesse = ["image/jpg", "image/jpeg", "image/png"];
     if (in_array($imageType, $estensioniAmmesse)) {
@@ -554,6 +501,19 @@ function gestisciImmagine() {
 function inserisciEvento($nomeEventoNew, $dataEventoNew, $descrizioneNew, $imagePath) {
   try {
     $conn = connetti();
+    if (!$conn) {
+      return ["successo" => false, 'errore' => 'errore di connessione', 'codiceErrore' => 3];
+    }
+    
+    // Controllo che i campi non siano vuoti
+    if (empty($nomeEventoNew) || empty($dataEventoNew) || empty($imagePath)) {
+      return ["successo" => false, 'errore' => 'i campi non sono stati compilati'];
+    }
+    
+    // Sanifico gli input
+    $nomeEventoNew = sanificaInput($nomeEventoNew);
+    $dataEventoNew = sanificaInput($dataEventoNew);
+    $descrizioneNew = sanificaInput($descrizioneNew);
     
     // Controllo se esistono già eventi con stessa data && stesso nome
     $sqlCheck = "SELECT COUNT(*) FROM Eventi WHERE NomeEvento = :nomeEvento AND DataEvento = :dataEvento AND eliminato = 0";
@@ -564,7 +524,7 @@ function inserisciEvento($nomeEventoNew, $dataEventoNew, $descrizioneNew, $image
     ]);
     $eventoEsiste = $stmtCheck->fetchColumn();
     if ($eventoEsiste > 0) {
-      return ["successo" => false, 'messaggio' => "Evento già presente a sistema", 'codiceErrore' => 0];
+      return ["successo" => false, 'errore' => "Evento già presente a sistema", 'codiceErrore' => 0];
     }
     
     // Inserisco il nuovo evento a sistema
@@ -576,20 +536,19 @@ function inserisciEvento($nomeEventoNew, $dataEventoNew, $descrizioneNew, $image
       ':dataEvento' => $dataEventoNew,
       ':pathNameImmagine' => $imagePath,
       ':descrizioneEvento' => $descrizioneNew,
-      ':eliminato' => 0,
-    ];
+      ':eliminato' => 0, ];
     try {
       $stmtInsert->execute($parametri);
     } catch (Exception $e) {
-      return ['successo' => false, 'messaggio' => 'Errore: ' . $e->getMessage(), 'codiceErrore' => 1];
+      return ['successo' => false, 'errore' => 'Errore: ' . $e->getMessage(), 'codiceErrore' => 1];
     }
     if ($stmtInsert->rowCount() > 0) {
       return ['successo' => true, 'messaggio' => 'Evento creato'];
     } else {
-      return ['successo' => false, 'messaggio' => 'Errore creazione', 'codiceErrore' => 2];
+      return ['successo' => false, 'errore' => 'Errore creazione', 'codiceErrore' => 2];
     }
   } catch (Exception $e) {
-    return ['successo' => false, 'messaggio' => $e->getMessage(), 'codiceErrore' => 3];
+    return ['successo' => false, 'errore' => $e->getMessage(), 'codiceErrore' => 3];
   }
 }
   # ------------------------------------
@@ -600,6 +559,12 @@ function inserisciEvento($nomeEventoNew, $dataEventoNew, $descrizioneNew, $image
   function creaUtente($usernameNew, $passwordNew) {
     try {
       $conn = connetti();
+      if (!$conn) {
+        return ['successo' => false, 'messaggio' => 'errore di connessione', 'codiceErro' => 3];
+      }
+      
+      // Sanifico lo username
+      $usernameNew = sanificaInput($usernameNew);
       
       // Verifico che non ci siano utenti con lo stesso username
       $sqlCheck = "SELECT COUNT(*) FROM User WHERE Username = :username AND utenteAttivo = 1";
@@ -631,14 +596,29 @@ function inserisciEvento($nomeEventoNew, $dataEventoNew, $descrizioneNew, $image
       if ($stmtInsert->rowCount() > 0) {
         return ['successo' => true, 'messaggio' => 'Utente creato'];
       } else {
-        return ['successo' => false, 'messaggio' => 'Errore creazione'];
+        return ['successo' => false, 'messaggio' => 'Errore creazione', 'codiceErrore' => 2];
       }
       
     } catch (Exception $e) {
       return ['successo' => false, 'messaggio' => 'Errore durante l\'esecuzione: ' . $e->getMessage()];
     }
   }
-
+  # ------------------------------------
+  
+  
+  # ------------------------------------
+  # Funzione per validare gli indirizzi email
+  function validaIndirizzoEmail($indirizzoEmail) {
+    // Rimuovo caratteri
+    $emailSanificata = filter_var($indirizzoEmail, FILTER_SANITIZE_EMAIL);
+    
+    // Valido l'indirizzo email
+    if (!filter_var($emailSanificata, FILTER_VALIDATE_EMAIL)) {
+      return ['successo' => false, 'messaggio' => 'Indirizzo email non valido'];
+    } else {
+      return ['successo' => true, 'messaggio' => 'Indirizzo email valido'];
+    }
+  }
 ?>
 
 

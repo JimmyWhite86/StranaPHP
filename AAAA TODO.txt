@@ -4,6 +4,7 @@
 
 
       // TODO: DA FARE
+- aggiungere campo email a utenti
 - Inserire i throw nei cicli try
 - Titolo dinamico per ogni pagina => Passare il nome come variabile e poi richiamo funzione.
     Per sottotilo quando presente? => Usare un booleano come parametro? => Devo passare un array? Se si, posso farlo?
@@ -23,7 +24,7 @@
 - nel tag body è necessario il richiamo ad angular in tutte le pagine?
 - Verificare come funziona mysqli_real_escape_string
 - Consenso privacy e cookie policy
-
+-
 
 
 
@@ -54,6 +55,5 @@
 
 - Come debaggare?
 - Cosa vuol dire var_dump()
-- Collegare il db a phpStorm?
 - possibile debaggare con l'IDE?
-
+- verifica email -> https://www.w3schools.com/php/filter_validate_email.asp

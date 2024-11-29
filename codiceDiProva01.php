@@ -1,74 +1,53 @@
 <?php
-  function eliminaEvento ($idEvento) {
+  function creaEvento($nomeEvento, $dataEvento, $descrizioneEvento, $immagine) {
     try {
-      
-      // Mi connetto al db
       $conn = connetti();
-      if (!$conn) {
-        throw new PDOException();
+      if(!$conn) {
+        throw new Exception ("Connessione fallita: " . mysqli_connect_error() . "Numero errore: " . mysqli_connect_errno());
       }
       
-      // Controllo che l'evento selezionato sia presente nel db
-      $sqlCheck = "SELECT * FROM Eventi WHERE idEvento = :idEvento";
+      // Verifico che l'evento non sia già presente nel db
+      $sqlCheck = "SELECT * FROM Evento WHERE NomeEvento = :nomeEvento AND DataEvento = :dataEvento"; // Controllo che non ci siano eventi con lo stesso nome e la stessa data. Un evento può ripetersi in date diverse.
       $stmtCheck = $conn->prepare($sqlCheck);
-      $stmtCheck->execute(['idEvento' => $idEvento]);
-      if ($stmtCheck->rowCount() == 0) {
-        return ['successo' => false, 'nomeEvento' => '']; // L'evento selezionato non è stato trovato all'interno del db
+      $stmtCheck->execute([':nomeEvento' => $nomeEvento, ':dataEvento' => $dataEvento]);
+      if ($stmtCheck->rowCount() > 0) {
+        return ['successo' => false, 'messaggio' => 'Evento già presente'];
       }
       
-      // ottengo i dati dell'evento
-      $datiEvento = $stmtCheck->fetch();
-      $nomeEvento = $datiEvento['NomeEvento'];
-      //var_dump($datiEvento);
+      // Preparo la variabile per l'immagine
+      $pathNameImmagine = null;
       
-      // Aggiorno lo stato dell'evento a eliminato
-      $sqlUpdate = "UPDATE Eventi SET eliminato = TRUE WHERE idEvento = :idEvento";
-      $stmtUpdate = $conn->prepare($sqlUpdate);
-      $stmtUpdate->execute(['idEvento' => $idEvento]);
+      // Processo l'immagine se caricata
+      if (isset($immagine) && $immagine['error'] === UPLOAD_ERR_OK) {
+        $immagineCaricata = caricaImmagini($immagine);
+        if ($immagineCaricata['successo']) {
+          $pathNameImmagine = $immagineCaricata['pathname'];
+        } else {
+          return ['successo' => false, 'messaggio' => $immagineCaricata['messaggio']];
+        }
+      }
       
-      // Ritorno il risultato della query di update
-      if ($stmtUpdate->rowCount() > 0) {
-        // Evento eliminato correttamente
-        return ['successo' => true, 'nomeEvento' => $nomeEvento];
+      // Inserisco l'evento
+      $sqlInsert = "INSERT INTO Eventi (NomeEvento, DataEvento, Descrizione, eliminato, immagine)
+                  VALUES (:nomeEvento, :dataEvento, :descrizioneEvento, :eliminato, :pathNameImmagine ) ";
+      $stmtInsert = $conn->prepare($sqlInsert);
+      $parametri = [
+        ':nomeEvento' => $nomeEvento,
+        ':dataEvento' => $dataEvento,
+        ':pathNameImmagine' => $pathNameImmagine,
+        ':descrizioneEvento' => $descrizioneEvento,
+        ':eliminato' => 0,
+      ];
+      $stmtInsert->execute($parametri);
+      
+      if ($stmtInsert->rowCount() > 0) {
+        return ['successo' => true, 'messaggio' => 'Evento creato'];
       } else {
-        return ['successo' => false, 'nomeEvento' => $nomeEvento];
+        return ['successo' => false, 'messaggio' => 'Errore creazione'];
       }
-      
     } catch (PDOException $e) {
-      return ['successo' => false, 'errore' => $e->getMessage()];
+      return ['successo' => false, 'messaggio' => $e->getMessage()];
     }
   }
   
-  // -------------------------------
-  
-  function eliminaUtente($idUtente) {
-    $conn = connetti ();
-    if(!$conn) {
-      die ("[eliminaUtente] => Connessione fallita: " . mysqli_connect_error());
-    }
-    $sql = "SELECT * FROM User WHERE IDUser = '$idUtente'";
-    $tmp = mysqli_query($conn, $sql);
-    if (!$tmp) {
-      die ("[eliminaUtente] => Errore nella query di selezione: " . mysqli_error($conn));
-    }
-    $nRow = mysqli_num_rows($tmp);
-    if ($nRow == 0) {
-      return ['successo' => false, 'nomeUtente' => ''];
-    } else {
-      // Ottengo i dati dell'utente per comunicarli all'utente
-      $datiUtente = mysqli_fetch_assoc($tmp);
-      $nomeUtente = $datiUtente['UserName'];
-      $sql = "UPDATE User SET utenteAttivo = FALSE WHERE IDUser = '$idUtente'";
-      $tmp = mysqli_query($conn, $sql);
-      if (!$tmp) {
-        die ("[eliminaUtente] => Errore nella query di aggiornamento" . mysqli_error($conn));
-      } else {
-        return ['successo' => true, 'nomeUtente' => $nomeUtente];
-      }
-    }
-    mysqli_close($conn);
-  }
   ?>
-
-
-
