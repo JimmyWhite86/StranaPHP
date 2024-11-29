@@ -101,13 +101,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php while ($row = mysqli_fetch_assoc($listaUtenti)) {?>
+                <?php
+                  foreach ($listaUtenti as $utente) {?>
                   <tr>
-                    <td><?=$row['IDUser']?></td>
-                    <td><?=$row['UserName']?></td>
-                    <td><?=$row['admin']?></td>
+                    <td><?=$utente['IDUser']?></td>
+                    <td><?=$utente['UserName']?></td>
+                    <td><?=$utente['admin']?></td>
                     <td>
-                      <input type="radio" name="utenteSelezionato" value="<?=$row['IDUser']?>">
+                      <input type="radio" name="utenteSelezionato" value="<?=$utente['IDUser']?>">
                     </td>
                   </tr>
                   <?php

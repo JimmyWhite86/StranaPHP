@@ -77,13 +77,13 @@
           die ("[ottieniListaEventi] => Valore di \$attivi non valido");
       }
       
-      $smt = $conn->query($sql);
-      $listaEventi = $smt->fetchAll();
+      $stmt = $conn->query($sql);
+      $listaEventi = $stmt->fetchAll();
       
       return $listaEventi;
       
     } catch (PDOException $e) {
-      die("[cercaUtente] => Errore: " . $e->getMessage());
+      die("[ottieniListaEventi] => Errore: " . $e->getMessage());
     }
   }
 # ------------------------------------
@@ -134,11 +134,9 @@
 # Funzione per eliminare un evento già salvato
   function eliminaEvento ($idEvento) {
     try {
-      
-      // Mi connetto al db
       $conn = connetti();
       if (!$conn) {
-        throw new PDOException();
+        return ['success' => false, 'errore' => 'errore di connessione'];
       }
       
       // Controllo che l'evento selezionato sia presente nel db
@@ -361,65 +359,77 @@ function eliminaPiatto ($idPiatto) {
 # ------------------------------------
 # Funzione per eliminare un utente
   function eliminaUtente($idUtente) {
-    $conn = connetti ("Strana01");
-    if(!$conn) {
-      die ("[eliminaUtente] => Connessione fallita: " . mysqli_connect_error());
-    }
-    $sql = "SELECT * FROM User WHERE IDUser = '$idUtente'";
-    $tmp = mysqli_query($conn, $sql);
-    if (!$tmp) {
-      die ("[eliminaUtente] => Errore nella query di selezione: " . mysqli_error($conn));
-    }
-    $nRow = mysqli_num_rows($tmp);
-    if ($nRow == 0) {
-      return ['successo' => false, 'nomeUtente' => ''];
-    } else {
-      // Ottengo i dati dell'utente per comunicarli all'utente
-      $datiUtente = mysqli_fetch_assoc($tmp);
-      $nomeUtente = $datiUtente['UserName'];
-      $sql = "UPDATE User SET utenteAttivo = FALSE WHERE IDUser = '$idUtente'";
-      $tmp = mysqli_query($conn, $sql);
-      if (!$tmp) {
-        die ("[eliminaUtente] => Errore nella query di aggiornamento" . mysqli_error($conn));
-      } else {
-        return ['successo' => true, 'nomeUtente' => $nomeUtente];
+    try {
+      $conn = connetti();
+      if (!$conn) {
+        return ['successo' => false, 'errore' => 'errore di connessione'];
       }
+      
+      // Controllo che l'utente selezionato sia presente nel db
+      $sqlCheck = "SELECT * FROM User WHERE IDUser = :idUtente";
+      $stmtCheck = $conn->prepare($sqlCheck);
+      $stmtCheck->execute(['idUtente' => $idUtente]);
+      if ($stmtCheck->rowCount() === 0) {
+        return ['successo' => false, 'errore' => 'utente non trovato', 'idUtente' => $idUtente];
+      }
+      
+      // Ottengo i dati dell'utente
+      $datiUtente = $stmtCheck->fetch();
+      $nomeUtente = $datiUtente['UserName'];
+      // var_dump($datiUtente);
+      
+      // Aggiorno lo stato dell'utente ad eliminato
+      $sqlUpdate = "UPDATE User SET utenteAttivo = FALSE WHERE IDUser = :idUtente";
+      $stmtUpdate = $conn->prepare($sqlUpdate);
+      $stmtUpdate->execute(['idUtente' => $idUtente]);
+      
+      // Ritorno il risultato della query di update
+      if ($stmtUpdate->rowCount() > 0) {
+        return ['successo' => true, 'nomeUtente' => $nomeUtente];
+      } else {
+        return ['successo' => false, 'nomeUtente' => $nomeUtente];
+      }
+      
+    } catch (PDOException $e) {
+      return ['successo' => false, 'errore' => $e->getMessage()];
     }
-    mysqli_close($conn);
-  }
+}
 # ------------------------------------
 
 
 # ------------------------------------
 # Funzione per richiamare una lista di utenti
   function ottieniListaUtenti ($attivi) {
-    $conn = connetti("Strana01");
-    if (!$conn) {
-      die ("[ottieniListaUtenti] => Connessione fallita " . mysqli_connect_error());
+    try {
+      $conn = connetti();
+      if (!$conn) {
+        return ["successo" => false, 'errore' => 'errore di connessione'];
+      }
+      
+      // Prepara la query in base al valore di $attivi
+      $sql = "";
+      switch ($attivi) {
+        case 0: // Utenti non attivi
+          $sql = "SELECT * FROM User WHERE utenteAttivo = FALSE ORDER BY IDUser ASC";
+          break;
+        case 1: // Utenti attivi
+          $sql = "SELECT * FROM User WHERE utenteAttivo = TRUE ORDER BY IDUser ASC";
+          break;
+        case 2: // Tutti gli utenti, attivi e non
+          $sql = "SELECT * FROM User ORDER BY IDUser ASC";
+          break;
+        default:
+          die ("[ottieniListaUtenti] => Valore di \$attivi non valido");
+      }
+      
+      $stmt = $conn->query($sql);
+      $listaUtenti = $stmt->fetchAll();
+      
+      return $listaUtenti;
+      
+    } catch (PDOException $e) {
+      return ['successo' => false, 'errore' => $e->getMessage()];
     }
-    
-    // Prepara la query in base al valore di $attivi
-    $sql = "";
-    switch ($attivi) {
-      case 0: // Utenti non attivi
-        $sql = "SELECT * FROM User WHERE utenteAttivo = FALSE ORDER BY IDUser ASC";
-        break;
-      case 1: // Utenti attivi
-        $sql = "SELECT * FROM User WHERE utenteAttivo = TRUE ORDER BY IDUser ASC";
-        break;
-      case 2: // Tutti gli utenti, attivi e non
-        $sql = "SELECT * FROM User ORDER BY IDUser ASC";
-        break;
-      default:
-        die ("[ottieniListaUtenti] => Valore di \$attivi non valido");
-    }
-    
-    $datiUtenti = mysqli_query($conn, $sql);
-    if (!$datiUtenti) {
-      die ("[ottieniListaUtenti] => Errore nella query di ricerca " . mysqli_error($conn));
-    }
-    mysqli_close($conn);
-    return $datiUtenti;
   }
 # ------------------------------------
 
