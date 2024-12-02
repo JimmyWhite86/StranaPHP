@@ -70,21 +70,31 @@
       deviEssereAdmin($username);
     } else { // Utente loggato come admin
       
-      $cuoco = sanificaInput($_POST["cuocoMenu"]);
-      $tipoMenu = sanificaInput($_POST["tipoMenu"]);
-      $quantitaTotalePiatti = sanificaInput($_POST["quantitaTotalePiatti"]);
+//      $cuoco = sanificaInput($_POST["cuocoMenu"]);
+//      $tipoMenu = sanificaInput($_POST["tipoMenu"]);
+//      $quantitaTotalePiatti = sanificaInput($_POST["quantitaTotalePiatti"]);
+      
+      //$cuoco = $_POST["cuocoMenu"];
+      //$tipoMenu = $_POST["tipoMenu"];
+      $quantitaTotalePiatti = $_POST["quantitaTotalePiatti"];
       
       $conn = connetti();
       if (!$conn) {
         echo "Probelemi di connessione al db";
       }
       
-      for ($i = 0; $i <= $quantitaTotalePiatti; $i++) {
-        $nomePiatto = sanificaInput($_POST["nomePiatto_$i"]);
-        $descrizionePiatto = sanificaInput($_POST["descrizionePiatto_$i"]);
-        $categoriaPiatto = sanificaInput($_POST["categoriaPiatto_$i"]);
-        $prezzoPiatto = sanificaInput($_POST["prezzoPiatto_$i"]);
-        $cuoco = sanificaInput($_POST["cuocoPiatto_$i"]);
+      for ($i = 0; $i < $quantitaTotalePiatti; $i++) {
+//        $nomePiatto = sanificaInput($_POST["nomePiatto_$i"]);
+//        $descrizionePiatto = sanificaInput($_POST["descrizionePiatto_$i"]);
+//        $categoriaPiatto = sanificaInput($_POST["categoriaPiatto_$i"]);
+//        $prezzoPiatto = sanificaInput($_POST["prezzoPiatto_$i"]);
+//        $cuoco = sanificaInput($_POST["cuocoPiatto_$i"]);
+        
+        $nomePiatto = $_POST["nomePiatto_$i"];
+        $descrizionePiatto = $_POST["descrizionePiatto_$i"];
+        $categoriaPiatto = $_POST["categoriaPiatto_$i"];
+        $prezzoPiatto = $_POST["prezzoPiatto_$i"];
+        $cuoco = $_POST["cuocoPiatto_$i"];
         
         $sqlInsert = "INSERT INTO menuCucina (nomePiatto, descrizionePiatto, categoriaPiatto, prezzoPiatto, cuoco, disponibilitaPiatto, dataInserimento)
                       VALUES (:nomePiatto, :descrizionePiatto, :categoriaPiatto, :prezzoPiatto, :cuoco, :disponibilita, :dataInserimento)";

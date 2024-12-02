@@ -145,6 +145,7 @@
                         } ?>
                         
                         <input type="hidden" name="quantitaTotalePiatti" value="<?=$quantitaTotalePiatti?>">
+                        <input type="hidden" name="tipoMenu" value="<?=$tipoMenu?>">
                       <div class="text-center">
                         <input type="submit" value="Inserisci" class="btn btn-success">
                       </div>
