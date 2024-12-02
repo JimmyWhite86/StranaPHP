@@ -117,9 +117,9 @@
                     Pasto Buffet / Menu fisso?
                     <span class="mandatory">*</span>
                   </p>
-                  <input type="radio" id="buffet" name="tipoCena" value="buffet">
+                  <input type="radio" id="buffet" name="tipoMenu" value="buffet">
                   <label for="buffet">Buffet</label><br>
-                  <input type="radio" id="carta" name="tipoCena" value="carta">
+                  <input type="radio" id="carta" name="tipoMenu" value="carta">
                   <label for="carta">Alla carta</label><br>
                   
                   

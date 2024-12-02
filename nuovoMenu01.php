@@ -8,10 +8,8 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <meta name="keyword" content="Associazione culturale, APS, ARCI, promozione sociale">
   <meta name="description" content="Associazione Culturale Stranamore">
   <meta name="author" content="Bianchi Andrea">
@@ -46,7 +44,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
   <title>Strana nuovoMenu</title>
-
 </head>
 <body>
 
@@ -64,156 +61,113 @@
   if (!isset($_SESSION["username"])) {    # Utente non loggato
     deviLoggarti();
   } else {    # Utente loggato
-  
     $amministratore = $_SESSION["admin"];
     $username = $_SESSION['username'];
-  
     if ($amministratore == 0) {   # Utente non ha diritti di admin
       deviEssereAdmin($username);
     } else {  # Utente loggato con diritti di admin
-    
-        if (
-            isset($_POST["cuoco"]) && $_POST["cuoco"] &&
-            isset($_POST["qtyAntipasti"] ) && $_POST["qtyAntipasti"] &&
-            isset($_POST["qtyPrimi"]) && $_POST["qtyPrimi"] &&
-            isset($_POST["qtySecondi"]) && $_POST["qtySecondi"] &&
-            isset($_POST["qtyContorni"]) && $_POST["qtyContorni"] &&
-            isset($_POST["qtyDolci"]) && $_POST["qtyDolci"]
-            ) {
-          $cuoco = $_POST["cuoco"];
-          $qtyAntipasti = $_POST["qtyAntipasti"];
-          $qtyPrimi = $_POST["qtyPrimi"];
-          $qtySecondi = $_POST["qtySecondi"];
-          $qtyContorni = $_POST["qtyContorni"];
-          $qtyDolci = $_POST["qtyDolci"];
-  
-          if ($qtyAntipasti < 0 || $qtyPrimi < 0 || $qtySecondi < 0 || $qtyContorni < 0 || $qtyDolci < 0) { ?>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-              <strong>Attenzione!</strong> Il numero di piatti per categoria non può essere negativo.
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      if (
+        isset($_POST["cuocoMenu"]) && $_POST["cuocoMenu"] &&
+        isset($_POST["qtyAntipasti"]) && isset($_POST["qtyPrimi"]) &&
+        isset($_POST["qtySecondi"]) && isset($_POST["qtyContorni"]) &&
+        isset($_POST["qtyDolci"])
+      ) {
+        $cuoco = $_POST["cuocoMenu"];
+        $qtyAntipasti = (int)$_POST["qtyAntipasti"];
+        $qtyPrimi = (int)$_POST["qtyPrimi"];
+        $qtySecondi = (int)$_POST["qtySecondi"];
+        $qtyContorni = (int)$_POST["qtyContorni"];
+        $qtyDolci = (int)$_POST["qtyDolci"];
+        $tipoMenu = $_POST["tipoMenu"];
+        
+        if ($qtyAntipasti < 0 || $qtyPrimi < 0 || $qtySecondi < 0 || $qtyContorni < 0 || $qtyDolci < 0) { ?>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Attenzione!</strong> Il numero di piatti per categoria non può essere negativo.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <?php
+        } else { // i campi sono stati compilati tutti correttamente ?>
+
+          <!-- Form della pagina -->
+          <div class="container-fluid bg-rosso pb-4 pt-4 mt-4 mb-4">
+            <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
+              <div class="row justify-content-center">
+                <div class="container-fluid my-5" id="containerForm">
+                  <form method="POST" action="controlloaggiuntamenu.php" class="col-md-8 mx-auto">
+                    <h2 class="mb-5 text-center">
+                      <?=$username?>, compila i dati del form sottostante per creare un nuovo menu
+                    </h2>
+                    
+                    <fieldset>
+                      
+                      <?php
+                        $categorie = [
+                          'antipasti' => $qtyAntipasti,
+                          'primi' => $qtyPrimi,
+                          'secondi' => $qtySecondi,
+                          'contorni' => $qtyContorni,
+                          'dolci' => $qtyDolci
+                        ];
+                        
+                        $quantitaTotalePiatti = 0;
+                        
+                        foreach ($categorie as $categoria => $quantita) {
+                          if ($quantita > 0) { ?>
+                            <h3>Compila i dati dei <?=$categoria?></h3>
+                            <?php
+                            
+                            for ($i = 1; $i <= $quantita; $i++) { ?>
+                              <div class="form-group">
+                                
+                                <h4><?=$categoria?> numero <?=$i?></h4>
+                                
+                                <label for="nomePiatto_<?=$quantitaTotalePiatti?>>">Inserisci il nome del <?=$categoria?> <?=$i?><span class="mandatory">*</span></label>
+                                <input type="text" name="nomePiatto_<?=$quantitaTotalePiatti?>" id="nomePiatto_<?=$quantitaTotalePiatti?>" class="form-control" title="Inserisci il nome del <?=$categoria?> <?=$i?>" required aria-required="true">
+                                <br>
+                                
+                                <label for="descrizionePiatto_<?=$quantitaTotalePiatti?>">Inserisci la descrizione del <?=$categoria?> <?=$i?></label>
+                                <textarea name="descrizionePiatto_<?=$quantitaTotalePiatti?>" id="descrizionePiatto_<?=$quantitaTotalePiatti?>" class="form-control col-md-3" title="inserisci la descrizione del <?=$categoria?> <?=$i?>"></textarea>
+                                <br>
+                                
+                                <label for="prezzoPiatto_<?=$quantitaTotalePiatti?>">Inserisci il prezzo del <?=$categoria?> <?=$i?><span class="mandatory">*</span></label>
+                                <input type="number" name="prezzoPiatto_<?=$quantitaTotalePiatti?>" id="prezzoPiatto_<?=$quantitaTotalePiatti?>" class="form-control" title="Inserisci il prezzo del <?=$categoria?> <?=$i?>" required aria-required="true">
+                                <br>
+                                
+                                <input type="hidden" name="categoriaPiatto_<?=$quantitaTotalePiatti?>" value="<?=$categoria?>">
+                                <input type="hidden" name="cuocoPiatto_<?=$quantitaTotalePiatti?>" value="<?=$cuoco?>">
+                                
+                                <?php $quantitaTotalePiatti++; ?>
+                                
+                                <br><br>
+                              </div>
+                            <?php }
+                          }
+                        } ?>
+                        
+                        <input type="hidden" name="quantitaTotalePiatti" value="<?=$quantitaTotalePiatti?>">
+                      <div class="text-center">
+                        <input type="submit" value="Inserisci" class="btn btn-success">
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
+              </div>
             </div>
-            <?php
-          } else { // i campi sono stati compilati tutti correttamente ?>
-
-<!-- Form della pagina -->
-<div class="container-fluid bg-rosso pb-4 pt-4 mt-4 mb-4">
-  <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
-    <div class="row justify-content-center">
-      <div class="container-fluid my-5" id="containerForm">
-        <form method="POST" action="controlloaggiuntapiatto.php" class="col-md-8 mx-auto">
-
-          <h2 class="mb-5 text-center">
-            <?=$username?>, compila i dati del form sottostante per creare un nuovo menu
-          </h2>
-
-          <fieldset>
-            <?php
-              
-              $numeroPiatti = 0;
-              
-              if ($qtyAntipasti > 0) { ?>
-            <h3>Compila i dati degli antipasti</h3>
-            <?php
-              for ($i = 1; $i <= $qtyAntipasti; $i++) { ?>
-
-
-            <div class="form-group">
-
-              <h4>Antipato numero <?= $i ?> </h4>
-
-              <label for="nomePiattoNumero<?=$numeroPiatti?>">
-                Inserisci il nome del piatto
-                <span class="mandatory">*</span>
-              </label>
-              <input type="text" name="nomePiattoNumero<?=$numeroPiatti?>" id="nomePiattoNumero<?=$numeroPiatti?>" class="form-control"
-                     title="Inserisci il nome del piatto" required aria-required="true">
-              <br>
-
-              <label for="descrizionePiattoNumero<?=$numeroPiatti?>">
-                Inserisci la descrizione
-              </label>
-              <textarea name="descrizionePiattoNumero<?=$numeroPiatti?>" id="descrizionePiattoNumero<?=$numeroPiatti?>" class="form-control col-md-3"
-                        title="inserisci la descrizione del piatto">
-                    </textarea>
-              <br>
-
-              <label for="prezzoPiattoNumero<?=$numeroPiatti?>">
-                Inserisci il prezzo del piatto
-                <span class="mandatory">*</span>
-              </label>
-              <input type="number" name="prezzoPiattoNumero<?=$numeroPiatti?>" id="prezzoPiattoNumero<?=$numeroPiatti?>" class="form-control"
-                     title="Inserisci il prezzo del piatto" required aria-required="true">
-              <br>
-
-              $numeroPiatti++;
-
-              }
-              
-              <?php
-                if ($qtyPrimi > 0) { ?>
-              <h3>Compila i dati dei primi</h3>
-              <?php
-                for ($i = 1; $i <= $qtyPrimi; $i++) { ?>
-
-
-              <h4>Primo numero <?= $i ?> </h4>
-
-              <label for="nomePiattoNumero<?=$numeroPiatti?>">
-                Inserisci il nome del piatto
-                <span class="mandatory">*</span>
-              </label>
-              <input type="text" name="nomePiattoNumero<?=$numeroPiatti?>" id="nomePiattoNumero<?=$numeroPiatti?>" class="form-control"
-                     title="Inserisci il nome del piatto" required aria-required="true">
-              <br>
-
-              <label for="descrizionePiattoNumero<?=$numeroPiatti?>">
-                Inserisci la descrizione
-              </label>
-              <textarea name="descrizionePiattoNumero<?=$numeroPiatti?>" id="descrizionePiattoNumero<?=$numeroPiatti?>" class="form-control col-md-3"
-                        title="inserisci la descrizione del piatto">
-                    </textarea>
-              <br>
-
-              <label for="prezzoPiattoNumero<?=$numeroPiatti?>">
-                Inserisci il prezzo del piatto
-                <span class="mandatory">*</span>
-              </label>
-              <input type="number" name="prezzoPiattoNumero<?=$numeroPiatti?>" id="prezzoPiattoNumero<?=$numeroPiatti?>" class="form-control"
-                     title="Inserisci il prezzo del piatto" required aria-required="true">
-              <br>
-
-              $numeroPiatti++;
-
-              }
-
-              <br><br>
-
-            </div>
-
-            <div class="text-center">
-              <input type="submit" value="Inserisci" class="btn btn-success">
-            </div>
-
-          </fieldset>
-        </form>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-
-<?php
-  } else {
-  echo "Devi compilare tutti i campi per creare un nuovo menu";
-}
-  }
+          </div>
+          <?php
+        }
+      } else {
+        echo "<p>Devi compilare tutti i campi per creare un nuovo menu</p>";
+      }
+    }
   }
 ?>
 
-
 <!-- Footer -->
-<?php HTMLfooter($nomePagina); ?>
+<?php
+  HTMLfooter($nomePagina);
+?>
+
 
 </body>
 </html>

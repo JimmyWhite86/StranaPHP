@@ -619,6 +619,14 @@ function inserisciEvento($nomeEventoNew, $dataEventoNew, $descrizioneNew, $image
       return ['successo' => true, 'messaggio' => 'Indirizzo email valido'];
     }
   }
+  
+  # ------------------------------------
+  # Funzione aggiungere intero menu
+  function creaNuovoMenu() {
+  
+  }
+  
+  
 ?>
 
 

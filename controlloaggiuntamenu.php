@@ -5,8 +5,8 @@
   $nomePagina = "aggiungiMenu";
 ?>
 
-<!DOCTYPE html>
-<html lang="it">
+  <!DOCTYPE html>
+  <html lang="it">
 <head>
 
   <meta charset="UTF-8">
@@ -60,8 +60,7 @@
 <?php
   if (!isset($_SESSION["username"])) {  # Utente non loggato
     deviLoggarti();
-  }
-  else { # Utente loggato
+  } else { # Utente loggato
     
     $amministratore = $_SESSION ["admin"];
     $username = $_SESSION ["username"];
@@ -69,65 +68,37 @@
     
     if ($amministratore == 0) {   # Utente non ha diritti di admin
       deviEssereAdmin($username);
-    }
-    else { # Utente è admin --> controllo che i dati inseriti siano corretti
-      $categorie = ['antipasti', 'primi', 'secondi', 'contorni', 'dolci'];
-      $menuValido = true;
-      foreach ($categorie as $categoria) {
-        for ($i = 1; $i <= 3; $i++) {
-          if (!isset($_POST["{$categoria}_{$i}"]) || !isset($_POST["prezzo_{$categoria}_{$i}"]) || !isset($_POST["cuoco_{$categoria}_{$i}"])) {
-            $menuValido = false;
-            break 2;
-          }
-        }
+    } else { // Utente loggato come admin
+      
+      $cuoco = sanificaInput($_POST["cuocoMenu"]);
+      $tipoMenu = sanificaInput($_POST["tipoMenu"]);
+      $quantitaTotalePiatti = sanificaInput($_POST["quantitaTotalePiatti"]);
+      
+      $conn = connetti();
+      if (!$conn) {
+        echo "Probelemi di connessione al db";
       }
       
-      if ($menuValido) {
-        foreach ($categorie as $categoria) {
-          for ($i = 1; $i <= 3; $i++) {
-            $nomePiatto = $_POST["{$categoria}_{$i}"];
-            $descrizionePiatto = $_POST["descrizione_{$categoria}_{$i}"] ?? '';
-            $prezzoPiatto = $_POST["prezzo_{$categoria}_{$i}"];
-            $cuocoPiatto = $_POST["cuoco_{$categoria}_{$i}"];
-            $disponibilitaPiatto = 1;
-            $dataInserimentoPiatto = date("d/m/y");
-            
-            if ($prezzoPiatto < 0) { ?>
-              <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-                <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-                  <h2>Attenzione</h2>
-                  <h3>Hai inserito un prezzo inferiore a zero!</h3>
-                  <p>Prova nuovamente ad inserire il piatto</p>
-                  <hr>
-                  <a href="homeAdmin.php" class="btn btn-primary mb-3">Home Admin</a><br>
-                  <a href="aggiungiMenu.php" class="btn btn-primary mb-3">Aggiungi un altro menu</a><br>
-                  <a href="gestioneCucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
-                </div>
-              </div>
-              <?php
-              exit;
-            } else {
-              $risultatoAggiuntaPiatto = aggiungiPiatto($nomePiatto, $descrizionePiatto, $categoria, $prezzoPiatto, $cuocoPiatto, $disponibilitaPiatto, $dataInserimentoPiatto);
-              if (!$risultatoAggiuntaPiatto) {
-                echo "<p>Ci sono stati problemi con l'inserimento del piatto $nomePiatto</p>";
-                azioni_amministratore();
-                exit;
-              }
-            }
-          }
-        } ?>
-        <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-          <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-            <h2>Il menu è stato aggiunto con successo!</h2>
-            <hr>
-            <a href="homeAdmin.php" class="btn btn-primary mb-3">Home Admin</a><br>
-            <a href="aggiungiMenu.php" class="btn btn-primary mb-3">Aggiungi un altro menu</a><br>
-            <a href="gestioneCucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
-          </div>
-        </div>
-        <?php
-      } else {
-        echo "<p> Attenzione $username! Devi compilare tutti i campi per aggiungere il menu</p>";
+      for ($i = 0; $i <= $quantitaTotalePiatti; $i++) {
+        $nomePiatto = sanificaInput($_POST["nomePiatto_$i"]);
+        $descrizionePiatto = sanificaInput($_POST["descrizionePiatto_$i"]);
+        $categoriaPiatto = sanificaInput($_POST["categoriaPiatto_$i"]);
+        $prezzoPiatto = sanificaInput($_POST["prezzoPiatto_$i"]);
+        $cuoco = sanificaInput($_POST["cuocoPiatto_$i"]);
+        
+        $sqlInsert = "INSERT INTO menuCucina (nomePiatto, descrizionePiatto, categoriaPiatto, prezzoPiatto, cuoco, disponibilitaPiatto, dataInserimento)
+                      VALUES (:nomePiatto, :descrizionePiatto, :categoriaPiatto, :prezzoPiatto, :cuoco, :disponibilita, :dataInserimento)";
+        $stmtInsert = $conn->prepare($sqlInsert);
+        $parametri = [
+          ":nomePiatto" => $nomePiatto,
+          ":descrizionePiatto" => $descrizionePiatto,
+          ":categoriaPiatto" => $categoriaPiatto,
+          ":prezzoPiatto" => $prezzoPiatto,
+          ":cuoco" => $cuoco,
+          ":disponibilita" => 1,
+          ":dataInserimento" => date("d/m/y") ];
+        $stmtInsert -> execute($parametri);
+        
       }
     }
   }
@@ -135,4 +106,4 @@
   HTMLfooter($nomePagina);?>
 
 </body>
-</html><?php
+  </html><?php
