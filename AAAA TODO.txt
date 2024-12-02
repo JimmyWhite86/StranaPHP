@@ -24,7 +24,7 @@
 - nel tag body è necessario il richiamo ad angular in tutte le pagine?
 - Verificare come funziona mysqli_real_escape_string
 - Consenso privacy e cookie policy
--
+- Inserire l'attributo autocomplete in tutti i campi necessari
 
 
 

@@ -68,7 +68,7 @@
     <div class="row justify-content-center">
       <h2 class="text-center">Ciao <?= $userName ?>, scegli un azione:</h2>
       <ul class="list-unstyled ml-5 pl-5">
-        <li><a href="nuovoMenu.php">Crea un nuovo menù</a></li>
+        <li><a href="nuovoMenu01.php">Crea un nuovo menù</a></li>
         <li><a href="eliminaMenu.php">Elimina il menu presente</a></li>
         <li><a href="aggiungiPiatto.php">Aggiungi un singolo piatto al menu</a></li>
         <li><a href="eliminaPiatto.php">Elimina un singolo piatto dal menu</a></li>

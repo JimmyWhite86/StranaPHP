@@ -50,7 +50,6 @@
 </head>
 <body>
 
-
   <!-- NAV BAR -->
   <?php richiamaNavBar($nomePagina) ?>
 
@@ -69,28 +68,42 @@
         <h2 class="text-center">Sei unə admin della pagina?</h2>
         <h3 class="text-center">Inserisci le tue credenziali</h3>
         <div>
-            <form method="POST" action="controlla_login.php" class="col-md-8 mx-auto">
+          
+            <form method="POST" action="controlla_login.php" class="col-md-8 mx-auto" name="formLogin" id="formLogin"
+                  ng-app="myAppLogin" ng-controller="validateLoginCtrl" novalidate>
               <fieldset>
                 
-                <label for="username">
-                  Inserisci il tuo username
-                  <span class="mandatory">*</span>
-                </label>
-                <input type="text" name="username" id="username" class="form-control"
-                       title="Inserisci il tuo username" required aria-required="true">
+                <div class="form-group">
+                  <label for="username">
+                    Inserisci il tuo username
+                    <span class="mandatory">*</span>
+                  </label>
+                  <span ng-show="formLogin.username.$touched && formLogin.username.$error.required" class="mioErrore01" role="alert">Campo obbligatorio</span>
+                  <input type="text" name="username" id="username" class="form-control"
+                         title="Inserisci il tuo username" required aria-required="true" ng-model="username" autocomplete="username">
+                  </div>
+                
                 <br>
       
-                <label for="psw1">
-                  Inserisci la tua password
-                  <span class="mandatory">*</span>
-                </label>
-                <input type="password" name="psw1" id="psw1" class="form-control"
-                       title="Inserisci la password" required aria-required="true">
+                <div class="form-group">
+                  <label for="psw1">
+                    Inserisci la tua password
+                    <span class="mandatory">*</span>
+                  </label>
+                  <span ng-show="formLogin.psw1.$touched && formLogin.psw1.$error.required" class="mioErrore01" role="alert">Campo obbligatorio</span>
+                  <input type="password" name="psw1" id="psw1" class="form-control"
+                         title="Inserisci la password" required aria-required="true" ng-model="psw1" autocomplete="current-password">
+                </div>
+                
                 <br>
       
                 <div class="text-center">
-                  <input type="submit" name="invio" id="invio" value="Accedi" class="btn btn-primary">
+                  <button type="submit" name="invio" id="invio" value="Accedi" class="btn btn-primary"
+                          ng-disabled="formLogin.username.$invalid || formLogin.psw1.$invalid">
+                    Accedi
+                  </button>
                 </div>
+                
                 
               </fieldset>
             </form>
