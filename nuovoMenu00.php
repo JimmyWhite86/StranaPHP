@@ -58,6 +58,10 @@
   <div class="text-center">
     <h1 class="titoloPagina">crea un nuovo menu</h1>
   </div>
+  <br>
+  <div class="text-center">
+    <h2>Passaggio 1 di 2</h2>
+  </div>
 </div>
 
 <?php

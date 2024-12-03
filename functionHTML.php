@@ -367,9 +367,9 @@
   
   
   #Funzione per generare il menu in maniera dinamica
-  function generaMenu($attivi) {
-    $listaPiattiDisponibili = piattiInArray($attivi);
-    $categorie = contaCategoriePiatti($attivi);
+  function generaMenu($disponibilitaPiatto) {
+    $listaPiattiDisponibili = piattiInArray($disponibilitaPiatto);
+    $categorie = contaCategoriePiatti($disponibilitaPiatto);
     
     $categorieOrdinate = [
       'antipasti' => "antipasti",

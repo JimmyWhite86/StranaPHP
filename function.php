@@ -26,7 +26,7 @@
 # ------------------------------------
 # Funzione cerca utente
   function sanificaInput($inputDaSanificare) {
-    return htmlspecialchars(trim($inputDaSanificare), ENT_QUOTES, 'UTF-8');
+    return htmlspecialchars(trim($inputDaSanificare ?? ''), ENT_QUOTES, 'UTF-8');
   }
 # ------------------------------------
 
@@ -192,14 +192,10 @@
 
 # ------------------------------------
 # Funzione per ottenere contare quanti piatti appartengono ad una determinata categoria
-  function contaCategoriePiatti ($attivi) {
-    // Validazione dell'input ($attivi)
-    if (!is_int($attivi) || !in_array($attivi, [1, 2, 3])) {
-      throw new InvalidArgumentException("Valore di attivi non valido");
-    }
+  function contaCategoriePiatti ($disponibilitaPiatto) {
     
     try {
-      $listaPiattiDisponibili = piattiInArray($attivi);
+      $listaPiattiDisponibili = piattiInArray($disponibilitaPiatto);
       
       $categorie = [
         'antipasti' => 0,
@@ -216,10 +212,11 @@
       }
       
       return $categorie;
+      
     } catch (PDOException $e) {
      // die ("[contaCategoriePiatti] => Errore: " . $e->getMessage());
-        error_log("Errore in contacategoria piatti: " . $e->getMessage());
-        throw new RuntimeException("Errore in contacategoria piatti: " . $e->getMessage());
+        error_log("[contaCategoriaPiatti] => Errore: " . $e->getMessage());
+        throw new RuntimeException("[contaCategoriaPiatti] => Errore: " . $e->getMessage());
     }
   }
 # ------------------------------------
@@ -232,13 +229,12 @@
     try {
       $conn = connetti();
       
-      $sql = '';
       switch ($disponibilitaPiatto) {
         case 0:
-          $sql = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = '0'";
+          $sql = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = FALSE";
           break;
         case 1:
-          $sql = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = '1'";
+          $sql = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = TRUE";
           break;
         case 2:
           $sql = "SELECT * FROM menuCucina";

@@ -55,6 +55,10 @@
   <div class="text-center">
     <h1 class="titoloPagina">crea un nuovo menu</h1>
   </div>
+  <br>
+  <div class="text-center">
+    <h2>Passaggio 2 di 2</h2>
+  </div>
 </div>
 
 <?php
@@ -97,29 +101,34 @@
                     <h2 class="mb-5 text-center">
                       <?=$username?>, compila i dati del form sottostante per creare un nuovo menu
                     </h2>
+                    <br>
                     
                     <fieldset>
                       
                       <?php
                         $categorie = [
-                          'antipasti' => $qtyAntipasti,
-                          'primi' => $qtyPrimi,
-                          'secondi' => $qtySecondi,
-                          'contorni' => $qtyContorni,
-                          'dolci' => $qtyDolci
+                          'Antipasti' => $qtyAntipasti,
+                          'Primi' => $qtyPrimi,
+                          'Secondi' => $qtySecondi,
+                          'Contorni' => $qtyContorni,
+                          'Dolci' => $qtyDolci
                         ];
                         
                         $quantitaTotalePiatti = 0;
                         
                         foreach ($categorie as $categoria => $quantita) {
                           if ($quantita > 0) { ?>
-                            <h3>Compila i dati dei <?=$categoria?></h3>
+                            <hr>
+                            <div class="text-center">
+                              <h3>Compila i dati per: <?=$categoria?></h3>
+                            </div>
+                            <br>
                             <?php
                             
                             for ($i = 1; $i <= $quantita; $i++) { ?>
-                              <div class="form-group">
+                              <div class="form-group bg-giallo" style="padding: 30px;">
                                 
-                                <h4><?=$categoria?> numero <?=$i?></h4>
+                                <h4><?=$categoria?>: <?=$i?> di <?=$quantita?></h4>
                                 
                                 <label for="nomePiatto_<?=$quantitaTotalePiatti?>>">Inserisci il nome del <?=$categoria?> <?=$i?><span class="mandatory">*</span></label>
                                 <input type="text" name="nomePiatto_<?=$quantitaTotalePiatti?>" id="nomePiatto_<?=$quantitaTotalePiatti?>" class="form-control" title="Inserisci il nome del <?=$categoria?> <?=$i?>" required aria-required="true">
@@ -138,8 +147,8 @@
                                 
                                 <?php $quantitaTotalePiatti++; ?>
                                 
-                                <br><br>
                               </div>
+                              <br>
                             <?php }
                           }
                         } ?>

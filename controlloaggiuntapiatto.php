@@ -118,7 +118,7 @@
             </div>
             <?php
           }
-          else {
+          else { // TODO: impostare il layout come per messaggio di successo
             echo "<p>Ci sono stati problemi con l'inserimento del nuovo piatto</p>";
             azioni_amministratore();
           }

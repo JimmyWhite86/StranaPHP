@@ -55,6 +55,27 @@
   <!-- Richiama la nav bar -->
   <?php richiamaNavBar($nomePagina); ?>
 
+  
+  <?php
+    // Per controllo errori
+//    $attiviProva0 = 0;
+//    $attiviProva1 = 1;
+//    $attiviProva2 = 2;
+//
+//    $menuGenerato0 = generaMenu($attiviProva0);
+//    $menuGenerato1 = generaMenu($attiviProva1);
+//    $menuGenerato2 = generaMenu($attiviProva2);
+//    print_r($menuGenerato0);
+//    print_r($menuGenerato1);
+//    print_r($menuGenerato2);
+//
+//    $arrayPiatti = piattiInArray($attiviProva1);
+//    print_r($arrayPiatti);
+//
+//    $categoriePiatti = contaCategoriePiatti($attiviProva1);
+//    print_r($categoriePiatti);
+    
+  ?>
   <!-- "Titolo" della pagina -->
   <div class="my-5 row justify-content-center">
   <div class="text-center">
@@ -68,8 +89,8 @@
     <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
       <div class="row justify-content-center">
         <?php
-          $attivi = '1';
-          generaMenu($attivi);
+          $disponibilitaPiatto = 1;
+          generaMenu($disponibilitaPiatto);
         ?>
       </div>
     </div>
