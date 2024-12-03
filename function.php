@@ -211,6 +211,13 @@
         }
       }
       
+//      Per debug
+//      echo "<pre>";
+//      echo "<hr>";
+//      echo "Funzione contaCategoriePiatti: <br>";
+//      print_r($categorie);
+//      echo "</pre><br><br>";
+      
       return $categorie;
       
     } catch (PDOException $e) {
@@ -243,9 +250,21 @@
           die ("[piattiInArray] => Valore di \$attivi non valido");
       }
       
+//      Per debug
+//      echo "<pre>";
+//      echo "Esegue query: " . $sql . "<br>";
+//      echo "</pre>";
+     
       $stmt = $conn->query($sql);
       $listaPiattiInArray = $stmt->fetchAll();
       
+//      Per debug
+//      echo "<pre>";
+//      echo "<hr>";
+//      echo "Funzione piattiInArray: <br>";
+//      print_r($listaPiattiInArray);
+//      echo "</pre><br><br>";
+//
       return $listaPiattiInArray;
       
     } catch (PDOException $e) {

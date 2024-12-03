@@ -107,11 +107,11 @@
                       
                       <?php
                         $categorie = [
-                          'Antipasti' => $qtyAntipasti,
-                          'Primi' => $qtyPrimi,
-                          'Secondi' => $qtySecondi,
-                          'Contorni' => $qtyContorni,
-                          'Dolci' => $qtyDolci
+                          'antipasti' => $qtyAntipasti,
+                          'primi' => $qtyPrimi,
+                          'secondi' => $qtySecondi,
+                          'contorni' => $qtyContorni,
+                          'dolci' => $qtyDolci
                         ];
                         
                         $quantitaTotalePiatti = 0;

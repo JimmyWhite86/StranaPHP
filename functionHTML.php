@@ -121,7 +121,7 @@
               <li class="nav-item">
                 <?php $nomeLink = "gallery"; ?>
                 <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
-                   href="gallery.php">
+                   href="Gallery.php">
                   Gallery
                 </a>
               </li>
@@ -370,6 +370,13 @@
   function generaMenu($disponibilitaPiatto) {
     $listaPiattiDisponibili = piattiInArray($disponibilitaPiatto);
     $categorie = contaCategoriePiatti($disponibilitaPiatto);
+    
+//    Per debug
+//    echo "<pre>";
+//    echo "<hr>";
+//    echo "generaMenu";
+//    print_r($listaPiattiDisponibili);
+//    echo "</pre><br><br>";
     
     $categorieOrdinate = [
       'antipasti' => "antipasti",

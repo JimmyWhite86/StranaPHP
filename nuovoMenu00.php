@@ -126,8 +126,6 @@
                   <input type="radio" id="carta" name="tipoMenu" value="carta">
                   <label for="carta">Alla carta</label><br>
                   
-                  
-                  
                   <div class="text-center">
                     <input type="submit" value="Prosegui" class="btn btn-success">
                   </div>
