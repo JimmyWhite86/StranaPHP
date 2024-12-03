@@ -70,7 +70,8 @@
       deviEssereAdmin($username);
     } else { // Utente loggato come admin
       
-      $quantitaTotalePiatti = $_POST["quantitaTotalePiatti"];
+      $erroreInserimentoQuery = 0;
+      $quantitaTotalePiatti = isset($_POST["quantitaTotalePiatti"]) ? sanificaInput($_POST["quantitaTotalePiatti"]) : 0;
       eliminaInteroMenu(); // Elimino il menu già presente per inserire quello nuovo
       
       $conn = connetti();
@@ -94,10 +95,10 @@
         $categoriaPiatto = isset($_POST["categoriaPiatto_$i"]) ? sanificaInput($_POST["categoriaPiatto_$i"]) : '';
         $prezzoPiatto = isset($_POST["prezzoPiatto_$i"]) ? sanificaInput($_POST["prezzoPiatto_$i"]) : '';
         $cuoco = isset($_POST["cuocoPiatto_$i"]) ? sanificaInput($_POST["cuocoPiatto_$i"]) : '';
-//        $descrizionePiatto = $_POST["descrizionePiatto_$i"];
-//        $categoriaPiatto = $_POST["categoriaPiatto_$i"];
-//        $prezzoPiatto = $_POST["prezzoPiatto_$i"];
-//        $cuoco = $_POST["cuocoPiatto_$i"];
+        
+        if ($prezzoPiatto < 0) {
+          $prezzoPiatto = 0;
+        }
         
         $sqlInsert = "INSERT INTO menuCucina (nomePiatto, descrizionePiatto, categoriaPiatto, prezzoPiatto, cuoco, disponibilitaPiatto, dataInserimento)
                       VALUES (:nomePiatto, :descrizionePiatto, :categoriaPiatto, :prezzoPiatto, :cuoco, :disponibilita, :dataInserimento)";
@@ -113,34 +114,41 @@
         $stmtInsert -> execute($parametri);
         
         // Controllo l'esito della query
-        if ($stmtInsert->rowCount() > 0) { ?>
-          <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-            <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-              <h2>Il nuovo menu è stato inserito con successo</h2>
-              <hr>
-              <a href="lacucina.php" class="btn btn-primary mb-3">Visualizza la pagina con il menù</a><br>
-              <a href="homeAdmin.php" class="btn btn-primary mb-3">Home Admin</a><br>
-              <a href="gestioneCucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
-            </div>
-          </div>
-          <?php
-        } else { ?>
-          <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-            <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-              <h2>Ci sono stati problemi durante l'inserimento del menu</h2>
-              <hr>
-              <a href="lacucina.php" class="btn btn-primary mb-3">Visualizza la pagina con il menù</a><br>
-              <a href="homeAdmin.php" class="btn btn-primary mb-3">Home Admin</a><br>
-              <a href="gestioneCucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
-            </div>
-          </div>
-          <?php
+        if ($stmtInsert->rowCount() == 0) {
+          $erroreInserimentoQuery ++; // Ogni volta che si verifica un errore, incremento il contatore
         }
       }
     }
   }
   
-  HTMLfooter($nomePagina);?>
+  // Controllo attraverso la variabile $erroreInserimentoQuery se ci sono stati errori durante l'inserimento dei piatti
+  if ($erroreInserimentoQuery == 0) { ?>
+    <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+      <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+        <h2>Il nuovo menu è stato inserito con successo</h2>
+        <hr>
+        <a href="lacucina.php" class="btn btn-primary mb-3">Visualizza la pagina con il menù</a><br>
+        <a href="homeAdmin.php" class="btn btn-primary mb-3">Home Admin</a><br>
+        <a href="gestioneCucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+      </div>
+    </div>
+    <?php
+  } else { ?>
+    <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+      <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+        <h2>Ci sono stati problemi durante l'inserimento del menu</h2>
+        <hr>
+        <a href="lacucina.php" class="btn btn-primary mb-3">Visualizza la pagina con il menù</a><br>
+        <a href="homeAdmin.php" class="btn btn-primary mb-3">Home Admin</a><br>
+        <a href="gestioneCucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+      </div>
+    </div>
+    <?php
+  }
+?>
+
+<?php HTMLfooter($nomePagina);?>
+
 
 </body>
   </html><?php

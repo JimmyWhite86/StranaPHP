@@ -25,6 +25,7 @@
 - Verificare come funziona mysqli_real_escape_string
 - Consenso privacy e cookie policy
 - Inserire l'attributo autocomplete in tutti i campi necessari
+- File statuto associazione
 
 
 

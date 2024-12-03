@@ -236,6 +236,10 @@
     try {
       $conn = connetti();
       
+     if (!is_int($disponibilitaPiatto) || !in_array($disponibilitaPiatto, [0, 1, 2])) {
+        die ("[piattiInArray] => Il valore di \$disponibilitaPiatto non è un intero");
+      }
+      
       switch ($disponibilitaPiatto) {
         case 0:
           $sql = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = FALSE";
@@ -633,12 +637,6 @@ function inserisciEvento($nomeEventoNew, $dataEventoNew, $descrizioneNew, $image
     } else {
       return ['successo' => true, 'messaggio' => 'Indirizzo email valido'];
     }
-  }
-  
-  # ------------------------------------
-  # Funzione aggiungere intero menu
-  function creaNuovoMenu() {
-  
   }
   
   
