@@ -48,7 +48,7 @@
   <title>AdminStrana | Crea Utente</title>
 
 </head>
-<body ng-app="myAppHome" ng-controller="myCtrl">
+<body>
 
 <!-- NAV BAR -->
 <?php richiamaNavBar($nomePagina); ?>
@@ -82,7 +82,9 @@
         <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
           <div class="row justify-content-center">
             <div class="container-fluid my-5" id="containerForm">
-              <form method="POST" action="controlloAggiuntaUtente.php" enctype="multipart/form-data" class="col-md-8 mx-auto"> <!-- Attributo enctype => Serve per caricamento dei file w3schools.com/tags/att_form_enctype.asp -->
+              <form method="POST" action="controlloAggiuntaUtente.php" class="col-md-8 mx-auto"
+                    name="formNuovoUtente" id="formNuovoUtente" novalidate>
+                
                 <h2 class="mb-5 text-center">
                   <?=$username?>, compila i dati del form sottostante per aggiungere un nuovo utente con privilegi di admin
                 </h2>
@@ -94,24 +96,36 @@
                       Inserisci l'username del nuovo utente
                       <span class="mandatory">*</span>
                     </label>
+                    <span ng-show="formNuovoUtente.usernameNew.$touched && formNuovoUtente.usernameNew.$error.required"
+                          class="mioErrore" role="alert">
+                      Campo obbligatorio
+                    </span>
                     <input type="text" name="usernameNew" id="usernameNew" class="form-control"
-                           title="Inserisci l'username del nuovo utente" required aria-required="true">
+                           title="Inserisci l'username del nuovo utente" required aria-required="true" ng-model="usernameNew">
                     <br>
 
                     <label for="psw1">
                       Inserisci una password
                       <span class="mandatory">*</span>
                     </label>
+                    <span ng-show="formNuovoUtente.psw1.$touched && formNuovoUtente.psw1.$error.required"
+                          class="mioErrore" role="alert">
+                      Campo obbligatorio
+                    </span>
                     <input type="password" name="psw1" id="psw1" class="form-control" title="Inserisci una password"
-                           required aria-required="true">
+                           required aria-required="true" ng-model="psw1">
                     <br>
 
                     <label for="psw2">
                       Ripeti la password
                       <span class="mandatory">*</span>
                     </label>
+                    <span ng-show="formNuovoUtente.psw2.$touched && formNuovoUtente.psw2.$error.required"
+                          class="mioErrore" role="alert">
+                      Campo obbligatorio
+                    </span>
                     <input type="password" name="psw2" id="psw2" class="form-control" title="Ripeti la password"
-                           required aria-required="true">
+                           required aria-required="true" ng-model="true">
                     <br>
 
                     <br><br>

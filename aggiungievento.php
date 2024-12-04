@@ -48,7 +48,7 @@
   <title>AdminStrana | Aggiungi Evento</title>
 
 </head>
-<body ng-app="myAppHome" ng-controller="myCtrl">
+<body>
 
 <!-- NAV BAR -->
 <?php richiamaNavBar($nomePagina); ?>
@@ -80,7 +80,9 @@
         <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
           <div class="row justify-content-center">
             <div class="container-fluid my-5" id="containerForm">
-              <form method="POST" action="controlloaggiuntaevento.php" enctype="multipart/form-data" class="col-md-8 mx-auto"> <!-- Attributo enctype => Serve per caricamento dei file w3schools.com/tags/att_form_enctype.asp -->
+              <form method="POST" action="controlloaggiuntaevento.php" enctype="multipart/form-data" class="col-md-8 mx-auto"
+                    name="formNuovoEvento" id="formNuovoEvento" ng-app="myAppNuovoEvento" ng-controller="validateNuovoEventoCtrl" novalidate> <!-- Attributo enctype => Serve per caricamento dei file w3schools.com/tags/att_form_enctype.asp -->
+                
                 <h2 class="mb-5 text-center">
                   <?=$username?>, compila i dati del form sottostante per aggiungere un singolo piatto al menu
                 </h2>
@@ -92,8 +94,12 @@
                       Inserisci il titolo dell'evento
                       <span class="mandatory">*</span>
                     </label>
+                    <span ng-show="formNuovoEvento.eventoNew.$touched && formNuovoEvento.eventoNew.$error.required" class="mioErrore01"
+                          role="alert">
+                      Campo obbligatorio
+                    </span>
                     <input type="text" name="eventoNew" id="eventoNew" class="form-control"
-                           title="Inserisci il titolo dell'evento" required aria-required="true">
+                           title="Inserisci il titolo dell'evento" required aria-required="true" ng-model="eventoNew">
 
                     <br>
 
@@ -101,21 +107,26 @@
                       Inserisci la data
                       <span class="mandatory">*</span>
                     </label>
+                    <span ng-show="formNuovoEvento.dataNew.$touched && formNuovoEvento.dataNew.$error.required" class="mioErrore01"
+                          role="alert">
+                      Campo obbligatorio
+                    </span>
                     <input type="date" name="dataNew" id="dataNew" class="form-control col-md-3" required aria-required="true"
-                           title="inserisci la data dell'evento">
+                           title="inserisci la data dell'evento" ng-model="dataNew">
                     <br>
 
                     <label for="descrizioneNew">
                       Inserisci la descrizione
                       <span class="mandatory">*</span>
                     </label>
+                    <span ng-show="formNuovoEvento.descrizioneNew.$touched && formNuovoEvento.descrizioneNew.$error.required" class="mioErrore01"
+                          role="alert">
+                      Campo obbligatorio
+                    </span>
                     <textarea name="descrizioneNew" id="descrizioneNew" class="form-control" required aria-required="true"
-                              title="Inserisci la descrizione dell'evento">
+                              title="Inserisci la descrizione dell'evento" ng-model="descrizioneNew">
                     </textarea>
-                    <!--
-                    <input type="text" name="descrizioneNew" id="descrizioneNew" class="form-control" required aria-required="true"
-                    title="Inserisci la descrizione dell'evento">
-                    -->
+                    
                     <br>
 
                     <label for="immagine">Aggiungi l'immagine dell'evento</label>

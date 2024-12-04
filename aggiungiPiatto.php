@@ -48,7 +48,7 @@
   <title>Strana AggiungiPiatto</title>
 
 </head>
-<body ng-app="myAppHome" ng-controller="myCtrl">
+<body>
 
 <!-- NAV BAR -->
 <?php richiamaNavBar($nomePagina); ?>
@@ -79,7 +79,8 @@
         <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
           <div class="row justify-content-center">
             <div class="container-fluid my-5" id="containerForm">
-              <form method="POST" action="controlloaggiuntapiatto.php" class="col-md-8 mx-auto">
+              <form method="POST" action="controlloaggiuntapiatto.php" class="col-md-8 mx-auto" name="formNuovoPiatto" id="formNuovoPiatto"
+                    ng-app="myAppNuovoPiatto" ng-controller="validateNuovoPiattoCtrl" novalidate>
 
                 <h2 class="mb-5 text-center">
                   <?=$username?>, compila i dati del form sottostante per aggiungere un singolo piatto al menu
@@ -92,8 +93,12 @@
                       Inserisci il nome del piatto
                       <span class="mandatory">*</span>
                     </label>
+                    <span ng-show="formNuovoPiatto.nomePiattoNew.$touched && formNuovoPiatto.nomePiattoNew.$error.required"
+                          class="mioErrore01" role="alert">
+                      Campo obbligatorio
+                    </span>
                     <input type="text" name="nomePiattoNew" id="nomePiattoNew" class="form-control"
-                           title="Inserisci il nome del piatto" required aria-required="true">
+                           title="Inserisci il nome del piatto" required aria-required="true" ng-model="nomePiattoNew">
                     <br>
 
                     <label for="descrizionePiattoNew">
@@ -108,15 +113,19 @@
                       Inserisci la categoria del piatto
                       <span class="mandatory">*</span>
                     </p>
-                    <input type="radio" id="antipasto" name="categoriaPiattoNew" value="antipasti">
+                    <span ng-show="formNuovoPiatto.categoriaPiattoNew.$touched && formNuovoPiatto.categoriaPiattoNew.$error.required"
+                          class="mioErrore01" role="alert">
+                      Campo obbligatorio
+                    </span>
+                    <input type="radio" id="antipasto" name="categoriaPiattoNew" value="antipasti" required>
                     <label for="antipasto">Antipasto</label><br>
-                    <input type="radio" id="primi" name="categoriaPiattoNew" value="primi">
+                    <input type="radio" id="primi" name="categoriaPiattoNew" value="primi" required>
                     <label for="primi">Primi</label><br>
-                    <input type="radio" id="secondi" name="categoriaPiattoNew" value="secondi">
+                    <input type="radio" id="secondi" name="categoriaPiattoNew" value="secondi" required>
                     <label for="secondi">Secondi</label><br>
-                    <input type="radio" id="contorni" name="categoriaPiattoNew" value="contorni">
+                    <input type="radio" id="contorni" name="categoriaPiattoNew" value="contorni" required>
                     <label for="contorni">Contorni</label><br>
-                    <input type="radio" id="dolci" name="categoriaPiattoNew" value="dolci">
+                    <input type="radio" id="dolci" name="categoriaPiattoNew" value="dolci" required>
                     <label for="dolci">Dolci</label><br>
                     <br>
 
@@ -124,17 +133,25 @@
                       Inserisci il prezzo del piatto
                       <span class="mandatory">*</span>
                     </label>
+                    <span ng-show="formNuovoPiatto.prezzoPiattoNew.$touched && formNuovoPiatto.prezzoPiattoNew.$error.required"
+                          class="mioErrore01" role="alert">
+                      Campo obbligatorio
+                    </span>
                     <input type="number" name="prezzoPiattoNew" id="prezzoPiattoNew" class="form-control"
-                           title="Inserisci il prezzo del piatto" required aria-required="true">
+                           title="Inserisci il prezzo del piatto" required aria-required="true" ng-model="prezzoPiattoNew">
                     <br>
 
                     <p>
                       Inserisci il cuoco
                       <span class="mandatory">*</span>
                     </p>
-                    <input type="radio" id="pino" name="cuocoPiattoNew" value="Pino">
+                    <span ng-show="formNuovoPiatto.cuocoPiattoNew.$touched && formNuovoPiatto.cuocoPiattoNew.$error.required"
+                          class="mioErrore01" role="alert">
+                      Campo obbligatorio
+                    </span>
+                    <input type="radio" id="pino" name="cuocoPiattoNew" value="Pino" required>
                     <label for="pino">Pino</label><br>
-                    <input type="radio" id="tarta" name="cuocoPiattoNew" value="Tarta">
+                    <input type="radio" id="tarta" name="cuocoPiattoNew" value="Tarta" required>
                     <label for="tarta">Tarta</label><br>
 
 
@@ -143,7 +160,13 @@
                   </div>
 
                   <div class="text-center">
-                    <input type="submit" value="Inserisci" class="btn btn-success">
+                    <button type="submit" name="invio" id="invio" value="Inserisci" class="btn btn-primary"
+                            ng-disabled="formNuovoPiatto.nomePiattoNew.$invalid ||
+                                         formNuovoPiatto.categoriaPiattoNew.$invalid ||
+                                         formNuovoPiatto.prezzoPiattoNew.$invalid ||
+                                         formNuovoPiatto.cuocoPiattoNew.$invalid">
+                      Inserisci
+                    </button>
                   </div>
 
                 </fieldset>

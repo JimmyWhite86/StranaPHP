@@ -78,9 +78,13 @@
                     Inserisci il tuo username
                     <span class="mandatory">*</span>
                   </label>
-                  <span ng-show="formLogin.username.$touched && formLogin.username.$error.required" class="mioErrore01" role="alert">Campo obbligatorio</span>
+                  <span ng-show="formLogin.username.$touched && formLogin.username.$error.required" class="mioErrore01"
+                        role="alert">
+                    Campo obbligatorio
+                  </span>
                   <input type="text" name="username" id="username" class="form-control"
-                         title="Inserisci il tuo username" required aria-required="true" ng-model="username" autocomplete="username">
+                         title="Inserisci il tuo username" required aria-required="true" ng-model="username"
+                         autocomplete="username">
                   </div>
                 
                 <br>
@@ -90,9 +94,13 @@
                     Inserisci la tua password
                     <span class="mandatory">*</span>
                   </label>
-                  <span ng-show="formLogin.psw1.$touched && formLogin.psw1.$error.required" class="mioErrore01" role="alert">Campo obbligatorio</span>
+                  <span ng-show="formLogin.psw1.$touched && formLogin.psw1.$error.required" class="mioErrore01"
+                        role="alert">
+                    Campo obbligatorio
+                  </span>
                   <input type="password" name="psw1" id="psw1" class="form-control"
-                         title="Inserisci la password" required aria-required="true" ng-model="psw1" autocomplete="current-password">
+                         title="Inserisci la password" required aria-required="true" ng-model="psw1"
+                         autocomplete="current-password">
                 </div>
                 
                 <br>

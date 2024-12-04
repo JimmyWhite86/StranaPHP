@@ -79,7 +79,9 @@
         <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
           <div class="row justify-content-center">
             <div class="container-fluid my-5" id="containerForm">
-              <form method="POST" action="nuovoMenu01.php" class="col-md-8 mx-auto">
+              
+              <form method="POST" action="nuovoMenu01.php" class="col-md-8 mx-auto" name="formNuovoMenu00" id="formNuovoMenu00"
+                    ng-app="myAppNuovoMenu00" ng-controller="validateNuovoMenu00Ctrl" novalidate>
                 
                 <h2 class="mb-5 text-center">
                   <?=$username?>, seleziona il cuoco e il numero di piatti per ogni categoria
@@ -91,43 +93,66 @@
                     Inserisci il cuoco
                     <span class="mandatory">*</span>
                   </p>
-                  <input type="radio" id="pino" name="cuocoMenu" value="Pino">
+                  <span ng-show="formNuovoMenu00.cuocoMenu.$touched && formNuovoMenu00.cuocoMenu.$error.required" class="mioErrore01" role="alert">
+                    Campo obbligatorio
+                  </span>
+                  <br>
+                  <input type="radio" id="pino" name="cuocoMenu" value="Pino" ng-model="cuocoMenu" ng-required="true">
                   <label for="pino">Pino</label><br>
-                  <input type="radio" id="tarta" name="cuocoMenu" value="Tarta">
+                  <input type="radio" id="tarta" name="cuocoMenu" value="Tarta" ng-model="cuocoMenu" ng-required="true">
                   <label for="tarta">Tarta</label>
                   <br><br><br>
                   
                   <label for="qtyAntipasti">Inserisci il numero di antipasti</label>
-                  <input type="number" name="qtyAntipasti" id="qtyAntipasti" class="form-control" min="0" max="3">
+                  <span ng-show="formNuovoMenu00.qtyAntipasti.$error.min || formNuovoMenu00.qtyAntipasti.$error.max" class="mioErrore01" role="alert">
+                    Inserire una quantità compresa tra 0 e 4
+                  </span>
+                  <input type="number" name="qtyAntipasti" id="qtyAntipasti" class="form-control" min="0" max="4" ng-model="qtyAntipasti">
                   <br>
                   
                   <label for="qtyPrimi">Inserisci il numero di primi</label>
-                  <input type="number" name="qtyPrimi" id="qtyPrimi" class="form-control" min="0" max="3">
+                  <span ng-show="formNuovoMenu00.qtyPrimi.$error.min || formNuovoMenu00.qtyPrimi.$error.max" class="mioErrore01" role="alert">
+                    Inserire una quantità compresa tra 0 e 4
+                  </span>
+                  <input type="number" name="qtyPrimi" id="qtyPrimi" class="form-control" min="0" max="3" ng-model="qtyPrimi">
                   <br>
                   
                   <label for="qtySecondi">Inserisci il numero di secondi</label>
-                  <input type="number" name="qtySecondi" id="qtySecondi" class="form-control" min="0" max="3">
+                  <span ng-show="formNuovoMenu00.qtySecondi.$error.min || formNuovoMenu00.qtySecondi.$error.max" class="mioErrore01" role="alert">
+                    Inserire una quantità compresa tra 0 e 4
+                  </span>
+                  <input type="number" name="qtySecondi" id="qtySecondi" class="form-control" min="0" max="3" ng-model="qtySecondi">
                   <br>
                   
                   <label for="qtyContorni">Inserisci il numero di contorni</label>
-                  <input type="number" name="qtyContorni" id="qtyContorni" class="form-control" min="0" max="3">
+                  <span ng-show="formNuovoMenu00.qtyContorni.$error.min || formNuovoMenu00.qtyContorni.$error.max" class="mioErrore01" role="alert">
+                    Inserire una quantità compresa tra 0 e 4
+                  </span>
+                  <input type="number" name="qtyContorni" id="qtyContorni" class="form-control" min="0" max="3" ng-model="qtyContorni">
                   <br>
                   
                   <label for="qtyDolci">Inserisci il numero di dolci</label>
-                  <input type="number" name="qtyDolci" id="qtyDolci" class="form-control" min="0" max="3">
+                  <span ng-show="formNuovoMenu00.qtyDolci.$error.min || formNuovoMenu00.qtyDolci.$error.max" class="mioErrore01" role="alert">
+                    Inserire una quantità compresa tra 0 e 4
+                  </span>
+                  <input type="number" name="qtyDolci" id="qtyDolci" class="form-control" min="0" max="3" ng-model="qtyDolci">
                   <br><br>
                   
                   <p>
                     Pasto Buffet / Menu fisso?
                     <span class="mandatory">*</span>
                   </p>
-                  <input type="radio" id="buffet" name="tipoMenu" value="buffet">
+                  <span ng-show="formNuovoMenu00.tipoMenu.$touched && formNuovoMenu00.tipoMenu.$error.required" class="mioErrore01" role="alert">
+                    Campo obbligatorio
+                  </span>
+                  <br>
+                  <input type="radio" id="buffet" name="tipoMenu" value="buffet" ng-model="tipoMenu" ng-required="true">
                   <label for="buffet">Buffet</label><br>
-                  <input type="radio" id="carta" name="tipoMenu" value="carta">
+                  <input type="radio" id="carta" name="tipoMenu" value="carta" ng-model="tipoMenu" ng-required="true">
                   <label for="carta">Alla carta</label><br>
                   
                   <div class="text-center">
-                    <input type="submit" value="Prosegui" class="btn btn-success">
+                    <input type="submit" value="Prosegui" class="btn btn-success" ng-disabled="formNuovoMenu00.$invalid">
                   </div>
                 
                 </fieldset>

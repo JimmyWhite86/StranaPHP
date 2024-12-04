@@ -85,13 +85,28 @@
         $tipoMenu = $_POST["tipoMenu"];
         
         if ($qtyAntipasti < 0 || $qtyPrimi < 0 || $qtySecondi < 0 || $qtyContorni < 0 || $qtyDolci < 0) { ?>
+          <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+            <h4>Attenzione!</h4>
+            <p>Il numero di piatti per categoria non può essere un numero negativo</p>
+            <p>Le categorie possono essere settate a zero nel caso non siano presenti nel menu, ma non possono avere un valore negativo!</p>
+          </div>
+          <?php
+        } elseif ($qtyAntipasti == 0 && $qtyPrimi == 0 && $qtySecondi == 0 && $qtyContorni == 0 && $qtyDolci == 0) { ?>
+          <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+            <h4>Attenzione!</h4>
+            <p>Devi inserire almeno un piatto per creare un menu.</p>
+            <p>Almeno una categoria deve essere maggiore di uno</p>
+          </div>
+          <?php
+        } elseif ($qtyAntipasti > 4 || $qtyPrimi > 4 || $qtySecondi > 4 || $qtyContorni > 4 || $qtyDolci > 4) { ?>
           <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Attenzione!</strong> Il numero di piatti per categoria non può essere negativo.
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <h4>Attenzione!</h4>
+            <p>La quantità massima di piatti per categoria non può essere maggiore di 4</p>
+            <p>Il range di piatti accettati è 0 / 4</p>
           </div>
           <?php
         } else { // i campi sono stati compilati tutti correttamente ?>
-
+          
           <!-- Form della pagina -->
           <div class="container-fluid bg-rosso pb-4 pt-4 mt-4 mb-4">
             <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">

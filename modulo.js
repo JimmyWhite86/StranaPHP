@@ -19,6 +19,45 @@ appLogin.controller('validateLoginCtrl', function($scope) {
 });
 // --------
 
+// Validazione form nuovoMenu00
+var appNuovoMenu00 = angular.module('myAppNuovoMenu00', []);
+appNuovoMenu00.controller('validateNuovoMenu00Ctrl', function($scope) {
+  // Inizializzo i modelli
+  $scope.cuocoMenu = '';
+  $scope.qtyAntipasti = 0;
+  $scope.qtyPrimi = 0;
+  $scope.qtySecondi = 0;
+  $scope.qtyContorni = 0;
+  $scope.qtyDolci = 0;
+  $scope.tipoMenu = '';
+
+  //Funzione di validazione
+  $scope.validateForm = function () {
+    if (($scope.qtyAntipasti === 0 || !$scope.qtyAntipasti) &&
+        ($scope.qtyPrimi === 0 || !$scope.qtyPrimi) &&
+        ($scope.qtySecondi === 0 || !$scope.qtySecondi) &&
+        ($scope.qtyContorni === 0 || !$scope.qtyContorni) &&
+        ($scope.qtyDolci === 0 || !$scope.qtyDolci)) {
+      alert("Almeno una categoria deve essere maggiore di zero");
+      return false;
+    }
+    return true;
+  };
+});
+// --------
+
+// Validazione form aggiungiPiatto (aggiunta di un singolo piatto al menu)
+var appNuovoPiatto = angular.module('myAppNuovoPiatto', []);
+appNuovoPiatto.controller('validateNuovoPiattoCtrl', function($scope) {
+});
+// --------
+
+// Validazione form nuovoEvento
+var appNuovoEvento = angular.module('myAppNuovoEvento', []);
+appNuovoEvento.controller('validateNuovoEventoCtrl', function($scope) {
+});
+
+
 
 // --------
 // JS
