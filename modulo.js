@@ -56,6 +56,12 @@ appNuovoPiatto.controller('validateNuovoPiattoCtrl', function($scope) {
 var appNuovoEvento = angular.module('myAppNuovoEvento', []);
 appNuovoEvento.controller('validateNuovoEventoCtrl', function($scope) {
 });
+// --------
+
+// Validazione form nuovo utente
+var appNuovoUtente = angular.module('myAppNuovoUtente', []);
+appNuovoUtente.controller('validateNuovoUtenteCtrl', function($scope) {
+});
 
 
 

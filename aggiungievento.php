@@ -80,6 +80,7 @@
         <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
           <div class="row justify-content-center">
             <div class="container-fluid my-5" id="containerForm">
+              
               <form method="POST" action="controlloaggiuntaevento.php" enctype="multipart/form-data" class="col-md-8 mx-auto"
                     name="formNuovoEvento" id="formNuovoEvento" ng-app="myAppNuovoEvento" ng-controller="validateNuovoEventoCtrl" novalidate> <!-- Attributo enctype => Serve per caricamento dei file w3schools.com/tags/att_form_enctype.asp -->
                 

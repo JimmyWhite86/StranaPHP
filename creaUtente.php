@@ -82,8 +82,9 @@
         <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
           <div class="row justify-content-center">
             <div class="container-fluid my-5" id="containerForm">
-              <form method="POST" action="controlloAggiuntaUtente.php" class="col-md-8 mx-auto"
-                    name="formNuovoUtente" id="formNuovoUtente" novalidate>
+              
+              <form method="POST" action="controlloAggiuntaUtente.php" class="col-md-8 mx-auto" name="formNuovoUtente"
+                    id="formNuovoUtente" ng-app="myAppNuovoUtente" ng-controller="validateNuovoUtenteCtrl" novalidate>
                 
                 <h2 class="mb-5 text-center">
                   <?=$username?>, compila i dati del form sottostante per aggiungere un nuovo utente con privilegi di admin
@@ -97,7 +98,7 @@
                       <span class="mandatory">*</span>
                     </label>
                     <span ng-show="formNuovoUtente.usernameNew.$touched && formNuovoUtente.usernameNew.$error.required"
-                          class="mioErrore" role="alert">
+                          class="mioErrore01" role="alert">
                       Campo obbligatorio
                     </span>
                     <input type="text" name="usernameNew" id="usernameNew" class="form-control"
@@ -109,7 +110,7 @@
                       <span class="mandatory">*</span>
                     </label>
                     <span ng-show="formNuovoUtente.psw1.$touched && formNuovoUtente.psw1.$error.required"
-                          class="mioErrore" role="alert">
+                          class="mioErrore01" role="alert">
                       Campo obbligatorio
                     </span>
                     <input type="password" name="psw1" id="psw1" class="form-control" title="Inserisci una password"
@@ -121,11 +122,15 @@
                       <span class="mandatory">*</span>
                     </label>
                     <span ng-show="formNuovoUtente.psw2.$touched && formNuovoUtente.psw2.$error.required"
-                          class="mioErrore" role="alert">
+                          class="mioErrore01" role="alert">
                       Campo obbligatorio
                     </span>
                     <input type="password" name="psw2" id="psw2" class="form-control" title="Ripeti la password"
-                           required aria-required="true" ng-model="true">
+                           required aria-required="true" ng-model="psw2">
+                    <span ng-show="formNuovoUtente.psw2.$touched && psw2 != psw1" class="mioErrore01" role="alert">
+                      Le password non corrispondono
+                    </span>
+                    
                     <br>
 
                     <br><br>
@@ -133,7 +138,10 @@
                   </div>
 
                   <div class="text-center">
-                    <input type="submit" value="Inserisci" class="btn btn-success">
+                    <button type="submit" name="invio" id="invio" value="inserisici" class="btn btn-primary"
+                            ng-disabled = "formNuovoUtente.$invalid">
+                      Inserisci
+                    </button>
                   </div>
 
                 </fieldset>

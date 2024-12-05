@@ -106,7 +106,7 @@
           </div>
           <?php
         } else { // i campi sono stati compilati tutti correttamente ?>
-          
+
           <!-- Form della pagina -->
           <div class="container-fluid bg-rosso pb-4 pt-4 mt-4 mb-4">
             <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
@@ -117,7 +117,7 @@
                       <?=$username?>, compila i dati del form sottostante per creare un nuovo menu
                     </h2>
                     <br>
-                    
+
                     <fieldset>
                       
                       <?php
@@ -142,39 +142,42 @@
                             
                             for ($i = 1; $i <= $quantita; $i++) { ?>
                               <div class="form-group bg-giallo" style="padding: 30px;">
-                                
+
                                 <h4><?=$categoria?>: <?=$i?> di <?=$quantita?></h4>
-                                
+
                                 <label for="nomePiatto_<?=$quantitaTotalePiatti?>>">Inserisci il nome del <?=$categoria?> <?=$i?><span class="mandatory">*</span></label>
                                 <input type="text" name="nomePiatto_<?=$quantitaTotalePiatti?>" id="nomePiatto_<?=$quantitaTotalePiatti?>" class="form-control" title="Inserisci il nome del <?=$categoria?> <?=$i?>" required aria-required="true">
                                 <br>
-                                
+
                                 <label for="descrizionePiatto_<?=$quantitaTotalePiatti?>">Inserisci la descrizione del <?=$categoria?> <?=$i?></label>
                                 <textarea name="descrizionePiatto_<?=$quantitaTotalePiatti?>" id="descrizionePiatto_<?=$quantitaTotalePiatti?>" class="form-control col-md-3" title="inserisci la descrizione del <?=$categoria?> <?=$i?>"></textarea>
                                 <br>
-                                
+
                                 <label for="prezzoPiatto_<?=$quantitaTotalePiatti?>">Inserisci il prezzo del <?=$categoria?> <?=$i?><span class="mandatory">*</span></label>
                                 <input type="number" name="prezzoPiatto_<?=$quantitaTotalePiatti?>" id="prezzoPiatto_<?=$quantitaTotalePiatti?>" class="form-control" title="Inserisci il prezzo del <?=$categoria?> <?=$i?>" required aria-required="true">
                                 <br>
-                                
+
                                 <input type="hidden" name="categoriaPiatto_<?=$quantitaTotalePiatti?>" value="<?=$categoria?>">
                                 <input type="hidden" name="cuocoPiatto_<?=$quantitaTotalePiatti?>" value="<?=$cuoco?>">
                                 
                                 <?php $quantitaTotalePiatti++; ?>
-                                
+
                               </div>
                               <br>
                             <?php }
                           }
                         } ?>
-                        
-                        <input type="hidden" name="quantitaTotalePiatti" value="<?=$quantitaTotalePiatti?>">
-                        <input type="hidden" name="tipoMenu" value="<?=$tipoMenu?>">
+
+                      <input type="hidden" name="quantitaTotalePiatti" value="<?=$quantitaTotalePiatti?>">
+                      <input type="hidden" name="tipoMenu" value="<?=$tipoMenu?>">
+                      
                       <div class="text-center">
                         <input type="submit" value="Inserisci" class="btn btn-success">
                       </div>
+                      
                     </fieldset>
                   </form>
+                  
                 </div>
               </div>
             </div>
