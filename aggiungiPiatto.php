@@ -161,10 +161,7 @@
 
                   <div class="text-center">
                     <button type="submit" name="invio" id="invio" value="Inserisci" class="btn btn-primary"
-                            ng-disabled="formNuovoPiatto.nomePiattoNew.$invalid ||
-                                         formNuovoPiatto.categoriaPiattoNew.$invalid ||
-                                         formNuovoPiatto.prezzoPiattoNew.$invalid ||
-                                         formNuovoPiatto.cuocoPiattoNew.$invalid">
+                            ng-disabled="formNuovoPiatto.$invalid">
                       Inserisci
                     </button>
                   </div>

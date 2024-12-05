@@ -45,6 +45,8 @@
 
   <title>Strana nuovoMenu</title>
 </head>
+
+
 <body>
 
 <!-- NAV BAR -->
@@ -112,7 +114,10 @@
             <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
               <div class="row justify-content-center">
                 <div class="container-fluid my-5" id="containerForm">
-                  <form method="POST" action="controlloaggiuntamenu.php" class="col-md-8 mx-auto">
+                  
+                  <form method="POST" action="controlloaggiuntamenu.php" class="col-md-8 mx-auto" name="formNuovoMenu01"
+                        id="formNuovoMenu01" ng-app="myAppNuovoMenu01" ng-controller="validateNuovoMenu01" novalidate>
+                    
                     <h2 class="mb-5 text-center">
                       <?=$username?>, compila i dati del form sottostante per creare un nuovo menu
                     </h2>
@@ -145,16 +150,39 @@
 
                                 <h4><?=$categoria?>: <?=$i?> di <?=$quantita?></h4>
 
-                                <label for="nomePiatto_<?=$quantitaTotalePiatti?>>">Inserisci il nome del <?=$categoria?> <?=$i?><span class="mandatory">*</span></label>
-                                <input type="text" name="nomePiatto_<?=$quantitaTotalePiatti?>" id="nomePiatto_<?=$quantitaTotalePiatti?>" class="form-control" title="Inserisci il nome del <?=$categoria?> <?=$i?>" required aria-required="true">
+                                <label for="nomePiatto_<?=$quantitaTotalePiatti?>>">
+                                  Inserisci il nome del <?=$categoria?> <?=$i?>
+                                  <span class="mandatory">*</span>
+                                </label>
+                                <span class="mioErrore01" role="alert"
+                                      ng-show="formNuovoMenu01.nomePiatto_<?=$quantitaTotalePiatti?>.$touched && formNuovoMenu01.nomePiatto_<?=$quantitaTotalePiatti?>.$error.required">
+                                  Campo obbligatorio
+                                </span>
+                                <input type="text" name="nomePiatto_<?=$quantitaTotalePiatti?>"
+                                       id="nomePiatto_<?=$quantitaTotalePiatti?>"
+                                       class="form-control" title="Inserisci il nome del <?=$categoria?> <?=$i?>"
+                                       required aria-required="true" ng-model="nomePiatto_<?=$quantitaTotalePiatti?>">
                                 <br>
 
-                                <label for="descrizionePiatto_<?=$quantitaTotalePiatti?>">Inserisci la descrizione del <?=$categoria?> <?=$i?></label>
-                                <textarea name="descrizionePiatto_<?=$quantitaTotalePiatti?>" id="descrizionePiatto_<?=$quantitaTotalePiatti?>" class="form-control col-md-3" title="inserisci la descrizione del <?=$categoria?> <?=$i?>"></textarea>
+                                <label for="descrizionePiatto_<?=$quantitaTotalePiatti?>">
+                                  Inserisci la descrizione del <?=$categoria?> <?=$i?>
+                                </label>
+                                <textarea name="descrizionePiatto_<?=$quantitaTotalePiatti?>" id="descrizionePiatto_<?=$quantitaTotalePiatti?>"
+                                          class="form-control col-md-3" title="inserisci la descrizione del <?=$categoria?> <?=$i?>"></textarea>
                                 <br>
 
-                                <label for="prezzoPiatto_<?=$quantitaTotalePiatti?>">Inserisci il prezzo del <?=$categoria?> <?=$i?><span class="mandatory">*</span></label>
-                                <input type="number" name="prezzoPiatto_<?=$quantitaTotalePiatti?>" id="prezzoPiatto_<?=$quantitaTotalePiatti?>" class="form-control" title="Inserisci il prezzo del <?=$categoria?> <?=$i?>" required aria-required="true">
+                                <label for="prezzoPiatto_<?=$quantitaTotalePiatti?>">
+                                  Inserisci il prezzo del <?=$categoria?> <?=$i?>
+                                  <span class="mandatory">*</span>
+                                </label>
+                                <span ng-show="formNuovoMenu01.prezzoPiatto_<?=$quantitaTotalePiatti?>.$touched && formNuovoMenu01.prezzoPiatto_<?=$quantitaTotalePiatti?>.$error.required"
+                                      class="mioErrore01" role="alert">
+                                  Campo obbligatorio
+                                </span>
+                                <input type="number" name="prezzoPiatto_<?=$quantitaTotalePiatti?>"
+                                       id="prezzoPiatto_<?=$quantitaTotalePiatti?>"
+                                       class="form-control" title="Inserisci il prezzo del <?=$categoria?> <?=$i?>"
+                                       required aria-required="true" ng-model="prezzoPiatto_<?=$quantitaTotalePiatti?>">
                                 <br>
 
                                 <input type="hidden" name="categoriaPiatto_<?=$quantitaTotalePiatti?>" value="<?=$categoria?>">
@@ -172,7 +200,7 @@
                       <input type="hidden" name="tipoMenu" value="<?=$tipoMenu?>">
                       
                       <div class="text-center">
-                        <input type="submit" value="Inserisci" class="btn btn-success">
+                        <input type="submit" value="Inserisci" class="btn btn-success" ng-disabled="formNuovoMenu01.$invalid">
                       </div>
                       
                     </fieldset>
