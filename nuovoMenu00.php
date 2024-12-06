@@ -96,7 +96,7 @@
                   <span ng-show="formNuovoMenu00.cuocoMenu.$touched && formNuovoMenu00.cuocoMenu.$error.required" class="mioErrore01" role="alert">
                     Campo obbligatorio
                   </span>
-                  <br>
+                  <br ng-show="formNuovoMenu00.cuocoMenu.$touched && formNuovoMenu00.cuocoMenu.$error.required">
                   <input type="radio" id="pino" name="cuocoMenu" value="Pino" ng-model="cuocoMenu" ng-required="true">
                   <label for="pino">Pino</label><br>
                   <input type="radio" id="tarta" name="cuocoMenu" value="Tarta" ng-model="cuocoMenu" ng-required="true">

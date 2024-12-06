@@ -46,6 +46,12 @@ appNuovoMenu00.controller('validateNuovoMenu00Ctrl', function($scope) {
 });
 // --------
 
+// Vadlidazione form nuovoMenu01
+var appNuovoMenu01 = angular.module('myAppNuovoMenu01', []);
+appNuovoMenu01.controller('validateNuovoMenu01Ctrl', function($scope) {
+})
+// --------
+
 // Validazione form aggiungiPiatto (aggiunta di un singolo piatto al menu)
 var appNuovoPiatto = angular.module('myAppNuovoPiatto', []);
 appNuovoPiatto.controller('validateNuovoPiattoCtrl', function($scope) {

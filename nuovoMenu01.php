@@ -111,12 +111,12 @@
 
           <!-- Form della pagina -->
           <div class="container-fluid bg-rosso pb-4 pt-4 mt-4 mb-4">
-            <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
+            <div class="container-fluid col-md-8 bg-giallo pb-4 mb-4 pt-4 mt-4">
               <div class="row justify-content-center">
                 <div class="container-fluid my-5" id="containerForm">
                   
                   <form method="POST" action="controlloaggiuntamenu.php" class="col-md-8 mx-auto" name="formNuovoMenu01"
-                        id="formNuovoMenu01" ng-app="myAppNuovoMenu01" ng-controller="validateNuovoMenu01" novalidate>
+                        id="formNuovoMenu01" ng-app="myAppNuovoMenu01" ng-controller="validateNuovoMenu01Ctrl" novalidate>
                     
                     <h2 class="mb-5 text-center">
                       <?=$username?>, compila i dati del form sottostante per creare un nuovo menu
@@ -146,7 +146,7 @@
                             <?php
                             
                             for ($i = 1; $i <= $quantita; $i++) { ?>
-                              <div class="form-group bg-giallo" style="padding: 30px;">
+                              <div class="form-group bg-bianco border border-dark rounded" style="padding: 30px;">
 
                                 <h4><?=$categoria?>: <?=$i?> di <?=$quantita?></h4>
 
@@ -154,8 +154,9 @@
                                   Inserisci il nome del <?=$categoria?> <?=$i?>
                                   <span class="mandatory">*</span>
                                 </label>
-                                <span class="mioErrore01" role="alert"
-                                      ng-show="formNuovoMenu01.nomePiatto_<?=$quantitaTotalePiatti?>.$touched && formNuovoMenu01.nomePiatto_<?=$quantitaTotalePiatti?>.$error.required">
+                                <span class="mioErrore01 mioErrore02" role="alert"
+                                      ng-show="formNuovoMenu01.nomePiatto_<?=$quantitaTotalePiatti?>.$touched &&
+                                               formNuovoMenu01.nomePiatto_<?=$quantitaTotalePiatti?>.$error.required">
                                   Campo obbligatorio
                                 </span>
                                 <input type="text" name="nomePiatto_<?=$quantitaTotalePiatti?>"
@@ -175,8 +176,9 @@
                                   Inserisci il prezzo del <?=$categoria?> <?=$i?>
                                   <span class="mandatory">*</span>
                                 </label>
-                                <span ng-show="formNuovoMenu01.prezzoPiatto_<?=$quantitaTotalePiatti?>.$touched && formNuovoMenu01.prezzoPiatto_<?=$quantitaTotalePiatti?>.$error.required"
-                                      class="mioErrore01" role="alert">
+                                <span class="mioErrore01" role="alert"
+                                      ng-show="formNuovoMenu01.prezzoPiatto_<?=$quantitaTotalePiatti?>.$touched &&
+                                               formNuovoMenu01.prezzoPiatto_<?=$quantitaTotalePiatti?>.$error.required">
                                   Campo obbligatorio
                                 </span>
                                 <input type="number" name="prezzoPiatto_<?=$quantitaTotalePiatti?>"
@@ -223,7 +225,6 @@
 <?php
   HTMLfooter($nomePagina);
 ?>
-
 
 </body>
 </html>
