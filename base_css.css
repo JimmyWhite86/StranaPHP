@@ -31,7 +31,6 @@
   src: url(FONT/Lato-Regular.ttf);
 }
 
-
 body {
   font-family: Lato-Regular, arial, hevetica, sans-serif;
   line-height: 1.8;
@@ -78,6 +77,12 @@ body {
 }
 
 .fontChiSiamo01 {
+  font-family: strana, Arial, Helvetica, sans-serif;
+  color: #000000;
+  font-size: 4rem;
+}
+
+.fontChiSiamo02 {
   font-family: strana, Arial, Helvetica, sans-serif;
   color: #000000;
   font-size: 4rem;
@@ -187,6 +192,10 @@ body {
 
   #titoloPaginaGallery {
     font-size: 2.8rem !important;
+  }
+
+  .fontChiSiamo02 {
+    font-size: 2.4rem;
   }
 }
 /* ------------------------------------------------ */
