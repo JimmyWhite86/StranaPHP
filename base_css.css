@@ -102,8 +102,11 @@ body {
 
 .babasTitolo {
   font-family: Babas, Arial, Helvetica, sans-serif;
-  font-size: 3rem;
+  font-size: 5rem;
   color: #fe4a49;
+  line-height: 0.7;
+  text-decoration: black;
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
 }
 
 #fontHeroSopra {
@@ -114,13 +117,18 @@ body {
 }
 
 #fontHeroSotto {
-  color: #009fb7; 
+  color: #009fb7;
+  font-size: 3rem;
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
 }
 
 #fontHeroCentro {
   font-family: Strana, arial, hevetica, sans-serif;
-  font-size: 6rem;
+  font-size: 12rem;
   color: #fed766;
+  background-color: black;
+  background-size: auto;
+  line-height: 0.7;
 }
 
 .titoloPagina {
@@ -600,3 +608,38 @@ thead th.intestazioneTabella {
   }
 }
 /* --------------------------------------------------------- */
+
+
+
+/* ANIMAZIONI TESTO */
+/* Testo entra da dx verso sx */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-right {
+  animation: slideInFromRight 1s ease-out;
+}
+
+/* Testo entra da sx verso dx*/
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-left {
+  animation: slideInFromLeft 1s ease-out;
+}

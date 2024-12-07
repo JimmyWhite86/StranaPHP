@@ -101,6 +101,7 @@ function filtraEventi(sceltaEventi) {
   return 2;
 }
 
+// Funzione per aggiornare il titolo nella pagina eventi
 function aggiornaTitolo (tipo) {
   const titoloElement = document.getElementById("titoloEventi");
   if (tipo === 0) {
@@ -112,3 +113,17 @@ function aggiornaTitolo (tipo) {
   }
 }
 
+
+// FUNZIONI PER ANIMAZIONi
+function typeEffect(elementID, text, speed) {
+  let index = 0;
+  const element = document.getElementById(elementID);
+
+  function typeChar() {
+    if (index < text.length) {
+      element.innerHTML += text[index++];
+      setTimeout(typeChar, speed);
+    }
+  }
+  typeChar()
+}

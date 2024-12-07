@@ -1,4 +1,4 @@
-<?php 
+<?php
   session_start();
   $nomePagina = "index";
   include "function.php";
@@ -44,137 +44,181 @@
   <title>Stranamore | Home</title>
 </head>
 <body ng-app="myAppHome" ng-controller="myCtrl">
-  
-  <!-- NAV BAR -->
-  <?php richiamaNavBar($nomePagina);?>
-  
 
-  <main id="mioMain" role="main">
-    
-    <!-- Hero Section -->
-    <section class="hero-section bg-rosso text-center text-white d-flex align-items-center">
-      <div class="container hero-content">
-        <div class="row justify-content-center">
-          <div class="col-md-8 bg-nero">
-            <h2 class="m-0 p-0 pt-2 babasTitolo" id="">Associazione Culturale e Circolo ARCI</h2>
-            <h1 class="m-0 p-0" id="fontHeroCentro">stranamore</h1>
-            <h3 class="m-0 p-0 pb-2" id="fontHeroSotto">Promuoviamo cultura, inclusione e socialità</h3> 
-          </div>
-        </div> 
+<!-- NAV BAR -->
+<?php richiamaNavBar($nomePagina);?>
+
+
+<main id="mioMain" role="main">
+
+  <!-- Hero Section -->
+  <section class="hero-section bg-rosso text-center text-white d-flex align-items-center">
+    <div class="container hero-content">
+      <div class="row justify-content-center">
+        <h2 class="m-0 p-0 babasTitolo" id="heroSopra">Associazione Culturale e Circolo ARCI</h2>
+        <h1 class="px-1" id="fontHeroCentro"></h1>
+        <h3 class="m-0 p-0 pb-2" id="fontHeroSotto">PROMUOVIAMO CULTURA, INCLUSIONE E SOCIALITA'</h3>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- sessione centrale -->
-    <div class="bg-giallo container-fluid justify-content-center mioFlowRoot">
+  <!--    <section class="hero-section bg-rosso text-center text-white d-flex align-items-center">-->
+  <!--      <div class="container hero-content">-->
+  <!--        <div class="row justify-content-center">-->
+  <!--          <div class="col-md-8 bg-nero">-->
+  <!--            <h2 class="m-0 p-0 pt-2 babasTitolo" id="">Associazione Culturale e Circolo ARCI</h2>-->
+  <!--            <h1 class="m-0 p-0" id="fontHeroCentro"></h1>-->
+  <!--            <h3 class="m-0 p-0 pb-2" id="fontHeroSotto">Promuoviamo cultura, inclusione e socialità</h3> -->
+  <!--          </div>-->
+  <!--        </div> -->
+  <!--      </div>-->
+  <!--    </section>-->
 
-      <!-- Chi siamo breve -->
-      <div class="container-fluid justify-content-center bg-nero w-75 mt-2" style="color: white;">
-        <h3 class="pt-5 text-center fontstranaTitoli">chi siamo</h3>
-        <div class="row justify-content-center">
-          <div class="col-sm-10 col-md-8">
-            <p class="testoHome">
-              Siamo un'associazione di promozione sociale affiliata ARCI.
-              Promuvoiamo cultura, arte e socializzazione sul nostro territorio.
-              Per le persone associate è presente la cucina.
-            </p>
-            <br>
-            <a href="chisiamo.php">Scopri di piu</a>
-          </div>
+  <!-- sessione centrale -->
+  <div class="bg-giallo container-fluid justify-content-center mioFlowRoot">
+
+    <!-- Chi siamo breve -->
+    <div class="container-fluid justify-content-center bg-nero w-75 mt-2" style="color: white;">
+      <h3 class="pt-5 text-center fontstranaTitoli">chi siamo</h3>
+      <div class="row justify-content-center">
+        <div class="col-sm-10 col-md-8">
+          <p class="testoHome">
+            Siamo un'associazione di promozione sociale affiliata ARCI.
+            Promuoviamo cultura, arte e socializzazione sul nostro territorio.
+            Per le persone associate è presente la cucina.
+          </p>
+          <br>
+          <a href="chisiamo.php">Scopri di piu</a>
         </div>
       </div>
-
-      <!-- La cucina breve -->
-      <div class="container-fluid justify-content-center bg-nero w-75 mt-2 mb-2" style="color: white;">
-        <h3 class="pt-5 text-center fontstranaTitoli">la cucina</h3>
-        <div class="row justify-content-center">
-          <div class="col-sm-10 col-md-8">
-            <p class="testoHome">
-              La nostra cucina è aperta per tutte le persone associate.
-              Cerchiamo di proporre piatti con ingredienti di qualità promuovendo la stagionalità dei cibi.
-              Possiamo anche organizzare menu fissi per feste o grandi tavolate.
-            </p>
-            <br>
-            <a href="chisiamo.php">Scopri di piu</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Eventi breve -->
-      <div class="container-fluid justify-content-center bg-nero w-75 mt-2 mb-2" style="color: white;">
-        <h3 class="pt-5 text-center fontstranaTitoli">eventi</h3>
-        <div class="row justify-content-center">
-          <div class="col-sm-10 col-md-8">
-            <p class="testoHome">
-              Organiziamo incontri e dibattiti su temi di attualità.
-              Inviatiamo persone autorevoli che possano spiegarci cosa succede nel mondo. 
-              Ospitiamo presentazioni di libri.
-              Ma non siamo sempre seri. Ci piacciano anche concerti e dj set.
-            </p>
-            <br>
-            <a href="chisiamo.php">Scopri di piu</a>
-          </div>
-        </div>
-      </div>
-
     </div>
 
-
-
-
-    <!-- NewsLetter e 8x1000 -->
-    <section>
-      <div class="container-fluid text-center bg-azzurro">
-        <div class="row justify-content-center">
-          
-          <div class="m-2 card col-md-4" style="width: 20em;">
-            <!-- <img src="Immagini/Newletter_Azzurra_100_01.png" class="img-fluid myImgCard"> -->
-            <i class="bi bi-envelope-paper-heart fa-10x iconeRosse"></i>
-            <div class="card-body">
-              <h3>Iscriviti alla nostra NewsLetter</h3>
-              <p>Rimani aggiornato sulle nostre iniziative e non perderti nessun evento!</p>
-              <p>La nostra NewsLetter ha cadenza settimanale e serve per comunicare con i nostri soci.</p>
-            </div>
-            <div class="card-footer">
-              <a href="" class="btn bottoneRosso">Iscriviti</a>
-            </div>
-          </div>
-
-          <div class="m-2 card col-md-4" style="width: 20em;">
-            <!-- <img src="Immagini/Moneta_Rossa_01.png" class="img-fluid myImgCard"> -->
-            <i class="bi bi-piggy-bank fa-10x iconeGialle"></i>
-            <div class="card-body">
-              <h3>Dona il tuo 5x1000</h3>
-              <p>Tutte le nostre iniziative sono volte ad autofinanziarci</p>
-              <p>Il tuo contributo per noi è davvero importante.</p>
-            </div>
-            <div class="card-footer">
-              <a href="" class="btn bottoneGiallo">Dona</a>
-            </div>
-          </div>
-
-          <div class="m-2 card col-md-4" style="width: 20em;">
-            <!-- <img src="Immagini/Contattaci_Giallo_50_01.png" class="img-fluid myImgCard"> -->
-            <i class="bi bi-mic-fill fa-10x iconeAzzurre"></i>
-            <div class="card-body">
-              <h3>Vuoi proporre un dibattito o un evento?</h3>
-              <p>Usa il form per contattarci</p>
-              <p>Siamo sempre alla ricerca di incontri, musica e spettacoli che possano animare il nostro circolo. 
-                Facci sapere la tua proposta.</p>
-            </div>
-            <div class="card-footer">
-              <a href="contatti.php" class="btn bottoneAzzurro">Contattaci</a>
-            </div>
-          </div>
-
+    <!-- La cucina breve -->
+    <div class="container-fluid justify-content-center bg-nero w-75 mt-2 mb-2" style="color: white;">
+      <h3 class="pt-5 text-center fontstranaTitoli">la cucina</h3>
+      <div class="row justify-content-center">
+        <div class="col-sm-10 col-md-8">
+          <p class="testoHome">
+            La nostra cucina è aperta per tutte le persone associate.
+            Cerchiamo di proporre piatti con ingredienti di qualità promuovendo la stagionalità dei cibi.
+            Possiamo anche organizzare menu fissi per feste o grandi tavolate.
+          </p>
+          <br>
+          <a href="chisiamo.php">Scopri di piu</a>
         </div>
       </div>
-    </section>
+    </div>
+
+    <!-- Eventi breve -->
+    <div class="container-fluid justify-content-center bg-nero w-75 mt-2 mb-2" style="color: white;">
+      <h3 class="pt-5 text-center fontstranaTitoli">eventi</h3>
+      <div class="row justify-content-center">
+        <div class="col-sm-10 col-md-8">
+          <p class="testoHome">
+            Organiziamo incontri e dibattiti su temi di attualità.
+            Inviatiamo persone autorevoli che possano spiegarci cosa succede nel mondo.
+            Ospitiamo presentazioni di libri.
+            Ma non siamo sempre seri. Ci piacciano anche concerti e dj set.
+          </p>
+          <br>
+          <a href="chisiamo.php">Scopri di piu</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
 
 
-    <!-- Footer -->
-    <?php HTMLfooter($nomePagina);?>
-    
-  </main>
+
+
+  <!-- NewsLetter e 8x1000 -->
+  <section>
+    <div class="container-fluid text-center bg-azzurro">
+      <div class="row justify-content-center">
+
+        <div class="m-2 card col-md-4" style="width: 20em;">
+          <!-- <img src="Immagini/Newletter_Azzurra_100_01.png" class="img-fluid myImgCard"> -->
+          <i class="bi bi-envelope-paper-heart fa-10x iconeRosse"></i>
+          <div class="card-body">
+            <h3>Iscriviti alla nostra NewsLetter</h3>
+            <p>Rimani aggiornato sulle nostre iniziative e non perderti nessun evento!</p>
+            <p>La nostra NewsLetter ha cadenza settimanale e serve per comunicare con i nostri soci.</p>
+          </div>
+          <div class="card-footer">
+            <a href="" class="btn bottoneRosso">Iscriviti</a>
+          </div>
+        </div>
+
+        <div class="m-2 card col-md-4" style="width: 20em;">
+          <!-- <img src="Immagini/Moneta_Rossa_01.png" class="img-fluid myImgCard"> -->
+          <i class="bi bi-piggy-bank fa-10x iconeGialle"></i>
+          <div class="card-body">
+            <h3>Dona il tuo 5x1000</h3>
+            <p>Tutte le nostre iniziative sono volte ad autofinanziarci</p>
+            <p>Il tuo contributo per noi è davvero importante.</p>
+          </div>
+          <div class="card-footer">
+            <a href="" class="btn bottoneGiallo">Dona</a>
+          </div>
+        </div>
+
+        <div class="m-2 card col-md-4" style="width: 20em;">
+          <!-- <img src="Immagini/Contattaci_Giallo_50_01.png" class="img-fluid myImgCard"> -->
+          <i class="bi bi-mic-fill fa-10x iconeAzzurre"></i>
+          <div class="card-body">
+            <h3>Vuoi proporre un dibattito o un evento?</h3>
+            <p>Usa il form per contattarci</p>
+            <p>Siamo sempre alla ricerca di incontri, musica e spettacoli che possano animare il nostro circolo.
+              Facci sapere la tua proposta.</p>
+          </div>
+          <div class="card-footer">
+            <a href="contatti.php" class="btn bottoneAzzurro">Contattaci</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <?php HTMLfooter($nomePagina);?>
+
+</main>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Ritarda l'animazione di heroSopra di 0,5 secondi
+    setTimeout(() => {
+      const heroSopra = document.getElementById('heroSopra');
+      heroSopra.classList.add('slide-in-right');
+
+      // Ritarda l'animazione di fontHeroSotto di 0,3 secondi dopo la fine dell'animazione di heroSopra
+      setTimeout(() => {
+        const fontHeroSotto = document.getElementById('fontHeroSotto');
+        fontHeroSotto.classList.add('slide-in-left');
+
+        // Ritarda l'animazione di fontHeroCentro di 0,3 secondi dopo la fine dell'animazione di fontHeroSotto
+        setTimeout(() => {
+          typeEffect('fontHeroCentro', 'stranamore', 300);
+        }, 300);
+      }, 1300); // 1000ms (durata animazione) + 300ms (ritardo)
+    }, 500);
+  });
+</script>
 
 </body>
 </html>
+
+
+<!--<script>-->
+<!--  document.addEventListener('DOMContentLoaded', () => {-->
+<!--    typeEffect('fontHeroCentro', 'stranamore', 300);-->
+<!---->
+<!--    const heroSopra = document.getElementById('heroSopra');-->
+<!--    heroSopra.classList.add('slide-in-right');-->
+<!---->
+<!--    const fontHeroSotto = document.getElementById('fontHeroSotto');-->
+<!--    fontHeroSotto.classList.add('slide-in-left');-->
+<!--  });-->
+<!--</script>-->
