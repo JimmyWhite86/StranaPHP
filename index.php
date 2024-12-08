@@ -55,9 +55,9 @@
   <section class="hero-section bg-rosso text-center text-white d-flex align-items-center">
     <div class="container hero-content">
       <div class="row justify-content-center">
-        <h2 class="m-0 p-0 babasTitolo" id="heroSopra">Associazione Culturale e Circolo ARCI</h2>
-        <h1 class="px-1" id="fontHeroCentro"></h1>
-        <h3 class="m-0 p-0 pb-2" id="fontHeroSotto">PROMUOVIAMO CULTURA, INCLUSIONE E SOCIALITA'</h3>
+        <h2 class="m-0 p-0 fontHeroSopra hidden" id="heroSopra">Associazione Culturale e Circolo ARCI</h2>
+        <h1 class="px-1 fontHeroCentro" id="heroCentro"></h1>
+        <h3 class="m-0 p-0 pb-2 fontHeroSotto hidden" id="heroSotto">PROMUOVIAMO CULTURA, INCLUSIONE E SOCIALITA'</h3>
       </div>
     </div>
   </section>
@@ -79,7 +79,7 @@
 
     <!-- Chi siamo breve -->
     <div class="container-fluid justify-content-center bg-nero w-75 mt-2" style="color: white;">
-      <h3 class="pt-5 text-center fontstranaTitoli">chi siamo</h3>
+      <h3 class="pt-5 text-center fontstranaTitoli" id="chiSiamoIndex">chi siamo</h3>
       <div class="row justify-content-center">
         <div class="col-sm-10 col-md-8">
           <p class="testoHome">
@@ -95,7 +95,7 @@
 
     <!-- La cucina breve -->
     <div class="container-fluid justify-content-center bg-nero w-75 mt-2 mb-2" style="color: white;">
-      <h3 class="pt-5 text-center fontstranaTitoli">la cucina</h3>
+      <h3 class="pt-5 text-center fontstranaTitoli" id="laCucinaIndex">la cucina</h3>
       <div class="row justify-content-center">
         <div class="col-sm-10 col-md-8">
           <p class="testoHome">
@@ -111,7 +111,7 @@
 
     <!-- Eventi breve -->
     <div class="container-fluid justify-content-center bg-nero w-75 mt-2 mb-2" style="color: white;">
-      <h3 class="pt-5 text-center fontstranaTitoli">eventi</h3>
+      <h3 class="pt-5 text-center fontstranaTitoli" id="eventiIndex">eventi</h3>
       <div class="row justify-content-center">
         <div class="col-sm-10 col-md-8">
           <p class="testoHome">
@@ -186,39 +186,6 @@
 
 </main>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Ritarda l'animazione di heroSopra di 0,5 secondi
-    setTimeout(() => {
-      const heroSopra = document.getElementById('heroSopra');
-      heroSopra.classList.add('slide-in-right');
-
-      // Ritarda l'animazione di fontHeroSotto di 0,3 secondi dopo la fine dell'animazione di heroSopra
-      setTimeout(() => {
-        const fontHeroSotto = document.getElementById('fontHeroSotto');
-        fontHeroSotto.classList.add('slide-in-left');
-
-        // Ritarda l'animazione di fontHeroCentro di 0,3 secondi dopo la fine dell'animazione di fontHeroSotto
-        setTimeout(() => {
-          typeEffect('fontHeroCentro', 'stranamore', 300);
-        }, 300);
-      }, 1300); // 1000ms (durata animazione) + 300ms (ritardo)
-    }, 500);
-  });
-</script>
-
 </body>
 </html>
 
-
-<!--<script>-->
-<!--  document.addEventListener('DOMContentLoaded', () => {-->
-<!--    typeEffect('fontHeroCentro', 'stranamore', 300);-->
-<!---->
-<!--    const heroSopra = document.getElementById('heroSopra');-->
-<!--    heroSopra.classList.add('slide-in-right');-->
-<!---->
-<!--    const fontHeroSotto = document.getElementById('fontHeroSotto');-->
-<!--    fontHeroSotto.classList.add('slide-in-left');-->
-<!--  });-->
-<!--</script>-->

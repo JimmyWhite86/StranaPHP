@@ -100,7 +100,7 @@ body {
   font-size: 3rem;
 }
 
-.babasTitolo {
+.fontHeroSopra {
   font-family: Babas, Arial, Helvetica, sans-serif;
   font-size: 5rem;
   color: #fe4a49;
@@ -109,20 +109,21 @@ body {
   text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
 }
 
-#fontHeroSopra {
+/*#fontHeroSopra {
   font-family: palatino, Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: 2rem;
   color: #fe4a49;
-}
+}*/
 
-#fontHeroSotto {
+.fontHeroSotto {
+  font-family: Babas, Arial, Helvetica, sans-serif;
   color: #009fb7;
-  font-size: 3rem;
+  font-size: 5rem;
   text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
 }
 
-#fontHeroCentro {
+.fontHeroCentro {
   font-family: Strana, arial, hevetica, sans-serif;
   font-size: 12rem;
   color: #fed766;
@@ -152,25 +153,25 @@ body {
 
 /* Schermi tra 768px e 1199px */
 @media (max-width: 1199px) and (min-width: 769px) {
-  #fontHeroCentro {
+  .fontHeroCentro {
     font-size: 4rem;
   }
-  .babasTitolo {
+  .fontHeroSopra {
     font-size: 2rem;
   }
 }
 
 /* Schermi sotto i 768px */
 @media (max-width: 768px) {
-  #fontHeroCentro {
+  .fontHeroCentro {
     font-size: 3rem;
   }
 
-  .babasTitolo {
+  .fontHeroSopra {
     font-size: 1.5rem;
   }
 
-  #fontHeroSotto {
+  .fontHeroSotto {
     font-size: 1rem;
   }
 
@@ -642,4 +643,8 @@ thead th.intestazioneTabella {
 
 .slide-in-left {
   animation: slideInFromLeft 1s ease-out;
+}
+
+.hidden {
+  opacity: 0;
 }

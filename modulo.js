@@ -1,7 +1,6 @@
 // Per vedere se il file module.js viene caricato correttamente
-// TODO: Una volta finito il progetto questa riga si può commentare
-console.log ("File modulo.js caricato correttamente");
-console.log ("AngularJS caricato: ", angular.version.full);
+console.log("File modulo.js caricato correttamente");
+console.log("AngularJS caricato: ", angular.version.full);
 
 // -----------
 // ANGULAR
@@ -34,10 +33,10 @@ appNuovoMenu00.controller('validateNuovoMenu00Ctrl', function($scope) {
   //Funzione di validazione
   $scope.validateForm = function () {
     if (($scope.qtyAntipasti === 0 || !$scope.qtyAntipasti) &&
-        ($scope.qtyPrimi === 0 || !$scope.qtyPrimi) &&
-        ($scope.qtySecondi === 0 || !$scope.qtySecondi) &&
-        ($scope.qtyContorni === 0 || !$scope.qtyContorni) &&
-        ($scope.qtyDolci === 0 || !$scope.qtyDolci)) {
+      ($scope.qtyPrimi === 0 || !$scope.qtyPrimi) &&
+      ($scope.qtySecondi === 0 || !$scope.qtySecondi) &&
+      ($scope.qtyContorni === 0 || !$scope.qtyContorni) &&
+      ($scope.qtyDolci === 0 || !$scope.qtyDolci)) {
       alert("Almeno una categoria deve essere maggiore di zero");
       return false;
     }
@@ -107,23 +106,45 @@ function aggiornaTitolo (tipo) {
   if (tipo === 0) {
     titoloElement.textContent = "Cosa ci sarà nelle prossime settimane";
   } else if (tipo === 1) {
-      titoloElement.textContent = "Cosa abbiamo organizzato fino ad ora";
+    titoloElement.textContent = "Cosa abbiamo organizzato fino ad ora";
   } else {
-      titoloElement.textContent = "Tutti gli eventi";
+    titoloElement.textContent = "Tutti gli eventi";
   }
 }
 
 
 // FUNZIONI PER ANIMAZIONi
-function typeEffect(elementID, text, speed) {
+function typeEffect(elementID, text, speed, callback) {
   let index = 0;
   const element = document.getElementById(elementID);
+  element.innerHTML = ''; // Pulisci l'elemento prima di iniziare
 
   function typeChar() {
     if (index < text.length) {
       element.innerHTML += text[index++];
       setTimeout(typeChar, speed);
+    } else if (callback) {
+      callback(); // Chiama il callback quando l'effetto è completo
     }
   }
-  typeChar()
+  typeChar();
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Anima l'elemento "heroCentro" con typeEffect
+  typeEffect('heroCentro', 'stranamore', 150, () => {
+    // Dopo 0,3 secondi dall'effetto, anima "heroSopra"
+    setTimeout(() => {
+      const heroSopra = document.getElementById('heroSopra');
+      heroSopra.style.opacity = 1; // Mostra l'elemento
+      heroSopra.classList.add('slide-in-right');
+
+      // Dopo 0,3 secondi dall'animazione "heroSopra", anima "heroSotto"
+      setTimeout(() => {
+        const heroSotto = document.getElementById('heroSotto');
+        heroSotto.style.opacity = 1; // Mostra l'elemento
+        heroSotto.classList.add('slide-in-left');
+      }, 800);
+    }, 800);
+  }, 3000);
+});
