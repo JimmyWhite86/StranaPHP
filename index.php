@@ -79,7 +79,7 @@
 
     <!-- Chi siamo breve -->
     <div class="container-fluid justify-content-center bg-nero w-75 mt-2" style="color: white;">
-      <h3 class="pt-5 text-center fontstranaTitoli" id="chiSiamoIndex">chi siamo</h3>
+      <h3 class="pt-5 text-center fontStranaTitoli" id="chiSiamoIndex">chi siamo</h3>
       <div class="row justify-content-center">
         <div class="col-sm-10 col-md-8">
           <p class="testoHome">
@@ -95,7 +95,7 @@
 
     <!-- La cucina breve -->
     <div class="container-fluid justify-content-center bg-nero w-75 mt-2 mb-2" style="color: white;">
-      <h3 class="pt-5 text-center fontstranaTitoli" id="laCucinaIndex">la cucina</h3>
+      <h3 class="pt-5 text-center fontStranaTitoli" id="laCucinaIndex">la cucina</h3>
       <div class="row justify-content-center">
         <div class="col-sm-10 col-md-8">
           <p class="testoHome">
@@ -111,7 +111,7 @@
 
     <!-- Eventi breve -->
     <div class="container-fluid justify-content-center bg-nero w-75 mt-2 mb-2" style="color: white;">
-      <h3 class="pt-5 text-center fontstranaTitoli" id="eventiIndex">eventi</h3>
+      <h3 class="pt-5 text-center fontStranaTitoli" id="eventiIndex">eventi</h3>
       <div class="row justify-content-center">
         <div class="col-sm-10 col-md-8">
           <p class="testoHome">

@@ -37,9 +37,9 @@ body {
 }
 
 .fontNav {
-  font-family: easy, arial, hevetica, sans-serif;
+  font-family: Babas, arial, hevetica, sans-serif;
   line-height: 1.8;
-  font-size: 2rem;
+  font-size: 3.5rem;
   font-weight: 600;
   color: #fed766;
 }
@@ -56,10 +56,10 @@ body {
   font-size: 3rem;
 }
 
-.fontstranaTitoli {
+.fontStranaTitoli {
   font-family: Strana, arial, hevetica, sans-serif;
   color: #fed766;
-  font-size: 4rem;
+  font-size: 6rem;
 }
 
 .fontFooter01 {
@@ -305,7 +305,7 @@ body {
 }
 
 .mioSpanNav {
-  color: #009fb7;
+  color: #fed766;
 }
 
 .dropdown-menu {
@@ -450,6 +450,18 @@ footer a {
 .mioContainerContatti {
     padding-top: 4.375rem;
     padding-bottom: 4.375rem;
+}
+
+.inputBlu {
+  border: 2px solid blue;
+}
+
+.inputVerde {
+  border: 2px solid green;
+}
+
+.inputRosso {
+  border: 2px solid red;
 }
 
 @media (max-width: 768px) {

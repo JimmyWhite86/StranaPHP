@@ -60,8 +60,12 @@
   <!-- Sezione Card -->
   <div class="container-fluid bg-giallo text-center mioContainerContatti">
     <!--<h3 class="mioMargin01 fontContatti01">mettiti in contatto con noi!</h3>-->
-    <p class="testoHome">Contattaci, siamo a tua disposizione per qualsiasi chiarimento e per raccontarvi la nostra attività.
-      <br> Saremo felici di ascoltare le tue richieste per offrirti il nostro miglior servizio.</p>
+    <p class="testoHome">
+      Vuoi entrare in contatto con noi?<br>
+      Siamo qui per costruire insieme una comunità più inclusiva, creativa e solidale!<br>
+      Scrivici per idee, collaborazioni o semplicemente per conoscerci meglio.<br>
+      Stranamore: dal 1993, un luogo dove le differenze si incontrano.
+    </p>
 
     <div class="row justify-content-center">
 
@@ -118,11 +122,12 @@
                 <label for="nomeFormContatti">
                   Nome<span class="mandatory">*</span>
                 </label>
-                <span ng-show="formContatti.nomeFormContatti.$error.required" class="mioErrore01" role="alert">
+                <span ng-show="formContatti.nomeFormContatti.$touched && formContatti.nomeFormContatti.$error.required"
+                      class="mioErrore01" role="alert">
                   Campo obbligatorio
                 </span>
                 <input type="text" id="nomeFormContatti" name="nomeFormContatti" class="form-control"
-                       required aria-required="true" autocomplete="given-name" ng-model="nomeFormContatti" >
+                       required aria-required="true" autocomplete="given-name" ng-model="nomeFormContatti">
               </div>
 
               <!-- EMAIL -->
@@ -130,7 +135,8 @@
                 <label for="mailFormContatti">
                   e-mail <span class="mandatory">*</span>
                 </label>
-                <span ng-show="formContatti.emailFormContatti.$error.required" class="mioErrore01" role="alert">
+                <span ng-show="formContatti.emailFormContatti.$touched && formContatti.emailFormContatti.$error.required"
+                      class="mioErrore01" role="alert">
                   Campo obbligatorio
                 </span>
                 <span ng-show="formContatti.emailFormContatti.$error.email" class="mioErrore01" role="alert">
@@ -148,7 +154,8 @@
                 <label for="textAreaContatti">
                   Il tuo messaggio<span class="mandatory">*</span>
                 </label>
-                <span ng-show="formContatti.textAreaContatti.$error.required" class="mioErrore01" role="alert">
+                <span ng-show="formContatti.textAreaContatti.$touched && formContatti.textAreaContatti.$error.required"
+                      class="mioErrore01" role="alert">
                   Campo obbligatorio
                 </span>
                 <textarea name="textAreaContatti" id="textAreaContatti" class="form-control"

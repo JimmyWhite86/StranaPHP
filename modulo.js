@@ -30,7 +30,7 @@ appNuovoMenu00.controller('validateNuovoMenu00Ctrl', function($scope) {
   $scope.qtyDolci = 0;
   $scope.tipoMenu = '';
 
-  //Funzione di validazione
+  // Funzione di validazione
   $scope.validateForm = function () {
     if (($scope.qtyAntipasti === 0 || !$scope.qtyAntipasti) &&
       ($scope.qtyPrimi === 0 || !$scope.qtyPrimi) &&
@@ -75,33 +75,33 @@ appNuovoUtente.controller('validateNuovoUtenteCtrl', function($scope) {
 // --------
 // Funzione per filtrare le card eventi in base alla data
 function filtraEventi(sceltaEventi) {
-  const oggi = new Date().toISOString().split('T')[0]; //Data odierna in formato YYYY-MM-DD
+  const oggi = new Date().toISOString().split('T')[0]; // Data odierna in formato YYYY-MM-DD
   const eventi = document.querySelectorAll('.evento-card'); // Seleziona tutte le card degli eventi
-  //console.log("Data odierna (oggi):", oggi);
+  // console.log("Data odierna (oggi):", oggi);
   eventi.forEach(evento => {
     const dataEventoStr = evento.getAttribute("data-evento"); // Data evento come stringa
-    //const dataEvento = new Date(dataEventoStr); // Converti la data evento in oggetto Date
-    //console.log("Data evento [dataEventoStr]:", dataEventoStr, "| Oggetto Date [dataEvento]:", dataEvento);
+    // const dataEvento = new Date(dataEventoStr); // Converti la data evento in oggetto Date
+    // console.log("Data evento [dataEventoStr]:", dataEventoStr, "| Oggetto Date [dataEvento]:", dataEvento);
     if (sceltaEventi === 'futuri') {
       evento.style.display = dataEventoStr >= oggi ? 'block' : 'none'; // Mostra solo eventi futuri
-      //console.log(`Evento ${dataEventoStr} (futuro): `, dataEvento >= oggi ? 'mostrato' : 'nascosto');
+      // console.log(`Evento ${dataEventoStr} (futuro): `, dataEvento >= oggi ? 'mostrato' : 'nascosto');
     } else if (sceltaEventi === 'passati') {
       evento.style.display = dataEventoStr < oggi ? 'block' : 'none'; // Mostra solo eventi passati
-      //console.log(`Evento ${dataEventoStr} (passato): `, dataEvento < oggi ? 'mostrato' : 'nascosto');
+      // console.log(`Evento ${dataEventoStr} (passato): `, dataEvento < oggi ? 'mostrato' : 'nascosto');
     } else {
       evento.style.display = 'block'; // Mostra tutti gli eventi
-      //console.log(`Evento ${dataEventoStr} (tutti): mostrato`);
+      // console.log(`Evento ${dataEventoStr} (tutti): mostrato`);
     }
   });
-  //Restituisce un valore in base al numero selezionato
-  //Uso questo valore per dare un titolo e informare utente su quale eventi sta guardando
+  // Restituisce un valore in base al numero selezionato
+  // Uso questo valore per dare un titolo e informare utente su quale eventi sta guardando
   if (sceltaEventi === 'futuri') return 0;
   if (sceltaEventi === 'passati') return 1;
   return 2;
 }
 
 // Funzione per aggiornare il titolo nella pagina eventi
-function aggiornaTitolo (tipo) {
+function aggiornaTitolo(tipo) {
   const titoloElement = document.getElementById("titoloEventi");
   if (tipo === 0) {
     titoloElement.textContent = "Cosa ci sarà nelle prossime settimane";
@@ -112,38 +112,76 @@ function aggiornaTitolo (tipo) {
   }
 }
 
+// Funzione per verificare se un elemento è visibile nella finestra di visualizzazione
+function isElementInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
 
-// FUNZIONI PER ANIMAZIONi
+// Funzione per gestire l'evento scroll
+function onScroll() {
+  // Seleziona gli elementi con gli ID specificati
+  const chiSiamoIndex = document.getElementById('chiSiamoIndex');
+  const eventiIndex = document.getElementById('eventiIndex');
+  const laCucinaIndex = document.getElementById('laCucinaIndex');
+
+  // Verifica se l'elemento è visibile e se l'effetto non è già stato applicato
+  if (isElementInViewport(chiSiamoIndex) && !chiSiamoIndex.dataset.typed) {
+    chiSiamoIndex.dataset.typed = true; // Imposta un flag per evitare ripetizioni
+    typeEffect('chiSiamoIndex', 'chi siamo', 150); // Applica l'effetto di scrittura
+  }
+
+  if (isElementInViewport(eventiIndex) && !eventiIndex.dataset.typed) {
+    eventiIndex.dataset.typed = true; // Imposta un flag per evitare ripetizioni
+    typeEffect('eventiIndex', 'eventi', 150); // Applica l'effetto di scrittura
+  }
+
+  if (isElementInViewport(laCucinaIndex) && !laCucinaIndex.dataset.typed) {
+    laCucinaIndex.dataset.typed = true; // Imposta un flag per evitare ripetizioni
+    typeEffect('laCucinaIndex', 'la cucina', 150); // Applica l'effetto di scrittura
+  }
+}
+
+// Aggiungi l'evento scroll per chiamare la funzione onScroll
+window.addEventListener('scroll', onScroll);
+
+// Funzione aggiornata per l'effetto di scrittura
 function typeEffect(elementID, text, speed, callback) {
   let index = 0;
   const element = document.getElementById(elementID);
   element.innerHTML = ''; // Pulisci l'elemento prima di iniziare
 
+  // Funzione interna per aggiungere caratteri uno alla volta
   function typeChar() {
     if (index < text.length) {
-      element.innerHTML += text[index++];
-      setTimeout(typeChar, speed);
+      element.innerHTML += text[index++]; // Aggiungi il carattere successivo
+      setTimeout(typeChar, speed); // Imposta il timeout per il prossimo carattere
     } else if (callback) {
       callback(); // Chiama il callback quando l'effetto è completo
     }
   }
-  typeChar();
+  typeChar(); // Inizia l'effetto di scrittura
 }
 
+// Inizializza l'animazione per l'elemento "heroCentro" al caricamento della pagina
 document.addEventListener('DOMContentLoaded', () => {
-  // Anima l'elemento "heroCentro" con typeEffect
   typeEffect('heroCentro', 'stranamore', 150, () => {
     // Dopo 0,3 secondi dall'effetto, anima "heroSopra"
     setTimeout(() => {
       const heroSopra = document.getElementById('heroSopra');
       heroSopra.style.opacity = 1; // Mostra l'elemento
-      heroSopra.classList.add('slide-in-right');
+      heroSopra.classList.add('slide-in-right'); // Aggiungi la classe per l'animazione
 
       // Dopo 0,3 secondi dall'animazione "heroSopra", anima "heroSotto"
       setTimeout(() => {
         const heroSotto = document.getElementById('heroSotto');
         heroSotto.style.opacity = 1; // Mostra l'elemento
-        heroSotto.classList.add('slide-in-left');
+        heroSotto.classList.add('slide-in-left'); // Aggiungi la classe per l'animazione
       }, 800);
     }, 800);
   }, 3000);

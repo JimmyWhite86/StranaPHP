@@ -80,7 +80,7 @@
 <div class="my-5 row justify-content-center">
   <div class="text-center">
     <h1 class="titoloPagina">il menu di oggi</h1>
-    <h2 class="">Scopri il menu che Stranamore propone per questa settimana</h2>
+    <h2 class="">Scopri il menu che Stranamore propone per questa sera</h2>
   </div>
 </div>
 

@@ -172,7 +172,7 @@
   
 </main>
 
-
+<hr>
 
 <!-- Footer -->
 <?php HTMLfooter($nomePagina);?>
