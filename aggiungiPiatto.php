@@ -79,6 +79,7 @@
         <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
           <div class="row justify-content-center">
             <div class="container-fluid my-5" id="containerForm">
+              
               <form method="POST" action="controlloaggiuntapiatto.php" class="col-md-8 mx-auto" name="formNuovoPiatto" id="formNuovoPiatto"
                     ng-app="myAppNuovoPiatto" ng-controller="validateNuovoPiattoCtrl" novalidate>
 
@@ -98,14 +99,21 @@
                       Campo obbligatorio
                     </span>
                     <input type="text" name="nomePiattoNew" id="nomePiattoNew" class="form-control"
-                           title="Inserisci il nome del piatto" required aria-required="true" ng-model="nomePiattoNew">
+                           title="Inserisci il nome del piatto" required aria-required="true"
+                           ng-model="nomePiattoNew"
+                           ng-class="{'is-pristine': formNuovoPiatto.nomePiattoNew.$untouched,
+                                      'is-invalid': formNuovoPiatto.nomePiattoNew.$touched && formNuovoPiatto.nomePiattoNew.$invalid,
+                                      'is-valid': formNuovoPiatto.nomePiattoNew.$touched && formNuovoPiatto.nomePiattoNew.$valid }" >
                     <br>
 
                     <label for="descrizionePiattoNew">
                       Inserisci la descrizione
                     </label>
                     <textarea name="descrizionePiattoNew" id="descrizionePiattoNew" class="form-control col-md-3"
-                              title="inserisci la descrizione del piatto">
+                              title="inserisci la descrizione del piatto"
+                              ng-model="descrizionePiattoNew"
+                              ng-class="{'is-pristine': formNuovoPiatto.descrizionePiattoNew.$untouched,
+                                         'is-valid': formNuovoPiatto.descrizionePiattoNew.$touched && formNuovoPiatto.descrizionePiattoNew.$valid }">
                     </textarea>
                     <br>
 
@@ -138,7 +146,11 @@
                       Campo obbligatorio
                     </span>
                     <input type="number" name="prezzoPiattoNew" id="prezzoPiattoNew" class="form-control"
-                           title="Inserisci il prezzo del piatto" required aria-required="true" ng-model="prezzoPiattoNew">
+                           title="Inserisci il prezzo del piatto" required aria-required="true"
+                           ng-model="prezzoPiattoNew"
+                           ng-class="{'is-pristine': formNuovoPiatto.prezzoPiattoNew.$untouched,
+                                      'is-invalid': formNuovoPiatto.prezzoPiattoNew.$touched && formNuovoPiatto.prezzoPiattoNew.$invalid,
+                                      'is-valid': formNuovoPiatto.prezzoPiattoNew.$touched && formNuovoPiatto.prezzoPiattoNew.$valid }" >
                     <br>
 
                     <p>
@@ -153,8 +165,7 @@
                     <label for="pino">Pino</label><br>
                     <input type="radio" id="tarta" name="cuocoPiattoNew" value="Tarta" required>
                     <label for="tarta">Tarta</label><br>
-
-
+                    
                     <br><br>
 
                   </div>
@@ -174,10 +185,8 @@
         </div>
       </div>
     
-    
     <?php   }
   }?>
-
 
 <!-- Footer -->
 <?php HTMLfooter($nomePagina); ?>

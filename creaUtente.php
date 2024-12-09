@@ -102,7 +102,11 @@
                       Campo obbligatorio
                     </span>
                     <input type="text" name="usernameNew" id="usernameNew" class="form-control"
-                           title="Inserisci l'username del nuovo utente" required aria-required="true" ng-model="usernameNew">
+                           title="Inserisci l'username del nuovo utente" required aria-required="true"
+                           ng-model="usernameNew"
+                           ng-class="{'is-pristine': formNuovoUtente.usernameNew.$untouched,
+                                      'is-invalid': formNuovoUtente.usernameNew.$touched && formNuovoUtente.usernameNew.$invalid,
+                                      'is-valid': formNuovoUtente.usernameNew.$touched && formNuovoUtente.usernameNew.$valid }" >
                     <br>
 
                     <label for="psw1">
@@ -114,7 +118,10 @@
                       Campo obbligatorio
                     </span>
                     <input type="password" name="psw1" id="psw1" class="form-control" title="Inserisci una password"
-                           required aria-required="true" ng-model="psw1">
+                           required aria-required="true" ng-model="psw1"
+                           ng-class="{'is-pristine': formNuovoUtente.psw1.$untouched,
+                                      'is-invalid': formNuovoUtente.psw1.$touched && (!validatePasswords() || formNuovoUtente.psw1.$invalid),
+                                      'is-valid': formNuovoUtente.psw1.$touched && validatePasswords() && formNuovoUtente.psw1.$valid }" >
                     <br>
 
                     <label for="psw2">
@@ -126,8 +133,11 @@
                       Campo obbligatorio
                     </span>
                     <input type="password" name="psw2" id="psw2" class="form-control" title="Ripeti la password"
-                           required aria-required="true" ng-model="psw2">
-                    <span ng-show="formNuovoUtente.psw2.$touched && psw2 != psw1" class="mioErrore01" role="alert">
+                           required aria-required="true" ng-model="psw2"
+                           ng-class="{'is-pristine': formNuovoUtente.psw2.$untouched,
+                                      'is-invalid': formNuovoUtente.psw2.$touched && (!validatePasswords() || formNuovoUtente.psw2.$invalid),
+                                      'is-valid': formNuovoUtente.psw2.$touched && validatePasswords() && formNuovoUtente.psw2.$valid }">
+                    <span ng-show="formNuovoUtente.psw2.$touched && !validatePasswords()" class="mioErrore01" role="alert">
                       Le password non corrispondono
                     </span>
                     

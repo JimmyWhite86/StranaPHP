@@ -111,9 +111,12 @@
   <div class="container-fluid bg-azzurro mb-1 mioContainerContatti">
     <div class="row justify-content-center">
       <div class="container contact-form border-dark rounded m-3" >
+
         <form class="mioFormContatti" ng-app="myAppContatti" ng-controller="validateCtrl" name="formContatti"
               id="formContatti" novalidate>
+
           <h3 class="mioH3contatti">lasciaci un messaggio</h3>
+
           <div class="row">
             <div class="col-md-6">
 
@@ -127,7 +130,10 @@
                   Campo obbligatorio
                 </span>
                 <input type="text" id="nomeFormContatti" name="nomeFormContatti" class="form-control"
-                       required aria-required="true" autocomplete="given-name" ng-model="nomeFormContatti">
+                       required aria-required="true" autocomplete="given-name" ng-model="nomeFormContatti"
+                       ng-class="{ 'is-pristine': formContatti.nomeFormContatti.$untouched,
+                                   'is-invalid': formContatti.nomeFormContatti.$touched && formContatti.nomeFormContatti.$invalid,
+                                   'is-valid': formContatti.nomeFormContatti.$touched && formContatti.nomeFormContatti.$valid }">
               </div>
 
               <!-- EMAIL -->
@@ -143,7 +149,10 @@
                   Indirizzo e-mail non valido
                 </span>
                 <input type="email" autocomplete="email" id="mailFormContatti" name="emailFormContatti"
-                       class="form-control" required aria-required="true" ng-model="emailFormContatti">
+                       class="form-control" required aria-required="true" ng-model="emailFormContatti"
+                       ng-class="{ 'is-pristine': formContatti.emailFormContatti.$untouched,
+                                  'is-invalid': formContatti.emailFormContatti.$touched && formContatti.emailFormContatti.$invalid,
+                                  'is-valid': formContatti.emailFormContatti.$touched && formContatti.emailFormContatti.$valid }">
               </div>
 
             </div>
@@ -159,11 +168,16 @@
                   Campo obbligatorio
                 </span>
                 <textarea name="textAreaContatti" id="textAreaContatti" class="form-control"
-                          style="width: 100%; height: 150px;" required aria-required="true" ng-model="textAreaContatti">
+                          style="width: 100%; height: 150px;" required aria-required="true"
+                          ng-model="textAreaContatti"
+                          ng-class="{ 'is-pristine': formContatti.textAreaContatti.$untouched,
+                                      'is-invalid': formContatti.textAreaContatti.$touched && formContatti.textAreaContatti.$invalid,
+                                      'is-valid': formContatti.textAreaContatti.$touched && formContatti.textAreaContatti.$valid }">
                 </textarea>
               </div>
 
               <!-- Bottone -->
+              <!-- TODO: aggiungere un alert di conferma -->
               <div class="form-group">
                 <button class="btn btn-outline-dark" onclick="mostraConferma()" id="confermaInvioContatti"
                         ng-disabled="formContatti.nomeFormContatti.$invalid ||

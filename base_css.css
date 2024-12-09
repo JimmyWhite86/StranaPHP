@@ -404,6 +404,31 @@ footer a {
   border-radius:1rem;
 }
 
+/* Stato iniziale degli input */
+.form-control:focus {
+  border-color: #009fb7;
+  box-shadow: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 191, 255, 0.25);
+}
+
+/* Stato di errore degli input */
+.form-control.is-invalid {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* Stato di successo degli input */
+.form-control.is-valid {
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.form-control.is-pristine {
+  border-color: #ced4da;
+  box-shadow: 0 0 0 0.2rem rgba(206, 212, 218, 0.25);
+}
+
+
 .contact-image {
   text-align: center;
 }
@@ -453,15 +478,15 @@ footer a {
 }
 
 .inputBlu {
-  border: 2px solid blue;
+  border: 2px solid #00bfff;
 }
 
 .inputVerde {
-  border: 2px solid green;
+  border: 2px solid #28a745;
 }
 
 .inputRosso {
-  border: 2px solid red;
+  border: 2px solid #dc3545;
 }
 
 @media (max-width: 768px) {

@@ -66,6 +66,9 @@ appNuovoEvento.controller('validateNuovoEventoCtrl', function($scope) {
 // Validazione form nuovo utente
 var appNuovoUtente = angular.module('myAppNuovoUtente', []);
 appNuovoUtente.controller('validateNuovoUtenteCtrl', function($scope) {
+  $scope.validatePasswords = function () {
+    return $scope.psw1 === $scope.psw2;
+  }
 });
 
 

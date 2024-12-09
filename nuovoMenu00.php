@@ -93,7 +93,8 @@
                     Inserisci il cuoco
                     <span class="mandatory">*</span>
                   </p>
-                  <span ng-show="formNuovoMenu00.cuocoMenu.$touched && formNuovoMenu00.cuocoMenu.$error.required" class="mioErrore01" role="alert">
+                  <span ng-show="formNuovoMenu00.cuocoMenu.$touched && formNuovoMenu00.cuocoMenu.$error.required"
+                        class="mioErrore01" role="alert">
                     Campo obbligatorio
                   </span>
                   <br ng-show="formNuovoMenu00.cuocoMenu.$touched && formNuovoMenu00.cuocoMenu.$error.required">
@@ -104,38 +105,59 @@
                   <br><br><br>
                   
                   <label for="qtyAntipasti">Inserisci il numero di antipasti</label>
-                  <span ng-show="formNuovoMenu00.qtyAntipasti.$error.min || formNuovoMenu00.qtyAntipasti.$error.max" class="mioErrore01" role="alert">
+                  <span ng-show="formNuovoMenu00.qtyAntipasti.$error.min || formNuovoMenu00.qtyAntipasti.$error.max"
+                        class="mioErrore01" role="alert">
                     Inserire una quantità compresa tra 0 e 4
                   </span>
-                  <input type="number" name="qtyAntipasti" id="qtyAntipasti" class="form-control" min="0" max="4" ng-model="qtyAntipasti">
+                  <input type="number" name="qtyAntipasti" id="qtyAntipasti" class="form-control" min="0" max="4"
+                         ng-model="qtyAntipasti"
+                         ng-class="{'is-pristine': formNuovoMenu00.qtyAntipasti.$untouched,
+                                    'is-invalid': formNuovoMenu00.qtyAntipasti.$touched && formNuovoMenu00.qtyAntipasti.$invalid,
+                                    'is-valid': formNuovoMenu00.qtyAntipasti.$touched && formNuovoMenu00.qtyAntipasti.$valid}">
                   <br>
                   
                   <label for="qtyPrimi">Inserisci il numero di primi</label>
                   <span ng-show="formNuovoMenu00.qtyPrimi.$error.min || formNuovoMenu00.qtyPrimi.$error.max" class="mioErrore01" role="alert">
                     Inserire una quantità compresa tra 0 e 4
                   </span>
-                  <input type="number" name="qtyPrimi" id="qtyPrimi" class="form-control" min="0" max="3" ng-model="qtyPrimi">
+                  <input type="number" name="qtyPrimi" id="qtyPrimi" class="form-control" min="0" max="3"
+                         ng-model="qtyPrimi"
+                         ng-class="{'is-pristine': formNuovoMenu00.qtyPrimi.$untouched,
+                                    'is-invalid': formNuovoMenu00.qtyPrimi.$touched && formNuovoMenu00.qtyPrimi.$invalid,
+                                    'is-valid': formNuovoMenu00.qtyPrimi.$touched && formNuovoMenu00.qtyPrimi.$valid }">
                   <br>
                   
                   <label for="qtySecondi">Inserisci il numero di secondi</label>
                   <span ng-show="formNuovoMenu00.qtySecondi.$error.min || formNuovoMenu00.qtySecondi.$error.max" class="mioErrore01" role="alert">
                     Inserire una quantità compresa tra 0 e 4
                   </span>
-                  <input type="number" name="qtySecondi" id="qtySecondi" class="form-control" min="0" max="3" ng-model="qtySecondi">
+                  <input type="number" name="qtySecondi" id="qtySecondi" class="form-control" min="0" max="3"
+                         ng-model="qtySecondi"
+                         ng-class="{'is-pristine': formNuovoMenu00.qtySecondi.$untouched,
+                                    'is-invalid': formNuovoMenu00.qtySecondi.$touched && formNuovoMenu00.qtySecondi.$invalid,
+                                    'is-valid': formNuovoMenu00.qtySecondi.$touched && formNuovoMenu00.qtySecondi.$valid }">
                   <br>
                   
                   <label for="qtyContorni">Inserisci il numero di contorni</label>
                   <span ng-show="formNuovoMenu00.qtyContorni.$error.min || formNuovoMenu00.qtyContorni.$error.max" class="mioErrore01" role="alert">
                     Inserire una quantità compresa tra 0 e 4
                   </span>
-                  <input type="number" name="qtyContorni" id="qtyContorni" class="form-control" min="0" max="3" ng-model="qtyContorni">
+                  <input type="number" name="qtyContorni" id="qtyContorni" class="form-control" min="0" max="3"
+                         ng-model="qtyContorni"
+                         ng-class="{'is-pristine': formNuovoMenu00.qtyContorni.$untouched,
+                                   'is-invalid': formNuovoMenu00.qtyContorni.$touched && formNuovoMenu00.qtyContorni.$invalid,
+                                   'is-valid': formNuovoMenu00.qtyContorni.$touched && formNuovoMenu00.qtyContorni.$valid }" >
                   <br>
                   
                   <label for="qtyDolci">Inserisci il numero di dolci</label>
                   <span ng-show="formNuovoMenu00.qtyDolci.$error.min || formNuovoMenu00.qtyDolci.$error.max" class="mioErrore01" role="alert">
                     Inserire una quantità compresa tra 0 e 4
                   </span>
-                  <input type="number" name="qtyDolci" id="qtyDolci" class="form-control" min="0" max="3" ng-model="qtyDolci">
+                  <input type="number" name="qtyDolci" id="qtyDolci" class="form-control" min="0" max="3"
+                         ng-model="qtyDolci"
+                         ng-class="{'is-pristine': formNuovoMenu00.qtyDolci.$untouched,
+                                    'is-invalid': formNuovoMenu00.qtyDolci.$touched && formNuovoMenu00.qtyDolci.$invalid,
+                                    'is-valid': formNuovoMenu00.qtyDolci.$touched && formNuovoMenu00.qtyDolci.$valid }" >
                   <br><br>
                   
                   <p>

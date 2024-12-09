@@ -162,14 +162,26 @@
                                 <input type="text" name="nomePiatto_<?=$quantitaTotalePiatti?>"
                                        id="nomePiatto_<?=$quantitaTotalePiatti?>"
                                        class="form-control" title="Inserisci il nome del <?=$categoria?> <?=$i?>"
-                                       required aria-required="true" ng-model="nomePiatto_<?=$quantitaTotalePiatti?>">
+                                       required aria-required="true" ng-model="nomePiatto_<?=$quantitaTotalePiatti?>"
+                                       ng-class="{'is-pristine': formNuovoMenu01.nomePiatto_<?=$quantitaTotalePiatti?>.$untouched,
+                                                  'is-invalid': formNuovoMenu01.nomePiatto_<?=$quantitaTotalePiatti?>.$touched &&
+                                                                formNuovoMenu01.nomePiatto_<?=$quantitaTotalePiatti?>.$invalid,
+                                                  'is-valid': formNuovoMenu01.nomePiatto_<?=$quantitaTotalePiatti?>.$touched &&
+                                                              formNuovoMenu01.nomePiatto_<?=$quantitaTotalePiatti?>.$valid }" >
                                 <br>
 
                                 <label for="descrizionePiatto_<?=$quantitaTotalePiatti?>">
                                   Inserisci la descrizione del <?=$categoria?> <?=$i?>
                                 </label>
-                                <textarea name="descrizionePiatto_<?=$quantitaTotalePiatti?>" id="descrizionePiatto_<?=$quantitaTotalePiatti?>"
-                                          class="form-control col-md-3" title="inserisci la descrizione del <?=$categoria?> <?=$i?>"></textarea>
+                                <textarea name="descrizionePiatto_<?=$quantitaTotalePiatti?>"
+                                          id="descrizionePiatto_<?=$quantitaTotalePiatti?>"
+                                          class="form-control col-md-3"
+                                          title="inserisci la descrizione del <?=$categoria?> <?=$i?>"
+                                          ng-model="descrizionePiatto_<?=$quantitaTotalePiatti?>"
+                                          ng-class="{'is-valid': formNuovoMenu01.descrizionePiatto_<?=$quantitaTotalePiatti?>.$touched &&
+                                                                 formNuovoMenu01.descrizionePiatto_<?=$quantitaTotalePiatti?>.$valid,
+                                                     'is-pristine': formNuovoMenu01.descrizionePiatto_<?=$quantitaTotalePiatti?>.$untouched}">
+                                </textarea>
                                 <br>
 
                                 <label for="prezzoPiatto_<?=$quantitaTotalePiatti?>">
@@ -184,7 +196,12 @@
                                 <input type="number" name="prezzoPiatto_<?=$quantitaTotalePiatti?>"
                                        id="prezzoPiatto_<?=$quantitaTotalePiatti?>"
                                        class="form-control" title="Inserisci il prezzo del <?=$categoria?> <?=$i?>"
-                                       required aria-required="true" ng-model="prezzoPiatto_<?=$quantitaTotalePiatti?>">
+                                       required aria-required="true" ng-model="prezzoPiatto_<?=$quantitaTotalePiatti?>"
+                                       ng-class="{'is-pristine': formNuovoMenu01.prezzoPiatto_<?=$quantitaTotalePiatti?>.$untouched,
+                                                  'is-invalid': formNuovoMenu01.prezzoPiatto_<?=$quantitaTotalePiatti?>.$touched &&
+                                                                formNuovoMenu01.prezzoPiatto_<?=$quantitaTotalePiatti?>.$invalid,
+                                                  'is-valid': formNuovoMenu01.prezzoPiatto_<?=$quantitaTotalePiatti?>.$touched &&
+                                                              formNuovoMenu01.prezzoPiatto_<?=$quantitaTotalePiatti?>.$valid }">
                                 <br>
 
                                 <input type="hidden" name="categoriaPiatto_<?=$quantitaTotalePiatti?>" value="<?=$categoria?>">
