@@ -148,7 +148,7 @@
                   </div>
 
                   <div class="text-center">
-                    <button type="submit" name="invio" id="invio" value="inserisici" class="btn btn-primary"
+                    <button type="submit" name="invio" id="invio" value="inserisci" class="btn btn-primary"
                             ng-disabled = "formNuovoUtente.$invalid">
                       Inserisci
                     </button>

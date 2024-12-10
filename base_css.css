@@ -152,19 +152,38 @@ body {
 /* // Font per schermi con differenti formati  */
 
 /* Schermi tra 768px e 1199px */
-@media (max-width: 1199px) and (min-width: 769px) {
+@media (min-width: 1199px) and (max-width: 1399px) {
   .fontHeroCentro {
-    font-size: 4rem;
+    font-size: 10rem;
   }
   .fontHeroSopra {
     font-size: 2rem;
   }
 }
 
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fontHeroCentro {
+    font-size: 8rem;
+  }
+  .fontHeroSopra {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .fontHeroCentro {
+    font-size: 6rem;
+  }
+  .fontHeroSopra {
+    font-size: 1.5rem;
+  }
+}
+
 /* Schermi sotto i 768px */
 @media (max-width: 768px) {
   .fontHeroCentro {
-    font-size: 3rem;
+    width: 90vw;
+    max-width: 90vw;
   }
 
   .fontHeroSopra {

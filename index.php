@@ -61,19 +61,7 @@
       </div>
     </div>
   </section>
-
-  <!--    <section class="hero-section bg-rosso text-center text-white d-flex align-items-center">-->
-  <!--      <div class="container hero-content">-->
-  <!--        <div class="row justify-content-center">-->
-  <!--          <div class="col-md-8 bg-nero">-->
-  <!--            <h2 class="m-0 p-0 pt-2 babasTitolo" id="">Associazione Culturale e Circolo ARCI</h2>-->
-  <!--            <h1 class="m-0 p-0" id="fontHeroCentro"></h1>-->
-  <!--            <h3 class="m-0 p-0 pb-2" id="fontHeroSotto">Promuoviamo cultura, inclusione e socialità</h3> -->
-  <!--          </div>-->
-  <!--        </div> -->
-  <!--      </div>-->
-  <!--    </section>-->
-
+  
   <!-- sessione centrale -->
   <div class="bg-giallo container-fluid justify-content-center mioFlowRoot">
 
