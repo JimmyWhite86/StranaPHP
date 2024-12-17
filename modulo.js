@@ -126,8 +126,8 @@ function isElementInViewport(el) {
   );
 }
 
-// Funzione per gestire l'evento scroll
-function onScroll() {
+// Funzione per gestire l'evento scroll --> usato nella pagina Index per l'effetto di scrittura delle sezioni
+/*function onScroll() {
   // Seleziona gli elementi con gli ID specificati
   const chiSiamoIndex = document.getElementById('chiSiamoIndex');
   const eventiIndex = document.getElementById('eventiIndex');
@@ -149,9 +149,7 @@ function onScroll() {
     typeEffect('laCucinaIndex', 'la cucina', 150); // Applica l'effetto di scrittura
   }
 }
-
-// Aggiungi l'evento scroll per chiamare la funzione onScroll
-window.addEventListener('scroll', onScroll);
+window.addEventListener('scroll', onScroll);*/
 
 // Funzione aggiornata per l'effetto di scrittura
 function typeEffect(elementID, text, speed, callback) {

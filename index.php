@@ -14,9 +14,20 @@
   <meta name="description" content="Associazione Culturale Stranamore">
   <meta name="author" content="Bianchi Andrea">
 
-  <!-- CDN CSS BOOTSTRAP -->
+  <!-- CDN POPPER JS BOOTSTRAP -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+          integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+          integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
+  </script>
+
+  <!-- CDN CSS e JS BOOTSTRAP -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+  </script>
 
   <!-- Libreria per le icone -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
@@ -57,16 +68,17 @@
       <div class="row justify-content-center">
         <h2 class="m-0 p-0 fontHeroSopra hidden" id="heroSopra">Associazione Culturale e Circolo ARCI</h2>
         <h1 class="px-1 fontHeroCentro" id="heroCentro"></h1>
+        <img src="Immagini/Logo_Stranamore_01.jpg" class="img-fluid myImgHero">
         <h3 class="m-0 p-0 pb-2 fontHeroSotto hidden" id="heroSotto">PROMUOVIAMO CULTURA, INCLUSIONE E SOCIALITA'</h3>
       </div>
     </div>
   </section>
-  
+
   <!-- sessione centrale -->
   <div class="bg-giallo container-fluid justify-content-center mioFlowRoot">
 
     <!-- Chi siamo breve -->
-    <div class="container-fluid justify-content-center bg-nero w-75 mt-2" style="color: white;">
+    <div class="containerIndexCentrale container-fluid justify-content-center bg-nero w-75 mt-2" style="color: white;">
       <h3 class="pt-5 text-center fontStranaTitoli" id="chiSiamoIndex">chi siamo</h3>
       <div class="row justify-content-center">
         <div class="col-sm-10 col-md-8">
@@ -77,14 +89,15 @@
             passioni comuni. Crediamo nella cultura come strumento di crescita individuale e collettiva, e ci impegniamo
             a valorizzare la comunità attraverso l'arte, la creatività e il dialogo.
           </p>
-          <br>
-          <a href="chisiamo.php">Scopri di piu</a>
+          <div class="text-end mb-3">
+            <a href="chisiamo.php" class="btn bottoneGiallo2">Scopri di piu</a>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- La cucina breve -->
-    <div class="container-fluid justify-content-center bg-nero w-75 mt-2 mb-2" style="color: white;">
+    <div class="containerIndexCentrale container-fluid justify-content-center bg-nero w-75 mt-2 mb-2" style="color: white;">
       <h3 class="pt-5 text-center fontStranaTitoli" id="laCucinaIndex">la cucina</h3>
       <div class="row justify-content-center">
         <div class="col-sm-10 col-md-8">
@@ -92,14 +105,15 @@
             Offriamo un servizio mensa e bar dedicato a tuttə lə socə, con piatti preparati utilizzando ingredienti di
             qualità. Promuoviamo la stagionalità dei prodotti e valorizziamo le eccellenze delle produzioni locali.
           </p>
-          <br>
-          <a href="chisiamo.php">Scopri di piu</a>
+          <div class="text-end mb-3">
+            <a href="chisiamo.php" class="btn bottoneGiallo2">Scopri di piu</a>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Eventi breve -->
-    <div class="container-fluid justify-content-center bg-nero w-75 mt-2 mb-2" style="color: white;">
+    <div class="containerIndexCentrale container-fluid justify-content-center bg-nero w-75 mt-2 mb-2" style="color: white;">
       <h3 class="pt-5 text-center fontStranaTitoli" id="eventiIndex">eventi</h3>
       <div class="row justify-content-center">
         <div class="col-sm-10 col-md-8">
@@ -109,13 +123,14 @@
             Ospitiamo presentazioni di libri, ma non ci fermiamo qui: ci piace anche divertirci con concerti e dj set,
             perché non siamo sempre così seri.
           </p>
-          <br>
-          <a href="chisiamo.php">Scopri di piu</a>
+          <div class="text-end mb-3">
+            <a href="chisiamo.php" class="btn bottoneGiallo2">Scopri di piu</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  
+
   <!-- NewsLetter e 8x1000 -->
   <section>
     <div class="container-fluid text-center bg-azzurro">

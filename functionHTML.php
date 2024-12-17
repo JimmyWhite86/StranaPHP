@@ -70,6 +70,7 @@
           <div class="d-flex justify-content-center flex-grow-1">
 
             <ul class="navbar-nav" id="myNavBar">
+              
               <li class="nav-item">
                 <?php $nomeLink = "index"; ?>
                 <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"

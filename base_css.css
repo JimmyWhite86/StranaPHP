@@ -41,7 +41,6 @@ body {
   line-height: 1.8;
   font-size: 3.5rem;
   font-weight: 600;
-  color: #fed766;
 }
 
 .fontstranaBase {
@@ -109,17 +108,10 @@ body {
   text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
 }
 
-/*#fontHeroSopra {
-  font-family: palatino, Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 2rem;
-  color: #fe4a49;
-}*/
-
 .fontHeroSotto {
   font-family: Babas, Arial, Helvetica, sans-serif;
   color: #009fb7;
-  font-size: 5rem;
+  font-size: 4rem;
   text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
 }
 
@@ -151,13 +143,13 @@ body {
 
 /* // Font per schermi con differenti formati  */
 
-/* Schermi tra 768px e 1199px */
+/* Schermi tra 1399 e 1199px */
 @media (min-width: 1199px) and (max-width: 1399px) {
   .fontHeroCentro {
     font-size: 10rem;
   }
   .fontHeroSopra {
-    font-size: 2rem;
+    font-size: 4rem;
   }
 }
 
@@ -166,7 +158,11 @@ body {
     font-size: 8rem;
   }
   .fontHeroSopra {
-    font-size: 1.5rem;
+    font-size: 4rem;
+  }
+
+  .fontHeroSotto {
+    font-size: 3rem;
   }
 }
 
@@ -175,7 +171,11 @@ body {
     font-size: 6rem;
   }
   .fontHeroSopra {
-    font-size: 1.5rem;
+    font-size: 3rem;
+  }
+
+  .fontHeroSotto {
+    font-size: 3rem;
   }
 }
 
@@ -187,16 +187,16 @@ body {
   }
 
   .fontHeroSopra {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
   }
 
   .fontHeroSotto {
-    font-size: 1rem;
+    font-size: 2.5rem;
   }
 
-  .fontstranaTitoli {
+/*  .fontstranaTitoli {
     font-size: 3rem;
-  }
+  }*/
 
   .testoHome {
     font-size: 1rem;
@@ -224,6 +224,71 @@ body {
 
   .fontChiSiamo02 {
     font-size: 2.4rem;
+  }
+
+  .containerIndexCentrale {
+    width: 96% !important;
+  }
+}
+
+@media (max-width: 563px) {
+  .fontHeroSopra {
+    font-size: 2rem;
+  }
+
+  .fontHeroCentro {
+    font-size: 4rem;
+  }
+
+  .fontHeroSotto {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 494px) {
+  .fontStranaTitoli {
+    font-size: 3.7rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .fontHeroSopra {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .fontHeroSotto {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1358px) {
+  .fontNav {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 736px) {
+  .fontHeroCentro {
+    font-size: 4.7rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .fontHeroCentro {
+    display: none;
+  }
+}
+
+@media (min-width: 576px) {
+  .myImgHero {
+    display: none;
+  }
+}
+
+@media (max-width: 1200px) {
+  .fontNav {
+    font-size: 2rem;
   }
 }
 /* ------------------------------------------------ */
@@ -543,6 +608,19 @@ footer a {
   color: #000000;
   background-color: #fed766;
   border-radius: .3rem;
+}
+
+.bottoneGiallo2 {
+  border-color: #fed766;
+  border-radius: .3rem;
+  border-width: .3rem;
+  background-color: white;
+}
+.bottoneGiallo2:hover {
+  border-color: white;
+  background-color: #fed766;
+  border-radius: .3rem;
+  color: black;
 }
 
 .bottoneAzzurro {

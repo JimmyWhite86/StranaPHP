@@ -26,6 +26,7 @@
 - Consenso privacy e cookie policy
 - Inserire l'attributo autocomplete in tutti i campi necessari
 - File statuto associazione
+- numero di passaggi in nuovo menu
 
 
 
