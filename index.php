@@ -71,9 +71,11 @@
       <div class="row justify-content-center">
         <div class="col-sm-10 col-md-8">
           <p class="testoHome">
-            Siamo un'associazione di promozione sociale affiliata ARCI.
-            Promuoviamo cultura, arte e socializzazione sul nostro territorio.
-            Per le persone associate è presente la cucina.
+            Siamo un'associazione di promozione sociale affiliata ad ARCI, impegnata nella diffusione di cultura, arte
+            e opportunità di socializzazione sul nostro territorio. Organizziamo attività, eventi e iniziative che mirano
+            a creare spazi inclusivi e partecipativi, dove le persone possano incontrarsi, condividere idee e coltivare
+            passioni comuni. Crediamo nella cultura come strumento di crescita individuale e collettiva, e ci impegniamo
+            a valorizzare la comunità attraverso l'arte, la creatività e il dialogo.
           </p>
           <br>
           <a href="chisiamo.php">Scopri di piu</a>
@@ -87,9 +89,8 @@
       <div class="row justify-content-center">
         <div class="col-sm-10 col-md-8">
           <p class="testoHome">
-            La nostra cucina è aperta per tutte le persone associate.
-            Cerchiamo di proporre piatti con ingredienti di qualità promuovendo la stagionalità dei cibi.
-            Possiamo anche organizzare menu fissi per feste o grandi tavolate.
+            Offriamo un servizio mensa e bar dedicato a tuttə lə socə, con piatti preparati utilizzando ingredienti di
+            qualità. Promuoviamo la stagionalità dei prodotti e valorizziamo le eccellenze delle produzioni locali.
           </p>
           <br>
           <a href="chisiamo.php">Scopri di piu</a>
@@ -103,22 +104,18 @@
       <div class="row justify-content-center">
         <div class="col-sm-10 col-md-8">
           <p class="testoHome">
-            Organiziamo incontri e dibattiti su temi di attualità.
-            Inviatiamo persone autorevoli che possano spiegarci cosa succede nel mondo.
-            Ospitiamo presentazioni di libri.
-            Ma non siamo sempre seri. Ci piacciano anche concerti e dj set.
+            Organizziamo incontri e dibattiti su temi di attualità, coinvolgendo esperti e figure autorevoli per
+            aiutarci a comprendere meglio cosa accade nel mondo.
+            Ospitiamo presentazioni di libri, ma non ci fermiamo qui: ci piace anche divertirci con concerti e dj set,
+            perché non siamo sempre così seri.
           </p>
           <br>
           <a href="chisiamo.php">Scopri di piu</a>
         </div>
       </div>
     </div>
-
   </div>
-
-
-
-
+  
   <!-- NewsLetter e 8x1000 -->
   <section>
     <div class="container-fluid text-center bg-azzurro">
@@ -130,7 +127,10 @@
           <div class="card-body">
             <h3>Iscriviti alla nostra NewsLetter</h3>
             <p>Rimani aggiornato sulle nostre iniziative e non perderti nessun evento!</p>
-            <p>La nostra NewsLetter ha cadenza settimanale e serve per comunicare con i nostri soci.</p>
+            <p>
+              La nostra NewsLetter ha cadenza settimanale e viene usata per tenerti informato sugli eventi organizzati
+              dal nostro circolo.
+            </p>
           </div>
           <div class="card-footer">
             <a href="" class="btn bottoneRosso">Iscriviti</a>
