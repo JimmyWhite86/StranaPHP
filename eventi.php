@@ -25,7 +25,7 @@
 <section>
   <div class="container-fluid text-center bg-giallo">
     <div class="">
-      <h2 class="pt-3" id="titoloEventi"></h2>
+      <h2 class="pt-3 fontTitoloSezione" id="titoloEventi"></h2>
     </div>
     <div class="row justify-content-center" id="containerEventi">
       <?php generaCardEventi(); ?>

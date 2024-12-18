@@ -31,7 +31,7 @@
   <div class="bg-rosso">
     <div class="container marketing bg-bianco">
 
-      <hr class="featurette-divider">
+      <!--<hr class="featurette-divider">-->
 
       <div class="row featurette bg-bianco" title="chi siamo">
         <div class="col-md-7">
@@ -95,11 +95,12 @@
         </div>
       </div>
 
-      <hr class="featurette-divider">
+      <!--<hr class="featurette-divider">-->
 
     </div>
   </div>
-
+  
+  <hr>
 
   <div class="container-fluid d-flex justify-content-center bg-giallo">
     <div class="align-content-center bg-bianco text-center container marketing">

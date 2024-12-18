@@ -256,9 +256,13 @@
         <div class="row justify-content-center">
 
           <div class="col d-flex flex-column align-items-center justify-content-center">
-            <h1 class="fontstranaFooter pl-3 ml-3">stranamore</h1>
+            <p class="fontFooterSopra mb-0 mt-4">Associazione culturale e circolo ARCI</p>
+            <h1 class="fontStranaFooter pl-3 ml-3 mt-0 mb-0">stranamore</h1>
+            <p class="fontFooterSotto mt-0">Promuoviamo cultura, inclusione e socialità</p>
           </div>
 
+         <div class="p-1 border-bottom d-block d-md-none" id="separatoreFooter01" style="border-color: #009fb7"></div>
+          
           <div class="col text-center">
             <p class="fontFooter01">Navigazione</p>
             <ul class="list-unstyled">

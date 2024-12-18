@@ -26,17 +26,21 @@
       <h1 class="titoloPagina">mettiti in contatto con strana</h1>
     </div>
   </div>
-
-
+  
   <!-- Sezione Card -->
-  <div class="container-fluid bg-giallo text-center mioContainerContatti">
-    <!--<h3 class="mioMargin01 fontContatti01">mettiti in contatto con noi!</h3>-->
-    <p class="testoHome">
-      Vuoi entrare in contatto con noi?<br>
-      Siamo qui per costruire insieme una comunità più inclusiva, creativa e solidale!<br>
-      Scrivici per idee, collaborazioni o semplicemente per conoscerci meglio.<br>
-      Stranamore: dal 1993, un luogo dove le differenze si incontrano.
-    </p>
+  <div class="container-fluid bg-rosso mioContainerContatti text-center">
+    
+    <div>
+      <h2 class="fontTitoloSezione text-center">
+        VUOI ENTRARE IN CONTATTO CON NOI?
+      </h2>
+      <br>
+      <p class="lead text-left mx-auto">
+        Siamo qui per costruire insieme una comunità più inclusiva, creativa e solidale!<br>
+        Scrivici per idee, collaborazioni o semplicemente per conoscerci meglio.<br>
+        Stranamore: dal 1993, un luogo dove le differenze si incontrano.
+      </p>
+    </div>
 
     <div class="row justify-content-center">
 
@@ -77,7 +81,44 @@
       </div>
     </div>
   </div>
+  
+  <hr>
+  
+  <!-- Sezione Orari di Apertura -->
+  <div class="container-fluid bg-giallo mioContainerContatti text-center">
+    <div class="row">
+      <div class="col-md-6 text-left separatoreVerticale">
+        <h2 class="fontTitoloSezione text-center">
+          ORARI DI APERTURA
+        </h2>
+        <br>
+        <p class="lead text-left mx-auto">
+          Vieni a trovarci durante i nostri orari di apertura:<br>
+          Lunedì - Venerdì: 9:00 - 18:00<br>
+          Sabato: 10:00 - 14:00<br>
+          Domenica: Chiuso
+        </p>
+      </div>
+      <div class="col-md-6 text-right">
+        <h2 class="fontTitoloSezione text-center">
+          SEGUICI SUI SOCIAL
+        </h2>
+        <br>
+        <a href="https://www.facebook.com" class="btn btn-social-icon btn-facebook">
+          <i class="bi bi-facebook"></i>
+        </a>
+        <a href="https://www.twitter.com" class="btn btn-social-icon btn-twitter">
+          <i class="bi bi-twitter"></i>
+        </a>
+        <a href="https://www.instagram.com" class="btn btn-social-icon btn-instagram">
+          <i class="bi bi-instagram"></i>
+        </a>
+      </div>
+    </div>
+  </div>
 
+  <hr>
+  
   <!-- Sezione Form -->
   <div class="container-fluid bg-azzurro mb-1 mioContainerContatti">
     <div class="row justify-content-center">
@@ -86,7 +127,7 @@
         <form class="mioFormContatti" ng-app="myAppContatti" ng-controller="validateCtrl" name="formContatti"
               id="formContatti" novalidate>
 
-          <h3 class="mioH3contatti">lasciaci un messaggio</h3>
+          <h3 class="fontTitoloSezione text-center m-3">lasciaci un messaggio</h3>
 
           <div class="row">
             <div class="col-md-6">
@@ -167,11 +208,10 @@
       </div>
     </div>
   </div>
-
+  
   <!-- Footer -->
   <?php HTMLfooter("$nomePagina");?>
 
 </main>
-
 </body>
 </html>
