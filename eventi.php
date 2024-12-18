@@ -25,15 +25,15 @@
 <section>
   <div class="container-fluid text-center bg-giallo">
     <div class="">
-      <h2 class="" id="titoloEventi"></h2>
+      <h2 class="pt-3" id="titoloEventi"></h2>
     </div>
     <div class="row justify-content-center" id="containerEventi">
       <?php generaCardEventi(); ?>
     </div>
     <div class="row justify-content-center mb-4">
       <div class="d-flex flex-wrap gap-2 justify-content-center col-12 col-md-4 mt-5 mb-5">
-        <button type="button" onclick="aggiornaTitolo(filtraEventi('futuri'))" class="btn btn-primary">Cosa ci sarà nelle prossime settimane</button>
-        <button type="button" onclick="aggiornaTitolo(filtraEventi('passati'))" class="btn btn-primary">Cosa abbiamo organizzato fino ad ora</button>
+        <button type="button" onclick="aggiornaTitolo(filtraEventi('futuri'))" class="btn btn-primary">Eventi futuri</button>
+        <button type="button" onclick="aggiornaTitolo(filtraEventi('passati'))" class="btn btn-primary">Eventi passati</button>
         <button type="button" onclick="aggiornaTitolo(filtraEventi('tutti'))" class="btn btn-primary">Tutti gli eventi</button>
       </div>
     </div>

@@ -29,11 +29,11 @@
 
   <!-- START THE FEATURETTES -->
   <div class="bg-rosso">
-    <div class="container marketing">
+    <div class="container marketing bg-bianco">
 
       <hr class="featurette-divider">
 
-      <div class="row featurette" title="chi siamo">
+      <div class="row featurette bg-bianco" title="chi siamo">
         <div class="col-md-7">
           <h2 class="fontChiSiamo01">
             chi siamo
@@ -51,9 +51,9 @@
         </div>
       </div>
 
-      <hr class="featurette-divider bg-bianco">
+      <hr class="featurette-divider">
 
-      <div class="row featurette" title="la nostra vision bg-bianco">
+      <div class="row featurette bg-bianco" title="la nostra vision bg-bianco">
         <div class="col-md-7 order-md-2">
           <h2 class="fontChiSiamo01">
             i nostri valori
@@ -74,7 +74,7 @@
 
       <hr class="featurette-divider">
 
-      <div class="row featurette" title="cosa facciamo">
+      <div class="row featurette bg-bianco" title="cosa facciamo">
         <div class="col-md-7">
           <h2 class="fontChiSiamo01">
             cosa facciamo
@@ -102,9 +102,9 @@
 
 
   <div class="container-fluid d-flex justify-content-center bg-giallo">
-    <div class="align-content-center">
+    <div class="align-content-center bg-bianco text-center container marketing">
       <h3 class="text-center p-3 m-3 fontChiSiamo02">statuto e atto costitutivo</h3>
-      <p>Da questa sezione puoi prendere visione dei documenti che danno vita alla nostra associazione.</p>
+      <p class="lead">Da questa sezione puoi prendere visione dei documenti che danno vita alla nostra associazione.</p>
       <br>
       <div class="text-center">
         <a href="Documenti/Statuto%202022.pdf" target="_blank" class="btn btn-primary p-3 m-3">
@@ -123,11 +123,16 @@
   <hr>
 
   <div class="container-fluid d-flex justify-content-center bg-azzurro">
-    <div class="align-content-center">
+    <div class="align-content-center bg-bianco container marketing">
+      
       <h3 class="p-3 m-3 fontChiSiamo02 text-center">il direttivo</h3>
-      <p>Il nostro direttivo è composto da socə volontarə, che permettono all'associazione di esistere.</p>
+      
+      <p class="lead">
+        Il nostro direttivo è composto da socə volontarə, che permettono all'associazione di esistere.
+      </p>
+      
       <div class="col-11">
-        <ul>
+        <ul class="lead">
           <li>Federica Guzzo _ Presidente</li>
           <li>Tiziə 0 _ Consigliere</li>
           <li>Tiziə 1 _ Consigliere</li>
@@ -136,6 +141,7 @@
           <li>Tiziə 4 _ Tesoriere</li>
           <li>Tiziə 5 _ Vicepresindente</li>
         </ul>
+        
       </div>
     </div>
   </div>

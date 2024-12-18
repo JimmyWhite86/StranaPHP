@@ -107,11 +107,11 @@ function filtraEventi(sceltaEventi) {
 function aggiornaTitolo(tipo) {
   const titoloElement = document.getElementById("titoloEventi");
   if (tipo === 0) {
-    titoloElement.textContent = "Cosa ci sarà nelle prossime settimane";
+    titoloElement.textContent = "Scopri gli eventi che abbiamo organizzato per i prossimi giorni!";
   } else if (tipo === 1) {
-    titoloElement.textContent = "Cosa abbiamo organizzato fino ad ora";
+    titoloElement.textContent = "Ecco gli eventi che abbiamo organizzato in passato...";
   } else {
-    titoloElement.textContent = "Tutti gli eventi";
+    titoloElement.textContent = "Tutti gli eventi: passati, presenti e futuri!";
   }
 }
 

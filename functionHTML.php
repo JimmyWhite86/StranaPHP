@@ -286,24 +286,26 @@
           </div>
 
           <div class="col text-center">
+            
             <p class="fontFooter01">Social</p>
-            <a href="" class="socialIcon" title="Link alla pagina Facebook"
+            
+            <a href="" class="socialIcon p-2" title="Link alla pagina Facebook"
                aria-label="Facebook link" tabindex="15">
               <i class="fa-brands fa-square-facebook fa-3x" role="img" title="Facebook icon"></i>
             </a>
 
-            <a href="" class="socialIcon" title="Link alla pagine Twitter"
+            <a href="" class="socialIcon p-2" title="Link alla pagine Twitter"
                aria-label="Twitter link" tabindex="16">
-              <i class="fa-brands fa-square-twitter fa-3x" role="img" title="Twitter Icon"></i>
+              <i class="fa-brands fa-square-x-twitter fa-3x" role="img" title="X / Twitter Icon"></i>
             </a>
             <br>
 
-            <a href="" class="socialIcon" title="Link alla pagina Instagram"
+            <a href="" class="socialIcon p-2" title="Link alla pagina Instagram"
                aria-label="Instagram link" tabindex="17">
               <i class="fa-brands fa-square-instagram fa-3x" role="img" title="Instagram icon"></i>
             </a>
 
-            <a href="" class="socialIcon" title="Link alla pagina YouTube"
+            <a href="" class="socialIcon p-2" title="Link alla pagina YouTube"
                aria-label="YouTube link" tabindex="18">
               <i class="fa-brands fa-square-youtube fa-3x" role="img" title="YouTube Icon"></i>
             </a>
