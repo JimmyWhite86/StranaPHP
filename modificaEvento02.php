@@ -7,29 +7,12 @@
 
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keyword" content="Associazione culturale, APS, ARCI, promozione sociale">
-  <meta name="description" content="Associazione Culturale Stranamore">
-  <meta name="author" content="Bianchi Andrea">
-
-  <!-- CDN CSS BOOTSTRAP -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <script src="https://kit.fontawesome.com/1a45214b57.js" crossorigin="anonymous"></script>
-
-  <!-- Collegamento al CSS personalizzato -->
-  <link href="base_css.css" rel="stylesheet" type="text/css">
-
-  <!-- Font Babas Neue -->
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-
+  <?php generaHeadSection(); ?>
   <title>Strana modificaEvento</title>
-
 </head>
+
 <body>
 
 <!-- Richiamo la nav bar -->

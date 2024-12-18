@@ -27,6 +27,10 @@
 - Inserire l'attributo autocomplete in tutti i campi necessari
 - File statuto associazione
 - numero di passaggi in nuovo menu
+- Pagina "sostienici" --> 8x1000, tesseramento, donazioni
+- Mappa del sito per SEO
+https://search.google.com/search-console/welcome?hl=it
+
 
 
 
