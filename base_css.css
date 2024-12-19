@@ -434,11 +434,18 @@ body {
 /* Aumento la dimensione del logo su dispositivi mobili */
 @media (max-width: 768px) {
   .navbar-brand img {
-    width: 22vw; /* Aumenta la dimensione al 20% della larghezza dello schermo */
+    width: 40vw; /* Aumenta la dimensione al 40% della larghezza dello schermo */
     height: auto;
   }
   .mioSpanNav { /* In schermi piccoli, quando i link diventano buerger menu, nascondo il carattere "|" */
     display: none;
+  }
+}
+
+@media (max-width: 990px) and (min-width: 768px) {
+  .navbar-brand img {
+    width: 25vw;
+    height: auto;
   }
 }
 /* ------------------------------------------------------ */
@@ -487,13 +494,6 @@ footer a {
   margin-bottom: 2.813rem;
 }
 
-.contact-form {
-  background: black;
-  margin-top: 10%;
-  margin-bottom: 5%;
-  width: 70%;
-}
-
 .contact-form .mioH3contatti {
   font-family: Strana, Arial, Helvetica, sans-serif;
   margin-bottom: 8%;
@@ -505,9 +505,15 @@ footer a {
 
 .contact-form {
   background: #fff;
-  margin-top: 10%;
+  margin-top: 5%;
   margin-bottom: 5%;
+  margin-left: 2%;
+  margin-right: 2%;
   width: 70%;
+  padding-top: 4%;
+  padding-left: 8%;
+  padding-right: 8%;
+  padding-bottom: 7%;
 }
 
 .contact-form .form-control {
@@ -547,10 +553,6 @@ footer a {
   border-radius: 6rem;
   width: 11%;
   margin-top: -3%;
-}
-
-.contact-form form {
-  padding: 14% 5%;
 }
 
 .contact-form form .row {
@@ -599,10 +601,55 @@ footer a {
   border: 2px solid #dc3545;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1150px) {
   .contact-form {
-    width: 100% !important;
+    width: 90% !important;
   }
+  .separatoreVerticale {
+    border-right: 0;
+  }
+}
+
+.separatoreVerticale {
+  border-right: 2px solid #000000;
+  height: 80%;
+}
+
+
+.btn-social-icon {
+  margin: 0 5px;
+  color: white;
+  background-color: #333;
+  width: 4rem;
+  height: 4rem;
+  font-size: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.btn-facebook {
+  background-color: #3b5998;
+}
+
+.btn-twitter {
+  background-color: #1da1f2;
+}
+
+.btn-instagram {
+  background-color: #e4405f;
+}
+
+.btn-youtube {
+  background-color: #cd201f;
+}
+
+.separatoreSpesso {
+  border: 0;
+  height: 2px;
+  background: black;
+  margin: 20px 0;
 }
 /* --------------------------------------------------------- */
 
@@ -812,7 +859,5 @@ thead th.intestazioneTabella {
 
 
 
-.separatoreVerticale {
-  border-right: 2px solid #000000;
-  height: 80%;
-}
+
+

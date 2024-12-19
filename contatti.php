@@ -87,7 +87,8 @@
   <!-- Sezione Orari di Apertura -->
   <div class="container-fluid bg-giallo mioContainerContatti text-center">
     <div class="row">
-      <div class="col-md-6 text-left separatoreVerticale">
+      
+      <div class="col-md-6 text-left separatoreVerticale ">
         <h2 class="fontTitoloSezione text-center">
           ORARI DI APERTURA
         </h2>
@@ -99,6 +100,9 @@
           Domenica: Chiuso
         </p>
       </div>
+      
+      <hr class="d-md-none separatoreSpesso">
+      
       <div class="col-md-6 text-right">
         <h2 class="fontTitoloSezione text-center">
           SEGUICI SUI SOCIAL
@@ -113,7 +117,11 @@
         <a href="https://www.instagram.com" class="btn btn-social-icon btn-instagram">
           <i class="bi bi-instagram"></i>
         </a>
+        <a href="https://www.youtube.com" class="btn btn-social-icon btn-youtube">
+          <i class="bi bi-youtube"></i>
+        </a>
       </div>
+      
     </div>
   </div>
 
@@ -127,7 +135,7 @@
         <form class="mioFormContatti" ng-app="myAppContatti" ng-controller="validateCtrl" name="formContatti"
               id="formContatti" novalidate>
 
-          <h3 class="fontTitoloSezione text-center m-3">lasciaci un messaggio</h3>
+          <h3 class="fontTitoloSezione text-center mb-3">lasciaci un messaggio</h3>
 
           <div class="row">
             <div class="col-md-6">

@@ -32,6 +32,8 @@
       </div>
     </div>
   </section>
+  
+  <hr>
 
   <!-- sessione centrale -->
   <div class="bg-giallo container-fluid justify-content-center mioFlowRoot">
@@ -90,7 +92,9 @@
     </div>
   </div>
 
-  <!-- NewsLetter e 8x1000 -->
+  <hr>
+  
+  <!-- Card Section -->
   <section>
     <div class="container-fluid text-center bg-azzurro">
       <div class="row justify-content-center">
@@ -142,6 +146,7 @@
     </div>
   </section>
 
+  <hr>
 
   <!-- Footer -->
   <?php HTMLfooter($nomePagina);?>
