@@ -12,7 +12,7 @@
       <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
         <h2>Devi essere loggatə per accedere a questa pagina</h2>
         <p>
-          Puoi tornare alla <a href="index.php">home page</a>
+          Puoi tornare alla <a href="index.php" aria-label="Home Page">home page</a>
           o cercare usare la barra di navigazione per cercare la pagina che ti serve
         </p>
       </div>
@@ -27,7 +27,7 @@
   function deviEssereAdmin ($username) { ?>
     <div class='titolo'>
     <h2>Carə <?= htmlspecialchars($username, ENT_QUOTES, 'UTF-8') ?> questa area è riservata agli amministratori del sistema</h2>
-    <p>Puoi tornare alla <a href='index.php'>home</a> o cercare i nostri servizi tramite la barra di navigazione</p>
+    <p>Puoi tornare alla <a href="index.php" aria-label="Home Page">home</a> o cercare i nostri servizi tramite la barra di navigazione</p>
     </div>
   <?php
   }
@@ -61,8 +61,8 @@
   function normalNavBar($nomePagina) { ?>
     <nav class="navbar navbar-expand-lg bg-nero">
       <a href="#mioMain" class="skip text-center" tabindex="1">Vai al contenuto principale</a> <!--Salta al contenuto principale della pagina (Accessibilità) -->
+      
       <div class="container-fluid">
-
         <a class="navbar-brand fontstranaBase" href="index.php">
           <img src="Immagini/Logo_Stranamore_01.jpg" class="d-inline-block align-center" alt="Logo Stranamore">
         </a>
@@ -74,6 +74,7 @@
 
         <div class="collapse navbar-collapse fontNav" id="navbarNav" role="navigation" aria-label="main navigation">
           <div class="d-flex justify-content-center flex-grow-1">
+            
             <ul class="navbar-nav" id="myNavBar">
               <?php
                 $links = [
@@ -85,9 +86,10 @@
                 ];
                 foreach ($links as $nomeLink => $testoLink) { ?>
                   <li class="nav-item">
-                    <a class="nav-link <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
-                       aria-current="page" href="<?= $nomeLink ?>.php">
-                      <?= $testoLink ?>
+                    <a class="nav-link <?php echo htmlspecialchars(statoLink($nomePagina, $nomeLink), ENT_QUOTES, 'UTF-8'); ?>"
+                       aria-current="page" href="<?= htmlspecialchars($nomeLink, ENT_QUOTES, 'UTF-8') ?>.php"
+                       aria-label="<?= htmlspecialchars($testoLink, ENT_QUOTES, 'UTF-8') ?>" >
+                      <?= htmlspecialchars($testoLink, ENT_QUOTES, 'UTF-8') ?>
                     </a>
                   </li>
                   <li class="nav-item">
@@ -97,10 +99,11 @@
                 }
               ?>
             </ul>
+            
           </div>
 
           <div>
-            <a href="login.php">
+            <a href="login.php" aria-label="login admin">
               <i class="bi bi-box-arrow-in-right pe-4 nav-link mioOver"></i>
             </a>
           </div>
