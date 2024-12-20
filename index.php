@@ -17,17 +17,17 @@
 
 <!-- NAV BAR -->
 <?php richiamaNavBar($nomePagina);?>
-
+<h1 class="visually-hidden">Pagina principale dell'associazione culturale "Stranamore"</h1> <!---->
 
 <main id="mioMain" role="main">
 
   <!-- Hero Section -->
-  <section class="hero-section bg-rosso text-center text-white d-flex align-items-center">
+  <section class="hero-section bg-rosso text-center text-white d-flex align-items-center" role="banner">
     <div class="container hero-content">
       <div class="row justify-content-center">
-        <h2 class="m-0 p-0 fontHeroSopra hidden" id="heroSopra">Associazione Culturale e Circolo ARCI</h2>
+        <p class="m-0 p-0 fontHeroSopra hidden" id="heroSopra">Associazione Culturale e Circolo ARCI</p>
         <h1 class="px-1 fontHeroCentro" id="heroCentro"></h1>
-        <img src="Immagini/Logo_Stranamore_01.jpg" class="img-fluid myImgHero">
+        <img src="Immagini/Logo_Stranamore_01.jpg" class="img-fluid myImgHero" alt="Logo dell'associazione culturale Stranamore">
         <h3 class="m-0 p-0 pb-2 fontHeroSotto hidden" id="heroSotto">PROMUOVIAMO CULTURA, INCLUSIONE E SOCIALITA'</h3>
       </div>
     </div>
@@ -51,7 +51,7 @@
             a valorizzare la comunità attraverso l'arte, la creatività e il dialogo.
           </p>
           <div class="text-end mb-3">
-            <a href="chisiamo.php" class="btn bottoneGiallo2">Scopri di piu</a>
+            <a href="chisiamo.php" class="btn bottoneGiallo2" aria-label="Scopri di più su chi siamo">Conoscici meglio</a>
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@
             qualità. Promuoviamo la stagionalità dei prodotti e valorizziamo le eccellenze delle produzioni locali.
           </p>
           <div class="text-end mb-3">
-            <a href="chisiamo.php" class="btn bottoneGiallo2">Scopri di piu</a>
+            <a href="lacucina.php" class="btn bottoneGiallo2" aria-label="Clicca per conoscere il menu">Cosa bolle in pentola</a>
           </div>
         </div>
       </div>
@@ -85,7 +85,7 @@
             perché non siamo sempre così seri.
           </p>
           <div class="text-end mb-3">
-            <a href="chisiamo.php" class="btn bottoneGiallo2">Scopri di piu</a>
+            <a href="eventi.php" class="btn bottoneGiallo2">Guarda i prossimi eventi</a>
           </div>
         </div>
       </div>
@@ -99,8 +99,7 @@
     <div class="container-fluid text-center bg-azzurro">
       <div class="row justify-content-center">
 
-        <div class="m-2 card col-md-4" style="width: 20em;">
-          <!-- <img src="Immagini/Newletter_Azzurra_100_01.png" class="img-fluid myImgCard"> -->
+        <div class="m-2 card col-md-4" style="width: 20em;" role="region" aria-label="Iscriviti alla nostra newsletter">
           <i class="bi bi-envelope-paper-heart fa-10x iconeRosse"></i>
           <div class="card-body">
             <h3>Iscriviti alla nostra NewsLetter</h3>
@@ -111,12 +110,11 @@
             </p>
           </div>
           <div class="card-footer">
-            <a href="" class="btn bottoneRosso">Iscriviti</a>
+            <a href="" class="btn bottoneRosso" aria-label="Clicca per iscriverti alla nostra newsletter">Iscriviti</a>
           </div>
         </div>
 
-        <div class="m-2 card col-md-4" style="width: 20em;">
-          <!-- <img src="Immagini/Moneta_Rossa_01.png" class="img-fluid myImgCard"> -->
+        <div class="m-2 card col-md-4" style="width: 20em;" role="region" aria-label="Dona il tuo 8x1000">
           <i class="bi bi-piggy-bank fa-10x iconeGialle"></i>
           <div class="card-body">
             <h3>Dona il tuo 5x1000</h3>
@@ -124,12 +122,11 @@
             <p>Il tuo contributo per noi è davvero importante.</p>
           </div>
           <div class="card-footer">
-            <a href="" class="btn bottoneGiallo">Dona</a>
+            <a href="" class="btn bottoneGiallo" aria-label="Clicca per donare il tuo 8x1000">Dona</a>
           </div>
         </div>
 
-        <div class="m-2 card col-md-4" style="width: 20em;">
-          <!-- <img src="Immagini/Contattaci_Giallo_50_01.png" class="img-fluid myImgCard"> -->
+        <div class="m-2 card col-md-4" style="width: 20em;" role="region" aria-label="Proponici un evento">
           <i class="bi bi-mic-fill fa-10x iconeAzzurre"></i>
           <div class="card-body">
             <h3>Vuoi proporre un dibattito o un evento?</h3>
@@ -138,7 +135,7 @@
               Facci sapere la tua proposta.</p>
           </div>
           <div class="card-footer">
-            <a href="contatti.php" class="btn bottoneAzzurro">Contattaci</a>
+            <a href="contatti.php" class="btn bottoneAzzurro" aria-label="Clicca per contattarci">Contattaci</a>
           </div>
         </div>
 

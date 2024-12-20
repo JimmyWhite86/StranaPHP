@@ -126,7 +126,7 @@
   function controlloAdmin ($username) {
     try {
       $conn = connetti();
-      $sql = "SELECT admin FROM user WHERE UserName = :username";
+      $sql = "SELECT admin FROM User WHERE UserName = :username";
       $stmt = $conn->prepare($sql);
       $stmt->bindParam(':username', $username, PDO::PARAM_STR);
       $stmt->execute();
@@ -501,7 +501,7 @@ function gestisciImmagine() {
     
     $estensioniAmmesse = ["image/jpg", "image/jpeg", "image/png"];
     if (in_array($imageType, $estensioniAmmesse)) {
-      $uploadPercorso = "immagini/";
+      $uploadPercorso = "Immagini/";
       $imagePath = $uploadPercorso . basename($imageName);
       
       if (move_uploaded_file($imageTmp, $imagePath)) {

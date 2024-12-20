@@ -26,8 +26,8 @@
   # Avviso che utente normale sta cercando di accedere a pagine consentite solo per amministratori
   function deviEssereAdmin ($username) { ?>
     <div class='titolo'>
-    <h2>Carə <?= htmlspecialchars($username, ENT_QUOTES, 'UTF-8') ?> questa area è riservata agli amministratori del sistema</h2>
-    <p>Puoi tornare alla <a href="index.php" aria-label="Home Page">home</a> o cercare i nostri servizi tramite la barra di navigazione</p>
+      <h2>Carə <?= htmlspecialchars($username, ENT_QUOTES, 'UTF-8') ?> questa area è riservata agli amministratori del sistema</h2>
+      <p>Puoi tornare alla <a href="index.php" aria-label="Home Page">home</a> o cercare i nostri servizi tramite la barra di navigazione</p>
     </div>
   <?php
   }
@@ -36,7 +36,12 @@
   
   #-----------------------------------------------------------------
   #Funzione per le scelte che può effettuare l'amministratore
-  function azioni_amministratore () {?>
+  function azioni_amministratore () {
+    if (!is_admin()) {
+      header("Location: index.php");
+      exit();
+    }
+    ?>
     <div class="">
       <ul>
         <li><a href="aggiungievento.php">Gestisci gli utenti</a></li>
@@ -60,7 +65,7 @@
   # Funzione per visualizzare la navBar utenti non loggati
   function normalNavBar($nomePagina) { ?>
     <nav class="navbar navbar-expand-lg bg-nero">
-      <a href="#mioMain" class="skip text-center" tabindex="1">Vai al contenuto principale</a> <!--Salta al contenuto principale della pagina (Accessibilità) -->
+      <a href="#mioMain" class="skip text-center" tabindex="0">Vai al contenuto principale</a> <!--Salta al contenuto principale della pagina (Accessibilità) -->
       
       <div class="container-fluid">
         <a class="navbar-brand fontstranaBase" href="index.php">
@@ -82,6 +87,7 @@
                   "chisiamo" => "Chi Siamo",
                   "lacucina" => "La Cucina",
                   "eventi" => "Eventi",
+                  "gallery" => "Gallery",
                   "contatti" => "Contatti"
                 ];
                 foreach ($links as $nomeLink => $testoLink) { ?>
@@ -120,7 +126,7 @@
   # Funzione per richiamare la navBar per utenti loggati come admin
   function adminNavBar($nomePagina) { ?>
     <nav class="navbar navbar-expand-lg bg-giallo">
-      <a href="#mioMain" class="skip text-center" tabindex="1">Vai al contenuto principale</a> <!--Salta al contenuto principale della pagina (Accessibilità) -->
+      <a href="#mioMain" class="skip text-center" tabindex="0">Vai al contenuto principale</a> <!--Salta al contenuto principale della pagina (Accessibilità) -->
       <div class="container-fluid">
         <a class="navbar-brand fontstranaBase" href="index.php">
           <img src="Immagini/Logo_Stranamore_01.jpg" class="d-inline-block align-center" alt="logo stranamore">
@@ -177,7 +183,7 @@
   # Funzione per visualizzare il footer
   function HTMLfooter ($nomePagina) { ?>
 
-    <footer class="text-center bg-nero">
+    <footer class="text-center bg-nero" role="contentinfo" aria-label="Footer principale">
       <div class="container-fluid">
 
         <div class="p-1 border-bottom" style="border-color: #009fb7"></div> <!-- Riga sopra footer -->
@@ -197,23 +203,33 @@
             <ul class="list-unstyled">
               <li>
                 <?php $nomeLink = "index";?>
-                <a href="index.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">Home</a>
+                <a href="index.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">
+                  Home
+                </a>
               </li>
               <li>
                 <?php $nomeLink = "chisiamo";?>
-                <a href="chisiamo.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">Chi Siamo</a>
+                <a href="chisiamo.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">
+                  Chi Siamo
+                </a>
               </li>
               <li>
                 <?php $nomeLink = "lacucina";?>
-                <a href="lacucina.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">La Cucina</a>
+                <a href="lacucina.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">
+                  La Cucina
+                </a>
               </li>
               <li>
                 <?php $nomeLink = "eventi";?>
-                <a href="eventi.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">Eventi</a>
+                <a href="eventi.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">
+                  Eventi
+                </a>
               </li>
               <li>
                 <?php $nomeLink = "contatti";?>
-                <a href="contatti.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">Contatti</a>
+                <a href="contatti.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">
+                  Contatti
+                </a>
               </li>
             </ul>
           </div>
@@ -223,23 +239,23 @@
             <p class="fontFooter01">Social</p>
             
             <a href="https://www.facebook.com/StranamorePinerolo" class="socialIcon p-2" title="Link alla pagina Facebook"
-               aria-label="Facebook link" tabindex="15">
+               aria-label="Vai alla pagina Facebook di Stranamore" tabindex="15">
               <i class="fa-brands fa-square-facebook fa-3x" role="img" title="Facebook icon"></i>
             </a>
 
             <a href="" class="socialIcon p-2" title="Link alla pagine Twitter"
-               aria-label="Twitter link" tabindex="16">
+               aria-label="Vai alla pagina Twitter di Stranamore" tabindex="16">
               <i class="fa-brands fa-square-x-twitter fa-3x" role="img" title="X / Twitter Icon"></i>
             </a>
             <br>
 
             <a href="https://www.instagram.com/stranamorepinerolo/" class="socialIcon p-2" title="Link alla pagina Instagram"
-               aria-label="Instagram link" tabindex="17">
+               aria-label="Vai alla pagina Instagram di Stranamore" tabindex="17">
               <i class="fa-brands fa-square-instagram fa-3x" role="img" title="Instagram icon"></i>
             </a>
 
             <a href="" class="socialIcon p-2" title="Link alla pagina YouTube"
-               aria-label="YouTube link" tabindex="18">
+               aria-label="Vai alla pagina Youtube di Stranamore" tabindex="18">
               <i class="fa-brands fa-square-youtube fa-3x" role="img" title="YouTube Icon"></i>
             </a>
           </div>
@@ -289,7 +305,7 @@
     foreach ($datiEventi as $evento) {
       if ($evento['eliminato'] == 0) { ?>
         <div class="m-2 card col-md-4 evento-card" style="width: 20em;" data-evento="<?= date('Y-m-d', strtotime($evento['DataEvento']))?>">
-          <img src="<?= $evento['Immagine']?>" class="img-fluid myImgCard mt-2" alt="Immagine evento">
+          <img src="<?= $evento['Immagine']?>" class="img-fluid myImgCard mt-2" alt="Immagine evento" loading="lazy">
           <div class="card-body">
             <h3><?= $evento['NomeEvento']?></h3>
             <p><?= $evento['Descrizione']?></p>
@@ -415,7 +431,7 @@
   #-----------------------------------------------------------------
   
   
-  # -------------------------------------------------------
+  #-----------------------------------------------------------------
   # FUNZIONI PER LA PAGINA controlla_login.php
   # Creo dinamicamente gli avvisi della pagina che viene visualizzata quando l'utente effettua il login
   #-----------------------------------------------------------------
