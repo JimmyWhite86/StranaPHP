@@ -1,0 +1,155 @@
+
+            PROTEGGERSI DALLE SQLi
+
+  https://www.html.it/pag/16880/evitare-ogni-tipo-di-sql-injection/
+- Impostare la direttiva magic_quotes_gpc del php.ini ad ON. => Dove la trovo??
+- Caratteri di escape?
+
+
+
+https://www.w3schools.com/php/php_mysql_connect.asp
+PDO??
+
+
+
+Da https://www.w3schools.com/php/php_mysql_connect.asp
+PDO funziona con 12 differenti sistemi di database, mentre MySQL solo con database SQL.
+So, if you have to switch your project to use another database, PDO makes the process easy. You only have to change the
+connection string and a few queries. With MySQLi, you will need to rewrite the entire code - queries included.
+Entrambi sono OO.
+Entrambi supportano i Prapared Statements che servono a prevenire SQLi.
+
+
+      COSA SIGNIFICA $SMT (by ChatGPT)
+$stmt è l'abbreviazione di "statement" e rappresenta un'istanza dell'oggetto PDOStatement in PHP. Questo oggetto è restituito
+da metodi della classe PDO come:
+query(): Quando esegui una query diretta (senza parametri) con PDO, il metodo query() restituisce un oggetto PDOStatement.
+Esso contiene i risultati della query, pronti per essere elaborati o recuperati.
+prepare(): Quando usi query preparate, il metodo prepare() restituisce un oggetto PDOStatement, che puoi poi eseguire con il metodo execute().
+L'oggetto PDOStatement è utilizzato per:
+Recuperare i dati dal database (ad esempio, con fetch() o fetchAll()).
+Iterare sui risultati della query.
+Leggere e manipolare i metadati della query (come il numero di righe o colonne).
+Esempio semplice:
+Se esegui una query come questa:
+$sql = "SELECT * FROM Eventi";
+$stmt = $conn->query($sql); // Restituisce un oggetto PDOStatement
+Puoi utilizzare $stmt per recuperare i risultati:
+$result = $stmt->fetchAll(); // Ottieni tutti i record in formato array associativo
+In sintesi, $stmt è l'oggetto che incapsula la logica per accedere e manipolare i dati risultanti dalla query eseguita.
+
+
+        $stmt->bindParam('UserName', $username, PDO::PARAM_STR);   ((Spiegazione by ChatGPT))
+La stringa $stmt->bindParam('UserName', $username, PDO::PARAM_STR); è utilizzata in PDO (PHP Data Objects) per associare un valore di
+una variabile PHP a un segnaposto (placeholder) in una query SQL preparata.
+  Metodo bindParam
+bindParam() è un metodo dell'oggetto PDOStatement che collega un segnaposto in una query SQL a una variabile PHP.
+Questa associazione rimane attiva fino all'esecuzione della query con il metodo execute().
+A differenza di bindValue(), bindParam() assegna un riferimento alla variabile, il che significa che il valore della variabile
+può cambiare prima di eseguire la query e verrà utilizzato il valore aggiornato.
+  PDO::PARAM_STR
+Questo è il tipo di dato del parametro passato. Qui si specifica che il valore di $username è una stringa.
+È utile per garantire che i valori vengano trattati correttamente dal database, specialmente in contesti di sicurezza e coerenza dei dati.
+Altri tipi di parametri includono:
+PDO::PARAM_INT - Valore numerico intero.
+PDO::PARAM_BOOL - Valore booleano.
+PDO::PARAM_NULL - Valore nullo.
+  Differenza tra bindParam e bindValue
+bindParam() associa un riferimento a una variabile, quindi se il valore della variabile cambia prima dell'esecuzione, il nuovo valore verrà usato.
+bindValue() associa direttamente il valore passato al parametro, quindi il valore è "bloccato" al momento della chiamata.
+
+
+    $stmt->execute();
+
+
+
+    $eventoNew = htmlspecialchars($_POST["eventoNew"], ENT_QUOTES, 'UTF-8');   (by ChatGPT il 27.11.2024)
+Significato
+Questa riga processa un dato inviato tramite il modulo HTML (specificamente, il valore di eventoNew), lo "sanitizza" per prevenire attacchi XSS (Cross-Site Scripting) o altre vulnerabilità, e lo assegna alla variabile $eventoNew.
+Spiegazione dei componenti
+$_POST["eventoNew"]:
+Contiene il valore inviato tramite il modulo con metodo POST.
+È un'array superglobale in PHP che permette di accedere ai dati inviati con POST.
+htmlspecialchars():
+È una funzione PHP utilizzata per convertire i caratteri speciali in entità HTML, rendendo il valore sicuro da utilizzare in output HTML.
+Ad esempio, < diventa &lt; e > diventa &gt;, impedendo che un eventuale script inserito malevolmente venga eseguito.
+Parametri di htmlspecialchars():
+Primo parametro ($_POST["eventoNew"]):
+La stringa da processare.
+Secondo parametro (ENT_QUOTES):
+Indica che sia i doppi apici (") sia i singoli apici (') devono essere convertiti rispettivamente in &quot; e &#039;.
+Terzo parametro (UTF-8):
+Specifica la codifica caratteri della stringa, in questo caso UTF-8 (standard comune per le applicazioni web).
+Scopo e Utilità
+Protezione contro attacchi XSS:
+Se un utente malintenzionato inserisse nel modulo un valore come:
+<script>alert('Hacked!');</script>
+Senza htmlspecialchars, questo codice sarebbe incluso come output HTML e potrebbe essere eseguito nel browser degli utenti.
+Con htmlspecialchars, il valore diventa:
+&lt;script&gt;alert(&#039;Hacked!&#039;);&lt;/script&gt;
+e verrà mostrato come testo anziché eseguito.
+Sicurezza nei database:
+Anche se l'input non viene direttamente usato in una query SQL, sanitizzarlo riduce il rischio di iniettare contenuti dannosi.
+Esempio
+Input dell'utente:
+<script>alert('XSS');</script>
+Senza htmlspecialchars:
+L'output del sito potrebbe essere:
+<script>alert('XSS');</script>
+Questo esegue il codice JavaScript nel browser dell'utente.
+Con htmlspecialchars:
+L'output diventa:
+&lt;script&gt;alert(&#039;XSS&#039;);&lt;/script&gt;
+Il codice non viene eseguito ma mostrato come testo.
+Considerazioni
+Questa funzione è particolarmente utile quando si vuole mostrare l'input utente all'interno di una pagina HTML senza eseguirlo.
+Tuttavia, per proteggersi completamente in un'applicazione web, bisogna combinare questa pratica con altre tecniche:
+Validazione lato server.
+Prepared Statements per query SQL.
+CSP (Content Security Policy) per mitigare attacchi XSS.
+
+
+
+        $file_nome = uniqid() . "_" . preg_replace('/[^a-zA-Z0-9\._-]/', '_', $file_nome); (by ChatGPT il 27.11.2024) => FUnzione usata in creaEvento
+Certo! Questa riga di codice combina due funzioni per generare un nome sicuro e univoco per un file caricato dall'utente. Ecco una spiegazione dettagliata:
+$file_nome = uniqid() . "_" . preg_replace('/[^a-zA-Z0-9\._-]/', '_', $file_nome);
+1. uniqid()
+Cosa fa?
+Genera un identificatore univoco basato sul timestamp corrente.
+Il risultato è una stringa univoca, ad esempio: 64eacc8342e3f.
+Perché è utile?
+Evita conflitti nei nomi dei file (es. due utenti caricano file con lo stesso nome).
+Rende difficile indovinare i nomi dei file, migliorando la sicurezza.
+Risultato intermedio: Se il file si chiama ad esempio documento.pdf, dopo l'aggiunta di uniqid() potrebbe diventare:
+64eacc8342e3f_documento.pdf.
+2. preg_replace()
+preg_replace('/[^a-zA-Z0-9\._-]/', '_', $file_nome);
+Cosa fa?
+Sostituisce tutti i caratteri non consentiti in un nome di file con un underscore (_).
+Il pattern /[^a-zA-Z0-9\._-]/ identifica i caratteri che non sono:
+Lettere (a-z, A-Z)
+Numeri (0-9)
+Punto (.)
+Trattino (-)
+Underscore (_).
+Esempio:
+File originale: esempio@strano%file#.jpg.
+Dopo il preg_replace(): esempio_strano_file_.jpg.
+Perché è utile?
+Previene problemi con nomi di file contenenti caratteri speciali (es. @, %, #) che potrebbero essere interpretati male dal server.
+Protegge da possibili attacchi path traversal, dove un nome di file malevolo (es. ../../etc/passwd) potrebbe compromettere il server.
+3. Concatenazione
+$file_nome = uniqid() . "_" . preg_replace('/[^a-zA-Z0-9\._-]/', '_', $file_nome);
+Combina:
+L'identificatore univoco generato da uniqid().
+Il nome di file filtrato da preg_replace().
+Esempio finale:
+Nome originale: documento@pericoloso!.pdf.
+Dopo il preg_replace(): documento_pericoloso_.pdf.
+Nome univoco completo: 64eacc8342e3f_documento_pericoloso_.pdf.
+Perché è importante?
+Evitare conflitti: Ogni file ha un nome unico, anche se più utenti caricano file con lo stesso nome.
+Proteggere il server: Si eliminano caratteri potenzialmente pericolosi.
+Migliorare la leggibilità: Il nome del file rimane comprensibile ma sicuro.
+Questa tecnica è un esempio di best practice nella gestione dei file caricati!
+

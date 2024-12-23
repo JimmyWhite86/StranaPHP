@@ -4,11 +4,13 @@
 
 
       // TODO: DA FARE
+- aggiungere campo email a utenti
+- Inserire i throw nei cicli try
 - Titolo dinamico per ogni pagina => Passare il nome come variabile e poi richiamo funzione.
     Per sottotilo quando presente? => Usare un booleano come parametro? => Devo passare un array? Se si, posso farlo?
 - Pagina Gallery => dimensioni per immagini widescreen
 - Calendario
-=> - Registrare chi fa cosa
+- Registrare chi fa cosa
 - Creare nuovo cuoco
 - Sostituire la parola aggiungere con creare
 - Storico cucina
@@ -22,12 +24,23 @@
 - nel tag body è necessario il richiamo ad angular in tutte le pagine?
 - Verificare come funziona mysqli_real_escape_string
 - Consenso privacy e cookie policy
+- Inserire l'attributo autocomplete in tutti i campi necessari
+- File statuto associazione
+- numero di passaggi in nuovo menu
+- Pagina "sostienici" --> 8x1000, tesseramento, donazioni
+- Mappa del sito per SEO
+https://search.google.com/search-console/welcome?hl=it
+
 
 
 
       // TODO: DA VERIFICARE
 - Attributi "alt" delle immagini?
--
+- Cos è charset utf8mb4;
+- Aggiungere void a funzioni che non restituiscono valori???  ___ Dichiarazione dei tipi di variabile ritornata??
+- Differenza tra Exceptìon e PDOexception
+
+
 
 
       // TODO: Lavori lasciati in sospeso
@@ -48,6 +61,5 @@
 
 - Come debaggare?
 - Cosa vuol dire var_dump()
-- Collegare il db a phpStorm?
 - possibile debaggare con l'IDE?
-
+- verifica email -> https://www.w3schools.com/php/filter_validate_email.asp

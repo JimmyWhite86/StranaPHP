@@ -1,36 +1,66 @@
 <?php
 # ------------------------------------
 # Funzione per connettersi al DataBase.
-# Il nome del DB deve essere riportato in un secondo momento all'interno del codice.
-function connetti($db) {
-    $dbserver = "localhost";
-    $dbuser = "root";
-    $dbpass = "root";
-    $conn = mysqli_connect ($dbserver, $dbuser, $dbpass, $db);
-    return $conn;
-}
+#
+  function connetti() {
+    $dbname = "Strana01";
+    $host = "localhost";
+    $username = "root";
+    $password = "root";
+    $charset = "utf8mb4";
+    
+    $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
+  
+    try {
+      $conn = new PDO($dsn, $username, $password);
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Imposta la modalità di errore su eccezione
+      $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC); // Imposta il fetch mode predefinito su associativo;
+      return $conn;
+    } catch (PDOException $e) {
+      die("Funzione connetti: Connessione fallita: " . $e->getMessage());
+    }
+  }
 # ------------------------------------
+  
+  
+# ------------------------------------
+# Funzione cerca utente
+  function sanificaInput($inputDaSanificare) {
+    return htmlspecialchars(trim($inputDaSanificare ?? ''), ENT_QUOTES, 'UTF-8');
+  }
+# ------------------------------------
+
 
 # ------------------------------------
 # Funzione cerca utente
-function cercaUtente ($username) {
-  
-  $conn = connetti("Strana01");
-  if (!$conn) {
-    die ("[cercaUtente] => Connessione fallita: " . mysqli_connect_error());
-  }
-  
-  $sql = "SELECT * FROM User WHERE UserName = '$username'"; #Seleziono tutti i campi del record dove username corrisponde a $username
-  $tmp = mysqli_query($conn, $sql);
-  
-  if (mysqli_num_rows($tmp) != 0) {
-    $row = mysqli_fetch_assoc($tmp); #Recupera la riga del risultato come array associativo.
-    mysqli_close($conn);
-    return $row;
-  } else {
-    mysqli_close($conn);
-    return false;
-  }
+  function cercaUtente ($username) {
+    try {
+      // Validazione dell'ìnput
+      if (empty($username)) {
+        return ['successo' => false, 'errore' => 'Username non può essere vuoto'];
+      }
+      
+      // Uso la funzione connetti() per connettermi al database
+      $conn = connetti(); // Usa la funzione connetti per preparare la connessione
+      
+      // Preparo la query SQL
+      $sql = "SELECT * FROM User WHERE UserName = :username"; // Seleziono tutti i campi del record dove username corrisponde a $username
+      $stmt = $conn->prepare($sql);
+      
+      // Associo i parametri e lo eseguo
+      $stmt->bindParam('username', $username, PDO::PARAM_STR);
+      $stmt->execute();
+      
+      // Recupero il risultato
+      $utente = $stmt->fetch(); // Restituisce un singolo record
+      
+      // Restituisco il risultato
+      return $utente ? $utente : null; // Se non trova risultati restituisce il valore null
+    } catch (PDOException $e) {
+        die ("Errore nella funzione cercaUtente: " . $e->getMessage());
+      } finally { // Chiusura esplicita della connessione. La connessione viene altrimenti chiusa quando finisce la funzione. TODO: Lascio la chiusura esplicita?
+      $conn = null;
+    }
 }
 # ------------------------------------
 
@@ -38,43 +68,43 @@ function cercaUtente ($username) {
 # ------------------------------------
 # Restituisce informazioni su tutti gli eventi presenti in tabella eventi
   function ottieniListaEventi ($attivi) {
-    $conn = connetti ("Strana01");
-    if (!$conn) {
-      die ("[ottieniListaEventi] => Connessione fallita: " . mysqli_connect_error());
-    }
     
-    // Prepara la query in base al valore di $attivi
-    $sql = "";
-    switch ($attivi) {
-      case 0: // Eventi non attivi
-        $sql = "SELECT * FROM Eventi WHERE Eliminato = TRUE ORDER BY dataEvento ASC";
-        break;
-      case 1: // Eventi attivi
-        $sql = "SELECT * FROM Eventi WHERE Eliminato = FALSE ORDER BY dataEvento ASC";
-        break;
-      case 2: // Tutti gli eventi
-        $sql = "SELECT * FROM Eventi ORDER BY dataEvento ASC";
-        break;
-      default:
-        die ("[ottieniListaEventi] => Valore di \$attivi non valido");
+    try {
+      $conn = connetti();
+      if (!$conn) {
+        throw new PDOException("[ottieniListaEventi] => Connessione fallita: " . mysqli_connect_error());
+      }
+      
+      // Prepara la query in base al valore di $attivi
+      switch ($attivi) {
+        case 0: // Eventi non attivi
+          $sql = "SELECT * FROM Eventi WHERE Eliminato = TRUE ORDER BY dataEvento ASC";
+          break;
+        case 1: // Eventi attivi
+          $sql = "SELECT * FROM Eventi WHERE Eliminato = FALSE ORDER BY dataEvento ASC";
+          break;
+        case 2: // Tutti gli eventi
+          $sql = "SELECT * FROM Eventi ORDER BY dataEvento ASC";
+          break;
+        default:
+          die ("[ottieniListaEventi] => Valore di \$attivi non valido");
+      }
+      
+      $stmt = $conn->query($sql);
+      $listaEventi = $stmt->fetchAll();
+      
+      return $listaEventi;
+      
+    } catch (PDOException $e) {
+      die("[ottieniListaEventi] => Errore: " . $e->getMessage());
     }
-    
-    // Eseguo la query:
-    $datiEventi = mysqli_query($conn, $sql);
-    if (!$datiEventi) {
-      die ("[ottieniListaEventi] => Errore db: " . mysqli_error($conn));
-    }
-    
-    // Chiudo sessione e ritorno i dati
-    mysqli_close($conn);
-    return $datiEventi;
   }
 # ------------------------------------
 
 
 # ------------------------------------
 # Funzione che richiama la nav bar in base all'utente loggato
-function richiamaNavBar($nomePagina) {
+  function richiamaNavBar($nomePagina) {
     if (!isset($_SESSION['username'])) {
       normalNavBar($nomePagina);
     }
@@ -87,274 +117,238 @@ function richiamaNavBar($nomePagina) {
         userNavBar($nomePagina);
       }
     }
-}
+  }
 # ------------------------------------
+
 
 # ------------------------------------
 # Funzione per controllare se utente loggato è amministratore o no
-function controlloAdmin ($username) {
-  $conn = connetti ("Strana01");
-  if (!$conn) {
-    die ("[controlloAdmin] => Connessione fallita: " . mysqli_connect_error());
+  function controlloAdmin ($username) {
+    try {
+      $conn = connetti();
+      $sql = "SELECT admin FROM User WHERE UserName = :username";
+      $stmt = $conn->prepare($sql);
+      $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+      $stmt->execute();
+      $row = $stmt->fetch(); // Recuper il risultato della query
+      if ($row && $row['admin'] == 1) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (PDOException $e) {
+      die("Errore nella funzione controlloAdmin: " . $e->getMessage());
+    }
   }
-  
-  $sql = "SELECT admin FROM user WHERE UserName = '$username'";
-  $tmp = mysqli_query ($conn, $sql);
-  $row = mysqli_fetch_assoc($tmp);
-  $valoreAmministratore = $row['admin'];
-  
-  if ($valoreAmministratore == 1) {
-    return true;
-  } else {
-    return false;
-  }
-}
 # ------------------------------------
+
 
 # ------------------------------------
 # Funzione per eliminare un evento già salvato
-function eliminaEvento ($idEvento) {
-  $conn = connetti ("Strana01");
-  if (!$conn) {
-    die("[eliminaEvento] => Connessione fallita: " . mysqli_connect_error());
-  }
-  $sql = "SELECT IDEvento, NomeEvento, DataEvento FROM Eventi WHERE IDEvento='$idEvento'";
-  $tmp = mysqli_query($conn, $sql);
-  $nRow = mysqli_num_rows($tmp);
-  if ($nRow == 0) {
-    //echo "<h1>Evento non trovato $idEvento</h1>";
-    return ['successo' => false, 'nomeEvento' => ''];
-  }
-  else {
-    //ottengo i dati dell'evento per poi comunicarli all'utente
-    $datiEvento = mysqli_fetch_assoc($tmp);
-    $nomeEvento = $datiEvento['NomeEvento'];
-    
-    $sql = "UPDATE Eventi SET eliminato=TRUE WHERE IDEvento='$idEvento'";
-    $tmp = mysqli_query($conn, $sql);
-    if ($tmp) {
-      //echo "Evento $nomeEvento (ID: $idEvento) cancellato correttamente";
-      //return true;
-      return ['successo' => true, 'nomeEvento' => $nomeEvento];
+  function eliminaEvento ($idEvento) {
+    try {
+      $conn = connetti();
+      if (!$conn) {
+        return ['success' => false, 'errore' => 'errore di connessione'];
+      }
+      
+      // Validazione dell'idEvento
+      if (!filter_var($idEvento, FILTER_VALIDATE_INT)) {
+        return ['success' => false, 'errore' => 'id non valido'];
+      }
+      
+      // Controllo che l'evento selezionato sia presente nel db
+      $sqlCheck = "SELECT * FROM Eventi WHERE idEvento = :idEvento";
+      $stmtCheck = $conn->prepare($sqlCheck);
+      $stmtCheck->execute(['idEvento' => $idEvento]);
+      if ($stmtCheck->rowCount() == 0) {
+        return ['successo' => false, 'nomeEvento' => '']; // L'evento selezionato non è stato trovato all'interno del db
+      }
+      
+      // ottengo i dati dell'evento
+      $datiEvento = $stmtCheck->fetch();
+      $nomeEvento = $datiEvento['NomeEvento'];
+      //var_dump($datiEvento);
+      
+      // Aggiorno lo stato dell'evento a eliminato
+      $sqlUpdate = "UPDATE Eventi SET eliminato = TRUE WHERE idEvento = :idEvento";
+      $stmtUpdate = $conn->prepare($sqlUpdate);
+      $stmtUpdate->execute(['idEvento' => $idEvento]);
+      
+      // Ritorno il risultato della query di update
+      if ($stmtUpdate->rowCount() > 0) {
+        // Evento eliminato correttamente
+        return ['successo' => true, 'nomeEvento' => $nomeEvento];
+      } else {
+        return ['successo' => false, 'nomeEvento' => $nomeEvento];
+      }
+      
+    } catch (PDOException $e) {
+      return ['successo' => false, 'errore' => $e->getMessage()];
     }
-    else {
-      //echo "Errore cancellazione evento $nomeEvento (ID: $idEvento)";
-      //return false;
-      return ['successo' => false, 'nomeEvento' => $nomeEvento];
-    }
   }
-  mysqli_close($conn);
-}
 # ------------------------------------
 
-# ------------------------------------
-# RESTITUISCE I VALORI DEI PIATTI PRESENTI NEL DB
-# A seconda del valore che viene passato nella funzione restituisce
-# 0 => I piatti che sono "non attivi"
-# 1 => I piatti che sono "attivi"
-# 2 => Tutti i piatti, attivi e non attivi"
-function ottieniListaPiatti ($attivi) {
-  $conn = connetti("Strana01");
-  if (!$conn) {
-    die ("[ottieniListaPiattiDisponibili] => Connessione fallita: " . mysqli_connect_error());
-  }
-  
-  // Preparo le query in base ai valori di attivi
-  $sql = "";
-  switch ($attivi) {
-    case 0: // Seleziono i piatti non attivi
-      $sql = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = 0";
-      break;
-    case 1: // Seleziono i piatti attivi
-      $sql = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = 1";
-      break;
-    case 2: // Seleziono tutti i piatti
-      $sql = "SELECT * FROM menuCucina";
-      break;
-    default:
-      die ("[ottieniListaPiatti] => Valore di \$attivi non valido");
-  }
-  
-  // Eseguo la query
-  $listaPiatti = mysqli_query($conn, $sql);
-  if (!$listaPiatti) {
-    die ("[ottieniListaPiatti] => Errore db: " . mysqli_error($conn));
-  }
-  
-  // Chiudo la connessione e restituisco i dati
-  mysqli_close($conn);
-  return $listaPiatti;
-}
-# ------------------------------------
 
 # ------------------------------------
-# Funzione per ottenere le categorie dei piatti disponibili
-function ottieniCategoriePiatti ($attivi) {
-  $listaPiattiDisponibili = ottieniListaPiatti($attivi);
-  
-  $qtyAntipasti = 0;
-  $qtyPrimi = 0;
-  $qtySecondi = 0;
-  $qtyContorni = 0;
-  $qtyDolci = 0;
-  
-  while ($row = mysqli_fetch_assoc($listaPiattiDisponibili)) {
-    if ($row['categoriaPiatto'] == 'antipasti') {
-      $qtyAntipasti++;
-    }if ($row['categoriaPiatto'] == 'primi') {
-      $qtyPrimi++;
-    }
-    if ($row['categoriaPiatto'] == 'secondi') {
-      $qtySecondi++;
-    }
-    if ($row['categoriaPiatto'] == 'contorni'){
-      $qtyContorni++;
-    }
-    if ($row['categoriaPiatto'] == 'dolci') {
-      $qtyDolci++;
+# Funzione per ottenere contare quanti piatti appartengono ad una determinata categoria
+  function contaCategoriePiatti ($disponibilitaPiatto) {
+    
+    try {
+      $listaPiattiDisponibili = piattiInArray($disponibilitaPiatto);
+      
+      $categorie = [
+        'antipasti' => 0,
+        'primi' => 0,
+        'secondi' => 0,
+        'contorni' => 0,
+        'dolci' => 0,
+      ];
+      
+      foreach ($listaPiattiDisponibili as $piatto) {
+        if(isset($categorie[$piatto['categoriaPiatto']])) {
+          $categorie[$piatto['categoriaPiatto']]++;
+        }
+      }
+      
+//      Per debug
+//      echo "<pre>";
+//      echo "<hr>";
+//      echo "Funzione contaCategoriePiatti: <br>";
+//      print_r($categorie);
+//      echo "</pre><br><br>";
+      
+      return $categorie;
+      
+    } catch (PDOException $e) {
+     // die ("[contaCategoriePiatti] => Errore: " . $e->getMessage());
+        error_log("[contaCategoriaPiatti] => Errore: " . $e->getMessage());
+        throw new RuntimeException("[contaCategoriaPiatti] => Errore: " . $e->getMessage());
     }
   }
-  
-  return [
-    'antipasti' => $qtyAntipasti,
-    'primi' => $qtyPrimi,
-    'secondi' => $qtySecondi,
-    'contorni' => $qtyContorni,
-    'dolci' => $qtyDolci,
-    
-  ];
-}
 # ------------------------------------
+
+
 
 # ------------------------------------
 # Funzione che trasforma i piatti disponibili in un array associativo
-function piattiInArray () {
-  $conn = connetti("Strana01");
-  if (!$conn) {
-    die("[piattiInArray] => Connessione fallita: " . mysqli_connect_error());
+  function piattiInArray ($disponibilitaPiatto) {
+    try {
+      $conn = connetti();
+      
+     if (!is_int($disponibilitaPiatto) || !in_array($disponibilitaPiatto, [0, 1, 2])) {
+        die ("[piattiInArray] => Il valore di \$disponibilitaPiatto non è un intero");
+      }
+      
+      switch ($disponibilitaPiatto) {
+        case 0:
+          $sql = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = FALSE";
+          break;
+        case 1:
+          $sql = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = TRUE";
+          break;
+        case 2:
+          $sql = "SELECT * FROM menuCucina";
+          break;
+        default:
+          die ("[piattiInArray] => Valore di \$attivi non valido");
+      }
+      
+//      Per debug
+//      echo "<pre>";
+//      echo "Esegue query: " . $sql . "<br>";
+//      echo "</pre>";
+     
+      $stmt = $conn->query($sql);
+      $listaPiattiInArray = $stmt->fetchAll();
+      
+//      Per debug
+//      echo "<pre>";
+//      echo "<hr>";
+//      echo "Funzione piattiInArray: <br>";
+//      print_r($listaPiattiInArray);
+//      echo "</pre><br><br>";
+//
+      return $listaPiattiInArray;
+      
+    } catch (PDOException $e) {
+      die("Piatti in array => Errore nella connessione o query: " . $e->getMessage());
+    }
   }
-  
-  $query = "SELECT * FROM menuCucina WHERE disponibilitaPiatto = '1'";
-  $tmp = mysqli_query($conn, $query);
-  
-  if (!$tmp) {
-    die("Errore nella query " . mysqli_error($conn));
-  }
-  
-  $piattiDisponibili = [];
-  while ($row = mysqli_fetch_assoc($tmp)) {
-    $listaPiattiDisponibili[] = $row;
-  }
-  
-  mysqli_close($conn);
-  return $listaPiattiDisponibili;  //FIXME: verificare come mai l'IDE me lo segnala come arancione (ChatGPT non ha aiutato)
-  
-}
+# ------------------------------------
+
+
 # ------------------------------------
 # Funzione per eliminare un singolo piatto dal menu
-  function eliminaPiatto ($idPiatto) {
-    $conn = connetti ("Strana01");
+function eliminaPiatto ($idPiatto) {
+  try {
+    $conn = connetti();
     if (!$conn) {
-      die("[eliminaPiatto] => Connessione fallita: " . mysqli_connect_error());
-    }
-    $sql = "SELECT * FROM menuCucina WHERE idPiatto='$idPiatto'";
-    $tmp = mysqli_query($conn, $sql);
-  
-    if (!$tmp) {
-      die("[eliminaPiatto] => Errore nella query di selezione: " . mysqli_error($conn));
+      throw new PDOException("[eliminaPiatto] => Connessione fallita: " . mysqli_connect_error());
     }
     
-    $nRow = mysqli_num_rows($tmp);
+    // Controllo se il piatto esiste
+    $sqlSelect = "SELECT * FROM menuCucina WHERE idPiatto= :idPiatto";
+    $stmtSelect = $conn->prepare($sqlSelect);
+    $stmtSelect->execute(['idPiatto' => $idPiatto]);
     
-    if ($nRow == 0) {
+    if ($stmtSelect->rowCount() === 0) { // Il piatto non è stato trovato all'interno del db
       return ['successo' => false, 'nomePiatto' => ''];
     } else {
-        //ottengo i dati del piatto per poi comunicarli all'utente
-        $datiPiatto = mysqli_fetch_assoc($tmp);
-        $nomePiatto = $datiPiatto['nomePiatto'];
-        
-        $sql = "UPDATE menuCucina SET disponibilitaPiatto=FALSE WHERE idPiatto='$idPiatto'";
-        $tmp = mysqli_query($conn, $sql);
-        
-        if (!$tmp) {
-          die("[eliminaPiatto] => Errore nella query di aggiornamento: " . mysqli_error($conn));
-        }
-        if ($tmp) { // TODO: è necessario questo if? Non posso usare direttamente l'else dopo?
-          return ['successo' => true, 'nomePiatto' => $nomePiatto];
-        }
-        else {
-          return ['successo' => false, 'nomePiatto' => $nomePiatto];
-        }
+      
+      // Recupero i dati del piatto
+      $datiPiatto = $stmtSelect->fetch();
+      $nomePiatto = $datiPiatto['nomePiatto'];
+      
+      // Aggiorno la disponibilità del piatto
+      $sqlUpdate = "UPDATE menuCucina SET disponibilitaPiatto=FALSE WHERE idPiatto= :idPiatto";
+      $stmtUpdate = $conn->prepare($sqlUpdate);
+      $stmtUpdate->execute(['idPiatto' => $idPiatto]);
+      
+      if ($stmtUpdate->rowCount() > 0) {
+        return ['successo' => true, 'nomePiatto' => $nomePiatto];
+      } else {
+        return ['successo' => false, 'nomePiatto' => $nomePiatto];
       }
-    mysqli_close($conn);
-  }
-# ------------------------------------
-
-# ------------------------------------
-# Funzione per eliminare un singolo piatto dal menu
-function eliminaInteroMenu () {
-  $conn = connetti ("Strana01");
-  if (!$conn) {
-    die("[eliminaInteroMenu] => Connessione fallita: " . mysqli_connect_error());
-  }
-  
-  $sql = "SELECT * FROM menuCucina";
-  $tmp = mysqli_query($conn, $sql);
-  
-  if (!$tmp) {
-    die("[eliminaInteroMenu] => Errore nelal query di selezione: " . mysqli_error($conn));
-  }
-  
-  $nRow = mysqli_num_rows($tmp);
-  
-  if ($nRow == 0) {
-    return ['successo' => false];
-  } else {
-    $sql = "UPDATE menuCucina SET disponibilitaPiatto = FALSE";
-    $tmp = mysqli_query($conn, $sql);
-    
-    if (!$tmp) {
-      die("[eliminaInteroMenu] => Errore nella query di aggiornamento: " . mysqli_error($conn));
     }
-    if ($tmp) {
-      return ['successo' => true];
-    } else {
-      return ['successo' => false];
-    }
+  } catch (PDOException $e) {
+    return ['successo' => false, 'errore' => $e->getMessage()];
   }
-  mysqli_close($conn);
 }
 # ------------------------------------
 
 
 # ------------------------------------
-# Funzione per verifica utente loggato come admin TODO: la prova l'ho fatta nella pagina modificaEvento. Al primo tentativo non funzionava. o la implemento o la tolgo da tutte e due le pagine
-                                                    // Eventualmente provare con un if
-  /*function verificaUtenteLoggato ($_SESSION) {
-    if (!isset($_SESSION["username"])) {
-      return 0; // Utente non loggato
-    }
-    else {
-      $amministratore = $_SESSION["admin"];
-      $username = $_SESSION["username"];
-      if ($amministratore == 0) {
-        return 1; // Utente loggato senza privilegi di admin
+# Funzione per eliminare un singolo piatto dal menu
+  function eliminaInteroMenu () {
+    try {
+      $conn = connetti();
+      if (!$conn) {
+        throw new PDOException("[eliminaInteroMenu] => Connessione fallita: " . mysqli_connect_error());
       }
-      else {
-        return 2; // Utente loggato come admin
+      $sql = "UPDATE menuCucina SET disponibilitaPiatto=FALSE";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+      
+      if ($stmt->rowCount() > 0) {
+        return ['successo' => true];
+      } else {
+        return ['successo' => false];
       }
+      
+    } catch (PDOException $e) {
+      return ['successo' => false, 'errore' => $e->getMessage()];
     }
-  }*/
+  }
 # ------------------------------------
+
+
 # ------------------------------------
-  
-  
-  # ------------------------------------
 # Funzione per richiamare i dati dell'evento selezionato da modificare
   function eventoDaModificareSelezionato ($idEvento) {
     $conn = connetti ("Strana01");
     if (!$conn) {
-      die("[eliminaEvento] => Connessione fallita: " . mysqli_connect_error());
+      return ['successo' => false, 'errore' => 'Errore di connessione'];
     }
     $sql = "SELECT * FROM Eventi WHERE IDEvento='$idEvento'";
     $tmp = mysqli_query($conn, $sql);
@@ -371,110 +365,282 @@ function eliminaInteroMenu () {
     }
   }
 # ------------------------------------
-  
+
+
 # ------------------------------------
 # Funzione per eliminare un utente
   function eliminaUtente($idUtente) {
-    $conn = connetti ("Strana01");
-    if(!$conn) {
-      die ("[eliminaUtente] => Connessione fallita: " . mysqli_connect_error());
-    }
-    $sql = "SELECT * FROM User WHERE IDUser = '$idUtente'";
-    $tmp = mysqli_query($conn, $sql);
-    if (!$tmp) {
-      die ("[eliminaUtente] => Errore nella query di selezione: " . mysqli_error($conn));
-    }
-    $nRow = mysqli_num_rows($tmp);
-    if ($nRow == 0) {
-      return ['successo' => false, 'nomeUtente' => ''];
-    } else {
-      // Ottengo i dati dell'utente per comunicarli all'utente
-      $datiUtente = mysqli_fetch_assoc($tmp);
-      $nomeUtente = $datiUtente['UserName'];
-      $sql = "UPDATE User SET utenteAttivo = FALSE WHERE IDUser = '$idUtente'";
-      $tmp = mysqli_query($conn, $sql);
-      if (!$tmp) {
-        die ("[eliminaUtente] => Errore nella query di aggiornamento" . mysqli_error($conn));
-      } else {
-        return ['successo' => true, 'nomeUtente' => $nomeUtente];
+    try {
+      $conn = connetti();
+      if (!$conn) {
+        return ['successo' => false, 'errore' => 'errore di connessione'];
       }
+      
+      // Controllo che l'utente selezionato sia presente nel db
+      $sqlCheck = "SELECT * FROM User WHERE IDUser = :idUtente";
+      $stmtCheck = $conn->prepare($sqlCheck);
+      $stmtCheck->execute(['idUtente' => $idUtente]);
+      if ($stmtCheck->rowCount() === 0) {
+        return ['successo' => false, 'errore' => 'utente non trovato', 'idUtente' => $idUtente];
+      }
+      
+      // Ottengo i dati dell'utente
+      $datiUtente = $stmtCheck->fetch();
+      $nomeUtente = $datiUtente['UserName'];
+      // var_dump($datiUtente);
+      
+      // Aggiorno lo stato dell'utente ad eliminato
+      $sqlUpdate = "UPDATE User SET utenteAttivo = FALSE WHERE IDUser = :idUtente";
+      $stmtUpdate = $conn->prepare($sqlUpdate);
+      $stmtUpdate->execute(['idUtente' => $idUtente]);
+      
+      // Ritorno il risultato della query di update
+      if ($stmtUpdate->rowCount() > 0) {
+        return ['successo' => true, 'nomeUtente' => $nomeUtente];
+      } else {
+        return ['successo' => false, 'nomeUtente' => $nomeUtente];
+      }
+      
+    } catch (PDOException $e) {
+      return ['successo' => false, 'errore' => $e->getMessage()];
     }
-    mysqli_close($conn);
-  }
-  
+}
+# ------------------------------------
+
+
 # ------------------------------------
 # Funzione per richiamare una lista di utenti
-  
   function ottieniListaUtenti ($attivi) {
-    $conn = connetti("Strana01");
-    if (!$conn) {
-      die ("[ottieniListaUtenti] => Connessione fallita " . mysqli_connect_error());
+    try {
+      $conn = connetti();
+      if (!$conn) {
+        return ["successo" => false, 'errore' => 'errore di connessione'];
+      }
+      
+      // Prepara la query in base al valore di $attivi
+      $sql = "";
+      switch ($attivi) {
+        case 0: // Utenti non attivi
+          $sql = "SELECT * FROM User WHERE utenteAttivo = FALSE ORDER BY IDUser ASC";
+          break;
+        case 1: // Utenti attivi
+          $sql = "SELECT * FROM User WHERE utenteAttivo = TRUE ORDER BY IDUser ASC";
+          break;
+        case 2: // Tutti gli utenti, attivi e non
+          $sql = "SELECT * FROM User ORDER BY IDUser ASC";
+          break;
+        default:
+          die ("[ottieniListaUtenti] => Valore di \$attivi non valido");
+      }
+      
+      $stmt = $conn->query($sql);
+      $listaUtenti = $stmt->fetchAll();
+      
+      return $listaUtenti;
+      
+    } catch (PDOException $e) {
+      return ['successo' => false, 'errore' => $e->getMessage()];
     }
-    
-    // Prepara la query in base al valore di $attivi
-    $sql = "";
-    switch ($attivi) {
-      case 0:
-        $sql = "SELECT * FROM User WHERE utenteAttivo = FALSE";
-        break;
-    }
-    
-    $sql = "SELECT * FROM User WHERE utenteAttivo = '1' ORDER BY IDUser ASC";
-    $datiUtenti = mysqli_query($conn, $sql);
-    if (!$datiUtenti) {
-      die ("[ottieniListaUtenti] => Errore nella query di ricerca " . mysqli_error($conn));
-    }
-    mysqli_close($conn);
-    return $datiUtenti;
   }
+# ------------------------------------
+
+
+# ------------------------------------
+# Funzione per aggiungere un piatto al menu
+  function aggiungiPiatto ($nomePiatto, $descrizionePiatto, $categoriaPiatto, $prezzoPiatto, $cuoco, $disponibilitaPiatto, $dataInserimento) {
+    try {
+      $conn = connetti();
+      
+      if(!$conn) {
+        die ("[aggiungiPiatto] => Connessione fallita: " . mysqli_connect_error());
+      }
+      
+      // Validazione input
+      if (empty($nomePiatto) || empty($categoriaPiatto) || !is_numeric($prezzoPiatto) || $prezzoPiatto < 0) {
+        return false;
+      }
+      
+      $sqlInsert = "INSERT INTO menuCucina (nomePiatto, descrizionePiatto, categoriaPiatto, prezzoPiatto, cuoco, disponibilitaPiatto, dataInserimento)
+                    VALUES (:nomePiatto, :descrizionePiatto, :categoriaPiatto, :prezzoPiatto, :cuoco, :disponibilitaPiatto, :dataInserimento)";
+      $stmtInsert = $conn->prepare($sqlInsert);
+      $stmtInsert->execute([
+        ':nomePiatto' => $nomePiatto,
+        ':descrizionePiatto' => $descrizionePiatto,
+        ':categoriaPiatto' => $categoriaPiatto,
+        ':prezzoPiatto' => $prezzoPiatto,
+        ':cuoco' => $cuoco,
+        ':disponibilitaPiatto' => $disponibilitaPiatto,
+        ':dataInserimento' => $dataInserimento,
+      ]);
+      
+      if ($stmtInsert->rowCount() > 0) {
+        return true;
+      } else {
+        return false;
+      }
+      
+    } catch (PDOException $e) {
+      return false;
+    }
+  }
+# ------------------------------------
+
+
+# ------------------------------------
+# Funzione per importare le immagini negli eventi
+function gestisciImmagine() {
+  if (isset($_FILES['immagine']) && $_FILES['immagine']['error'] === 0) {
+    $imageName = $_FILES['immagine']['name'];
+    $imageTmp = $_FILES['immagine']['tmp_name'];
+    $imageType = $_FILES['immagine']['type'];
+    
+    $dimensioneMassima = 1048576 * 3;
+    if ($_FILES['immagine']['size'] > $dimensioneMassima) {
+      return false;
+    }
+    
+    $estensioniAmmesse = ["image/jpg", "image/jpeg", "image/png"];
+    if (in_array($imageType, $estensioniAmmesse)) {
+      $uploadPercorso = "Immagini/";
+      $imagePath = $uploadPercorso . basename($imageName);
+      
+      if (move_uploaded_file($imageTmp, $imagePath)) {
+        return $imagePath;
+      } else {
+        return false;
+      }
+    }
+  }
+  return null;
+}
+  # ------------------------------------
+  
+  # ------------------------------------
+  # Funzione per inserire nuovo evento
+function inserisciEvento($nomeEventoNew, $dataEventoNew, $descrizioneNew, $imagePath) {
+  try {
+    $conn = connetti();
+    if (!$conn) {
+      return ["successo" => false, 'errore' => 'errore di connessione', 'codiceErrore' => 3];
+    }
+    
+    // Controllo che i campi non siano vuoti
+    if (empty($nomeEventoNew) || empty($dataEventoNew) || empty($imagePath)) {
+      return ["successo" => false, 'errore' => 'i campi non sono stati compilati'];
+    }
+    
+    // Sanifico gli input
+    $nomeEventoNew = sanificaInput($nomeEventoNew);
+    $dataEventoNew = sanificaInput($dataEventoNew);
+    $descrizioneNew = sanificaInput($descrizioneNew);
+    
+    // Controllo se esistono già eventi con stessa data && stesso nome
+    $sqlCheck = "SELECT COUNT(*) FROM Eventi WHERE NomeEvento = :nomeEvento AND DataEvento = :dataEvento AND eliminato = 0";
+    $stmtCheck = $conn->prepare($sqlCheck);
+    $stmtCheck->execute([
+      ':nomeEvento' => $nomeEventoNew,
+      ':dataEvento' => $dataEventoNew,
+    ]);
+    $eventoEsiste = $stmtCheck->fetchColumn();
+    if ($eventoEsiste > 0) {
+      return ["successo" => false, 'errore' => "Evento già presente a sistema", 'codiceErrore' => 0];
+    }
+    
+    // Inserisco il nuovo evento a sistema
+    $sqlInsert = "INSERT INTO Eventi (NomeEvento, DataEvento, Descrizione, eliminato, Immagine)
+                    VALUES (:nomeEvento, :dataEvento, :descrizioneEvento, :eliminato, :pathNameImmagine ) ";
+    $stmtInsert = $conn->prepare($sqlInsert);
+    $parametri = [
+      ':nomeEvento' => $nomeEventoNew,
+      ':dataEvento' => $dataEventoNew,
+      ':pathNameImmagine' => $imagePath,
+      ':descrizioneEvento' => $descrizioneNew,
+      ':eliminato' => 0, ];
+    try {
+      $stmtInsert->execute($parametri);
+    } catch (Exception $e) {
+      return ['successo' => false, 'errore' => 'Errore: ' . $e->getMessage(), 'codiceErrore' => 1];
+    }
+    if ($stmtInsert->rowCount() > 0) {
+      return ['successo' => true, 'messaggio' => 'Evento creato'];
+    } else {
+      return ['successo' => false, 'errore' => 'Errore creazione', 'codiceErrore' => 2];
+    }
+  } catch (Exception $e) {
+    return ['successo' => false, 'errore' => $e->getMessage(), 'codiceErrore' => 3];
+  }
+}
+  # ------------------------------------
   
   
   # ------------------------------------
-# Funzione per registrare le azioni degli admin TODO: se non la uso la posso anche cancellare
-  function registraLogAdmin ($nomePagina, $idUser, $username, $idEntita, $nomeEntita, $errore) {
-    $conn = connetti("Strana01");
-    if (!$conn) {
-      die ("[registraLogAdmin] => Connessione fallita: " . mysqli_connect_error());
+  # Funzione per creare un nuovo utente
+  function creaUtente($usernameNew, $passwordNew) {
+    try {
+      $conn = connetti();
+      if (!$conn) {
+        return ['successo' => false, 'messaggio' => 'errore di connessione', 'codiceErro' => 3];
+      }
+      
+      // Sanifico lo username
+      $usernameNew = sanificaInput($usernameNew);
+      
+      // Verifico che non ci siano utenti con lo stesso username
+      $sqlCheck = "SELECT COUNT(*) FROM User WHERE Username = :username AND utenteAttivo = 1";
+      $stmtCheck = $conn->prepare($sqlCheck);
+      $stmtCheck->execute([':username' => $usernameNew]);
+      $utenteEsiste = $stmtCheck->fetchColumn();
+      if ($utenteEsiste > 0) {
+        return ["successo" => false, 'messaggio' => "Utente già presente a sistema", 'codiceErrore' => 0];
+      }
+      
+      // Hash della password
+      $passwordHash = password_hash($passwordNew, PASSWORD_DEFAULT); // TODO: Quale algo devo usare?
+      
+      // Inserisco l'utente
+      $sqlInsert = "INSERT INTO User (Username, Password, admin, utenteAttivo) VALUES (:username, :password, :admin, :utenteAttivo)";
+      $stmtInsert = $conn->prepare($sqlInsert);
+      $parametri = [
+        ':username' => $usernameNew,
+        ':password' => $passwordHash,
+        ':admin' => 1,
+        ':utenteAttivo' => 1,
+      ];
+      try {
+        $stmtInsert->execute($parametri);
+      } catch (Exception $e) {
+        return ['successo' => false, 'messaggio' => 'Errore: ' . $e->getMessage(), 'codiceErrore' => 1];
+      }
+      
+      if ($stmtInsert->rowCount() > 0) {
+        return ['successo' => true, 'messaggio' => 'Utente creato'];
+      } else {
+        return ['successo' => false, 'messaggio' => 'Errore creazione', 'codiceErrore' => 2];
+      }
+      
+    } catch (Exception $e) {
+      return ['successo' => false, 'messaggio' => 'Errore durante l\'esecuzione: ' . $e->getMessage()];
     }
-    
-    // Creo un array associativo per identificare l'azione compiuta dall'utente in base al nome della pagina
-    $azioni = [
-      'eliminaMenu' => "Menu eliminato",
-      'eliminaPiatto' => "Piatto eliminato",
-      'aggiungiPiatto' => "Piatto creato",
-      'eliminaEvento' => "Evento eliminato",
-      'aggiungiEvento' => "Evento creato",
-      'creaUtente' => "Utente creato",
-      'eliminaUtente' => "Utente eliminato",
-      'login' => "Login effettuato",
-      'logout' => "Logout effettuato",
-    ];
-    // Recupero del valore associato
-    // Cerco la chiave $nomePagina nell'array $azioni.
-    // ?? => Operatore di coalescenza nulla = restituisce il valore di sx se presente, altrimenti il valore di dx
-    $azione = $azioni[$nomePagina] ?? "Azione sconosciuta ($nomePagina)";
-  
-    // Creo un array associativo per identificare l'azione compiuta dall'utente in base al nome della pagina
-    $categorie = [
-      'eliminaMenu' => "Cucina",
-      'eliminaPiatto' => "Cucina",
-      'aggiungiPiatto' => "Cucina",
-      'eliminaEvento' => "Eventi",
-      'aggiungiEvento' => "Eventi",
-      'creaUtente' => "Utenti",
-      'eliminaUtente' => "Utenti",
-      'login' => "Accessi",
-      'logout' => "Accessi",
-    ];
-    $categoria = $categorie[$nomePagina] ?? "Categoria sconosciuta ($nomePagina)";
-    
-    $sql = "INSERT INTO logsAdmin (idAdmin, nomeAdmin, azione, categoria, idEntita, nomeEntita, errore)
-            VALUES                ('$idUser', '$username', '$azione', '$categoria', '$idEntita', '$nomeEntita', '$errore')";
-    $tmp = mysqli_query($conn, $sql);
-    
-    if (!$tmp) {
-      die ("[registraLogAdmin] => Errore durante l'inserimento del log " . mysqli_error($conn));
-    }
-    mysqli_close($conn);
   }
+  # ------------------------------------
+  
+  
+  # ------------------------------------
+  # Funzione per validare gli indirizzi email
+  function validaIndirizzoEmail($indirizzoEmail) {
+    // Rimuovo caratteri
+    $emailSanificata = filter_var($indirizzoEmail, FILTER_SANITIZE_EMAIL);
+    
+    // Valido l'indirizzo email
+    if (!filter_var($emailSanificata, FILTER_VALIDATE_EMAIL)) {
+      return ['successo' => false, 'messaggio' => 'Indirizzo email non valido'];
+    } else {
+      return ['successo' => true, 'messaggio' => 'Indirizzo email valido'];
+    }
+  }
+  
+  
 ?>
+
+
+

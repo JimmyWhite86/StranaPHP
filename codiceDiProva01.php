@@ -1,42 +1,53 @@
 <?php
-# Funzione per generare dinamicamente la tabella con i piatti disponibili
-  function generaTabellaPiattiDisponibili() {
-    $listaPiattiDisponibili = piattiInArray(); ?>
-
-    <table class="table table-striped table-bordered text-center align-midle">
-      <thead class="intestazioneTabella">
-      <tr class="intestazioneTabella">
-        <th class="intestazioneTabella">ID Piatto</th>
-        <th class="intestazioneTabella">Nome Piatto</th>
-        <th class="intestazioneTabella">Prezzo</th>
-        <th class="intestazioneTabella">Categoria</th>
-        <th class="intestazioneTabella">Cuoco</th>
-        <th class="intestazioneTabella">Data inserimento</th>
-        <th class="intestazioneTabella">Seleziona per eliminare</th>
-      </tr>
-      </thead>
-
-      <tbody>
-      <?php foreach ($listaPiattiDisponibili as $piatto) { ?>
-        <tr>
-          <td><?= $piatto['idPiatto']?></td>
-          <td><?= $piatto['nomePiatto']?></td>
-          <td><?= $piatto['prezzoPiatto']?></td>
-          <td><?= $piatto['categoriaPiatto']?></td>
-          <td><?= $piatto['cuoco']?></td>
-          <td><?= $piatto['dataInserimento']?></td>
-          <td class="text-center">
-            <input type="radio" name="piattoSelezionatoElimina" id="piattoSelezionatoElimina" 
-                   value="<?= $piatto['idPiatto'] ?>">
-          </td>
-        </tr>
-        <?php
+  function creaEvento($nomeEvento, $dataEvento, $descrizioneEvento, $immagine) {
+    try {
+      $conn = connetti();
+      if(!$conn) {
+        throw new Exception ("Connessione fallita: " . mysqli_connect_error() . "Numero errore: " . mysqli_connect_errno());
       }
-      ?>
-
-      </tbody>
-    </table>
-    <?php
+      
+      // Verifico che l'evento non sia già presente nel db
+      $sqlCheck = "SELECT * FROM Evento WHERE NomeEvento = :nomeEvento AND DataEvento = :dataEvento"; // Controllo che non ci siano eventi con lo stesso nome e la stessa data. Un evento può ripetersi in date diverse.
+      $stmtCheck = $conn->prepare($sqlCheck);
+      $stmtCheck->execute([':nomeEvento' => $nomeEvento, ':dataEvento' => $dataEvento]);
+      if ($stmtCheck->rowCount() > 0) {
+        return ['successo' => false, 'messaggio' => 'Evento già presente'];
+      }
+      
+      // Preparo la variabile per l'immagine
+      $pathNameImmagine = null;
+      
+      // Processo l'immagine se caricata
+      if (isset($immagine) && $immagine['error'] === UPLOAD_ERR_OK) {
+        $immagineCaricata = caricaImmagini($immagine);
+        if ($immagineCaricata['successo']) {
+          $pathNameImmagine = $immagineCaricata['pathname'];
+        } else {
+          return ['successo' => false, 'messaggio' => $immagineCaricata['messaggio']];
+        }
+      }
+      
+      // Inserisco l'evento
+      $sqlInsert = "INSERT INTO Eventi (NomeEvento, DataEvento, Descrizione, eliminato, immagine)
+                  VALUES (:nomeEvento, :dataEvento, :descrizioneEvento, :eliminato, :pathNameImmagine ) ";
+      $stmtInsert = $conn->prepare($sqlInsert);
+      $parametri = [
+        ':nomeEvento' => $nomeEvento,
+        ':dataEvento' => $dataEvento,
+        ':pathNameImmagine' => $pathNameImmagine,
+        ':descrizioneEvento' => $descrizioneEvento,
+        ':eliminato' => 0,
+      ];
+      $stmtInsert->execute($parametri);
+      
+      if ($stmtInsert->rowCount() > 0) {
+        return ['successo' => true, 'messaggio' => 'Evento creato'];
+      } else {
+        return ['successo' => false, 'messaggio' => 'Errore creazione'];
+      }
+    } catch (PDOException $e) {
+      return ['successo' => false, 'messaggio' => $e->getMessage()];
+    }
   }
   
   ?>

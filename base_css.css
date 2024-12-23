@@ -2,6 +2,16 @@
 /* Bianchi Andrea */
 /* 2024 _ UniTo */
 
+/* ------------------------------------------------ */
+/* DEFINIZIONE DEI COLORI */
+:root {
+  --rossoStrana: #fe4a49;
+  --gialloStrana: #fed766;
+  --azzurroStrana: #009fb7;
+  --neroStrana: #000000;
+  --biancoStrana: #ffffff;
+}
+/* ------------------------------------------------ */
 
 
 /* ------------------------------------------------ */
@@ -10,13 +20,13 @@
 /* FONT EASYRIDING  */
 @font-face {
   font-family: Easy;
-  src: url(font/Easy.ttf);
+  src: url(FONT/Easy.ttf);
 }
 
 /* FONT LOGO STRANAMORE */
 @font-face {
   font-family: Strana;
-  src: url(font/TerrabloX.ttf);
+  src: url(FONT/TerrabloX.ttf);
 }
 
 /* FONT BABAS NEUE */
@@ -25,12 +35,11 @@
   src: url(FONT/BebasNeue-Regular.ttf);
 }
 
-/* FONT LATO*/
+/* FONT LATO */
 @font-face {
   font-family: Lato-Regular;
   src: url(FONT/Lato-Regular.ttf);
 }
-
 
 body {
   font-family: Lato-Regular, arial, hevetica, sans-serif;
@@ -38,91 +47,112 @@ body {
 }
 
 .fontNav {
-  font-family: easy, arial, hevetica, sans-serif;
+  font-family: Babas, arial, hevetica, sans-serif;
   line-height: 1.8;
-  font-size: 2rem;
+  font-size: 3.5rem;
   font-weight: 600;
-  color: #fed766;
 }
 
 .fontstranaBase {
   font-family: Strana, arial, hevetica, sans-serif;
-  color: #009fb7;
+  color: var(--azzurroStrana);
   font-size: 6rem;
 }
 
-.fontstranaFooter {
+.fontStranaFooter {
   font-family: Strana, arial, hevetica, sans-serif;
-  color: #fed766;
+  color: var(--gialloStrana);
   font-size: 3rem;
+  line-height: 1.1;
 }
 
-.fontstranaTitoli {
+.fontStranaTitoli {
   font-family: Strana, arial, hevetica, sans-serif;
-  color: #fed766;
-  font-size: 4rem;
+  color: var(--gialloStrana);
+  font-size: 6rem;
 }
 
 .fontFooter01 {
-  font-family: easy, Arial, Helvetica, sans-serif;
-  color: #fed766;
+  font-family: Babas, Arial, Helvetica, sans-serif;
+  color: var(--gialloStrana);
   font-size: 1.5rem;
   margin-bottom: 0;
 }
 
 .fontFooter02 {
-  font-family: easy, Arial, Helvetica, sans-serif;
-  color: #fed766;
+  font-family: Babas, Arial, Helvetica, sans-serif;
+  color: var(--gialloStrana);
   font-size: 1.8rem;
   margin-top: 0;
 }
 
+.fontFooterSopra {
+  font-family: Babas, Arial, Helvetica, sans-serif;
+  color: var(--rossoStrana);
+  line-height: 0;
+}
+
+.fontFooterSotto {
+  font-family: Babas, Arial, Helvetica, sans-serif;
+  color: var(--azzurroStrana);
+  line-height: 0;
+}
+
 .fontChiSiamo01 {
   font-family: strana, Arial, Helvetica, sans-serif;
-  color: #000000;
+  color: var(--neroStrana);
+  font-size: 4rem;
+}
+
+.fontChiSiamo02 {
+  font-family: strana, Arial, Helvetica, sans-serif;
+  color: var(--neroStrana);
   font-size: 4rem;
 }
 
 .fontTipoPiattiMenu {
   font-family: strana, Arial, Helvetica, sans-serif;
-  color: #000000;
+  color: var(--neroStrana);
   font-size: 4rem;
 }
 
 .fontContatti01 {
   font-family: Strana, Arial, Helvetica, sans-serif;
-  color: #000000;
+  color: var(--neroStrana);
   font-size: 3rem;
 }
 
-.babasTitolo {
+.fontHeroSopra {
   font-family: Babas, Arial, Helvetica, sans-serif;
-  font-size: 3rem;
-  color: #fe4a49;
+  font-size: 5rem;
+  color: var(--rossoStrana);
+  line-height: 0.7;
+  text-decoration: #000000;
+  text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000;
 }
 
-#fontHeroSopra {
-  font-family: palatino, Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 2rem;
-  color: #fe4a49;
+.fontHeroSotto {
+  font-family: Babas, Arial, Helvetica, sans-serif;
+  color: var(--azzurroStrana);
+  font-size: 4rem;
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+  line-height: 0.6;
 }
 
-#fontHeroSotto {
-  color: #009fb7; 
-}
-
-#fontHeroCentro {
+.fontHeroCentro {
   font-family: Strana, arial, hevetica, sans-serif;
-  font-size: 6rem;
-  color: #fed766;
+  font-size: 12rem;
+  color: var(--gialloStrana);
+  background-color: var(--neroStrana);
+  background-size: auto;
+  line-height: 0.7;
 }
 
 .titoloPagina {
   font-family: Strana, arial, hevetica, sans-serif;
   font-size: 6rem;
-  color: #fed766;
-  background-color: black;
+  color: var(--gialloStrana);
+  background-color: var(--neroStrana);
 }
 
 .testoHome {
@@ -135,35 +165,70 @@ body {
   font-size: 2.5rem;
 }
 
+.fontTitoloSezione {
+  font-family: Babas, arial, hevetica, sans-serif;
+  font-size: 3rem;
+  color: #000000;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px #808080;
+}
+
 /* // Font per schermi con differenti formati  */
 
-/* Schermi tra 768px e 1199px */
-@media (max-width: 1199px) and (min-width: 769px) {
-  #fontHeroCentro {
+/* Schermi tra 1399 e 1199px */
+@media (min-width: 1199px) and (max-width: 1399px) {
+  .fontHeroCentro {
+    font-size: 10rem;
+  }
+  .fontHeroSopra {
     font-size: 4rem;
   }
-  .babasTitolo {
-    font-size: 2rem;
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fontHeroCentro {
+    font-size: 8rem;
+  }
+  .fontHeroSopra {
+    font-size: 4rem;
+  }
+
+  .fontHeroSotto {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .fontHeroCentro {
+    font-size: 6rem;
+  }
+  .fontHeroSopra {
+    font-size: 3rem;
+  }
+
+  .fontHeroSotto {
+    font-size: 3rem;
   }
 }
 
 /* Schermi sotto i 768px */
 @media (max-width: 768px) {
-  #fontHeroCentro {
+  .fontHeroCentro {
+    width: 90vw;
+    max-width: 90vw;
+  }
+
+  .fontHeroSopra {
+    font-size: 2.5rem;
+  }
+
+  .fontHeroSotto {
+    font-size: 2.5rem;
+  }
+
+/*  .fontstranaTitoli {
     font-size: 3rem;
-  }
-
-  .babasTitolo {
-    font-size: 1.5rem;
-  }
-
-  #fontHeroSotto {
-    font-size: 1rem;
-  }
-
-  .fontstranaTitoli {
-    font-size: 3rem;
-  }
+  }*/
 
   .testoHome {
     font-size: 1rem;
@@ -188,6 +253,75 @@ body {
   #titoloPaginaGallery {
     font-size: 2.8rem !important;
   }
+
+  .fontChiSiamo02 {
+    font-size: 2.4rem;
+  }
+
+  .containerIndexCentrale {
+    width: 96% !important;
+  }
+}
+
+@media (max-width: 563px) {
+  .fontHeroSopra {
+    font-size: 2rem;
+  }
+
+  .fontHeroCentro {
+    font-size: 4rem;
+  }
+
+  .fontHeroSotto {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 494px) {
+  .fontStranaTitoli {
+    font-size: 3.7rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .fontHeroSopra {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .fontHeroSotto {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1358px) {
+  .fontNav {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 736px) {
+  .fontHeroCentro {
+    font-size: 4.7rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .fontHeroCentro {
+    display: none;
+  }
+}
+
+@media (min-width: 576px) {
+  .myImgHero {
+    display: none;
+  }
+}
+
+@media (max-width: 1200px) {
+  .fontNav {
+    font-size: 2rem;
+  }
 }
 /* ------------------------------------------------ */
 
@@ -196,23 +330,23 @@ body {
 /* // COLORI DI SFONDO */
 
 .bg-azzurro {
-  background-color: #009fb7;
+  background-color: var(--azzurroStrana);
 }
 
 .bg-rosso {
-  background-color: #fe4a49;
+  background-color: var(--rossoStrana);
 }
 
 .bg-giallo {
-  background-color: #fed766;
+  background-color: var(--gialloStrana);
 }
 
 .bg-nero {
-  background-color: #000000;
+  background-color: var(--neroStrana);
 }
 
 .bg-bianco {
-  background-color: #ffffff;
+  background-color: var(--biancoStrana);
 }
 /* ------------------------------------------------ */
 
@@ -221,15 +355,15 @@ body {
 /* // COLORI ICONE */
 
 .iconeGialle {
-  color: #fed766;
+  color: var(--gialloStrana);
 }
 
 .iconeRosse {
-  color: #fe4a49;
+  color: var(--rossoStrana);
 }
 
 .iconeAzzurre {
-  color: #009fb7;
+  color: var(--azzurroStrana);
 }
 
 
@@ -274,11 +408,11 @@ body {
 }
 
 .nav-link:hover {
-  color:#009fb7 !important;
+  color: var(--azzurroStrana) !important;
 }
 
 .mioActive {
-  color: #fe4a49 !important;
+  color: var(--rossoStrana) !important;
 }
 
 .navbar-brand img { /* Imposto la grandezza del logo */
@@ -287,15 +421,11 @@ body {
 }
 
 .mioSpanNav {
-  color: #009fb7;
+  color: var(--gialloStrana);
 }
 
-.dropdown-menu {
+.dropdown-menu { /* TODO: Verificare utilizzo */
   background-color: #457b2f;
-}
-
-.iconeGialle {
-  color: #fed766;
 }
 
 /* Cambia colore dell'icona del burger menu */
@@ -311,15 +441,21 @@ body {
 /* Aumento la dimensione del logo su dispositivi mobili */
 @media (max-width: 768px) {
   .navbar-brand img {
-    width: 22vw; /* Aumenta la dimensione al 20% della larghezza dello schermo */
+    width: 40vw; /* Aumenta la dimensione al 40% della larghezza dello schermo */
     height: auto;
   }
   .mioSpanNav { /* In schermi piccoli, quando i link diventano buerger menu, nascondo il carattere "|" */
     display: none;
   }
 }
-/* ------------------------------------------------------ */
 
+@media (max-width: 990px) and (min-width: 768px) {
+  .navbar-brand img {
+    width: 25vw;
+    height: auto;
+  }
+}
+/* ------------------------------------------------------ */
 
 
 /* ------------------------------------------------------- */
@@ -337,15 +473,20 @@ body {
 /* -------------------------------------------------------- */
 /* // FOOTER */
 footer a {
-  color: #ffffff !important;
+  color: var(--biancoStrana) !important;
 }
+
+.socialIcon {
+  text-decoration: none;
+}
+
 /* -------------------------------------------------------- */
 
 /* -------------------------------------------------------- */
 /* // BLOCCHI HOMEPAGE */
 
 .mioBordo01 {
-  border: .3rem solid #009fb7;
+  border: .3rem solid var(--azzurroStrana);
 }
 
 .mioFlowRoot {
@@ -359,31 +500,54 @@ footer a {
   margin-bottom: 2.813rem;
 }
 
-.contact-form {
-  background: black;
-  margin-top: 10%;
-  margin-bottom: 5%;
-  width: 70%;
-}
-
 .contact-form .mioH3contatti {
   font-family: Strana, Arial, Helvetica, sans-serif;
   margin-bottom: 8%;
   margin-top: -10%;
   text-align: center;
-  color: #000000;
+  color: var(--neroStrana);
   font-size: 4rem;
 }
 
 .contact-form {
-  background: #fff;
-  margin-top: 10%;
+  background: var(--biancoStrana);
+  margin-top: 5%;
   margin-bottom: 5%;
+  margin-left: 2%;
+  margin-right: 2%;
   width: 70%;
+  padding-top: 4%;
+  padding-left: 8%;
+  padding-right: 8%;
+  padding-bottom: 7%;
 }
 
 .contact-form .form-control {
   border-radius:1rem;
+}
+
+/* Stato iniziale degli input */
+.form-control:focus {
+  border-color: var(--azzurroStrana);
+  box-shadow: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 191, 255, 0.25);
+}
+
+/* Stato di errore degli input */
+.form-control.is-invalid {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* Stato di successo degli input */
+.form-control.is-valid {
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.form-control.is-pristine {
+  border-color: #ced4da;
+  box-shadow: 0 0 0 0.2rem rgba(206, 212, 218, 0.25);
 }
 
 .contact-image {
@@ -396,10 +560,6 @@ footer a {
   margin-top: -3%;
 }
 
-.contact-form form {
-  padding: 14% 5%;
-}
-
 .contact-form form .row {
   margin-bottom: -7%;
 }
@@ -409,7 +569,7 @@ footer a {
   border: none;
   border-radius: 1rem;
   padding: 1.5%;
-  background: #ffd73d;
+  background: var(--gialloStrana);
   font-weight: 600;
   color: black;
   cursor: pointer;
@@ -420,7 +580,7 @@ footer a {
   border-radius: 1rem;
   padding: 1.5%;
   color: #fff;
-  background-color: #0062cc;
+  background-color: var(--azzurroStrana);
   border: none;
   cursor: pointer;
 }
@@ -434,10 +594,66 @@ footer a {
     padding-bottom: 4.375rem;
 }
 
-@media (max-width: 768px) {
+.inputBlu {
+  border: 2px solid #00bfff;
+}
+
+.inputVerde {
+  border: 2px solid #28a745;
+}
+
+.inputRosso {
+  border: 2px solid #dc3545;
+}
+
+@media (max-width: 1150px) {
   .contact-form {
-    width: 100% !important;
+    width: 90% !important;
   }
+  .separatoreVerticale {
+    border-right: 0;
+  }
+}
+
+.separatoreVerticale {
+  border-right: 2px solid #000000;
+  height: 80%;
+}
+
+.btn-social-icon {
+  margin: 0 5px;
+  color: #ffffff;
+  background-color: #333;
+  width: 4rem;
+  height: 4rem;
+  font-size: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.btn-facebook {
+  background-color: #3b5998;
+}
+
+.btn-twitter {
+  background-color: #1da1f2;
+}
+
+.btn-instagram {
+  background-color: #e4405f;
+}
+
+.btn-youtube {
+  background-color: #cd201f;
+}
+
+.separatoreSpesso {
+  border: 0;
+  height: 2px;
+  background: black;
+  margin: 20px 0;
 }
 /* --------------------------------------------------------- */
 
@@ -446,40 +662,51 @@ footer a {
 /* // BOTTONI */
 
 .bottoneRosso {
-  border-color: #fe4a49;
-  /* color: #fe4a49; */
-  /* background-color: #000000; */
+  border-color: var(--rossoStrana);
   border-radius: .3rem;
   border-width: .3rem;
 }
 .bottoneRosso:hover {
   border-color: black;
   color: black;
-  background-color: #fe4a49;
+  background-color: var(--rossoStrana);
   border-radius: .3rem;
 }
 
 .bottoneGiallo {
-  border-color: #fed766;
+  border-color: var(--gialloStrana);
   border-radius: .3rem;
   border-width: .3rem;
 }
 .bottoneGiallo:hover {
   border-color: black;
   color: #000000;
-  background-color: #fed766;
+  background-color: var(--gialloStrana);
   border-radius: .3rem;
 }
 
+.bottoneGiallo2 {
+  border-color: var(--gialloStrana);
+  border-radius: .3rem;
+  border-width: .3rem;
+  background-color: white;
+}
+.bottoneGiallo2:hover {
+  border-color: white;
+  background-color: var(--gialloStrana);
+  border-radius: .3rem;
+  color: black;
+}
+
 .bottoneAzzurro {
-  border-color: #009fb7;
+  border-color: var(--azzurroStrana);
   border-radius: .3rem;
   border-width: .3rem;
 }
 .bottoneAzzurro:hover {
   border-color: #000000;
   color: #000000;
-  background-color: #009fb7;
+  background-color: var(--azzurroStrana);
   border-radius: .3rem;
 }
 /* --------------------------------------------------------- */
@@ -523,11 +750,11 @@ textarea.ng-valid {
 }
 
 .intestazioneTabella {
-  background-color: #fed766 !important;
+  background-color: var(--gialloStrana) !important;
 }
 
 thead th.intestazioneTabella {
-  background-color: #fed766;
+  background-color: var(--gialloStrana);
 }
 
 @media (max-width: 768px) {
@@ -591,3 +818,48 @@ thead th.intestazioneTabella {
   }
 }
 /* --------------------------------------------------------- */
+
+
+
+/* ANIMAZIONI TESTO */
+/* Testo entra da dx verso sx */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-right {
+  animation: slideInFromRight 1s ease-out;
+}
+
+/* Testo entra da sx verso dx*/
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-left {
+  animation: slideInFromLeft 1s ease-out;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-<?php 
+<?php
   session_start();
   $nomePagina = "index";
   include "function.php";
@@ -7,185 +7,150 @@
 
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <meta name="keyword" content="Associazione culturale, APS, ARCI, promozione sociale">
-  <meta name="description" content="Associazione Culturale Stranamore">
-  <meta name="author" content="Bianchi Andrea">
-
-  <!-- CDN CSS BOOTSTRAP -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <!-- JavaScript di Bootstrap -->
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-  
-  <!-- Collegamento al mio file CSS -->
-  <link href="base_css.css" rel="stylesheet" type="text/css">
-  <!-- Libreria per le icone -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-
-  <!-- CDN JQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <!-- CDN Angular -->
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-  <!-- Icone -->
-  <script src="https://kit.fontawesome.com/1a45214b57.js" crossorigin="anonymous"></script>
-
-  <!--  Collegamento al mio modulo JS -->
-  <script src="modulo.js" type="text/javascript"></script>
-
-  <!-- Font Babas Neue -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-
-  <!-- Font Lato -->
-  <!--<link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">-->
-  
-  
+  <?php generaHeadSection(); ?>
   <title>Stranamore | Home</title>
-
 </head>
-<body ng-app="myAppHome" ng-controller="myCtrl">
+
+<body>
+
+<!-- NAV BAR -->
+<?php richiamaNavBar($nomePagina);?>
+<h1 class="visually-hidden">Pagina principale dell'associazione culturale "Stranamore"</h1> <!---->
+
+<main id="mioMain">
+
+  <!-- Hero Section -->
+  <section class="hero-section bg-rosso text-center text-white d-flex align-items-center" role="banner">
+    <h2 class="visually-hidden">Hero Section di Stranamore</h2>
+    <div class="container hero-content" ng-app="myAppHome" ng-controller="myCtrl">
+      <div class="row justify-content-center">
+        <p class="m-0 p-0 fontHeroSopra hidden" id="heroSopra">Associazione Culturale e Circolo ARCI</p>
+        <p class="px-1 fontHeroCentro" id="heroCentro"></p>
+        <img src="Immagini/Logo_Stranamore_01.jpg" class="img-fluid myImgHero" alt="Logo dell'associazione culturale Stranamore">
+        <p class="m-0 p-0 pb-2 fontHeroSotto hidden" id="heroSotto">PROMUOVIAMO CULTURA, INCLUSIONE E SOCIALITA'</p>
+      </div>
+    </div>
+  </section>
   
-  <!-- NAV BAR -->
-  <?php richiamaNavBar($nomePagina);?>
-  
+  <hr>
 
-  <main id="mioMain" role="main">
-    
-    <!-- Hero Section -->
-    <section class="hero-section bg-rosso text-center text-white d-flex align-items-center">
-      <div class="container hero-content">
-        <div class="row justify-content-center">
-          <div class="col-md-8 bg-nero">
-            <h2 class="m-0 p-0 pt-2 babasTitolo" id="">Associazione Culturale e Circolo ARCI</h2>
-            <h1 class="m-0 p-0" id="fontHeroCentro">stranamore</h1>
-            <h3 class="m-0 p-0 pb-2" id="fontHeroSotto">Promuoviamo cultura, inclusione e socialità</h3> 
-          </div>
-        </div> 
-      </div>
-    </section>
+  <!-- sessione centrale -->
+  <div class="bg-giallo container-fluid justify-content-center mioFlowRoot">
 
-    <!-- sessione centrale -->
-    <div class="bg-giallo container-fluid justify-content-center mioFlowRoot">
-
-      <!-- Chi siamo breve -->
-      <div class="container-fluid justify-content-center bg-nero w-75 mt-2" style="color: white;">
-        <h3 class="pt-5 text-center fontstranaTitoli">chi siamo</h3>
-        <div class="row justify-content-center">
-          <div class="col-sm-10 col-md-8">
-            <p class="testoHome">
-              Siamo un'associazione di promozione sociale affiliata ARCI.
-              Promuvoiamo cultura, arte e socializzazione sul nostro territorio.
-              Per le persone associate è presente la cucina.
-            </p>
-            <br>
-            <a href="chisiamo.php">Scopri di piu</a>
+    <!-- Chi siamo breve -->
+    <div class="containerIndexCentrale container-fluid justify-content-center bg-nero w-75 mt-2" style="color: white;">
+      <h3 class="pt-5 text-center fontStranaTitoli" id="chiSiamoIndex">chi siamo</h3>
+      <div class="row justify-content-center">
+        <div class="col-sm-10 col-md-8">
+          <p class="testoHome">
+            Siamo un'associazione di promozione sociale affiliata ad ARCI, impegnata nella diffusione di cultura, arte
+            e opportunità di socializzazione sul nostro territorio. Organizziamo attività, eventi e iniziative che mirano
+            a creare spazi inclusivi e partecipativi, dove le persone possano incontrarsi, condividere idee e coltivare
+            passioni comuni. Crediamo nella cultura come strumento di crescita individuale e collettiva, e ci impegniamo
+            a valorizzare la comunità attraverso l'arte, la creatività e il dialogo.
+          </p>
+          <div class="text-end mb-3">
+            <a href="chisiamo.php" class="btn bottoneGiallo2" aria-label="Scopri di più su chi siamo">Conoscici meglio</a>
           </div>
         </div>
       </div>
-
-      <!-- La cucina breve -->
-      <div class="container-fluid justify-content-center bg-nero w-75 mt-2 mb-2" style="color: white;">
-        <h3 class="pt-5 text-center fontstranaTitoli">la cucina</h3>
-        <div class="row justify-content-center">
-          <div class="col-sm-10 col-md-8">
-            <p class="testoHome">
-              La nostra cucina è aperta per tutte le persone associate.
-              Cerchiamo di proporre piatti con ingredienti di qualità promuovendo la stagionalità dei cibi.
-              Possiamo anche organizzare menu fissi per feste o grandi tavolate.
-            </p>
-            <br>
-            <a href="chisiamo.php">Scopri di piu</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Eventi breve -->
-      <div class="container-fluid justify-content-center bg-nero w-75 mt-2 mb-2" style="color: white;">
-        <h3 class="pt-5 text-center fontstranaTitoli">eventi</h3>
-        <div class="row justify-content-center">
-          <div class="col-sm-10 col-md-8">
-            <p class="testoHome">
-              Organiziamo incontri e dibattiti su temi di attualità.
-              Inviatiamo persone autorevoli che possano spiegarci cosa succede nel mondo. 
-              Ospitiamo presentazioni di libri.
-              Ma non siamo sempre seri. Ci piacciano anche concerti e dj set.
-            </p>
-            <br>
-            <a href="chisiamo.php">Scopri di piu</a>
-          </div>
-        </div>
-      </div>
-
     </div>
 
-
-
-
-    <!-- NewsLetter e 8x1000 -->
-    <section>
-      <div class="container-fluid text-center bg-azzurro">
-        <div class="row justify-content-center">
-          
-          <div class="m-2 card col-md-4" style="width: 20em;">
-            <!-- <img src="Immagini/Newletter_Azzurra_100_01.png" class="img-fluid myImgCard"> -->
-            <i class="bi bi-envelope-paper-heart fa-10x iconeRosse"></i>
-            <div class="card-body">
-              <h3>Iscriviti alla nostra NewsLetter</h3>
-              <p>Rimani aggiornato sulle nostre iniziative e non perderti nessun evento!</p>
-              <p>La nostra NewsLetter ha cadenza settimanale e serve per comunicare con i nostri soci.</p>
-            </div>
-            <div class="card-footer">
-              <a href="" class="btn bottoneRosso">Iscriviti</a>
-            </div>
+    <!-- La cucina breve -->
+    <div class="containerIndexCentrale container-fluid justify-content-center bg-nero w-75 mt-2 mb-2" style="color: white;">
+      <h3 class="pt-5 text-center fontStranaTitoli" id="laCucinaIndex">la cucina</h3>
+      <div class="row justify-content-center">
+        <div class="col-sm-10 col-md-8">
+          <p class="testoHome">
+            Offriamo un servizio mensa e bar dedicato a tuttə lə socə, con piatti preparati utilizzando ingredienti di
+            qualità. Promuoviamo la stagionalità dei prodotti e valorizziamo le eccellenze delle produzioni locali.
+          </p>
+          <div class="text-end mb-3">
+            <a href="lacucina.php" class="btn bottoneGiallo2" aria-label="Clicca per conoscere il menu">Cosa bolle in pentola</a>
           </div>
-
-          <div class="m-2 card col-md-4" style="width: 20em;">
-            <!-- <img src="Immagini/Moneta_Rossa_01.png" class="img-fluid myImgCard"> -->
-            <i class="bi bi-piggy-bank fa-10x iconeGialle"></i>
-            <div class="card-body">
-              <h3>Dona il tuo 5x1000</h3>
-              <p>Tutte le nostre iniziative sono volte ad autofinanziarci</p>
-              <p>Il tuo contributo per noi è davvero importante.</p>
-            </div>
-            <div class="card-footer">
-              <a href="" class="btn bottoneGiallo">Dona</a>
-            </div>
-          </div>
-
-          <div class="m-2 card col-md-4" style="width: 20em;">
-            <!-- <img src="Immagini/Contattaci_Giallo_50_01.png" class="img-fluid myImgCard"> -->
-            <i class="bi bi-mic-fill fa-10x iconeAzzurre"></i>
-            <div class="card-body">
-              <h3>Vuoi proporre un dibattito o un evento?</h3>
-              <p>Usa il form per contattarci</p>
-              <p>Siamo sempre alla ricerca di incontri, musica e spettacoli che possano animare il nostro circolo. 
-                Facci sapere la tua proposta.</p>
-            </div>
-            <div class="card-footer">
-              <a href="contatti.php" class="btn bottoneAzzurro">Contattaci</a>
-            </div>
-          </div>
-
         </div>
       </div>
-    </section>
+    </div>
 
+    <!-- Eventi breve -->
+    <div class="containerIndexCentrale container-fluid justify-content-center bg-nero w-75 mt-2 mb-2" style="color: white;">
+      <h3 class="pt-5 text-center fontStranaTitoli" id="eventiIndex">eventi</h3>
+      <div class="row justify-content-center">
+        <div class="col-sm-10 col-md-8">
+          <p class="testoHome">
+            Organizziamo incontri e dibattiti su temi di attualità, coinvolgendo esperti e figure autorevoli per
+            aiutarci a comprendere meglio cosa accade nel mondo.
+            Ospitiamo presentazioni di libri, ma non ci fermiamo qui: ci piace anche divertirci con concerti e dj set,
+            perché non siamo sempre così seri.
+          </p>
+          <div class="text-end mb-3">
+            <a href="eventi.php" class="btn bottoneGiallo2">Guarda i prossimi eventi</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <!-- Footer -->
-    <?php HTMLfooter($nomePagina);?>
-    
-  </main>
+  <hr>
+  
+  <!-- Card Section -->
+  <section>
+    <div class="container-fluid text-center bg-azzurro">
+      <div class="row justify-content-center">
+
+        <div class="m-2 card col-md-4" style="width: 20em;" role="region" aria-label="Iscriviti alla nostra newsletter">
+          <i class="bi bi-envelope-paper-heart fa-10x iconeRosse"></i>
+          <div class="card-body">
+            <h4>Iscriviti alla nostra NewsLetter</h4>
+            <p>Rimani aggiornato sulle nostre iniziative e non perderti nessun evento!</p>
+            <p>
+              La nostra NewsLetter ha cadenza settimanale e viene usata per tenerti informato sugli eventi organizzati
+              dal nostro circolo.
+            </p>
+          </div>
+          <div class="card-footer">
+            <a href="" class="btn bottoneRosso" aria-label="Clicca per iscriverti alla nostra newsletter">Iscriviti</a>
+          </div>
+        </div>
+
+        <div class="m-2 card col-md-4" style="width: 20em;" role="region" aria-label="Dona il tuo 8x1000">
+          <i class="bi bi-piggy-bank fa-10x iconeGialle"></i>
+          <div class="card-body">
+            <h4>Dona il tuo 5x1000</h4>
+            <p>Tutte le nostre iniziative sono volte ad autofinanziarci</p>
+            <p>Il tuo contributo per noi è davvero importante.</p>
+          </div>
+          <div class="card-footer">
+            <a href="" class="btn bottoneGiallo" aria-label="Clicca per donare il tuo 8x1000">Dona</a>
+          </div>
+        </div>
+
+        <div class="m-2 card col-md-4" style="width: 20em;" role="region" aria-label="Proponici un evento">
+          <i class="bi bi-mic-fill fa-10x iconeAzzurre"></i>
+          <div class="card-body">
+            <h4>Vuoi proporre un dibattito o un evento?</h4>
+            <p>Usa il form per contattarci</p>
+            <p>Siamo sempre alla ricerca di incontri, musica e spettacoli che possano animare il nostro circolo.
+              Facci sapere la tua proposta.</p>
+          </div>
+          <div class="card-footer">
+            <a href="contatti.php" class="btn bottoneAzzurro" aria-label="Clicca per contattarci">Contattaci</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- Footer -->
+  <?php HTMLfooter($nomePagina);?>
+
+</main>
 
 </body>
 </html>
+
