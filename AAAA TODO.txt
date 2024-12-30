@@ -18,7 +18,7 @@
 - SQLi
 - XSS
 - Uniformare i nomi delle pagine
-- Ottimizzazione SEO
+- Ottimizzazione SEO (vedi slide 06 - SEO)
 - Verifica accessibilità
 - Dare consistenza ai commenti ripetuti (per esempio "richiamo la navbar")
 - nel tag body è necessario il richiamo ad angular in tutte le pagine?
@@ -28,7 +28,8 @@
 - File statuto associazione
 - numero di passaggi in nuovo menu
 - Pagina "sostienici" --> 8x1000, tesseramento, donazioni
-- Mappa del sito per SEO
+- Mappa del sito per SEO (sitemap)
+- Peso delle immagini per il tempo di caricamento
 https://search.google.com/search-console/welcome?hl=it
 
 
