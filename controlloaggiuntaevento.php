@@ -47,14 +47,14 @@
       }
       
       // Controllo che i campi obbligatori non siano vuoti
-      if (empty($evento) || empty($descrizione) || empty($data)) {
-        echo "Tutti i campi devono essere compilati";
+      if (empty($evento) || empty($descrizione) || empty($data)) { //TODO: la descrizione può non essere obbligatoria?
+        echo "Tutti i campi devono essere compilati"; //TODO: evitare di usare echo
       }
       
       // Gestisco l'immagine
       $imagePath = gestisciImmagine();
       if ($imagePath === false) {
-        echo "Errore durante il caricamento del file";
+        echo "Errore durante il caricamento del file"; //TODO: evitare di usare echo
         exit;
       }
       
@@ -79,6 +79,7 @@
           <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
             <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
               <h2>Ci sono stati problemi con l'inserimento del nuovo evento!</h2>
+              <h3>Errore: <?=$esitoInserimentoEvento['errore']?></h3> <!--Per le prove-->
               <hr>
               <a href="aggiungievento.php" class="btn btn-primary mb-3">Aggiungi evento</a><br>
               <a href="gestioneEventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>

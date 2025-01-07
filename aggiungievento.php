@@ -74,7 +74,7 @@
                       <span class="mandatory">*</span>
                     </label>
                     <span ng-show="formNuovoEvento.dataNew.$touched && formNuovoEvento.dataNew.$error.required" class="mioErrore01"
-                          role="alert">
+                          role="alert"> <!--TODO: la descrizione può non essere obbligatoria?-->
                       Campo obbligatorio
                     </span>
                     <input type="date" name="dataNew" id="dataNew" class="form-control col-md-3" required aria-required="true"
