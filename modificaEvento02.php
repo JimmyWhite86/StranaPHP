@@ -1,3 +1,5 @@
+<!-- QUESTA PAGINA DEVE ESSERE ANCORA IMPLEMENTATA -->
+
 <?php
   session_start();
   $nomePagina = "modificaEvento";

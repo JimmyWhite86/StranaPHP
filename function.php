@@ -1,7 +1,6 @@
 <?php
-# ------------------------------------
-# Funzione per connettersi al DataBase.
-#
+  # ------------------------------------
+  # Funzione per connettersi al DataBase.
   function connetti() {
     $dbname = "Strana01";
     $host = "localhost";
@@ -10,7 +9,7 @@
     $charset = "utf8mb4";
     
     $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
-  
+    
     try {
       $conn = new PDO($dsn, $username, $password);
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Imposta la modalità di errore su eccezione
@@ -20,19 +19,19 @@
       die("Funzione connetti: Connessione fallita: " . $e->getMessage());
     }
   }
-# ------------------------------------
+  # ------------------------------------
   
   
-# ------------------------------------
-# Funzione cerca utente
+  # ------------------------------------
+  # Funzione per sanificare input
   function sanificaInput($inputDaSanificare) {
-    return htmlspecialchars(trim($inputDaSanificare ?? ''), ENT_QUOTES, 'UTF-8');
+    return htmlspecialchars(trim($inputDaSanificare ?? ''), ENT_QUOTES, 'UTF-8'); // Operatore di coalescenza nulla
   }
-# ------------------------------------
-
-
-# ------------------------------------
-# Funzione cerca utente
+  # ------------------------------------
+  
+  
+  # ------------------------------------
+  # Funzione cerca utente
   function cercaUtente ($username) {
     try {
       // Validazione dell'ìnput
@@ -57,16 +56,16 @@
       // Restituisco il risultato
       return $utente ? $utente : null; // Se non trova risultati restituisce il valore null
     } catch (PDOException $e) {
-        die ("Errore nella funzione cercaUtente: " . $e->getMessage());
-      } finally { // Chiusura esplicita della connessione. La connessione viene altrimenti chiusa quando finisce la funzione. TODO: Lascio la chiusura esplicita?
+      die ("Errore nella funzione cercaUtente: " . $e->getMessage());
+    } finally { // Chiusura esplicita della connessione. La connessione viene altrimenti chiusa quando finisce la funzione. TODO: Lascio la chiusura esplicita?
       $conn = null;
     }
-}
-# ------------------------------------
-
-
-# ------------------------------------
-# Restituisce informazioni su tutti gli eventi presenti in tabella eventi
+  }
+  # ------------------------------------
+  
+  
+  # ------------------------------------
+  # Restituisce informazioni su tutti gli eventi presenti in tabella eventi
   function ottieniListaEventi ($attivi) {
     
     try {
@@ -99,11 +98,11 @@
       die("[ottieniListaEventi] => Errore: " . $e->getMessage());
     }
   }
-# ------------------------------------
-
-
-# ------------------------------------
-# Funzione che richiama la nav bar in base all'utente loggato
+  # ------------------------------------
+  
+  
+  # ------------------------------------
+  # Funzione che richiama la nav bar in base all'utente loggato
   function richiamaNavBar($nomePagina) {
     if (!isset($_SESSION['username'])) {
       normalNavBar($nomePagina);
@@ -114,15 +113,15 @@
         adminNavBar($nomePagina);
       }
       if ($tipoUtente == 0) {
-        userNavBar($nomePagina);
+        userNavBar($nomePagina); // Questa funzione non è al momento utilizzata. Pensata nel caso in cui si voglia creare un'area utente in un secondo momento.
       }
     }
   }
-# ------------------------------------
-
-
-# ------------------------------------
-# Funzione per controllare se utente loggato è amministratore o no
+  # ------------------------------------
+  
+  
+  # ------------------------------------
+  # Funzione per controllare se utente loggato è amministratore o no
   function controlloAdmin ($username) {
     try {
       $conn = connetti();
@@ -130,7 +129,7 @@
       $stmt = $conn->prepare($sql);
       $stmt->bindParam(':username', $username, PDO::PARAM_STR);
       $stmt->execute();
-      $row = $stmt->fetch(); // Recuper il risultato della query
+      $row = $stmt->fetch(); // Recupero il risultato della query
       if ($row && $row['admin'] == 1) {
         return true;
       } else {
@@ -140,11 +139,11 @@
       die("Errore nella funzione controlloAdmin: " . $e->getMessage());
     }
   }
-# ------------------------------------
-
-
-# ------------------------------------
-# Funzione per eliminare un evento già salvato
+  # ------------------------------------
+  
+  
+  # ------------------------------------
+  # Funzione per eliminare un evento già salvato
   function eliminaEvento ($idEvento) {
     try {
       $conn = connetti();
@@ -187,11 +186,11 @@
       return ['successo' => false, 'errore' => $e->getMessage()];
     }
   }
-# ------------------------------------
-
-
-# ------------------------------------
-# Funzione per ottenere contare quanti piatti appartengono ad una determinata categoria
+  # ------------------------------------
+  
+  
+  # ------------------------------------
+  # Funzione per contare quanti piatti appartengono ad una determinata categoria
   function contaCategoriePiatti ($disponibilitaPiatto) {
     
     try {
@@ -210,7 +209,7 @@
           $categorie[$piatto['categoriaPiatto']]++;
         }
       }
-      
+
 //      Per debug
 //      echo "<pre>";
 //      echo "<hr>";
@@ -221,22 +220,22 @@
       return $categorie;
       
     } catch (PDOException $e) {
-     // die ("[contaCategoriePiatti] => Errore: " . $e->getMessage());
-        error_log("[contaCategoriaPiatti] => Errore: " . $e->getMessage());
-        throw new RuntimeException("[contaCategoriaPiatti] => Errore: " . $e->getMessage());
+      // die ("[contaCategoriePiatti] => Errore: " . $e->getMessage());
+      error_log("[contaCategoriaPiatti] => Errore: " . $e->getMessage());
+      throw new RuntimeException("[contaCategoriaPiatti] => Errore: " . $e->getMessage());
     }
   }
-# ------------------------------------
-
-
-
-# ------------------------------------
-# Funzione che trasforma i piatti disponibili in un array associativo
+  # ------------------------------------
+  
+  
+  
+  # ------------------------------------
+  # Funzione che trasforma i piatti disponibili in un array associativo
   function piattiInArray ($disponibilitaPiatto) {
     try {
       $conn = connetti();
       
-     if (!is_int($disponibilitaPiatto) || !in_array($disponibilitaPiatto, [0, 1, 2])) {
+      if (!is_int($disponibilitaPiatto) || !in_array($disponibilitaPiatto, [0, 1, 2])) {
         die ("[piattiInArray] => Il valore di \$disponibilitaPiatto non è un intero");
       }
       
@@ -253,15 +252,15 @@
         default:
           die ("[piattiInArray] => Valore di \$attivi non valido");
       }
-      
+
 //      Per debug
 //      echo "<pre>";
 //      echo "Esegue query: " . $sql . "<br>";
 //      echo "</pre>";
-     
+      
       $stmt = $conn->query($sql);
       $listaPiattiInArray = $stmt->fetchAll();
-      
+
 //      Per debug
 //      echo "<pre>";
 //      echo "<hr>";
@@ -275,51 +274,51 @@
       die("Piatti in array => Errore nella connessione o query: " . $e->getMessage());
     }
   }
-# ------------------------------------
-
-
-# ------------------------------------
-# Funzione per eliminare un singolo piatto dal menu
-function eliminaPiatto ($idPiatto) {
-  try {
-    $conn = connetti();
-    if (!$conn) {
-      throw new PDOException("[eliminaPiatto] => Connessione fallita: " . mysqli_connect_error());
-    }
-    
-    // Controllo se il piatto esiste
-    $sqlSelect = "SELECT * FROM menuCucina WHERE idPiatto= :idPiatto";
-    $stmtSelect = $conn->prepare($sqlSelect);
-    $stmtSelect->execute(['idPiatto' => $idPiatto]);
-    
-    if ($stmtSelect->rowCount() === 0) { // Il piatto non è stato trovato all'interno del db
-      return ['successo' => false, 'nomePiatto' => ''];
-    } else {
-      
-      // Recupero i dati del piatto
-      $datiPiatto = $stmtSelect->fetch();
-      $nomePiatto = $datiPiatto['nomePiatto'];
-      
-      // Aggiorno la disponibilità del piatto
-      $sqlUpdate = "UPDATE menuCucina SET disponibilitaPiatto=FALSE WHERE idPiatto= :idPiatto";
-      $stmtUpdate = $conn->prepare($sqlUpdate);
-      $stmtUpdate->execute(['idPiatto' => $idPiatto]);
-      
-      if ($stmtUpdate->rowCount() > 0) {
-        return ['successo' => true, 'nomePiatto' => $nomePiatto];
-      } else {
-        return ['successo' => false, 'nomePiatto' => $nomePiatto];
+  # ------------------------------------
+  
+  
+  # ------------------------------------
+  # Funzione per eliminare un singolo piatto dal menu
+  function eliminaPiatto ($idPiatto) {
+    try {
+      $conn = connetti();
+      if (!$conn) {
+        throw new PDOException("[eliminaPiatto] => Connessione fallita: " . mysqli_connect_error());
       }
+      
+      // Controllo se il piatto esiste
+      $sqlSelect = "SELECT * FROM menuCucina WHERE idPiatto= :idPiatto";
+      $stmtSelect = $conn->prepare($sqlSelect);
+      $stmtSelect->execute(['idPiatto' => $idPiatto]);
+      
+      if ($stmtSelect->rowCount() === 0) { // Il piatto non è stato trovato all'interno del db
+        return ['successo' => false, 'nomePiatto' => ''];
+      } else {
+        
+        // Recupero i dati del piatto
+        $datiPiatto = $stmtSelect->fetch();
+        $nomePiatto = $datiPiatto['nomePiatto'];
+        
+        // Aggiorno la disponibilità del piatto
+        $sqlUpdate = "UPDATE menuCucina SET disponibilitaPiatto=FALSE WHERE idPiatto= :idPiatto";
+        $stmtUpdate = $conn->prepare($sqlUpdate);
+        $stmtUpdate->execute(['idPiatto' => $idPiatto]);
+        
+        if ($stmtUpdate->rowCount() > 0) {
+          return ['successo' => true, 'nomePiatto' => $nomePiatto];
+        } else {
+          return ['successo' => false, 'nomePiatto' => $nomePiatto];
+        }
+      }
+    } catch (PDOException $e) {
+      return ['successo' => false, 'errore' => $e->getMessage()];
     }
-  } catch (PDOException $e) {
-    return ['successo' => false, 'errore' => $e->getMessage()];
   }
-}
-# ------------------------------------
-
-
-# ------------------------------------
-# Funzione per eliminare un singolo piatto dal menu
+  # ------------------------------------
+  
+  
+  # ------------------------------------
+  # Funzione per eliminare l'intero menu
   function eliminaInteroMenu () {
     try {
       $conn = connetti();
@@ -340,11 +339,12 @@ function eliminaPiatto ($idPiatto) {
       return ['successo' => false, 'errore' => $e->getMessage()];
     }
   }
-# ------------------------------------
-
-
-# ------------------------------------
-# Funzione per richiamare i dati dell'evento selezionato da modificare
+  # ------------------------------------
+  
+  
+  # ------------------------------------
+  # Funzione per richiamare i dati dell'evento selezionato da modificare
+  # La pagina che usa questa funzione deve ancora essere implementata
   function eventoDaModificareSelezionato ($idEvento) {
     $conn = connetti ("Strana01");
     if (!$conn) {
@@ -364,11 +364,11 @@ function eliminaPiatto ($idPiatto) {
       return $datiEvento;
     }
   }
-# ------------------------------------
-
-
-# ------------------------------------
-# Funzione per eliminare un utente
+  # ------------------------------------
+  
+  
+  # ------------------------------------
+  # Funzione per eliminare un utente
   function eliminaUtente($idUtente) {
     try {
       $conn = connetti();
@@ -404,12 +404,12 @@ function eliminaPiatto ($idPiatto) {
     } catch (PDOException $e) {
       return ['successo' => false, 'errore' => $e->getMessage()];
     }
-}
-# ------------------------------------
-
-
-# ------------------------------------
-# Funzione per richiamare una lista di utenti
+  }
+  # ------------------------------------
+  
+  
+  # ------------------------------------
+  # Funzione per richiamare una lista di utenti
   function ottieniListaUtenti ($attivi) {
     try {
       $conn = connetti();
@@ -442,11 +442,11 @@ function eliminaPiatto ($idPiatto) {
       return ['successo' => false, 'errore' => $e->getMessage()];
     }
   }
-# ------------------------------------
-
-
-# ------------------------------------
-# Funzione per aggiungere un piatto al menu
+  # ------------------------------------
+  
+  
+  # ------------------------------------
+  # Funzione per aggiungere un piatto al menu
   function aggiungiPiatto ($nomePiatto, $descrizionePiatto, $categoriaPiatto, $prezzoPiatto, $cuoco, $disponibilitaPiatto, $dataInserimento) {
     try {
       $conn = connetti();
@@ -483,93 +483,93 @@ function eliminaPiatto ($idPiatto) {
       return false;
     }
   }
-# ------------------------------------
-
-
-# ------------------------------------
-# Funzione per importare le immagini negli eventi
-function gestisciImmagine() {
-  if (isset($_FILES['immagine']) && $_FILES['immagine']['error'] === 0) {
-    $imageName = $_FILES['immagine']['name'];
-    $imageTmp = $_FILES['immagine']['tmp_name'];
-    $imageType = $_FILES['immagine']['type'];
-    
-    $dimensioneMassima = 1048576 * 3;
-    if ($_FILES['immagine']['size'] > $dimensioneMassima) {
-      return false;
-    }
-    
-    $estensioniAmmesse = ["image/jpg", "image/jpeg", "image/png"];
-    if (in_array($imageType, $estensioniAmmesse)) {
-      $uploadPercorso = "Immagini/";
-      $imagePath = $uploadPercorso . basename($imageName);
+  # ------------------------------------
+  
+  
+  # ------------------------------------
+  # Funzione per importare le immagini negli eventi
+  function gestisciImmagine() {
+    if (isset($_FILES['immagine']) && $_FILES['immagine']['error'] === 0) {
+      $imageName = $_FILES['immagine']['name'];
+      $imageTmp = $_FILES['immagine']['tmp_name'];
+      $imageType = $_FILES['immagine']['type'];
       
-      if (move_uploaded_file($imageTmp, $imagePath)) {
-        return $imagePath;
-      } else {
+      $dimensioneMassima = 1048576 * 3;
+      if ($_FILES['immagine']['size'] > $dimensioneMassima) {
         return false;
       }
+      
+      $estensioniAmmesse = ["image/jpg", "image/jpeg", "image/png"];
+      if (in_array($imageType, $estensioniAmmesse)) {
+        $uploadPercorso = "Immagini/";
+        $imagePath = $uploadPercorso . basename($imageName);
+        
+        if (move_uploaded_file($imageTmp, $imagePath)) {
+          return $imagePath;
+        } else {
+          return false;
+        }
+      }
     }
+    return null;
   }
-  return null;
-}
   # ------------------------------------
   
   # ------------------------------------
   # Funzione per inserire nuovo evento
-function inserisciEvento($nomeEventoNew, $dataEventoNew, $descrizioneNew, $imagePath) {
-  try {
-    $conn = connetti();
-    if (!$conn) {
-      return ["successo" => false, 'errore' => 'errore di connessione', 'codiceErrore' => 3];
-    }
-    
-    // Controllo che i campi non siano vuoti
-    if (empty($nomeEventoNew) || empty($dataEventoNew) || empty($imagePath)) {
-      return ["successo" => false, 'errore' => 'i campi non sono stati compilati'];
-    }
-    
-    // Sanifico gli input
-    $nomeEventoNew = sanificaInput($nomeEventoNew);
-    $dataEventoNew = sanificaInput($dataEventoNew);
-    $descrizioneNew = sanificaInput($descrizioneNew);
-    
-    // Controllo se esistono già eventi con stessa data && stesso nome
-    $sqlCheck = "SELECT COUNT(*) FROM Eventi WHERE NomeEvento = :nomeEvento AND DataEvento = :dataEvento AND eliminato = 0";
-    $stmtCheck = $conn->prepare($sqlCheck);
-    $stmtCheck->execute([
-      ':nomeEvento' => $nomeEventoNew,
-      ':dataEvento' => $dataEventoNew,
-    ]);
-    $eventoEsiste = $stmtCheck->fetchColumn();
-    if ($eventoEsiste > 0) {
-      return ["successo" => false, 'errore' => "Evento già presente a sistema", 'codiceErrore' => 0];
-    }
-    
-    // Inserisco il nuovo evento a sistema
-    $sqlInsert = "INSERT INTO Eventi (NomeEvento, DataEvento, Descrizione, eliminato, Immagine)
-                    VALUES (:nomeEvento, :dataEvento, :descrizioneEvento, :eliminato, :pathNameImmagine ) ";
-    $stmtInsert = $conn->prepare($sqlInsert);
-    $parametri = [
-      ':nomeEvento' => $nomeEventoNew,
-      ':dataEvento' => $dataEventoNew,
-      ':pathNameImmagine' => $imagePath,
-      ':descrizioneEvento' => $descrizioneNew,
-      ':eliminato' => 0, ];
+  function inserisciEvento($nomeEventoNew, $dataEventoNew, $descrizioneNew, $imagePath) {
     try {
-      $stmtInsert->execute($parametri);
+      $conn = connetti();
+      if (!$conn) {
+        return ["successo" => false, 'errore' => 'errore di connessione', 'codiceErrore' => 3];
+      }
+      
+      // Controllo che i campi non siano vuoti
+      if (empty($nomeEventoNew) || empty($dataEventoNew) || empty($imagePath)) {
+        return ["successo" => false, 'errore' => 'i campi non sono stati compilati'];
+      }
+      
+      // Sanifico gli input
+      $nomeEventoNew = sanificaInput($nomeEventoNew);
+      $dataEventoNew = sanificaInput($dataEventoNew);
+      $descrizioneNew = sanificaInput($descrizioneNew);
+      
+      // Controllo se esistono già eventi con stessa data && stesso nome
+      $sqlCheck = "SELECT COUNT(*) FROM Eventi WHERE NomeEvento = :nomeEvento AND DataEvento = :dataEvento AND eliminato = 0";
+      $stmtCheck = $conn->prepare($sqlCheck);
+      $stmtCheck->execute([
+        ':nomeEvento' => $nomeEventoNew,
+        ':dataEvento' => $dataEventoNew,
+      ]);
+      $eventoEsiste = $stmtCheck->fetchColumn();
+      if ($eventoEsiste > 0) {
+        return ["successo" => false, 'errore' => "Evento già presente a sistema", 'codiceErrore' => 0];
+      }
+      
+      // Inserisco il nuovo evento a sistema
+      $sqlInsert = "INSERT INTO Eventi (NomeEvento, DataEvento, Descrizione, eliminato, Immagine)
+                    VALUES (:nomeEvento, :dataEvento, :descrizioneEvento, :eliminato, :pathNameImmagine ) ";
+      $stmtInsert = $conn->prepare($sqlInsert);
+      $parametri = [
+        ':nomeEvento' => $nomeEventoNew,
+        ':dataEvento' => $dataEventoNew,
+        ':pathNameImmagine' => $imagePath,
+        ':descrizioneEvento' => $descrizioneNew,
+        ':eliminato' => 0, ];
+      try {
+        $stmtInsert->execute($parametri);
+      } catch (Exception $e) {
+        return ['successo' => false, 'errore' => 'Errore: ' . $e->getMessage(), 'codiceErrore' => 1];
+      }
+      if ($stmtInsert->rowCount() > 0) {
+        return ['successo' => true, 'messaggio' => 'Evento creato'];
+      } else {
+        return ['successo' => false, 'errore' => 'Errore creazione', 'codiceErrore' => 2];
+      }
     } catch (Exception $e) {
-      return ['successo' => false, 'errore' => 'Errore: ' . $e->getMessage(), 'codiceErrore' => 1];
+      return ['successo' => false, 'errore' => $e->getMessage(), 'codiceErrore' => 3];
     }
-    if ($stmtInsert->rowCount() > 0) {
-      return ['successo' => true, 'messaggio' => 'Evento creato'];
-    } else {
-      return ['successo' => false, 'errore' => 'Errore creazione', 'codiceErrore' => 2];
-    }
-  } catch (Exception $e) {
-    return ['successo' => false, 'errore' => $e->getMessage(), 'codiceErrore' => 3];
   }
-}
   # ------------------------------------
   
   
@@ -627,6 +627,7 @@ function inserisciEvento($nomeEventoNew, $dataEventoNew, $descrizioneNew, $image
   
   # ------------------------------------
   # Funzione per validare gli indirizzi email
+  # !!Funzione ancora da implementare
   function validaIndirizzoEmail($indirizzoEmail) {
     // Rimuovo caratteri
     $emailSanificata = filter_var($indirizzoEmail, FILTER_SANITIZE_EMAIL);
@@ -638,8 +639,6 @@ function inserisciEvento($nomeEventoNew, $dataEventoNew, $descrizioneNew, $image
       return ['successo' => true, 'messaggio' => 'Indirizzo email valido'];
     }
   }
-  
-  
 ?>
 
 

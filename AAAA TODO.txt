@@ -1,8 +1,3 @@
-                             ###################
-                             ### PER IL SITO ###
-                             ###################
-
-
       // TODO: DA FARE
 - aggiungere campo email a utenti
 - Inserire i throw nei cicli try
@@ -12,11 +7,8 @@
 - Calendario
 - Registrare chi fa cosa
 - Creare nuovo cuoco
-- Sostituire la parola aggiungere con creare
 - Storico cucina
 - Gestione dei menu a buffet => Creare landing page ad hoc?
-- SQLi
-- XSS
 - Uniformare i nomi delle pagine
 - Ottimizzazione SEO (vedi slide 06 - SEO)
 - Verifica accessibilità
@@ -25,42 +17,9 @@
 - Verificare come funziona mysqli_real_escape_string
 - Consenso privacy e cookie policy
 - Inserire l'attributo autocomplete in tutti i campi necessari
-- File statuto associazione
 - numero di passaggi in nuovo menu
 - Pagina "sostienici" --> 8x1000, tesseramento, donazioni
 - Mappa del sito per SEO (sitemap)
-- Peso delle immagini per il tempo di caricamento
-https://search.google.com/search-console/welcome?hl=it
+  https://search.google.com/search-console/welcome?hl=it
+- Attributi "alt" delle immagini
 
-
-
-
-      // TODO: DA VERIFICARE
-- Attributi "alt" delle immagini?
-- Cos è charset utf8mb4;
-- Aggiungere void a funzioni che non restituiscono valori???  ___ Dichiarazione dei tipi di variabile ritornata??
-- Differenza tra Exceptìon e PDOexception
-
-
-
-
-      // TODO: Lavori lasciati in sospeso
-
-
-
-
-                              ######################
-                              ### PER LO SCRITTO ###
-                              ######################
-
-
-
-
-                              ###############################
-                              ### DUBBI E APPROFONDIMENTI ###
-                              ###############################
-
-- Come debaggare?
-- Cosa vuol dire var_dump()
-- possibile debaggare con l'IDE?
-- verifica email -> https://www.w3schools.com/php/filter_validate_email.asp

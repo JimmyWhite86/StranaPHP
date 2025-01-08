@@ -137,6 +137,7 @@
 
       <div class="col-11">
         <ul class="lead">
+          <!-- TODO: Aggiornare con i nomi corretti -->
           <li>Federica Guzzo _ Presidente</li>
           <li>Tiziə 0 _ Consigliere</li>
           <li>Tiziə 1 _ Consigliere</li>

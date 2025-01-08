@@ -1,8 +1,8 @@
 <?php
   
-  #---------------------------------------------------------#
-  #----- FUNZIONI PHP PER LA CREAZIONE DI PAGINE HTML ------#
-  #---------------------------------------------------------#
+  #------------------------------------------------------------------#
+  #----- FUNZIONI PHP PER LA CREAZIONE DINAMICA DI PAGINE HTML ------#
+  #------------------------------------------------------------------#
   
   
   #-----------------------------------------------------------------
@@ -23,7 +23,7 @@
   
   
   #-----------------------------------------------------------------
-  # Avviso che utente normale sta cercando di accedere a pagine consentite solo per amministratori
+  # Avviso che utente normale sta cercando di accedere a pagine consentite solo agli amministratori
   function deviEssereAdmin ($username) { ?>
     <div class='titolo'>
       <h2>Carə <?= htmlspecialchars($username, ENT_QUOTES, 'UTF-8') ?> questa area è riservata agli amministratori del sistema</h2>
@@ -36,6 +36,7 @@
   
   #-----------------------------------------------------------------
   #Funzione per le scelte che può effettuare l'amministratore
+  # TODO: Da inserire in tutte le pagine che conculdono un operazione svolta da admin
   function azioni_amministratore () {
     if (!is_admin()) {
       header("Location: index.php");
@@ -44,8 +45,9 @@
     ?>
     <div class="">
       <ul>
-        <li><a href="aggiungievento.php">Gestisci gli utenti</a></li>
-        <li><a href="eliminaevento.php">Gestisci le prenotazioni</a></li>
+        <li><a href="aggiungievento.php">Aggiungi evento</a></li>
+        <li><a href="eliminaevento.php">Evento</a></li>
+        <!-- TODO: Inserire anche le altre opzioni-->
       </ul>
     </div>
     <?php
@@ -125,6 +127,7 @@
   
   #-----------------------------------------------------------------
   # Funzione per richiamare la navBar per utenti loggati come admin
+  # TODO: Rendere responsive
   function adminNavBar($nomePagina) { ?>
     <nav class="navbar navbar-expand-lg bg-giallo">
       <a href="#mioMain" class="skip text-center" tabindex="0">Vai al contenuto principale</a> <!--Salta al contenuto principale della pagina (Accessibilità) -->
@@ -223,7 +226,7 @@
           <div class="p-1 border-bottom d-block d-md-none" id="separatoreFooter01" style="border-color: #009fb7"></div>
 
           <div class="col text-center">
-            <p class="fontFooter01">Navigazione</p>
+            <p class="fontFooter01">Navigazione</p> <!-- TODO: Mettere link utili come ad esempio quello al sito arci? -->
             <ul class="list-unstyled">
               <li>
                 <?php $nomeLink = "index";?>
@@ -432,30 +435,6 @@
   
   
   #-----------------------------------------------------------------
-  # Funzione per generare automaticamente avvisi di errore connessione
-  function erroreConnessioneHTML ($conn) {?>
-    <div class="my-5 row justify-content-center">
-      <div class="text-center">
-        <h1 class="titoloPagina">Errore di connessione</h1>
-      </div>
-    </div>
-
-    <section>
-      <div class="container-fluid text-center bg-rosso">
-        <div class="m-5">
-          <h2 class="m-3 p-3" id="titoloEventi">La connessione ha avuto problemi</h2>
-          <p><?= mysqli_error($conn) ?></p>
-          <a href="homeAdmin.php" class="btn btn-primary mb-3">Home Page Admin</a><br>
-          <!-- <a href="eliminaPiatto.php" class="btn btn-primary mb-3">Elimina un piatto dal menu </a>-->
-        </div>
-      </div>
-    </section>
-    <?php
-  }
-  #-----------------------------------------------------------------
-  
-  
-  #-----------------------------------------------------------------
   # FUNZIONI PER LA PAGINA controlla_login.php
   # Creo dinamicamente gli avvisi della pagina che viene visualizzata quando l'utente effettua il login
   #-----------------------------------------------------------------
@@ -545,8 +524,9 @@
     <meta name="keywords" content="Associazione culturale, APS, ARCI, promozione sociale">
     <meta name="description" content="Associazione Culturale Stranamore">
     <meta name="author" content="Bianchi Andrea">
-    <meta name="robots" content="index, follow">
-    <!--TODO: Da definire -->
+    <meta name="robots" content="noindex, nofollow"> <!-- Utilizzato per impedire ai motori di ricerca di indicizzare la pagina -->
+    <!--<meta name="robots" content="index, follow"> Una volta messo on line il sito corretto, utilizzare questo tag al posto di quello precedente -->
+    <!--TODO: Da definire in ottica SEO -->
     <meta property="og:title" content="Associazione Culturale Stranamore">
     <meta property="og:description"
           content="Promuoviamo cultura, inclusione e socialità attraverso eventi, arte e creatività.
