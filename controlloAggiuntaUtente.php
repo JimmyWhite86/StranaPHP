@@ -47,6 +47,7 @@
         if ($psw1 === $psw2) {
           
           $risultatoCreazioneUtente = creaUtente($usernameNew, $psw1);
+          $errore = $risultatoCreazioneUtente['messaggio'];
           
           if ($risultatoCreazioneUtente['successo']) {
             //echo "utente creato con successo";
@@ -79,7 +80,7 @@
               <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
                 <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
                   <h2><?=$username?>, ci sono stati problemi con l'inserimento del nuovo utente!</h2>
-                  <h3>[controlloAggiunteUtente] => Errore: <?=mysqli_error($conn)?></h3>
+                  <h3>[controlloAggiunteUtente] => Errore: <?=$errore?></h3>
                   <hr>
                   <a href="creaUtente.php" class="btn btn-primary mb-3">Aggiungi un altro utente</a><br>
                   <a href="gestioneUtenti.php" class="btn btn-primary mb-3">Gestione utenti</a><br>
