@@ -10,7 +10,7 @@
 
 <head>
   <?php generaHeadSection(); ?>
-  <title>Stranamore | Home</title>
+  <title>Stranamore | Chi Siamo</title>
 </head>
 
 <body>

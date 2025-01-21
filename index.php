@@ -146,10 +146,12 @@
 
   <hr>
 
+</main>
+
   <!-- Footer -->
   <?php HTMLfooter($nomePagina);?>
 
-</main>
+
 
 </body>
 </html>
