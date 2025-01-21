@@ -22,4 +22,5 @@
 - Mappa del sito per SEO (sitemap)
   https://search.google.com/search-console/welcome?hl=it
 - Attributi "alt" delle immagini
-
+- Inserire logo ARCI
+- Dire che le iniziative sono riservate ai soci

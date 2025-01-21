@@ -226,38 +226,28 @@
           <div class="p-1 border-bottom d-block d-md-none" id="separatoreFooter01" style="border-color: #009fb7"></div>
 
           <div class="col text-center">
-            <p class="fontFooter01">Navigazione</p> <!-- TODO: Mettere link utili come ad esempio quello al sito arci? -->
+            <p class="fontFooter01">Link Utili</p> <!-- TODO: Mettere link utili come ad esempio quello al sito arci? -->
             <ul class="list-unstyled">
-              <li>
-                <?php $nomeLink = "index";?>
-                <a href="index.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">
-                  Home
-                </a>
-              </li>
-              <li>
-                <?php $nomeLink = "chisiamo";?>
-                <a href="chisiamo.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">
-                  Chi Siamo
-                </a>
-              </li>
-              <li>
-                <?php $nomeLink = "lacucina";?>
-                <a href="lacucina.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">
-                  La Cucina
-                </a>
-              </li>
-              <li>
-                <?php $nomeLink = "eventi";?>
-                <a href="eventi.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">
-                  Eventi
-                </a>
-              </li>
-              <li>
-                <?php $nomeLink = "contatti";?>
-                <a href="contatti.php" class="<?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>">
-                  Contatti
-                </a>
-              </li>
+              
+              <?php
+                
+                $links = [
+                  "https://www.arci.it/" => "Arci Nazionale",
+                  "https://www.arcitorino.it/" => "Arci Torino",
+                  "https://www.arciovest.it/" => "Arci Ovest",
+                ];
+                
+                foreach ($links as $nomeLink => $testoLink) { ?>
+                  <li>
+                    <a href="<?= htmlspecialchars($nomeLink, ENT_QUOTES, 'UTF-8') ?>"
+                       class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                      <?= htmlspecialchars($testoLink, ENT_QUOTES, 'UTF-8') ?>
+                    </a>
+                  </li>
+                  <?php
+                }
+                
+              ?>
             </ul>
           </div>
 
@@ -291,17 +281,20 @@
             <p class="fontFooter01">Contatti</p>
             <ul class="list-unstyled">
               <li>
-                <a href="https://maps.app.goo.gl/mb7UeN8NNaJD1kC78">
-                  <i class="fas fa-home me-3"></i>Via Ettore Bignone, 89, 10064 Pinerolo TO
+                <a href="https://maps.app.goo.gl/mb7UeN8NNaJD1kC78"
+                   class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                  <i class="fas fa-home me-3"></i> Via Ettore Bignone, 89, 10064 Pinerolo TO
                 </a>
               </li>
               <li>
-                <a href="mailto:associazione.stranamore@gmail.com">
+                <a href="mailto:associazione.stranamore@gmail.com"
+                   class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
                   <i class="fa fa-envelope me-3"></i>associazione.stranamore@gmail.com
                 </a>
               </li>
               <li>
-                <a href="Tel:+393516230176">
+                <a href="Tel:+393516230176"
+                   class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
                   <i class="fas fa-phone me-3"></i>3516230176
                 </a>
               </li>
