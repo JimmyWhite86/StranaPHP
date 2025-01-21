@@ -545,8 +545,9 @@
     <!-- Libreria per le icone -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
-    <!-- Collegamento al mio file CSS -->
+    <!-- Collegamento ai miei files CSS -->
     <link href="base_css.css" rel="stylesheet" type="text/css">
+    <link href="fontCSS.css" rel="stylesheet" type="text/css">
 
     <!-- Font Babas Neue -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -568,4 +569,16 @@
   }
   #-----------------------------------------------------------------
 
+  
+  # -----------------------------------------------------------------
+  # Funzione per generare il titolo della pagina -- TODO: inserire uno switch per assegnare dinamicamente il nome della pagina.
+  #                                                 TODO: Trovare un modo per gestire eventuali sottotitoli
+  function titoloDellaPagina($nomePagina) { ?>
+    <div class="my-5 row justify-content-center">
+      <div class="text-center">
+        <h1 class="titoloPagina">log in</h1>
+      </div>
+    </div>
+<?php
+  }
 ?>

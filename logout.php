@@ -16,7 +16,7 @@
   <title>Stranamore | Home</title>
 </head>
 
-<body ng-app="myAppHome" ng-controller="myCtrl">
+<body>
 
   <!-- Nav Bar -->
   <?php richiamaNavBar($nomePagina); ?>

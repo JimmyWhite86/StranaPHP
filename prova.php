@@ -1,4 +1,5 @@
 <?php
+<?php
   session_start();
   include "function.php";
   include "functionHTML.php";
@@ -15,6 +16,15 @@
 
 <body>
 
+  <!-- NAV BAR -->
+  <?php richiamaNavBar($nomePagina) ?>
+
+  <!-- "Titolo" della pagina -->
+  <div class="my-5 row justify-content-center">
+    <div class="text-center">
+      <h1 class="titoloPagina">log in</h1>
+    </div>
+  </div>
 
   <?php
     if (!isset($_SESSION["username"])) {  // L'utente non è loggato
@@ -30,41 +40,31 @@
             $_SESSION["idUser"] = $datiUtente["IDUser"];
             if (!$valoreAmministratore) {             // Utente loggato come utente "normale"
               $_SESSION["admin"] = 0;
-              richiamaNavBar($nomePagina);
-              titoloDellaPagina($nomePagina);
               loginUtenteStandard($username);
               //var_dump($_SESSION);
             }
             else {  // Utente loggato come admin
               $_SESSION["admin"] = 1;
-              richiamaNavBar($nomePagina);
-              titoloDellaPagina($nomePagina);
               loginUtenteAdmin($username);
               //var_dump($_SESSION);
+              ob_end_flush(); // Termina il buffer di output e invia l'output al browser
+              header("Refresh: 0");
             }
           }
           else {  // Condizione in cui si è impostata una psw errata
-            richiamaNavBar($nomePagina);
-            titoloDellaPagina($nomePagina);
             inseritoPswErrata();
           }
         }
         else {  // Condizione in cui non sono stati trovati record corrispondenti all'username inserito dall'utente
-          richiamaNavBar($nomePagina);
-          titoloDellaPagina($nomePagina);
           nomeUtenteNonTrovato();
         }
       }
       else {  // Condizione in cui non sono stati compilati tutti i campi del form
-        richiamaNavBar($nomePagina);
-        titoloDellaPagina($nomePagina);
         erroreCompilazioneForm();
       }
     }
     else {    // Utente già loggato --> propongo le azioni che può compiere
       $username = $_SESSION['username'];
-      richiamaNavBar($nomePagina);
-      titoloDellaPagina($nomePagina);
       utenteGiaLoggato($username);
     }
   ?>
