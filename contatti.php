@@ -10,7 +10,7 @@
 
 <head>
   <?php generaHeadSection(); ?>
-  <title>Stranamore | Home</title>
+  <title>Stranamore | Contatti</title>
 </head>
 
 <body>
@@ -26,10 +26,10 @@
       <h1 class="titoloPagina">mettiti in contatto con strana</h1>
     </div>
   </div>
-  
+
   <!-- Sezione Card -->
   <div class="container-fluid bg-rosso mioContainerContatti text-center">
-    
+
     <div>
       <h2 class="fontTitoloSezione text-center">
         VUOI ENTRARE IN CONTATTO CON NOI?
@@ -81,28 +81,29 @@
       </div>
     </div>
   </div>
-  
+
   <hr>
-  
+
   <!-- Sezione Orari di Apertura -->
   <div class="container-fluid bg-giallo mioContainerContatti text-center">
     <div class="row">
-      
+
       <div class="col-md-6 text-left separatoreVerticale ">
         <h2 class="fontTitoloSezione text-center">
           ORARI DI APERTURA
         </h2>
         <br>
         <p class="lead text-left mx-auto">
-          Vieni a trovarci durante i nostri orari di apertura:<br>
-          Lunedì - Venerdì: 9:00 - 18:00<br>
-          Sabato: 10:00 - 14:00<br>
-          Domenica: Chiuso
+          Siamo aperti il<br>
+          giovedì e venerdì<br>
+          dalle 19:00 alle 23:00<br>
+          e sabato<br>
+          dalle 19:00 alle 24:00
         </p>
       </div>
-      
+
       <hr class="d-md-none separatoreSpesso">
-      
+
       <div class="col-md-6 text-right">
         <h2 class="fontTitoloSezione text-center">
           SEGUICI SUI SOCIAL
@@ -121,12 +122,12 @@
           <i class="bi bi-youtube"></i>
         </a>
       </div>
-      
+
     </div>
   </div>
 
   <hr>
-  
+
   <!-- Sezione Form -->
   <div class="container-fluid bg-azzurro mb-1 mioContainerContatti">
     <div class="row justify-content-center">
@@ -216,10 +217,12 @@
       </div>
     </div>
   </div>
-  
-  <!-- Footer -->
-  <?php HTMLfooter("$nomePagina");?>
 
 </main>
+
+<!-- Footer -->
+<?php HTMLfooter("$nomePagina");?>
+
+
 </body>
 </html>
