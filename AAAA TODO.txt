@@ -24,14 +24,7 @@
 - Attributi "alt" delle immagini
 - Inserire logo ARCI
 - Dire che le iniziative sono riservate ai soci
-- Pagina 404
 - Controllare la chiusura del tag main in tutte le pagine
 - Modificare i colori dei bottoni primary
-
-
-
-
-
-https://frontendshape.com/post/bootstrap-5-404-page-examples
 
 

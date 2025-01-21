@@ -3,8 +3,11 @@
 /* 2024 _ UniTo */
 
 /* ------------------------------------------------ */
-/* // GESTIONE DEI FONT */
+/* --------------- STILE DEI FONT ----------------- */
+/* ------------------------------------------------ */
 
+
+/* ----- CARICO I FONT -----------*/
 /* FONT EASYRIDING  */
 @font-face {
   font-family: Easy;
@@ -28,7 +31,10 @@
   font-family: Lato-Regular;
   src: url(FONT/Lato-Regular.ttf);
 }
+/* --------------------------------- */
 
+
+/* --------------------------------- */
 body {
   font-family: Lato-Regular, arial, hevetica, sans-serif;
   line-height: 1.8;
@@ -100,7 +106,7 @@ body {
 
 .fontTipoPiattiMenu {
   font-family: strana, Arial, Helvetica, sans-serif;
-  color: var(--neroStrana);
+  color: var(--azzurroStrana);
   font-size: 4rem;
 }
 
@@ -161,7 +167,11 @@ body {
   text-shadow: 2px 2px 4px #808080;
 }
 
-/* // Font per schermi con differenti formati  */
+.fontPrezzoPiatto {
+  color: var(--rossoStrana);
+}
+
+/* ----- ADATTO I FONT ALLE VARIE GRANDEZZE DI SCHERMO ----- */
 
 /* Schermi tra 1399 e 1199px */
 @media (min-width: 1199px) and (max-width: 1399px) {
@@ -198,6 +208,7 @@ body {
     font-size: 3rem;
   }
 }
+/* --------------------------- */
 
 /* Schermi sotto i 768px */
 @media (max-width: 768px) {
@@ -213,10 +224,6 @@ body {
   .fontHeroSotto {
     font-size: 2.5rem;
   }
-
-  /*  .fontstranaTitoli {
-      font-size: 3rem;
-    }*/
 
   .testoHome {
     font-size: 1rem;
@@ -235,7 +242,11 @@ body {
   }
 
   .fontNomePiatto {
-    font-size: 2rem;
+    font-size: 1rem;
+  }
+
+  .fontPrezzoPiatto {
+    font-size: 1.3rem;
   }
 
   #titoloPaginaGallery {
@@ -245,12 +256,10 @@ body {
   .fontChiSiamo02 {
     font-size: 2.4rem;
   }
-
-  .containerIndexCentrale {
-    width: 96% !important;
-  }
 }
+/* ------------------------ */
 
+/* SCHERMI SOTTO I 563px */
 @media (max-width: 563px) {
   .fontHeroSopra {
     font-size: 2rem;

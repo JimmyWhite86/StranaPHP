@@ -570,7 +570,11 @@ thead th.intestazioneTabella {
 }
 
 
-
+@media (max-width: 768px) {
+  .containerIndexCentrale {
+    width: 96% !important;
+  }
+}
 
 
 
