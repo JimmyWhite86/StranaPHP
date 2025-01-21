@@ -93,6 +93,7 @@
                   "gallery" => "Gallery",
                   "contatti" => "Contatti"
                 ];
+                $ultimoElemento = array_key_last($links); // Prendo l'ultimo elemento dell'array che contiene i link _ https://www.php.net/manual/it/function.array-key-last.php
                 foreach ($links as $nomeLink => $testoLink) { ?>
                   <li class="nav-item">
                     <a class="nav-link <?php echo htmlspecialchars(statoLink($nomePagina, $nomeLink), ENT_QUOTES, 'UTF-8'); ?>"
@@ -101,10 +102,13 @@
                       <?= htmlspecialchars($testoLink, ENT_QUOTES, 'UTF-8') ?>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <span class="mioSpanNav">|</span>
-                  </li>
                   <?php
+                    if ($nomeLink != $ultimoElemento) { ?> <!-- Se non è l'ultimo elemento, aggiungo il separatore -->
+                      <li class="nav-item">
+                        <span class="mioSpanNav">|</span>
+                      </li>
+                      <?php
+                    }
                 }
               ?>
             </ul>

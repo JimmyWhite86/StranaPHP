@@ -17,15 +17,15 @@
 
 <?php richiamaNavBar($nomePagina);?>
 
-<!-- "Titolo" della pagina -->
-<div class="my-5 row justify-content-center">
-  <div class="text-center">
-    <h1 class="titoloPagina" id="titoloPaginaGallery">gallery fotografica</h1>
-  </div>
-</div>
-
 <main id="mioMain">
-  
+
+  <!-- "Titolo" della pagina -->
+  <div class="my-5 row justify-content-center">
+    <div class="text-center">
+      <h1 class="titoloPagina" id="titoloPaginaGallery">gallery fotografica</h1>
+    </div>
+  </div>
+
   <!-- Gallery -->
   <div class="row m-3">
     <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
@@ -128,7 +128,7 @@
               </div>
             </div>
           </div>
-          
+
           <!-- Controlli del carosello -->
           <button type="button" class="carousel-control-prev" data-bs-target="#galleryCarousel" data-bs-slide="prev"
                   aria-label="Precedente">
@@ -145,8 +145,10 @@
     </div>
   </div>
 
-  <!-- Richiamo la funzione che genera il footer -->
-  <?php HTMLfooter($nomePagina); ?>
+</main>
+
+<!-- Richiamo la funzione che genera il footer -->
+<?php HTMLfooter($nomePagina); ?>
 
 </body>
 </html>
