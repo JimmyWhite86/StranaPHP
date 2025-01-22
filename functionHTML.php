@@ -103,12 +103,12 @@
                     </a>
                   </li>
                   <?php
-                    if ($nomeLink != $ultimoElemento) { ?> <!-- Se non è l'ultimo elemento, aggiungo il separatore -->
-                      <li class="nav-item">
-                        <span class="mioSpanNav">|</span>
-                      </li>
-                      <?php
-                    }
+                  if ($nomeLink != $ultimoElemento) { ?> <!-- Se non è l'ultimo elemento, aggiungo il separatore -->
+                    <li class="nav-item">
+                      <span class="mioSpanNav">|</span>
+                    </li>
+                    <?php
+                  }
                 }
               ?>
             </ul>
@@ -131,7 +131,7 @@
   
   #-----------------------------------------------------------------
   # Funzione per richiamare la navBar per utenti loggati come admin
-  # TODO: Rendere responsive
+  # TODO: Colori stato link
   function adminNavBar($nomePagina) { ?>
     <nav class="navbar navbar-expand-lg bg-nero">
       <a href="#mioMain" class="skip text-center" tabindex="0">Vai al contenuto principale</a> <!--Salta al contenuto principale della pagina (Accessibilità) -->
@@ -160,7 +160,7 @@
               <li class="nav-item">
                 <span class="mioSpanNav">|</span>
               </li>
-              
+
               <li class="nav-item dropdown d-flex align-content-center">
                 <a href="gestioneEventi.php" class="nav-link">
                   Gestione Eventi
@@ -174,7 +174,7 @@
                   <li><a class="dropdown-item" href="eliminaevento.php">Elimina Evento</a></li>
                 </ul>
               </li>
-              
+
               <li class="nav-item">
                 <span class="mioSpanNav">|</span>
               </li>
@@ -268,7 +268,7 @@
                   </li>
                   <?php
                 }
-                
+              
               ?>
             </ul>
           </div>
@@ -599,7 +599,7 @@
     <?php
   }
   #-----------------------------------------------------------------
-
+  
   
   # -----------------------------------------------------------------
   # Funzione per generare il titolo della pagina -- TODO: inserire uno switch per assegnare dinamicamente il nome della pagina.
@@ -610,6 +610,85 @@
         <h1 class="titoloPagina">log in</h1>
       </div>
     </div>
-<?php
+    <?php
+  }
+  #-----------------------------------------------------------------
+
+
+  #-----------------------------------------------------------------
+  # Funzione per generare la breadcrumb in modo dinamico
+  function generaBreadcrumb() {
+    // Struttura gerarchica delle pagine con i link
+    $breadcrumbMap = [
+      "homeAdmin.php" => [
+        ["label" => "Home Admin", "link" => "homeAdmin.php"]
+      ],
+      "gestioneCucina.php" => [
+        ["label" => "Home Admin", "link" => "homeAdmin.php"],
+        ["label" => "Gestione Cucina", "link" => "gestioneCucina.php"]
+      ],
+      "nuovoMenu00.php" => [
+        ["label" => "Home Admin", "link" => "homeAdmin.php"],
+        ["label" => "Gestione Cucina", "link" => "gestioneCucina.php"],
+        ["label" => "Nuovo Menu", "link" => "nuovoMenu00.php"]
+      ],
+      "aggiungiPiatto.php" => [
+        ["label" => "Home Admin", "link" => "homeAdmin.php"],
+        ["label" => "Gestione Cucina", "link" => "gestioneCucina.php"],
+        ["label" => "Nuovo Piatto", "link" => "aggiungiPiatto.php"]
+      ],
+      "eliminaPiatto.php" => [
+        ["label" => "Home Admin", "link" => "homeAdmin.php"],
+        ["label" => "Gestione Cucina", "link" => "gestioneCucina.php"],
+        ["label" => "Elimina Piatto", "link" => "eliminaPiatto.php"]
+      ],
+      "gestioneEventi.php" => [
+        ["label" => "Home Admin", "link" => "homeAdmin.php"],
+        ["label" => "Gestione Eventi", "link" => "gestioneEventi.php"]
+      ],
+      "aggiungievento.php" => [
+        ["label" => "Home Admin", "link" => "homeAdmin.php"],
+        ["label" => "Gestione Eventi", "link" => "gestioneEventi.php"],
+        ["label" => "Nuovo Evento", "link" => "aggiungievento.php"]
+      ],
+      "modificaEvento.php" => [
+        ["label" => "Home Admin", "link" => "homeAdmin.php"],
+        ["label" => "Gestione Eventi", "link" => "gestioneEventi.php"],
+        ["label" => "Modifica Evento", "link" => "modificaEvento.php"]
+      ]
+    ];
+    
+    // Recupera il nome della pagina corrente
+    $currentPage = basename($_SERVER['PHP_SELF']);
+    
+    // Controlla se la pagina corrente è nella mappa
+    if (isset($breadcrumbMap[$currentPage])) {
+      $breadcrumbItems = $breadcrumbMap[$currentPage];
+    } else {
+      // Se la pagina non è definita, ritorna una breadcrumb di fallback
+      $breadcrumbItems = [["label" => "Home Admin", "link" => "homeAdmin.php"]];
+    }
+    
+    // Stampa la breadcrumb
+    echo '<nav aria-label="breadcrumb">';
+    echo '<ol class="breadcrumb">';
+    
+    // Genera gli elementi della breadcrumb
+    $totalItems = count($breadcrumbItems);
+    foreach ($breadcrumbItems as $index => $item) {
+      if ($index < $totalItems - 1) {
+        // Elementi non attivi con link
+        echo '<li class="breadcrumb-item"><a href="' . $item['link'] . '">' . $item['label'] . '</a></li>';
+      } else {
+        // Ultimo elemento attivo senza link
+        echo '<li class="breadcrumb-item active" aria-current="page">' . $item['label'] . '</li>';
+      }
+    }
+    
+    echo '</ol>';
+    echo '</nav>';
   }
 ?>
+
+
+  

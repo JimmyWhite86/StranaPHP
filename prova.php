@@ -168,3 +168,20 @@ function normalNavBar($nomePagina) { ?>
     <?php
   }
   #-----------------------------------------------------------------
+  
+  
+  
+  
+  # -----------------------------------------------------------------
+  # Funzione per generare la breadcrumb
+  function generaBreadcrumb() { ?>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="homeAdmin.php">Home Admin</a></li>
+        <li class="breadcrumb-item"><a href="gestioneCucina.php">Gestione Cucina</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Elimina Piatto</li>
+      </ol>
+    </nav>
+    <?php
+  }
+?>

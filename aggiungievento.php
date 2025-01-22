@@ -15,8 +15,16 @@
 
 <body>
 
-<!-- NAV BAR -->
-<?php richiamaNavBar($nomePagina); ?>
+
+<?php
+  
+  /* Richiamo la nav bar */
+  richiamaNavBar($nomePagina);
+  
+  /* Richiamo la breadcrumb*/
+  generaBreadcrumb();
+  
+?>
 
 
 <?php

@@ -15,8 +15,16 @@
 
 <body>
 
-<!-- Richiamo la nav bar -->
-<?php richiamaNavBar($nomePagina);?>
+
+<?php
+
+  /* Richiamo la nav bar */
+  richiamaNavBar($nomePagina);
+  
+  /* Richiamo la breadcrumb */
+  generaBreadcrumb();
+  
+?>
 
 <!-- "Titolo" della pagina -->
 <div class="my-5 row justify-content-center">
