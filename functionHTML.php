@@ -133,11 +133,11 @@
   # Funzione per richiamare la navBar per utenti loggati come admin
   # TODO: Rendere responsive
   function adminNavBar($nomePagina) { ?>
-    <nav class="navbar navbar-expand-lg bg-giallo">
+    <nav class="navbar navbar-expand-lg bg-nero">
       <a href="#mioMain" class="skip text-center" tabindex="0">Vai al contenuto principale</a> <!--Salta al contenuto principale della pagina (Accessibilità) -->
       <div class="container-fluid">
         <a class="navbar-brand fontstranaBase" href="index.php">
-          <img src="Immagini/Logo_Stranamore_01.jpg" class="d-inline-block align-center" alt="logo stranamore">
+          <img src="Immagini/Logo_Stranamore_03.jpg" class="d-inline-block align-center" alt="logo stranamore">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
@@ -145,7 +145,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse fontNav" id="navbarNav" role="navigation" aria-label="main navigation">
+        <div class="collapse navbar-collapse fontNavAdmin" id="navbarNav" role="navigation" aria-label="main navigation">
           <div class="d-flex justify-content-center flex-grow-1">
             <ul class="navbar-nav" id="myNavBar">
 
@@ -158,39 +158,57 @@
               </li>
 
               <li class="nav-item">
-                <span class="mioSpanNavAdmin">|</span>
+                <span class="mioSpanNav">|</span>
               </li>
-
-              <li class="nav-item">
-                <?php $nomeLink = "gestioneCucina"; ?>
-                <a class="nav-link navLinkAdmin <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
-                   href="gestioneCucina.php">
-                  Gestione Cucina
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <span class="mioSpanNavAdmin">|</span>
-              </li>
-
-              <li class="nav-item">
-                <?php $nomeLink = "gestioneEventi"; ?>
-                <a class="nav-link navLinkAdmin <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
-                   href="gestioneEventi.php">
+              
+              <li class="nav-item dropdown d-flex align-content-center">
+                <a href="gestioneEventi.php" class="nav-link">
                   Gestione Eventi
                 </a>
+                <a class="nav-link dropdown-toggle ps-1" href="#" id="navbarDropdown" role="button"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="visually-hidden">Apri Menu</span>
+                </a>
+                <ul class="dropdown-menu dropdownFont" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="aggiungievento.php">Nuovo Evento</a></li>
+                  <li><a class="dropdown-item" href="eliminaevento.php">Elimina Evento</a></li>
+                </ul>
+              </li>
+              
+              <li class="nav-item">
+                <span class="mioSpanNav">|</span>
+              </li>
+
+              <li class="nav-item dropdown d-flex align-content-center">
+                <a href="gestioneCucina.php" class="nav-link">
+                  Gestione Cucina
+                </a>
+                <a class="nav-link dropdown-toggle ps-1" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="visually-hidden">Apri Menu</span>
+                </a>
+                <ul class="dropdown-menu dropdownFont" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="nuovoMenu.php">Nuovo Menù</a></li>
+                  <li><a class="dropdown-item" href="eliminaMenu.php">Elimina Menù</a></li>
+                  <li><a class="dropdown-item" href="aggiungiPiatto.php">Aggiungi Piatto</a></li>
+                  <li><a class="dropdown-item" href="eliminaPiatto.php">Elimina Piatto</a></li>
+                </ul>
               </li>
 
               <li class="nav-item">
-                <span class="mioSpanNavAdmin">|</span>
+                <span class="mioSpanNav">|</span>
               </li>
 
-              <li class="nav-item">
-                <?php $nomeLink = "gestioneUtenti"; ?>
-                <a class="nav-link navLinkAdmin <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
-                   href="gestioneUtenti.php">
+              <li class="nav-item dropdown d-flex align-content-center">
+                <a href="gestioneUtenti.php" class="nav-link">
                   Gestione Utenti
                 </a>
+                <a class="nav-link dropdown-toggle ps-1" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="visually-hidden">Apri Menu</span>
+                </a>
+                <ul class="dropdown-menu dropdownFont" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="creaUtente.php">Nuovo Utente</a></li>
+                  <li><a class="dropdown-item" href="eliminaUtente.php">Elimina Utente</a></li>
+                </ul>
               </li>
 
             </ul>
@@ -230,7 +248,7 @@
           <div class="p-1 border-bottom d-block d-md-none" id="separatoreFooter01" style="border-color: #009fb7"></div>
 
           <div class="col text-center">
-            <p class="fontFooter01">Link Utili</p> <!-- TODO: Mettere link utili come ad esempio quello al sito arci? -->
+            <p class="fontFooter01">Link Utili</p>
             <ul class="list-unstyled">
               
               <?php
@@ -532,16 +550,25 @@
     <meta property="og:url" content="URL_del_sito_web">
 
     <!-- CDN POPPER JS BOOTSTRAP -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    <!--<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
             integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
-    </script>
+    </script>-->
 
     <!-- CDN CSS e JS BOOTSTRAP -->
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>-->
+
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>

@@ -47,6 +47,13 @@ body {
   font-weight: 600;
 }
 
+.fontNavAdmin {
+  font-family: Babas, arial, hevetica, sans-serif;
+  line-height: 1.8;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
 .fontstranaBase {
   font-family: Strana, arial, hevetica, sans-serif;
   color: var(--azzurroStrana);
@@ -171,7 +178,16 @@ body {
   color: var(--rossoStrana);
 }
 
+.dropdownFont {
+  font-size: 1.5rem;
+}
+
+
+
+
+/* --------------------------------------------------------- */
 /* ----- ADATTO I FONT ALLE VARIE GRANDEZZE DI SCHERMO ----- */
+/* --------------------------------------------------------- */
 
 /* Schermi tra 1399 e 1199px */
 @media (min-width: 1199px) and (max-width: 1399px) {
@@ -295,6 +311,10 @@ body {
   .fontNav {
     font-size: 2.5rem;
   }
+
+  .fontNavAdmin {
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 736px) {
@@ -318,6 +338,10 @@ body {
 @media (max-width: 1200px) {
   .fontNav {
     font-size: 2rem;
+  }
+
+  .fontNavAdmin {
+    font-size: 1.5rem;
   }
 }
 /* ------------------------------------------------ */

@@ -26,5 +26,5 @@
 - Dire che le iniziative sono riservate ai soci
 - Controllare la chiusura del tag main in tutte le pagine
 - Modificare i colori dei bottoni primary
-
+- Briciole di pane nelle pagine per admin
 

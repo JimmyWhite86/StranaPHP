@@ -110,7 +110,11 @@ footer {
 }
 
 .navLinkAdmin {
-  color: #000000;
+  color: #ffffff;
+}
+
+.navLinkAdmin:hover {
+  color: var(--gialloStrana) !important;
 }
 
 .nav-link:hover {
@@ -130,8 +134,12 @@ footer {
   color: var(--gialloStrana);
 }
 
-.dropdown-menu { /* TODO: Verificare utilizzo */
-  background-color: #457b2f;
+.dropdown-menu {
+  background-color: var(--gialloStrana);
+}
+
+.dropdown-menu-lg {
+  min-width: 300px; /* Cambio la larghezza del dropdown*/
 }
 
 /* Cambia colore dell'icona del burger menu */
