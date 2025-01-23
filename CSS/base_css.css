@@ -176,7 +176,7 @@ footer {
 /* // HERO SECTION */
 .hero-section {
   position: relative;
-  background-image: url('Immagini/Giardino02.jpeg');
+  background-image: url('../Immagini/Giardino02.jpeg');
   background-size: cover;
   background-position: center;
   min-height: 80vh; /*Imposta altezza minima della sesione all'80% dello schermo*/

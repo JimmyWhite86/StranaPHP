@@ -1,8 +1,13 @@
 <?php
   session_start();
+  
+  // Includo tutti i file di funzioni esterne, contenuti nella cartella "includes"
+  $functions = glob("includes/*.php");
+  foreach ($functions as $function) {
+    require $function;
+  }
+  
   $nomePagina = "homeAdmin";
-  include "function.php";
-  include "functionHTML.php";
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +15,7 @@
 
 <head>
   <?php generaHeadSection(); ?>
-  <title>Strana HomeAdmin</title>
+  <title>StranaAdmin | HomeAdmin</title>
 </head>
 
 <body>

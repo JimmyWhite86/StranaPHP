@@ -1,8 +1,13 @@
 <?php
   session_start();
+  
+  // Includo tutti i file di funzioni esterne, contenuti nella cartella "includes"
+  $functions = glob("includes/*.php");
+  foreach ($functions as $function) {
+    require $function;
+  }
+  
   $nomePagina = "chi_siamo";
-  include "functionHTML.php";
-  include "function.php";
 ?>
 
 <!DOCTYPE html>

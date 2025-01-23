@@ -1,8 +1,13 @@
 <?php
   session_start();
+  
+  // Includo tutti i file di funzioni esterne, contenuti nella cartella "includes"
+  $functions = glob("includes/*.php");
+  foreach ($functions as $function) {
+    require $function;
+  }
+  
   $nomePagina = "index";
-  include "function.php";
-  include "functionHTML.php";
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +27,7 @@
 <main id="mioMain">
 
   <!-- Hero Section -->
-  <section class="hero-section bg-rosso text-center text-white d-flex align-items-center" role="banner">
+  <section class="hero-section bg-nero text-center text-white d-flex align-items-center" role="banner">
     <h2 class="visually-hidden">Hero Section di Stranamore</h2>
     <div class="container hero-content" ng-app="myAppHome" ng-controller="myCtrl">
       <div class="row justify-content-center">

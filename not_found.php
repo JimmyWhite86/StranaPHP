@@ -1,8 +1,13 @@
 <?php
   session_start();
-  $nomePagina = "index";
-  include "function.php";
-  include "functionHTML.php";
+  
+  // Includo tutti i file di funzioni esterne, contenuti nella cartella "includes"
+  $functions = glob("includes/*.php");
+  foreach ($functions as $function) {
+    require $function;
+  }
+  
+  $nomePagina = "not_found";
 ?>
 
 <!DOCTYPE html>

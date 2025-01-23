@@ -1,7 +1,12 @@
 <?php
   session_start();
-  include "functionHTML.php";
-  include "function.php";
+  
+  // Includo tutti i file di funzioni esterne, contenuti nella cartella "includes"
+  $functions = glob("../includes/*.php");
+  foreach ($functions as $function) {
+    require $function;
+  }
+  
   $nomePagina = "aggiungiPiatto";
 ?>
 

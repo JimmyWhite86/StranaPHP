@@ -11,25 +11,25 @@
 /* FONT EASYRIDING  */
 @font-face {
   font-family: Easy;
-  src: url(FONT/Easy.ttf);
+  src: url(../FONT/Easy.ttf);
 }
 
 /* FONT LOGO STRANAMORE */
 @font-face {
   font-family: Strana;
-  src: url(FONT/TerrabloX.ttf);
+  src: url(../FONT/TerrabloX.ttf);
 }
 
 /* FONT BABAS NEUE */
 @font-face {
   font-family: Babas;
-  src: url(FONT/BebasNeue-Regular.ttf);
+  src: url(../FONT/BebasNeue-Regular.ttf);
 }
 
 /* FONT LATO */
 @font-face {
   font-family: Lato-Regular;
-  src: url(FONT/Lato-Regular.ttf);
+  src: url(../FONT/Lato-Regular.ttf);
 }
 /* --------------------------------- */
 
