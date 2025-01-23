@@ -69,8 +69,8 @@
             <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
               <h2>L'evento che hai provato ad inserire esiste già con lo stesso nome nella stessa data!</h2>
               <hr>
-              <a href="aggiungievento.php" class="btn btn-primary mb-3">Aggiungi evento</a><br>
-              <a href="gestioneEventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
+              <a href="crea_evento.php" class="btn btn-primary mb-3">Aggiungi evento</a><br>
+              <a href="gestione_eventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
             </div>
           </div>
           <?php
@@ -81,8 +81,8 @@
               <h2>Ci sono stati problemi con l'inserimento del nuovo evento!</h2>
               <h3>Errore: <?=$esitoInserimentoEvento['errore']?></h3> <!--Per le prove-->
               <hr>
-              <a href="aggiungievento.php" class="btn btn-primary mb-3">Aggiungi evento</a><br>
-              <a href="gestioneEventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
+              <a href="crea_evento.php" class="btn btn-primary mb-3">Aggiungi evento</a><br>
+              <a href="gestione_eventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
             </div>
           </div>
           <?php
@@ -92,8 +92,8 @@
           <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
             <h2>L'evento <strong>"<?=$evento?>"</strong> è stato inserito correttamente</h2>
             <hr>
-            <a href="aggiungievento.php" class="btn btn-primary mb-3">Aggiungi un altro evento</a><br>
-            <a href="gestioneEventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
+            <a href="crea_evento.php" class="btn btn-primary mb-3">Aggiungi un altro evento</a><br>
+            <a href="gestione_eventi.php" class="btn btn-primary mb-3">Gestione eventi</a><br>
           </div>
         </div>
         <?php

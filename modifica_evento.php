@@ -61,7 +61,7 @@
      ?>
 
      <!-- Tabella della pagina -->
-     <form method="POST" action="modificaEvento02.php">
+     <form method="POST" action="modifica_evento_02.php">
        <div class="containerTabella my-5"> <!-- Mantiene il layout centrato e con margine verticale -->
          <div class="row justify-content-center">  <!-- Riga per definire il layout. Centra la colonna orizzontalmente-->
            <div class="col-10"> <!-- colonna che occupa 10 parti su 12 -->

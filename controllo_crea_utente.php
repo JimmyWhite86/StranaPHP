@@ -56,8 +56,8 @@
               <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
                 <h2>L'utente <strong>"<?=$usernameNew?>"</strong> è stato inserito correttamente</h2>
                 <hr>
-                <a href="creaUtente.php" class="btn btn-primary mb-3">Aggiungi un altro utente</a><br>
-                <a href="gestioneUtenti.php" class="btn btn-primary mb-3">Gestione utenti</a><br>
+                <a href="crea_utente.php" class="btn btn-primary mb-3">Aggiungi un altro utente</a><br>
+                <a href="gestione_utenti.php" class="btn btn-primary mb-3">Gestione utenti</a><br>
               </div>
             </div>
           <?php
@@ -69,8 +69,8 @@
                 <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
                   <h2><?=$username?>, l'utente che hai cercato di inserire è già presente a sistema</h2>
                   <hr>
-                  <a href="creaUtente.php" class="btn btn-primary mb-3">Aggiungi un altro utente</a><br>
-                  <a href="gestioneUtenti.php" class="btn btn-primary mb-3">Gestione utenti</a><br>
+                  <a href="crea_utente.php" class="btn btn-primary mb-3">Aggiungi un altro utente</a><br>
+                  <a href="gestione_utenti.php" class="btn btn-primary mb-3">Gestione utenti</a><br>
                 </div>
               </div>
             <?php
@@ -82,8 +82,8 @@
                   <h2><?=$username?>, ci sono stati problemi con l'inserimento del nuovo utente!</h2>
                   <h3>[controlloAggiunteUtente] => Errore: <?=$errore?></h3>
                   <hr>
-                  <a href="creaUtente.php" class="btn btn-primary mb-3">Aggiungi un altro utente</a><br>
-                  <a href="gestioneUtenti.php" class="btn btn-primary mb-3">Gestione utenti</a><br>
+                  <a href="crea_utente.php" class="btn btn-primary mb-3">Aggiungi un altro utente</a><br>
+                  <a href="gestione_utenti.php" class="btn btn-primary mb-3">Gestione utenti</a><br>
                 </div>
               </div>
             <?php
@@ -97,8 +97,8 @@
               <h2><?=$username?>, le password non corrispondono.</h2>
               <p>Per creare correttamente un nuovo utente, psw1 e psw2 devono essere uguali</p>
               <hr>
-              <a href="creaUtente.php" class="btn btn-primary mb-3">Aggiungi un altro utente</a><br>
-              <a href="gestioneUtenti.php" class="btn btn-primary mb-3">Gestione utenti</a><br>
+              <a href="crea_utente.php" class="btn btn-primary mb-3">Aggiungi un altro utente</a><br>
+              <a href="gestione_utenti.php" class="btn btn-primary mb-3">Gestione utenti</a><br>
             </div>
           </div>
           
@@ -111,8 +111,8 @@
             <h2><?=$username?>, devi compilare tutti i campi del form precedente.</h2>
             <p>Per creare correttamente un nuovo utente, devi compilare tutti i campi del form precedente</p>
             <hr>
-            <a href="creaUtente.php" class="btn btn-primary mb-3">Aggiungi un altro utente</a><br>
-            <a href="gestioneUtenti.php" class="btn btn-primary mb-3">Gestione utenti</a><br>
+            <a href="crea_utente.php" class="btn btn-primary mb-3">Aggiungi un altro utente</a><br>
+            <a href="gestione_utenti.php" class="btn btn-primary mb-3">Gestione utenti</a><br>
           </div>
         </div>
         

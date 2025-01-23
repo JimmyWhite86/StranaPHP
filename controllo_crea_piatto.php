@@ -59,9 +59,9 @@
               <h3>Hai inserito un prezzo inferiore a zero!</h3>
               <p>Prova nuovamente ad inserire il piatto</p>
               <hr>
-              <a href="homeAdmin.php" class="btn btn-primary mb-3">Home Admin</a><br>
-              <a href="aggiungiPiatto.php" class="btn btn-primary mb-3">Aggiungi un altro piatto</a><br>
-              <a href="gestioneCucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+              <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
+              <a href="crea_piatto.php" class="btn btn-primary mb-3">Aggiungi un altro piatto</a><br>
+              <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
             </div>
           </div>
           <?php
@@ -75,9 +75,9 @@
                 <h2>Il piatto è stato aggiunto al menu con successo!</h2>
                 <h3>Hai aggiunto: <strong><?=$nomePiattoNew?></strong> al menu</h3>
                 <hr>
-                <a href="homeAdmin.php" class="btn btn-primary mb-3">Home Admin</a><br>
-                <a href="aggiungiPiatto.php" class="btn btn-primary mb-3">Aggiungi un altro piatto</a><br>
-                <a href="gestioneCucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+                <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
+                <a href="crea_piatto.php" class="btn btn-primary mb-3">Aggiungi un altro piatto</a><br>
+                <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
               </div>
             </div>
             <?php

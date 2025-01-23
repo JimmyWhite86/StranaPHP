@@ -45,7 +45,7 @@
           <div class="row justify-content-center">
             <div class="container-fluid my-5" id="containerForm">
 
-              <form method="POST" action="controlloaggiuntapiatto.php" class="col-md-8 mx-auto" name="formNuovoPiatto" id="formNuovoPiatto"
+              <form method="POST" action="controllo_crea_piatto.php" class="col-md-8 mx-auto" name="formNuovoPiatto" id="formNuovoPiatto"
                     ng-app="myAppNuovoPiatto" ng-controller="validateNuovoPiattoCtrl" novalidate>
 
                 <h2 class="mb-5 text-center">

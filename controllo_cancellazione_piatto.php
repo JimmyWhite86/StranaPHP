@@ -85,9 +85,9 @@
             <h2>Ci sono stati errori durante l'eliminazione del piatto</h2>
             <h3>Il piatto selezionato non è stato eliminato</h3>
             <hr>
-            <a href="homeAdmin.php" class="btn btn-primary mb-3">Home Adimn</a><br>
-            <a href="eliminaPiatto.php" class="btn btn-primary mb-3">Elimina altro piatto</a><br>
-            <a href="gestioneCucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+            <a href="home_admin.php" class="btn btn-primary mb-3">Home Adimn</a><br>
+            <a href="elimina_piatto.php" class="btn btn-primary mb-3">Elimina altro piatto</a><br>
+            <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
           </div>
         </div>
         <?php
@@ -99,9 +99,9 @@
             <h2> Eliminazione piatto avvenuta con successo </h2>
             <h3>Hai eliminato: <strong><?= $esitoEliminazione['nomePiatto']?></strong></h3>
             <hr>
-            <a href="homeAdmin.php" class="btn btn-primary mb-3">Home Admin</a><br>
-            <a href="eliminaPiatto.php" class="btn btn-primary mb-3">Elimina altro piatto</a><br>
-            <a href="gestioneCucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+            <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
+            <a href="elimina_piatto.php" class="btn btn-primary mb-3">Elimina altro piatto</a><br>
+            <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
           </div>
         </div>
         <?php

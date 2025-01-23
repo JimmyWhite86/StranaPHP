@@ -87,7 +87,7 @@ function normalNavBar($nomePagina) { ?>
               <li class="nav-item">
                 <?php $nomeLink = "homeAdmin"; ?>
                 <a class="nav-link navLinkAdmin <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
-                   aria-current="page" href="homeAdmin.php">
+                   aria-current="page" href="home_admin.php">
                   Home Admin
                 </a>
               </li>
@@ -99,7 +99,7 @@ function normalNavBar($nomePagina) { ?>
               <li class="nav-item">
                 <?php $nomeLink = "gestioneCucina"; ?>
                 <a class="nav-link navLinkAdmin <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
-                   href="gestioneCucina.php">
+                   href="gestione_cucina.php">
                   Gestione Cucina
                 </a>
               </li>
@@ -110,21 +110,21 @@ function normalNavBar($nomePagina) { ?>
                   Gestione Eventi
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="aggiungievento.php">Nuovo Evento</a></li>
-                  <li><a class="dropdown-item" href="eliminaevento.php">Elimina Evento</a></li>
+                  <li><a class="dropdown-item" href="crea_evento.php">Nuovo Evento</a></li>
+                  <li><a class="dropdown-item" href="elimina_evento.php">Elimina Evento</a></li>
                 </ul>
               </li>
 
               <li class="nav-item dropdown d-flex align-content-center">
-                <a href="gestioneEventi.php" class="nav-link">
+                <a href="gestione_eventi.php" class="nav-link">
                   Gestione Eventi
                 </a>
                 <a class="nav-link dropdown-toggle ps-1" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <span class="visually-hidden">Apri Menu</span>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="aggiungievento.php">Nuovo Evento</a></li>
-                  <li><a class="dropdown-item" href="eliminaevento.php">Elimina Evento</a></li>
+                  <li><a class="dropdown-item" href="crea_evento.php">Nuovo Evento</a></li>
+                  <li><a class="dropdown-item" href="elimina_evento.php">Elimina Evento</a></li>
                 </ul>
               </li>
               
@@ -136,7 +136,7 @@ function normalNavBar($nomePagina) { ?>
               <li class="nav-item">
                 <?php $nomeLink = "gestioneEventi"; ?>
                 <a class="nav-link navLinkAdmin <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
-                   href="gestioneEventi.php">
+                   href="gestione_eventi.php">
                   Gestione Eventi
                 </a>
               </li>
@@ -148,7 +148,7 @@ function normalNavBar($nomePagina) { ?>
               <li class="nav-item">
                 <?php $nomeLink = "gestioneUtenti"; ?>
                 <a class="nav-link navLinkAdmin <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
-                   href="gestioneUtenti.php">
+                   href="gestione_utenti.php">
                   Gestione Utenti
                 </a>
               </li>
@@ -177,8 +177,8 @@ function normalNavBar($nomePagina) { ?>
   function generaBreadcrumb() { ?>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="homeAdmin.php">Home Admin</a></li>
-        <li class="breadcrumb-item"><a href="gestioneCucina.php">Gestione Cucina</a></li>
+        <li class="breadcrumb-item"><a href="home_admin.php">Home Admin</a></li>
+        <li class="breadcrumb-item"><a href="gestione_cucina.php">Gestione Cucina</a></li>
         <li class="breadcrumb-item active" aria-current="page">Elimina Piatto</li>
       </ol>
     </nav>

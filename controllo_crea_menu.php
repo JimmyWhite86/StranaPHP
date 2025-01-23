@@ -47,9 +47,9 @@
           <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
             <h2>Ci sono stati problemi durante la connessio al database</h2>
             <hr>
-            <a href="nuovoMenu00.php" class="btn btn-primary mb-3">Inserisci un nuovo menu</a><br>
-            <a href="homeAdmin.php" class="btn btn-primary mb-3">Home Admin</a><br>
-            <a href="gestioneCucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+            <a href="nuovo_Menu_00.php" class="btn btn-primary mb-3">Inserisci un nuovo menu</a><br>
+            <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
+            <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
           </div>
         </div>
         <?php
@@ -94,9 +94,9 @@
       <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
         <h2>Il nuovo menu è stato inserito con successo</h2>
         <hr>
-        <a href="lacucina.php" class="btn btn-primary mb-3">Visualizza la pagina con il menù</a><br>
-        <a href="homeAdmin.php" class="btn btn-primary mb-3">Home Admin</a><br>
-        <a href="gestioneCucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+        <a href="la_cucina.php" class="btn btn-primary mb-3">Visualizza la pagina con il menù</a><br>
+        <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
+        <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
       </div>
     </div>
     <?php
@@ -105,9 +105,9 @@
       <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
         <h2>Ci sono stati problemi durante l'inserimento del menu</h2>
         <hr>
-        <a href="lacucina.php" class="btn btn-primary mb-3">Visualizza la pagina con il menù</a><br>
-        <a href="homeAdmin.php" class="btn btn-primary mb-3">Home Admin</a><br>
-        <a href="gestioneCucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+        <a href="la_cucina.php" class="btn btn-primary mb-3">Visualizza la pagina con il menù</a><br>
+        <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
+        <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
       </div>
     </div>
     <?php

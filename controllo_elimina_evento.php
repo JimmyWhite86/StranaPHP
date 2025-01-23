@@ -80,8 +80,8 @@
             <h2> Ci sono stati errori durante l'eliminazione dell'evento </h2>
             <p>Hai cercato di eliminare l'evento <?=$esitoEliminazione['nomeEvento']?></p>
             <hr>
-            <a href="gestioneEventi.php">Torna alla pagina gestione eventi</a>
-            <a href="homeAdmin.php">Oppure torna alla home per admin</a>
+            <a href="gestione_eventi.php">Torna alla pagina gestione eventi</a>
+            <a href="home_admin.php">Oppure torna alla home per admin</a>
           </div>
         </div>
       <?php
@@ -93,8 +93,8 @@
             <h1> Eliminazione evento avvenuta con successo </h1>
             <p>Hai eliminato: <strong><?= $esitoEliminazione['nomeEvento']?></strong></p>
             <hr>
-            <a href="gestioneEventi.php">Torna alla pagina gestione eventi</a>
-            <a href="homeAdmin.php">Oppure torna alla home per admin</a>
+            <a href="gestione_eventi.php">Torna alla pagina gestione eventi</a>
+            <a href="home_admin.php">Oppure torna alla home per admin</a>
           </div>
         </div>
 <?php

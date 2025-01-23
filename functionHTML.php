@@ -45,8 +45,8 @@
     ?>
     <div class="">
       <ul>
-        <li><a href="aggiungievento.php">Aggiungi evento</a></li>
-        <li><a href="eliminaevento.php">Evento</a></li>
+        <li><a href="crea_evento.php">Aggiungi evento</a></li>
+        <li><a href="elimina_evento.php">Evento</a></li>
         <!-- TODO: Inserire anche le altre opzioni-->
       </ul>
     </div>
@@ -152,7 +152,7 @@
               <li class="nav-item">
                 <?php $nomeLink = "homeAdmin"; ?>
                 <a class="nav-link navLinkAdmin <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
-                   aria-current="page" href="homeAdmin.php">
+                   aria-current="page" href="home_admin.php">
                   Home Admin
                 </a>
               </li>
@@ -162,7 +162,7 @@
               </li>
 
               <li class="nav-item dropdown d-flex align-content-center">
-                <a href="gestioneEventi.php" class="nav-link">
+                <a href="gestione_eventi.php" class="nav-link">
                   Gestione Eventi
                 </a>
                 <a class="nav-link dropdown-toggle ps-1" href="#" id="navbarDropdown" role="button"
@@ -170,8 +170,8 @@
                   <span class="visually-hidden">Apri Menu</span>
                 </a>
                 <ul class="dropdown-menu dropdownFont" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="aggiungievento.php">Nuovo Evento</a></li>
-                  <li><a class="dropdown-item" href="eliminaevento.php">Elimina Evento</a></li>
+                  <li><a class="dropdown-item" href="crea_evento.php">Nuovo Evento</a></li>
+                  <li><a class="dropdown-item" href="elimina_evento.php">Elimina Evento</a></li>
                 </ul>
               </li>
 
@@ -180,17 +180,17 @@
               </li>
 
               <li class="nav-item dropdown d-flex align-content-center">
-                <a href="gestioneCucina.php" class="nav-link">
+                <a href="gestione_cucina.php" class="nav-link">
                   Gestione Cucina
                 </a>
                 <a class="nav-link dropdown-toggle ps-1" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <span class="visually-hidden">Apri Menu</span>
                 </a>
                 <ul class="dropdown-menu dropdownFont" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="nuovoMenu.php">Nuovo Menù</a></li>
-                  <li><a class="dropdown-item" href="eliminaMenu.php">Elimina Menù</a></li>
-                  <li><a class="dropdown-item" href="aggiungiPiatto.php">Aggiungi Piatto</a></li>
-                  <li><a class="dropdown-item" href="eliminaPiatto.php">Elimina Piatto</a></li>
+                  <li><a class="dropdown-item" href="nuovo_menu.php">Nuovo Menù</a></li>
+                  <li><a class="dropdown-item" href="elimina_menu.php">Elimina Menù</a></li>
+                  <li><a class="dropdown-item" href="crea_piatto.php">Aggiungi Piatto</a></li>
+                  <li><a class="dropdown-item" href="elimina_piatto.php">Elimina Piatto</a></li>
                 </ul>
               </li>
 
@@ -199,15 +199,15 @@
               </li>
 
               <li class="nav-item dropdown d-flex align-content-center">
-                <a href="gestioneUtenti.php" class="nav-link">
+                <a href="gestione_utenti.php" class="nav-link">
                   Gestione Utenti
                 </a>
                 <a class="nav-link dropdown-toggle ps-1" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <span class="visually-hidden">Apri Menu</span>
                 </a>
                 <ul class="dropdown-menu dropdownFont" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="creaUtente.php">Nuovo Utente</a></li>
-                  <li><a class="dropdown-item" href="eliminaUtente.php">Elimina Utente</a></li>
+                  <li><a class="dropdown-item" href="crea_utente.php">Nuovo Utente</a></li>
+                  <li><a class="dropdown-item" href="elimina_utente.php">Elimina Utente</a></li>
                 </ul>
               </li>
 
@@ -470,10 +470,10 @@
         <h1> Ciao <?= $username ?>! Accesso effettuato come Admin </h1>
         <hr>
         <h3></h3>
-        <a href="homeAdmin.php">Homepage per Admin</a>
-        <a href="gestioneEventi.php">Gestione eventi</a>
-        <a href="gestioneCucina.php">Gestione cucina</a>
-        <a href="gestioneUtenti.php">Gestione utenti</a>
+        <a href="home_admin.php">Homepage per Admin</a>
+        <a href="gestione_eventi.php">Gestione eventi</a>
+        <a href="gestione_cucina.php">Gestione cucina</a>
+        <a href="gestione_utenti.php">Gestione utenti</a>
       </div>
     </div>
     <?php

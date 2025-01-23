@@ -81,7 +81,7 @@
               <div class="row justify-content-center">
                 <div class="container-fluid my-5" id="containerForm">
                   
-                  <form method="POST" action="controlloaggiuntamenu.php" class="col-md-8 mx-auto" name="formNuovoMenu01"
+                  <form method="POST" action="controllo_crea_menu.php" class="col-md-8 mx-auto" name="formNuovoMenu01"
                         id="formNuovoMenu01" ng-app="myAppNuovoMenu01" ng-controller="validateNuovoMenu01Ctrl" novalidate>
                     
                     <h2 class="mb-5 text-center">

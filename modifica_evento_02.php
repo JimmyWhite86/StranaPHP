@@ -54,7 +54,7 @@
           <div class="container col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
             <div class="row justify-content-center">
               <div class="container my-5" id="containerForm">
-                <form method="POST" action="controlloModificaEvento.php" enctype="multipart/form-data" class="col-md-8 mx-auto">
+                <form method="POST" action="controllo_modifica_evento.php" enctype="multipart/form-data" class="col-md-8 mx-auto">
                   <h2 class="mb-5 text-center"><?= $username ?>, aggiorna i campi che vuoi modificare nel form sottostante</h2>
 
                   <fieldset>

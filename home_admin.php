@@ -37,26 +37,26 @@
       <div class="bg-bianco m-3 p-3 col-md-4 col-lg-3 col-11">
         <h2 class="text-center">Gestione Cucina</h2>
         <ul class="list-unstyled">
-          <li><a href="nuovoMenu00.php">Crea un nuovo menù</a></li>
-          <li><a href="eliminaMenu.php">Elimina il menu presente</a></li>
-          <li><a href="aggiungiPiatto.php">Aggiungi un singolo piatto al menu</a></li>
-          <li><a href="eliminaPiatto.php">Elimina un singolo piatto dal menu</a></li>
+          <li><a href="nuovo_Menu_00.php">Crea un nuovo menù</a></li>
+          <li><a href="elimina_menu.php">Elimina il menu presente</a></li>
+          <li><a href="crea_piatto.php">Aggiungi un singolo piatto al menu</a></li>
+          <li><a href="elimina_piatto.php">Elimina un singolo piatto dal menu</a></li>
         </ul>
       </div>
 
       <div class="bg-bianco m-3 p-3 col-md-4 col-lg-3 col-11">
         <h2 class="text-center">Gestione Eventi</h2>
         <ul class="list-unstyled">
-          <li><a href="aggiungievento.php">Aggiungi un nuovo evento</a></li>
-          <li><a href="eliminaevento.php">Elimina un evento</a></li>
+          <li><a href="crea_evento.php">Aggiungi un nuovo evento</a></li>
+          <li><a href="elimina_evento.php">Elimina un evento</a></li>
         </ul>
       </div>
 
       <div class="bg-bianco m-3 p-3 col-md-4 col-lg-3 col-11">
         <h2 class="text-center">Gestione Utenti</h2>
         <ul class="list-unstyled">
-          <li><a href="creaUtente.php">Crea un nuovo utente con privilegi da Admin</a></li>
-          <li><a href="eliminaUtente.php">Elimina un utente</a></li>
+          <li><a href="crea_utente.php">Crea un nuovo utente con privilegi da Admin</a></li>
+          <li><a href="elimina_utente.php">Elimina un utente</a></li>
         </ul>
       </div>
 

@@ -22,7 +22,7 @@
   richiamaNavBar($nomePagina);
   
   /* Richiamo la breadcrumb*/
-  generaBreadcrumb();
+  echo generaBreadcrumb();
   
 ?>
 
@@ -54,7 +54,7 @@
           <div class="row justify-content-center">
             <div class="container-fluid my-5" id="containerForm">
 
-              <form method="POST" action="controlloaggiuntaevento.php" enctype="multipart/form-data" class="col-md-8 mx-auto"
+              <form method="POST" action="controllo_crea_evento.php" enctype="multipart/form-data" class="col-md-8 mx-auto"
                     name="formNuovoEvento" id="formNuovoEvento" ng-app="myAppNuovoEvento" ng-controller="validateNuovoEventoCtrl" novalidate> <!-- Attributo enctype => Serve per caricamento dei file w3schools.com/tags/att_form_enctype.asp -->
 
                 <h2 class="mb-5 text-center">

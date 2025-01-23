@@ -52,7 +52,7 @@
             a valorizzare la comunità attraverso l'arte, la creatività e il dialogo.
           </p>
           <div class="text-end mb-3">
-            <a href="chisiamo.php" class="btn bottoneGiallo2" aria-label="Scopri di più su chi siamo">Conoscici meglio</a>
+            <a href="chi_siamo.php" class="btn bottoneGiallo2" aria-label="Scopri di più su chi siamo">Conoscici meglio</a>
           </div>
         </div>
       </div>
@@ -68,7 +68,7 @@
             qualità. Promuoviamo la stagionalità dei prodotti e valorizziamo le eccellenze delle produzioni locali.
           </p>
           <div class="text-end mb-3">
-            <a href="lacucina.php" class="btn bottoneGiallo2" aria-label="Clicca per conoscere il menu">Cosa bolle in pentola</a>
+            <a href="la_cucina.php" class="btn bottoneGiallo2" aria-label="Clicca per conoscere il menu">Cosa bolle in pentola</a>
           </div>
         </div>
       </div>

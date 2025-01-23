@@ -27,4 +27,5 @@
 - Controllare la chiusura del tag main in tutte le pagine
 - Modificare i colori dei bottoni primary
 - Briciole di pane nelle pagine per admin
+- Wireframe per la struttura del sito
 

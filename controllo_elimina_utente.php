@@ -46,9 +46,9 @@
           <div class="row bg-bianco justify-content-center col-6 text-center">
             <h2> Ci sono stati errori durante l'eliminazione dell'utente </h2>
             <hr>
-            <a href="eliminaUtente.php">Elimina un altro utente</a>
-            <a href="gestioneUtenti.php">Torna alla pagina gestione utenti</a>
-            <a href="homeAdmin.php">Oppure torna alla home per admin</a>
+            <a href="elimina_utente.php">Elimina un altro utente</a>
+            <a href="gestione_utenti.php">Torna alla pagina gestione utenti</a>
+            <a href="home_admin.php">Oppure torna alla home per admin</a>
           </div>
         </div>
         <?php
@@ -58,9 +58,9 @@
             <h1> Eliminazione utente avvenuta con successo </h1>
             <p>Hai eliminato: <strong><?= $esitoEliminazione['nomeUtente'] ?></strong></p>
             <hr>
-            <a href="eliminaUtente.php">Elimina un altro utente</a>
-            <a href="gestioneUtenti.php">Torna alla pagina gestione utenti</a>
-            <a href="homeAdmin.php">Oppure torna alla home per admin</a>
+            <a href="elimina_utente.php">Elimina un altro utente</a>
+            <a href="gestione_utenti.php">Torna alla pagina gestione utenti</a>
+            <a href="home_admin.php">Oppure torna alla home per admin</a>
           </div>
         </div>
         <?php
