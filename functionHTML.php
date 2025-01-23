@@ -131,7 +131,7 @@
   
   #-----------------------------------------------------------------
   # Funzione per richiamare la navBar per utenti loggati come admin
-  # TODO: Colori stato link
+  # TODO: Dinamizzare i colori dei link a seconda dello stato
   function adminNavBar($nomePagina) { ?>
     <nav class="navbar navbar-expand-lg bg-nero">
       <a href="#mioMain" class="skip text-center" tabindex="0">Vai al contenuto principale</a> <!--Salta al contenuto principale della pagina (Accessibilità) -->
@@ -548,7 +548,8 @@
                    Scopri di più sui nostri progetti e attività.">
     <meta property="og:image" content="URL_dell_immagine_di_anteprima">
     <meta property="og:url" content="URL_del_sito_web">
-
+    
+    <!-- NON FANNO FUNZIONARE DROPDOWN MENU-->
     <!-- CDN POPPER JS BOOTSTRAP -->
     <!--<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
@@ -556,7 +557,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
             integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
     </script>-->
-
     <!-- CDN CSS e JS BOOTSTRAP -->
     <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -617,77 +617,51 @@
 
   #-----------------------------------------------------------------
   # Funzione per generare la breadcrumb in modo dinamico
-  function generaBreadcrumb() {
-    // Struttura gerarchica delle pagine con i link
-    $breadcrumbMap = [
-      "homeAdmin.php" => [
-        ["label" => "Home Admin", "link" => "homeAdmin.php"]
-      ],
-      "gestioneCucina.php" => [
-        ["label" => "Home Admin", "link" => "homeAdmin.php"],
-        ["label" => "Gestione Cucina", "link" => "gestioneCucina.php"]
-      ],
-      "nuovoMenu00.php" => [
-        ["label" => "Home Admin", "link" => "homeAdmin.php"],
-        ["label" => "Gestione Cucina", "link" => "gestioneCucina.php"],
-        ["label" => "Nuovo Menu", "link" => "nuovoMenu00.php"]
-      ],
-      "aggiungiPiatto.php" => [
-        ["label" => "Home Admin", "link" => "homeAdmin.php"],
-        ["label" => "Gestione Cucina", "link" => "gestioneCucina.php"],
-        ["label" => "Nuovo Piatto", "link" => "aggiungiPiatto.php"]
-      ],
-      "eliminaPiatto.php" => [
-        ["label" => "Home Admin", "link" => "homeAdmin.php"],
-        ["label" => "Gestione Cucina", "link" => "gestioneCucina.php"],
-        ["label" => "Elimina Piatto", "link" => "eliminaPiatto.php"]
-      ],
-      "gestioneEventi.php" => [
-        ["label" => "Home Admin", "link" => "homeAdmin.php"],
-        ["label" => "Gestione Eventi", "link" => "gestioneEventi.php"]
-      ],
-      "aggiungievento.php" => [
-        ["label" => "Home Admin", "link" => "homeAdmin.php"],
-        ["label" => "Gestione Eventi", "link" => "gestioneEventi.php"],
-        ["label" => "Nuovo Evento", "link" => "aggiungievento.php"]
-      ],
-      "modificaEvento.php" => [
-        ["label" => "Home Admin", "link" => "homeAdmin.php"],
-        ["label" => "Gestione Eventi", "link" => "gestioneEventi.php"],
-        ["label" => "Modifica Evento", "link" => "modificaEvento.php"]
-      ]
-    ];
+  # https://stackoverflow.com/questions/2594211/simple-dynamic-breadcrumb?newreg=a6f4386b257c4a20bc19e66c1cda6629
+  function generaBreadcrumb () {
+    $separatore = "&raquo"; // Separatore tra le voci della breadcrumb
+    $home = "Home";
     
-    // Recupera il nome della pagina corrente
-    $currentPage = basename($_SERVER['PHP_SELF']);
+    $path = array_filter(explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));
+    //    $_SERVER['REQUEST_URI'] restituisce la parte dell'URL che segue il nome del dominio
+    //    parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ==> Estrae solo il percorso dell'URL, ignorando query string o fragment.
+    //        Query string = è la parte dell'URL che segue il punto interrogativo. Contiene i parametri della richiesta HTTP
+    //        Fragment = è la parte dell'URL che segue il cancelletto. Viene utilizzato per indicare una sezione specifica della pagina.
+    //    explode ==> divide il percorso in un array, separando le voci con lo "/"
     
-    // Controlla se la pagina corrente è nella mappa
-    if (isset($breadcrumbMap[$currentPage])) {
-      $breadcrumbItems = $breadcrumbMap[$currentPage];
-    } else {
-      // Se la pagina non è definita, ritorna una breadcrumb di fallback
-      $breadcrumbItems = [["label" => "Home Admin", "link" => "homeAdmin.php"]];
-    }
+    // Creo l'URL di base (www.miosito.it)
+    //$base = ($_SERVER['HTTPS'] ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
+    $base = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
+    //    $_SERVER['HTTPS'] ? 'https' : 'http' ==> Restituisce https o http in base al tipo di connessione
+    //    $_SERVER['HTTP_HOST'] ==> Restituisce il nome dell'host del server
+    //    Combina queste informazioni per creare l'URL di base
     
-    // Stampa la breadcrumb
-    echo '<nav aria-label="breadcrumb">';
-    echo '<ol class="breadcrumb">';
+    // Inizializzo un array che conterrà i link della breadcrumb, inserendo il link alla home
+    $breadcrumb = array("<a href=\"$base\">$home</a>");
     
-    // Genera gli elementi della breadcrumb
-    $totalItems = count($breadcrumbItems);
-    foreach ($breadcrumbItems as $index => $item) {
-      if ($index < $totalItems - 1) {
-        // Elementi non attivi con link
-        echo '<li class="breadcrumb-item"><a href="' . $item['link'] . '">' . $item['label'] . '</a></li>';
-      } else {
-        // Ultimo elemento attivo senza link
-        echo '<li class="breadcrumb-item active" aria-current="page">' . $item['label'] . '</li>';
+    // Identifico l'ultimo elemento del percorso.
+    // $ultimoElemento = end(array_keys($path)); // Riga trovata su stackoverflow, ma non funziona
+    $keys = array_keys($path);
+    $ultimoElemento = end($keys);
+    //    Trovo l'ultimo elemento del path, per fermarmi e non aggiungere il link all'ultimo elemento della breadcrumb
+    
+    // Costruisco il resto della breadcrumb
+    foreach ($path as $x => $crumb) {
+      // Formatto il nome della voce rimuovendo l'estensione .php e sostituendo gli underscore con spazi
+      $titolo = ucwords(str_replace(array(".php", "_"), array("", " "), $crumb));
+      
+      if ($x != $ultimoElemento) { // Se non siamo all'ultimo elemento, aggiungo il link
+        $breadcrumb[] = "<a href=\"$base$crumb\">$titolo</a>";
+      } else { // Se siamo all'ultimo elemento, aggiungo solo il titolo
+        $breadcrumb[] = $titolo;
       }
     }
     
-    echo '</ol>';
-    echo '</nav>';
+    // Restituisco la breadcrumb formattata
+    return implode(" $separatore ", $breadcrumb);
+    
   }
+ 
 ?>
 
 
