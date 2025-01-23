@@ -2,7 +2,7 @@
   session_start();
   include "function.php";
   include "functionHTML.php";
-  $nomePagina = "eliminaPiatto";
+  $nomePagina = "elimina_piatto";
 ?>
 
 <!DOCTYPE html>

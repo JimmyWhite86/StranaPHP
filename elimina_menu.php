@@ -46,7 +46,7 @@
 
       <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
         <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-          <form method="POST" action="controllo_eliminazione_menu.php">
+          <form method="POST" action="controllo_elimina_menu.php">
             <div class="containerTabella my-5"> <!-- Mantiene il layout centrato e con margine verticale -->
               <div class="row justify-content-center">  <!-- Riga per definire il layout. Centra la colonna orizzontalmente-->
                 <div class="col-10"> <!-- colonna che occupa 10 parti su 12 -->

@@ -51,7 +51,7 @@
       ?>
 
       <!-- Tabella della pagina -->
-      <form method="POST" action="controllo_elimin_evento.php">
+      <form method="POST" action="controllo_elimina_evento.php">
         <div class="containerTabella my-5"> <!-- Mantiene il layout centrato e con margine verticale -->
           <div class="row justify-content-center">  <!-- Riga per definire il layout. Centra la colonna orizzontalmente-->
             <div class="col-10"> <!-- colonna che occupa 10 parti su 12 -->
