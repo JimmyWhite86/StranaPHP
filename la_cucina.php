@@ -1,6 +1,6 @@
 <?php
   session_start();
-  $nomePagina = "lacucina";
+  $nomePagina = "la_cucina";
   include "functionHTML.php";
   include "function.php";
 ?>

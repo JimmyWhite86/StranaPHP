@@ -87,8 +87,8 @@
               <?php
                 $links = [
                   "index" => "Home",
-                  "chisiamo" => "Chi Siamo",
-                  "lacucina" => "La Cucina",
+                  "chi_siamo" => "Chi Siamo",
+                  "la_cucina" => "La Cucina",
                   "eventi" => "Eventi",
                   "gallery" => "Gallery",
                   "contatti" => "Contatti"
