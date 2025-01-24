@@ -21,7 +21,7 @@
               
               <li class="nav-item">
                 <?php $nomeLink = "homeAdmin"; ?>
-                <a class="nav-link navLinkAdmin <?php $statoLink = statoLink($nomePagina, $nomeLink); echo "$statoLink"; ?>"
+                <a class="nav-link navLinkAdmin"
                    aria-current="page" href="home_admin.php">
                   Home Admin
                 </a>
@@ -32,7 +32,8 @@
               </li>
               
               <li class="nav-item dropdown d-flex align-content-center">
-                <a href="<?= BASE_URL ?>gestione_eventi.php" class="nav-link">
+                <a href="<?= BASE_URL ?>gestione_eventi.php"
+                   class="nav-link">
                   Gestione Eventi
                 </a>
                 <a class="nav-link dropdown-toggle ps-1" href="#" id="navbarDropdown" role="button"

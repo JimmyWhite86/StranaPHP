@@ -1,20 +1,5 @@
 <?php
   
-  # -----------------------------------------------------------------
-  # Funzione per ottenere la posizione della pagina che richiama la funzione per generare l'head
-/*  function ottieniPosizione() {
-    // Determino il percorso relativo
-    $pathNamePagina = dirname($_SERVER['SCRIPT_NAME']);
-    
-    // Rimuovo i caratteri che non mi interessano
-    $pathNamePagina = rtrim(str_replace('//', '/', $pathNamePagina), '/');
-    
-    return $pathNamePagina;
-  }*/
-  # -----------------------------------------------------------------
-  
-  //define('BASE_URL', '/StranaPHP/');
-  
   #-----------------------------------------------------------------
   # Funzione per generare la sezione head delle pagine
   function generaHeadSection() { ?>
@@ -32,21 +17,6 @@
                    Scopri di più sui nostri progetti e attività.">
     <meta property="og:image" content="URL_dell_immagine_di_anteprima">
     <meta property="og:url" content="URL_del_sito_web">
-    
-    <!-- NON FANNO FUNZIONARE DROPDOWN MENU-->
-    <!-- CDN POPPER JS BOOTSTRAP -->
-    <!--<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-            integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
-    </script>-->
-    <!-- CDN CSS e JS BOOTSTRAP -->
-    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>-->
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"

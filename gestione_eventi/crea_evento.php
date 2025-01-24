@@ -1,7 +1,8 @@
 <?php
   session_start();
   include '../includes/init.php';
-  $nomePagina = "aggiungi_evento";
+  $nomePagina = "crea_evento";
+  $paginaPadre = "gestione_eventi";
 ?>
 
 <!DOCTYPE html>
