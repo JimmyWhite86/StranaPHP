@@ -1,8 +1,7 @@
 <?php
   session_start();
-  include "function.php";
-  include "functionHTML.php";
-  $nomePagina = "aggiungiEvento";
+  include 'includes/init.php';
+  $nomePagina = "nuovo_evento";
 ?>
 
 <!DOCTYPE html>

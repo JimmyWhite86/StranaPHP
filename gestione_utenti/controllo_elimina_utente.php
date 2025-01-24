@@ -1,8 +1,7 @@
 <?php
   session_start();
-  include "function.php";
-  include "functionHTML.php";
-  $nomePagina = "eliminaUtente";
+  include "includes/init.php";
+  $nomePagina = "elimina_utente";
 ?>
 
 <!DOCTYPE html>

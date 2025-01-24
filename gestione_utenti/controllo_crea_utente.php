@@ -1,8 +1,7 @@
 <?php
   session_start();
-  include "function.php";
-  include "functionHTML.php";
-  $nomePagina = "creaUtente";
+  include 'includes/init.php';
+  $nomePagina = "crea_utente";
 ?>
 
 <!DOCTYPE html>

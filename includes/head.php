@@ -1,5 +1,20 @@
 <?php
   
+  # -----------------------------------------------------------------
+  # Funzione per ottenere la posizione della pagina che richiama la funzione per generare l'head
+/*  function ottieniPosizione() {
+    // Determino il percorso relativo
+    $pathNamePagina = dirname($_SERVER['SCRIPT_NAME']);
+    
+    // Rimuovo i caratteri che non mi interessano
+    $pathNamePagina = rtrim(str_replace('//', '/', $pathNamePagina), '/');
+    
+    return $pathNamePagina;
+  }*/
+  # -----------------------------------------------------------------
+  
+  //define('BASE_URL', '/StranaPHP/');
+  
   #-----------------------------------------------------------------
   # Funzione per generare la sezione head delle pagine
   function generaHeadSection() { ?>
@@ -46,8 +61,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     
     <!-- Collegamento ai miei files CSS -->
-    <link href="CSS/base_css.css" rel="stylesheet" type="text/css">
-    <link href="CSS/fontCSS.css" rel="stylesheet" type="text/css">
+    <link href="<?= BASE_URL ?>CSS/base_css.css" rel="stylesheet" type="text/css">
+    <link href="<?= BASE_URL ?>CSS/fontCSS.css" rel="stylesheet" type="text/css">
     
     <!-- Font Babas Neue -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -64,7 +79,7 @@
     <script src="https://kit.fontawesome.com/1a45214b57.js" crossorigin="anonymous"></script>
     
     <!-- Collegamento al mio modulo JS -->
-    <script src="modulo.js"></script>
+    <script src="<?= BASE_URL ?>modulo.js"></script>
     <?php
   }
 #-----------------------------------------------------------------

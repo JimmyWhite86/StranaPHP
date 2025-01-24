@@ -1,7 +1,6 @@
 <?php
   session_start();
-  include "../functionHTML.php";
-  include "../function.php";
+  include 'includes/init.php';
   $nomePagina = "aggiungi_evento";
 ?>
 
@@ -14,7 +13,6 @@
 </head>
 
 <body>
-
 
 <?php
   

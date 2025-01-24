@@ -1,8 +1,7 @@
 <?php
   session_start();
-  include "function.php";
-  include "functionHTML.php";
-  $nomePagina = "aggiungiPiatto";
+  include 'includes/init.php';
+  $nomePagina = "aggiungi_piatto";
 ?>
 
 <!DOCTYPE html>

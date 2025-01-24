@@ -2,13 +2,7 @@
   session_start();
   session_unset();
   session_destroy();
-  
-  // Includo tutti i file di funzioni esterne, contenuti nella cartella "includes"
-  $functions = glob("includes/*.php");
-  foreach ($functions as $function) {
-    require $function;
-  }
-  
+  include 'includes/init.php';
   $nomePagina = "logut";
 ?>
 

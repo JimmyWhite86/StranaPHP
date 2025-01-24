@@ -1,12 +1,6 @@
 <?php
   session_start();
-  
-  // Includo tutti i file di funzioni esterne, contenuti nella cartella "includes"
-  $functions = glob("includes/*.php");
-  foreach ($functions as $function) {
-    require $function;
-  }
-  
+  include 'includes/init.php';
   $nomePagina = "la_cucina";
 ?>
 

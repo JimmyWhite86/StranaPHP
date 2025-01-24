@@ -7,7 +7,7 @@
       <a href="#mioMain" class="skip text-center" tabindex="0">Vai al contenuto principale</a> <!--Salta al contenuto principale della pagina (Accessibilità) -->
       <div class="container-fluid">
         <a class="navbar-brand fontstranaBase" href="index.php">
-          <img src="Immagini/Logo_Stranamore_03.jpg" class="d-inline-block align-center" alt="logo stranamore">
+          <img src="<?= BASE_URL ?>Immagini/Logo_Stranamore_03.jpg" class="d-inline-block align-center" alt="logo stranamore">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
@@ -40,8 +40,8 @@
                   <span class="visually-hidden">Apri Menu</span>
                 </a>
                 <ul class="dropdown-menu dropdownFont" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="crea_evento.php">Nuovo Evento</a></li>
-                  <li><a class="dropdown-item" href="elimina_evento.php">Elimina Evento</a></li>
+                  <li><a class="dropdown-item" href="<?= BASE_URL ?>gestione_eventi/crea_evento.php">Nuovo Evento</a></li>
+                  <li><a class="dropdown-item" href="<?= BASE_URL ?>/gestione_eventi/elimina_evento.php">Elimina Evento</a></li>
                 </ul>
               </li>
               
@@ -53,14 +53,15 @@
                 <a href="gestione_cucina.php" class="nav-link">
                   Gestione Cucina
                 </a>
-                <a class="nav-link dropdown-toggle ps-1" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle ps-1" href="#" id="navbarDropdown" role="button"
+                   data-bs-toggle="dropdown" aria-expanded="false">
                   <span class="visually-hidden">Apri Menu</span>
                 </a>
                 <ul class="dropdown-menu dropdownFont" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="nuovo_menu.php">Nuovo Menù</a></li>
-                  <li><a class="dropdown-item" href="elimina_menu.php">Elimina Menù</a></li>
-                  <li><a class="dropdown-item" href="crea_piatto.php">Aggiungi Piatto</a></li>
-                  <li><a class="dropdown-item" href="elimina_piatto.php">Elimina Piatto</a></li>
+                  <li><a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/nuovo_menu.php">Nuovo Menù</a></li>
+                  <li><a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/elimina_menu.php">Elimina Menù</a></li>
+                  <li><a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/crea_piatto.php">Aggiungi Piatto</a></li>
+                  <li><a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/elimina_piatto.php">Elimina Piatto</a></li>
                 </ul>
               </li>
               
@@ -76,8 +77,8 @@
                   <span class="visually-hidden">Apri Menu</span>
                 </a>
                 <ul class="dropdown-menu dropdownFont" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="crea_utente.php">Nuovo Utente</a></li>
-                  <li><a class="dropdown-item" href="elimina_utente.php">Elimina Utente</a></li>
+                  <li><a class="dropdown-item" href="<?= BASE_URL ?>/gestione_utenti/crea_utente.php">Nuovo Utente</a></li>
+                  <li><a class="dropdown-item" href="<?= BASE_URL ?>/gestione_utenti/elimina_utente.php">Elimina Utente</a></li>
                 </ul>
               </li>
             
