@@ -32,7 +32,7 @@
               </li>
               
               <li class="nav-item dropdown d-flex align-content-center">
-                <a href="gestione_eventi.php" class="nav-link">
+                <a href="<?= BASE_URL ?>gestione_eventi.php" class="nav-link">
                   Gestione Eventi
                 </a>
                 <a class="nav-link dropdown-toggle ps-1" href="#" id="navbarDropdown" role="button"
@@ -50,7 +50,7 @@
               </li>
               
               <li class="nav-item dropdown d-flex align-content-center">
-                <a href="gestione_cucina.php" class="nav-link">
+                <a href="<?= BASE_URL ?>gestione_cucina.php" class="nav-link">
                   Gestione Cucina
                 </a>
                 <a class="nav-link dropdown-toggle ps-1" href="#" id="navbarDropdown" role="button"
@@ -58,7 +58,7 @@
                   <span class="visually-hidden">Apri Menu</span>
                 </a>
                 <ul class="dropdown-menu dropdownFont" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/nuovo_menu.php">Nuovo Menù</a></li>
+                  <li><a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/nuovo_menu_00.php">Nuovo Menù</a></li>
                   <li><a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/elimina_menu.php">Elimina Menù</a></li>
                   <li><a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/crea_piatto.php">Aggiungi Piatto</a></li>
                   <li><a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/elimina_piatto.php">Elimina Piatto</a></li>
@@ -70,7 +70,7 @@
               </li>
               
               <li class="nav-item dropdown d-flex align-content-center">
-                <a href="gestione_utenti.php" class="nav-link">
+                <a href="<?= BASE_URL ?>gestione_utenti.php" class="nav-link">
                   Gestione Utenti
                 </a>
                 <a class="nav-link dropdown-toggle ps-1" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -86,7 +86,7 @@
           </div>
           
           <div>
-            <a href="logout.php">
+            <a href="<?= BASE_URL ?>logout.php">
               <i class="bi bi-box-arrow-left pe-4 nav-link navLinkAdmin mioOver"></i>
             </a>
           </div>

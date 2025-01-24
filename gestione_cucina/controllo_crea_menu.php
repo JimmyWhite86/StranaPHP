@@ -46,7 +46,7 @@
           <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
             <h2>Ci sono stati problemi durante la connessio al database</h2>
             <hr>
-            <a href="nuovo_Menu_00.php" class="btn btn-primary mb-3">Inserisci un nuovo menu</a><br>
+            <a href="nuovo_menu_00.php" class="btn btn-primary mb-3">Inserisci un nuovo menu</a><br>
             <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
             <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
           </div>
