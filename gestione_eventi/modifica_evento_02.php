@@ -2,7 +2,7 @@
 
 <?php
   session_start();
-  include 'includes/init.php';
+  include '../includes/init.php';
   $nomePagina = "modificaEvento";
 ?>
 
