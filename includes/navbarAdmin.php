@@ -22,7 +22,7 @@
               <li class="nav-item">
                 <?php $nomeLink = "homeAdmin"; ?>
                 <a class="nav-link navLinkAdmin"
-                   aria-current="page" href="home_admin.php">
+                   aria-current="page" href="<?= BASE_URL ?>home_admin.php">
                   Home Admin
                 </a>
               </li>
@@ -41,8 +41,21 @@
                   <span class="visually-hidden">Apri Menu</span>
                 </a>
                 <ul class="dropdown-menu dropdownFont" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="<?= BASE_URL ?>gestione_eventi/crea_evento.php">Nuovo Evento</a></li>
-                  <li><a class="dropdown-item" href="<?= BASE_URL ?>/gestione_eventi/elimina_evento.php">Elimina Evento</a></li>
+                  <li>
+                    <a class="dropdown-item" href="<?= BASE_URL ?>gestione_eventi/crea_evento.php">
+                      Nuovo Evento
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="<?= BASE_URL ?>/gestione_eventi/elimina_evento.php">
+                      Elimina Evento
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="<?= BASE_URL ?>/gestione_eventi/modifica_evento_00.php">
+                      Modifica Evento
+                    </a>
+                  </li>
                 </ul>
               </li>
               

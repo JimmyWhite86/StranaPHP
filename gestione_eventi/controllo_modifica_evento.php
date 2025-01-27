@@ -29,36 +29,66 @@
   if (!isset($_SESSION["username"])) {
     deviLoggarti();
   } else {
+    
     $amministratore = $_SESSION["admin"];
     $username = $_SESSION["username"];
     
     if ($amministratore == 0) {
       deviEssereAdmin($username);
     } else {
+    
+      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $idEvento = $_POST["idEvento"];
+        $nomeEventoNew = sanificaInput($_POST["eventoNew"]);
+        $dataEventoNew = sanificaInput($_POST["dataNew"]);
+        $descrizioneNew = sanificaInput($_POST["descrizioneNew"]);
+        $imagePath = gestisciImmagine();
+        
+        $datiEventoSelezionato = ottieniDatiEvento($idEvento);
+        
+        $campiDaAggiornare = [];
+        $parametri = [':idEvento' => $idEvento];
+        
+        if ($nomeEventoNew != $datiEventoSelezionato["NomeEvento"]) {
+          $campiDaAggiornare[] = "NomeEvento = :nomeEvento";
+          $parametri[':nomeEvento'] = $nomeEventoNew;
+        }
+        
+        if ($dataEventoNew != $datiEventoSelezionato["DataEvento"]) {
+          $campiDaAggiornare[] = "DataEvento = :dataEvento";
+          $parametri[':dataEvento'] = $dataEventoNew;
+        }
+        
+        if ($descrizioneNew != $datiEventoSelezionato["Descrizione"]) {
+          $campiDaAggiornare[] = "Descrizione = :descrizione";
+          $parametri[':descrizione'] = $descrizioneNew;
+        }
 
-
-// Connessione al database
-      $conn = connetti("Strana01");
-
-// ID dell'evento
-      $idEvento = $_POST['idEvento'];
-
-// Ottieni i valori inviati dal form, se vuoti mantieni i valori precedenti
-      $nomeEvento = !empty($_POST['eventoNew']) ? $_POST['eventoNew'] : $datiEventoSelezionato['NomeEvento'];
-      $dataEvento = !empty($_POST['dataNew']) ? $_POST['dataNew'] : $datiEventoSelezionato['DataEvento'];
-      $descrizione = !empty($_POST['descrizioneNew']) ? $_POST['descrizioneNew'] : $datiEventoSelezionato['Descrizione'];
-      $immagine = $_FILES['immagine']['name'] ? $_FILES['immagine']['name'] : $datiEventoSelezionato['Immagine'];
-
-// Aggiorna il database
-      $sql = "UPDATE Eventi SET NomeEvento='$nomeEvento', DataEvento='$dataEvento', Descrizione='$descrizione', Immagine='$immagine' WHERE IDEvento='$idEvento'";
-      if (mysqli_query($conn, $sql)) {
-        echo "Evento aggiornato con successo";
+        if ($imagePath !== null) {
+          $campiDaAggiornare[] = "Immagine = :immagine";
+          $parametri[':immagine'] = $imagePath;
+        }
+        
+        if (!empty($campiDaAggiornare)) {
+          $query = "UPDATE Eventi SET " . implode(", ", $campiDaAggiornare) . " WHERE IDEvento = :idEvento";
+          try {
+            $conn = connetti();
+            $stmt = $conn->prepare($query);
+            $stmt->execute($parametri);
+            $messaggio = "Evento modificato con successo";
+            echo $messaggio;
+          } catch (PDOException $e) {
+            echo "Errore: " . $e->getMessage();
+          }
+          
+        } else {
+          $messaggio = "Nessun campo modificato";
+        }
+        
+        
       } else {
-        echo "Errore nell'aggiornamento: " . mysqli_error($conn);
+        echo "Errore: metodo non consentito";
       }
-      
-      mysqli_close($conn);
-      
       
     }
   }

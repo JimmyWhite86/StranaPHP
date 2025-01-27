@@ -86,7 +86,7 @@
     foreach ($datiEventi as $evento) {
       if ($evento['eliminato'] == 0) { ?>
         <div class="m-2 card col-md-4 evento-card" style="width: 20em;" data-evento="<?= date('Y-m-d', strtotime($evento['DataEvento']))?>">
-          <img src="<?= $evento['Immagine']?>" class="img-fluid myImgCard mt-2" alt="Immagine evento" loading="lazy">
+          <img src="<?= BASE_URL . $evento['Immagine']?>" class="img-fluid myImgCard mt-2" alt="Immagine evento" loading="lazy">
           <div class="card-body">
             <h3><?= $evento['NomeEvento']?></h3>
             <p><?= $evento['Descrizione']?></p>

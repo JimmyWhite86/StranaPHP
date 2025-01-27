@@ -345,22 +345,22 @@
   # ------------------------------------
   # Funzione per richiamare i dati dell'evento selezionato da modificare
   # La pagina che usa questa funzione deve ancora essere implementata
-  function eventoDaModificareSelezionato ($idEvento) {
+  function ottieniDatiEvento ($idEvento) {
     $conn = connetti ("Strana01");
     if (!$conn) {
       return ['successo' => false, 'errore' => 'Errore di connessione'];
     }
-    $sql = "SELECT * FROM Eventi WHERE IDEvento='$idEvento'";
-    $tmp = mysqli_query($conn, $sql);
-    $nRow = mysqli_num_rows($tmp);
-    if ($nRow == 0) {
-      //echo "<h1>Evento non trovato $idEvento</h1>";
-      return ['successo' => false, 'nomeEvento' => ''];
-    }
-    else {
+    
+    $sql = "SELECT * FROM Eventi WHERE IDEvento=:idEvento";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute(['idEvento' => $idEvento]);
+    
+    if ($stmt->rowCount() === 0) {
+      echo "<h1>Evento non trovato $idEvento</h1>";
+      //return ['successo' => false, 'nomeEvento' => ''];
+    } else {
       //ottengo i dati dell'evento per poi comunicarli all'utente
-      $datiEvento = mysqli_fetch_assoc($tmp);
-      mysqli_close($conn);
+      $datiEvento = $stmt->fetch(PDO::FETCH_ASSOC);
       return $datiEvento;
     }
   }
@@ -488,7 +488,7 @@
   
   # ------------------------------------
   # Funzione per importare le immagini negli eventi
-  function gestisciImmagine() {
+ /* function gestisciImmagine() {
     if (isset($_FILES['immagine']) && $_FILES['immagine']['error'] === 0) {
       $imageName = $_FILES['immagine']['name'];
       $imageTmp = $_FILES['immagine']['tmp_name'];
@@ -501,17 +501,50 @@
       
       $estensioniAmmesse = ["image/jpg", "image/jpeg", "image/png"];
       if (in_array($imageType, $estensioniAmmesse)) {
-        $uploadPercorso = "Immagini/";
+        $uploadPercorso = $_SERVER['DOCUMENT_ROOT'] . "/Immagini/";
         $imagePath = $uploadPercorso . basename($imageName);
-        
+        }
+      
         if (move_uploaded_file($imageTmp, $imagePath)) {
-          return $imagePath;
+          return "/Immagini/" . $imagePath;
         } else {
           return false;
         }
       }
-    }
+    
     return null;
+  }*/
+  
+  function gestisciImmagine() {
+    if (isset($_FILES['immagine']) && $_FILES['immagine']['error'] === 0) {
+      $imageName = $_FILES['immagine']['name'];
+      $imageTmp = $_FILES['immagine']['tmp_name'];
+      $imageType = $_FILES['immagine']['type'];
+      
+      $dimensioneMassima = 1048576 * 3;
+      if ($_FILES['immagine']['size'] > $dimensioneMassima) {
+        return false; // Errore: dimensione troppo grande
+      }
+      
+      $estensioniAmmesse = ["image/jpg", "image/jpeg", "image/png"];
+      if (!in_array($imageType, $estensioniAmmesse)) {
+        return false; // Errore: formato non supportato
+      }
+      
+      $uploadPercorso = $_SERVER['DOCUMENT_ROOT'] . "/StranaPHP/Immagini/";
+      
+      // *** RIMOSSO IL BLOCCO DI CREAZIONE DELLA DIRECTORY ***
+      
+      $imagePath = $uploadPercorso . basename($imageName);
+      
+      if (move_uploaded_file($imageTmp, $imagePath)) {
+        return "/Immagini/" . basename($imageName);
+      } else {
+        return false; // Errore durante lo spostamento del file (probabilmente directory non esistente)
+      }
+    }
+    
+    return null; // Nessuna immagine caricata
   }
   # ------------------------------------
   
@@ -627,7 +660,7 @@
   
   # ------------------------------------
   # Funzione per validare gli indirizzi email
-  # !!Funzione ancora da implementare
+  # toDO: Funzione ancora da implementare
   function validaIndirizzoEmail($indirizzoEmail) {
     // Rimuovo caratteri
     $emailSanificata = filter_var($indirizzoEmail, FILTER_SANITIZE_EMAIL);

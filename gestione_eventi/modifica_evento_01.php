@@ -41,11 +41,12 @@
       // Ottieni ID dell'evento selezionato
       if (isset($_POST["eventoSelezionato"])) {
         $idEvento = $_POST["eventoSelezionato"];
-        $datiEventoSelezionato = eventoDaModificareSelezionato($idEvento);
+        $datiEventoSelezionato = ottieniDatiEvento($idEvento);
+        //print_r($datiEventoSelezionato);
         
         // Cambio formato alla data
-        $dataFormatoNew = date("d-m-Y", strtotime($datiEventoSelezionato["DataEvento"]));
-        $datiEventoSelezionato["DataEvento"] = $dataFormatoNew;
+        //$dataFormatoNew = date("d-m-Y", strtotime($datiEventoSelezionato["DataEvento"]));
+        //$datiEventoSelezionato["DataEvento"] = $dataFormatoNew;
         ?>
 
         <!-- Form per la modifica dell'evento -->
@@ -53,24 +54,37 @@
           <div class="container col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
             <div class="row justify-content-center">
               <div class="container my-5" id="containerForm">
-                <form method="POST" action="controllo_modifica_evento.php" enctype="multipart/form-data" class="col-md-8 mx-auto">
+                <form method="POST" action="controllo_modifica_evento.php" id="formModificaEvento"
+                      enctype="multipart/form-data" class="col-md-8 mx-auto">
                   <h2 class="mb-5 text-center"><?= $username ?>, aggiorna i campi che vuoi modificare nel form sottostante</h2>
 
                   <fieldset>
                     <div class="form-group">
                       <input type="hidden" name="idEvento" value="<?= $idEvento ?>">
 
-                      <label for="eventoNew">Inserisci il titolo dell'evento <span class="mandatory">*</span></label>
-                      <input type="text" name="eventoNew" id="eventoNew" class="form-control" placeholder="<?= $datiEventoSelezionato['NomeEvento'] ?>">
+                      <label for="eventoNew">Modifica il titolo dell'evento</label>
+                      <input type="text" name="eventoNew" id="eventoNew" class="form-control"
+                             value="<?= htmlspecialchars($datiEventoSelezionato['NomeEvento'], ENT_QUOTES, 'UTF-8') ?>">
 
-                      <label for="dataNew">Inserisci la data <span class="mandatory">*</span></label>
-                      <input type="date" name="dataNew" id="dataNew" class="form-control" placeholder="<?= $datiEventoSelezionato['DataEvento'] ?>">
+                      <label for="dataNew">Modifica la data</label>
+                      <input type="date" name="dataNew" id="dataNew" class="form-control"
+                             value="<?= htmlspecialchars($datiEventoSelezionato['DataEvento'], ENT_QUOTES, 'UTF-8')?>">
 
-                      <label for="descrizioneNew">Inserisci la descrizione <span class="mandatory">*</span></label>
-                      <textarea name="descrizioneNew" id="descrizioneNew" class="form-control" placeholder="<?= $datiEventoSelezionato['Descrizione'] ?>"></textarea>
+                      <label for="descrizioneNew">Modifica la descrizione</label>
+                      <textarea name="descrizioneNew" id="descrizioneNew" class="form-control">
+                        <?= htmlspecialchars($datiEventoSelezionato['Descrizione'], ENT_QUOTES, 'UTF-8') ?>
+                      </textarea>
 
-                      <label for="immagine">Aggiungi l'immagine dell'evento</label>
+                      <label for="immagine">Cambia l'immagine dell'evento</label>
                       <input type="file" name="immagine" id="immagine" class="form-control">
+
+                      <!-- Visualizza la miniatura dell'immagine corrente -->
+                      <?php if (!empty($datiEventoSelezionato['Immagine'])): ?>
+                        <div class="mt-3">
+                          <label>Immagine corrente:</label>
+                          <img src="<?= BASE_URL . $datiEventoSelezionato['Immagine'] ?>" alt="Immagine corrente" class="img-thumbnail" style="max-width: 200px;">
+                        </div>
+                      <?php endif; ?>
                     </div>
 
                     <div class="text-center mt-4">

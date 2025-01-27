@@ -46,7 +46,7 @@
       <div class="bg-bianco m-3 p-3 col-md-4 col-lg-3 col-11">
         <h2 class="text-center">Gestione Eventi</h2>
         <ul class="list-unstyled">
-          <li><a href="crea_evento.php">Aggiungi un nuovo evento</a></li>
+          <li><a href="crea_evento_prova.php">Aggiungi un nuovo evento</a></li>
           <li><a href="elimina_evento.php">Elimina un evento</a></li>
         </ul>
       </div>

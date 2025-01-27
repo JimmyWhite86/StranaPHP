@@ -25,18 +25,7 @@
 </div>
 
 <?php
-  
-  // TODO: O lo faccio funzionare o lo tolgo
-  /*$esitoVerificaLogin = verificaUtenteLoggato($_SESSION);
-  if ($esitoVerificaLogin == 0) {
-    deviLoggarti();
-  } elseif ($esitoVerificaLogin == 1) {
-    $username = $_SESSION["username"];
-    deviEssereAdmin($username);
-  } elseif ($esitoVerificaLogin == 2) {
-    echo "<p>loggato</p>";
-  }*/
-
+ 
  if (!isset($_SESSION["username"])) {
    deviLoggarti();
  } else {
@@ -60,7 +49,8 @@
      ?>
 
      <!-- Tabella della pagina -->
-     <form method="POST" action="modifica_evento_02.php">
+     <!-- Tabella della pagina -->
+     <form method="POST" action="modifica_evento_01.php">
        <div class="containerTabella my-5"> <!-- Mantiene il layout centrato e con margine verticale -->
          <div class="row justify-content-center">  <!-- Riga per definire il layout. Centra la colonna orizzontalmente-->
            <div class="col-10"> <!-- colonna che occupa 10 parti su 12 -->
@@ -75,20 +65,21 @@
                </tr>
                </thead>
                <tbody>
-               <?php while ($row = mysqli_fetch_assoc($listaEventi)) {?>
-                 <tr>
-                   <td><?=$row['IDEvento']?></td>
-                   <td><?=$row['DataEvento']?></td>
-                   <td><?=$row['NomeEvento']?></td>
-                   <td class="miaColonnaImmagineTabella">
-                     <img src="<?=$row['Immagine']?>" class="miaImmagineTabella" alt="Locandina dell'evento">
-                   </td>
-                   <td>
-                     <input type="radio" name="eventoSelezionato" value="<?=$row['IDEvento']?>">
-                   </td>
-                 </tr>
-                 <?php
-               }
+               <?php
+                 foreach ($listaEventi as $evento) {?>
+                   <tr>
+                     <td><?=$evento['IDEvento']?></td>
+                     <td><?=$evento['DataEvento']?></td>
+                     <td><?=$evento['NomeEvento']?></td>
+                     <td class="miaColonnaImmagineTabella">
+                       <img src="<?= BASE_URL ?><?=$evento['Immagine']?>" class="miaImmagineTabella" alt="Locandina dell'evento">
+                     </td>
+                     <td>
+                       <input type="radio" name="eventoSelezionato" value="<?=$evento['IDEvento']?>">
+                     </td>
+                   </tr>
+                   <?php
+                 }
                ?>
                </tbody>
              </table>

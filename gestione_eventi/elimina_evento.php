@@ -72,7 +72,7 @@
                       <td><?=$evento['DataEvento']?></td>
                       <td><?=$evento['NomeEvento']?></td>
                       <td class="miaColonnaImmagineTabella">
-                        <img src="<?=$evento['Immagine']?>" class="miaImmagineTabella" alt="Locandina dell'evento">
+                        <img src="<?= BASE_URL ?><?=$evento['Immagine']?>" class="miaImmagineTabella" alt="Locandina dell'evento">
                       </td>
                       <td>
                         <input type="radio" name="eventoSelezionato" value="<?=$evento['IDEvento']?>">
