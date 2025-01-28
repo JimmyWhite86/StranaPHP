@@ -160,7 +160,7 @@
         <th class="intestazioneTabella">Categoria</th>
         <th class="intestazioneTabella">Cuoco</th>
         <th class="intestazioneTabella">Data inserimento</th>
-        <th class="intestazioneTabella">Seleziona per eliminare</th>
+        <th class="intestazioneTabella">Seleziona</th>
       </tr>
       </thead>
 

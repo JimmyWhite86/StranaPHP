@@ -344,7 +344,6 @@
   
   # ------------------------------------
   # Funzione per richiamare i dati dell'evento selezionato da modificare
-  # La pagina che usa questa funzione deve ancora essere implementata
   function ottieniDatiEvento ($idEvento) {
     $conn = connetti ("Strana01");
     if (!$conn) {
@@ -362,6 +361,28 @@
       //ottengo i dati dell'evento per poi comunicarli all'utente
       $datiEvento = $stmt->fetch(PDO::FETCH_ASSOC);
       return $datiEvento;
+    }
+  }
+  # ------------------------------------
+  
+  
+  # ------------------------------------
+  # Funzione per richiamare i dati del piatto selezionato da modificare
+  function ottieniDatiPiatto($idPiatto) {
+    $conn = connetti();
+    if (!$conn) {
+      return ['successo' => false, 'errore' => 'Errore di connessione'];
+    }
+    
+    $sql = "SELECT * FROM menuCucina WHERE idPiatto=:idPiatto";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute(['idPiatto' => $idPiatto]);
+    
+    if ($stmt->rowCount() === 0) {
+      return ['successo' => false, 'nomePiatto' => ''];
+    } else {
+      $datiPiatto = $stmt->fetch(PDO::FETCH_ASSOC);
+      return $datiPiatto;
     }
   }
   # ------------------------------------
@@ -488,33 +509,6 @@
   
   # ------------------------------------
   # Funzione per importare le immagini negli eventi
- /* function gestisciImmagine() {
-    if (isset($_FILES['immagine']) && $_FILES['immagine']['error'] === 0) {
-      $imageName = $_FILES['immagine']['name'];
-      $imageTmp = $_FILES['immagine']['tmp_name'];
-      $imageType = $_FILES['immagine']['type'];
-      
-      $dimensioneMassima = 1048576 * 3;
-      if ($_FILES['immagine']['size'] > $dimensioneMassima) {
-        return false;
-      }
-      
-      $estensioniAmmesse = ["image/jpg", "image/jpeg", "image/png"];
-      if (in_array($imageType, $estensioniAmmesse)) {
-        $uploadPercorso = $_SERVER['DOCUMENT_ROOT'] . "/Immagini/";
-        $imagePath = $uploadPercorso . basename($imageName);
-        }
-      
-        if (move_uploaded_file($imageTmp, $imagePath)) {
-          return "/Immagini/" . $imagePath;
-        } else {
-          return false;
-        }
-      }
-    
-    return null;
-  }*/
-  
   function gestisciImmagine() {
     if (isset($_FILES['immagine']) && $_FILES['immagine']['error'] === 0) {
       $imageName = $_FILES['immagine']['name'];

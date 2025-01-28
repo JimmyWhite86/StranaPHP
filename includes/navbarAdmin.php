@@ -76,6 +76,8 @@
                   <li><a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/elimina_menu.php">Elimina Menù</a></li>
                   <li><a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/crea_piatto.php">Aggiungi Piatto</a></li>
                   <li><a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/elimina_piatto.php">Elimina Piatto</a></li>
+                  <li><a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/modifica_piatto_00.php">Modifica Piatto</a></li>
+                  
                 </ul>
               </li>
               

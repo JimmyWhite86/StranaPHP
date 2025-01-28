@@ -22,7 +22,7 @@
 <!-- Titolo della pagina -->
 <div class="my-5 row justify-content-center">
   <div class="text-center">
-    <h1 class="titoloPagina">Modifica un Evento</h1>
+    <h1 class="titoloPagina">modifica un evento</h1>
   </div>
 </div>
 

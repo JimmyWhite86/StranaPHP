@@ -1,7 +1,7 @@
 <?php
   session_start();
   include '../includes/init.php';
-  $nomePagina = "modificaEvento";
+  $nomePagina = "modifica_evento_00";
 ?>
 
 <!DOCTYPE html>
