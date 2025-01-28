@@ -32,10 +32,11 @@
     <div class="row justify-content-center">
       <h2 class="text-center">Ciao <?= $userName ?>, scegli un azione:</h2>
       <ul class="list-unstyled ml-5 pl-5">
-        <li><a href="nuovo_Menu_00.php">Crea un nuovo menù</a></li>
-        <li><a href="elimina_menu.php">Elimina il menu presente</a></li>
-        <li><a href="crea_piatto.php">Aggiungi un singolo piatto al menu</a></li>
-        <li><a href="elimina_piatto.php">Elimina un singolo piatto dal menu</a></li>
+        <li><a href="<?= BASE_URL ?>/gestione_cucina/nuovo_menu_00.php">Crea un nuovo menù</a></li>
+        <li><a href="<?= BASE_URL ?>/gestione_cucina/elimina_menu.php">Elimina il menu presente</a></li>
+        <li><a href="<?= BASE_URL ?>/gestione_cucina/crea_piatto.php">Aggiungi un singolo piatto al menu</a></li>
+        <li><a href="<?= BASE_URL ?>/gestione_cucina/elimina_piatto.php">Elimina un singolo piatto dal menu</a></li>
+        <li><a href="<?= BASE_URL ?>/gestione_cucina/modifica_piatto_00.php">Modifica un singolo piatto del menu</a></li>
       </ul>
     </div>
   </div>

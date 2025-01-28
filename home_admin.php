@@ -36,26 +36,28 @@
       <div class="bg-bianco m-3 p-3 col-md-4 col-lg-3 col-11">
         <h2 class="text-center">Gestione Cucina</h2>
         <ul class="list-unstyled">
-          <li><a href="nuovo_Menu_00.php">Crea un nuovo menù</a></li>
-          <li><a href="elimina_menu.php">Elimina il menu presente</a></li>
-          <li><a href="crea_piatto.php">Aggiungi un singolo piatto al menu</a></li>
-          <li><a href="elimina_piatto.php">Elimina un singolo piatto dal menu</a></li>
+          <li><a href="<?= BASE_URL ?>/gestione_cucina/nuovo_menu_00.php">Crea un nuovo menù</a></li>
+          <li><a href="<?= BASE_URL ?>/gestione_cucina/elimina_menu.php">Elimina il menu presente</a></li>
+          <li><a href="<?= BASE_URL ?>/gestione_cucina/crea_piatto.php">Aggiungi un singolo piatto al menu</a></li>
+          <li><a href="<?= BASE_URL ?>/gestione_cucina/elimina_piatto.php">Elimina un singolo piatto dal menu</a></li>
+          <li><a href="<?= BASE_URL ?>/gestione_cucina/modifica_piatto_00.php">Modifica un singolo piatto del menu</a></li>
         </ul>
       </div>
 
       <div class="bg-bianco m-3 p-3 col-md-4 col-lg-3 col-11">
         <h2 class="text-center">Gestione Eventi</h2>
         <ul class="list-unstyled">
-          <li><a href="crea_evento_prova.php">Aggiungi un nuovo evento</a></li>
-          <li><a href="elimina_evento.php">Elimina un evento</a></li>
+          <li><a href="<?= BASE_URL ?>/gestione_eventi/crea_evento.php">Crea un nuovo evento</a></li>
+          <li><a href="<?= BASE_URL ?>/gestione_eventi/elimina_evento.php">Elimina un evento</a></li>
+          <li><a href="<?= BASE_URL ?>/gestione_eventi/modifica_evento_00.php">Modifica un evento</a></li>
         </ul>
       </div>
 
       <div class="bg-bianco m-3 p-3 col-md-4 col-lg-3 col-11">
         <h2 class="text-center">Gestione Utenti</h2>
         <ul class="list-unstyled">
-          <li><a href="crea_utente.php">Crea un nuovo utente con privilegi da Admin</a></li>
-          <li><a href="elimina_utente.php">Elimina un utente</a></li>
+          <li><a href="<?= BASE_URL ?>/gestione_utenti/crea_utente.php">Crea un nuovo utente con privilegi da Admin</a></li>
+          <li><a href="<?= BASE_URL ?>/gestione_utenti/elimina_utente.php">Elimina un utente</a></li>
         </ul>
       </div>
 

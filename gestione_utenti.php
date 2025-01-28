@@ -1,7 +1,7 @@
 <?php
   session_start();
   include 'includes/init.php';
-  $nomePagina = "gestioneUtenti";
+  $nomePagina = "gestione_utenti";
 ?>
 
 <!DOCTYPE html>
@@ -31,8 +31,8 @@
     <div class="row justify-content-center">
       <h2 class="text-center">Ciao <?= $userName ?>, scegli un azione:</h2>
       <ul class="list-unstyled ml-5 pl-5">
-        <li><a href="crea_utente.php">Crea un nuovo utente con privilegi da Admin</a></li>
-        <li><a href="elimina_utente.php">Elimina un utente</a></li>
+        <li><a href="<?= BASE_URL ?>/gestione_utenti/crea_utente.php">Crea un nuovo utente con privilegi da Admin</a></li>
+        <li><a href="<?= BASE_URL ?>/gestione_utenti/elimina_utente.php">Elimina un utente</a></li>
       </ul>
     </div>
   </div>
