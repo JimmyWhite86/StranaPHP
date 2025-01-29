@@ -8,6 +8,15 @@
     $password = "root";
     $charset = "utf8mb4";
     
+    /* Parametri per hosting register */
+    /*
+     * $dbname = "assogz_zouwun86";
+    $host = "assogz-zouwun86.db.tb-hosting.com";
+    $username = "assogz_zouwun86";
+    $password = "UDb5zs584V@KVAq";
+    $charset = "utf8mb4";
+    */
+    
     $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
     
     try {

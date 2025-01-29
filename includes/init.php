@@ -2,6 +2,7 @@
   
   // Definisco la costante BASE_URL per la gestione dei percorsi
   define('BASE_URL', '/StranaPHP/');
+  // define('BASE_URL', '/'); // ===> Percorso per l'hosting su Register
   /*
    * Uso la funzione "define" perchè:
    * - Le costanti possono essere definite e utilizzate ovunque senza seguire le regole di visibilità;

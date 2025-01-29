@@ -54,7 +54,7 @@
 
 
       <form method="POST" action="controllo_elimina_piatto.php" class="">
-        <div class="containerTabella my-5"> <!-- Mantiene il layout centrato e con margine verticale -->
+        <div class="table-responsive containerTabella my-5"> <!-- Mantiene il layout centrato e con margine verticale -->
           <div class="row justify-content-center">  <!-- Riga per definire il layout. Centra la colonna orizzontalmente-->
             <div class="col-10"> <!-- colonna che occupa 10 parti su 12 -->
               <?php
