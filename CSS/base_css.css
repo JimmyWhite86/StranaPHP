@@ -592,3 +592,40 @@ thead th.intestazioneTabella {
 
 
 
+/* Evidenziare il focus quando si naviga da tastiera */
+/* TODO: DA MIGLIORARE VISIBILITA e UNIFORMARE TRA I VARI STILI */
+
+/* Focus per la navbar*/
+.navbar-nav a:focus,
+.navbar-toggler:focus,
+.skip:focus {
+  outline: 3px solid var(--gialloStrana);
+  background-color: var(--azzurroStrana);
+  color: var(--biancoStrana);
+}
+
+/* Stile generale per il focus*/
+:focus-visible {
+  outline: 3px solid var(--gialloStrana);
+  background-color: var(--azzurroStrana);
+  color: var(--biancoStrana);
+}
+
+/* Stile per focus su link e pulsanti */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--gialloStrana);
+  background-color: var(--azzurroStrana);
+  color: var(--biancoStrana);
+}
+
+/* Focus per campi di input */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  border: 2px solid var(--gialloStrana);
+  box-shadow: 0 0 5px var(--gialloStrana);
+}

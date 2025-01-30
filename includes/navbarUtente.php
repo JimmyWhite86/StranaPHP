@@ -2,7 +2,7 @@
 #-----------------------------------------------------------------
   # Funzione per visualizzare la navBar utenti non loggati
   function normalNavBar($nomePagina) { ?>
-    <nav class="navbar navbar-expand-lg bg-nero">
+    <nav class="navbar navbar-expand-lg bg-nero" role="navigation" aria-label="menù di navigazione">
       <a href="#mioMain" class="skip text-center" tabindex="0">Vai al contenuto principale</a> <!--Salta al contenuto principale della pagina (Accessibilità) -->
       
       <div class="container-fluid">
@@ -10,13 +10,14 @@
           <img src="Immagini/Logo_Stranamore_01.jpg" class="d-inline-block align-center"
                alt="Logo dell'associazione culturale Stranamore">
         </a>
+        
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                 aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         
-        <div class="collapse navbar-collapse fontNav" id="navbarNav" role="navigation" aria-label="main navigation">
+        <div class="collapse navbar-collapse fontNav" id="navbarNav">
           <div class="d-flex justify-content-center flex-grow-1">
             
             <ul class="navbar-nav" id="myNavBar">
@@ -34,8 +35,8 @@
                   <li class="nav-item">
                     <a class="nav-link <?php echo htmlspecialchars(statoLink($nomePagina, $nomeLink), ENT_QUOTES, 'UTF-8'); ?>"
                        aria-current="page" href="<?= htmlspecialchars($nomeLink, ENT_QUOTES, 'UTF-8') ?>.php"
-                       aria-label="<?= htmlspecialchars($testoLink, ENT_QUOTES, 'UTF-8') ?>" >
-                      <?= htmlspecialchars($testoLink, ENT_QUOTES, 'UTF-8') ?>
+                       aria-label="<?= htmlspecialchars($testoLink, ENT_QUOTES, 'UTF-8') ?>" tabindex="1">
+                       <?= htmlspecialchars($testoLink, ENT_QUOTES, 'UTF-8') ?>
                     </a>
                   </li>
                   <?php
@@ -52,8 +53,9 @@
           </div>
           
           <div>
-            <a href="login.php" aria-label="login admin">
+            <a href="login.php" aria-label="login admin" tabindex="1">
               <i class="bi bi-box-arrow-in-right pe-4 nav-link mioOver"></i>
+              <span class="visually-hidden">Login</span>
             </a>
           </div>
         

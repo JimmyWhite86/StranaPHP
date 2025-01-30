@@ -18,10 +18,12 @@
 
 <!-- NAV BAR -->
 <?php richiamaNavBar($nomePagina);?>
-<h1 class="visually-hidden">Pagina principale dell'associazione culturale "Stranamore"</h1> <!---->
+
 
 <main id="mioMain">
 
+  <h1 class="visually-hidden">Pagina principale dell'associazione culturale "Stranamore"</h1>
+  
   <!-- Hero Section -->
   <section class="hero-section bg-nero text-center text-white d-flex align-items-center" role="banner">
     <h2 class="visually-hidden">Hero Section di Stranamore</h2>
