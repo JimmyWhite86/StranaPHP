@@ -35,7 +35,7 @@
                   <li class="nav-item">
                     <a class="nav-link <?php echo htmlspecialchars(statoLink($nomePagina, $nomeLink), ENT_QUOTES, 'UTF-8'); ?>"
                        aria-current="page" href="<?= htmlspecialchars($nomeLink, ENT_QUOTES, 'UTF-8') ?>.php"
-                       aria-label="<?= htmlspecialchars($testoLink, ENT_QUOTES, 'UTF-8') ?>" tabindex="1">
+                       aria-label="<?= htmlspecialchars($testoLink, ENT_QUOTES, 'UTF-8') ?>">
                        <?= htmlspecialchars($testoLink, ENT_QUOTES, 'UTF-8') ?>
                     </a>
                   </li>
@@ -53,7 +53,7 @@
           </div>
           
           <div>
-            <a href="login.php" aria-label="login admin" tabindex="1">
+            <a href="login.php" aria-label="login admin">
               <i class="bi bi-box-arrow-in-right pe-4 nav-link mioOver"></i>
               <span class="visually-hidden">Login</span>
             </a>

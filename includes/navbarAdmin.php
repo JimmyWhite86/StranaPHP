@@ -23,7 +23,7 @@
               <li class="nav-item">
                 <?php $nomeLink = "homeAdmin"; ?>
                 <a class="nav-link navLinkAdmin"
-                   aria-current="page" href="<?= BASE_URL ?>home_admin.php" tabindex="1">
+                   aria-current="page" href="<?= BASE_URL ?>home_admin.php">
                   Home Admin
                 </a>
               </li>
@@ -34,26 +34,26 @@
               
               <li class="nav-item dropdown d-flex align-content-center">
                 <a href="<?= BASE_URL ?>gestione_eventi.php"
-                   class="nav-link" tabindex="1">
+                   class="nav-link">
                   Gestione Eventi
                 </a>
                 <a class="nav-link dropdown-toggle ps-1" href="#" id="navbarDropdown" role="button"
-                   data-bs-toggle="dropdown" aria-expanded="false" tabindex="1">
+                   data-bs-toggle="dropdown" aria-expanded="false">
                   <span class="visually-hidden">Apri menu gestione eventi</span>
                 </a>
                 <ul class="dropdown-menu dropdownFont" aria-labelledby="navbarDropdown">
                   <li>
-                    <a class="dropdown-item" href="<?= BASE_URL ?>gestione_eventi/crea_evento.php" tabindex="1">
+                    <a class="dropdown-item" href="<?= BASE_URL ?>gestione_eventi/crea_evento.php">
                       Nuovo Evento
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="<?= BASE_URL ?>/gestione_eventi/elimina_evento.php" tabindex="1">
+                    <a class="dropdown-item" href="<?= BASE_URL ?>/gestione_eventi/elimina_evento.php">
                       Elimina Evento
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="<?= BASE_URL ?>/gestione_eventi/modifica_evento_00.php" tabindex="1">
+                    <a class="dropdown-item" href="<?= BASE_URL ?>/gestione_eventi/modifica_evento_00.php">
                       Modifica Evento
                     </a>
                   </li>
@@ -65,36 +65,36 @@
               </li>
               
               <li class="nav-item dropdown d-flex align-content-center">
-                <a href="<?= BASE_URL ?>gestione_cucina.php" class="nav-link" tabindex="1">
+                <a href="<?= BASE_URL ?>gestione_cucina.php" class="nav-link">
                   Gestione Cucina
                 </a>
                 <a class="nav-link dropdown-toggle ps-1" href="#" id="navbarDropdown" role="button"
-                   data-bs-toggle="dropdown" aria-expanded="false" tabindex="1">
+                   data-bs-toggle="dropdown" aria-expanded="false">
                   <span class="visually-hidden">Apri menu gestione cucina</span>
                 </a>
                 <ul class="dropdown-menu dropdownFont" aria-labelledby="navbarDropdown">
                   <li>
-                    <a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/nuovo_menu_00.php" tabindex="1">
+                    <a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/nuovo_menu_00.php">
                       Nuovo Menù
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/elimina_menu.php" tabindex="1">
+                    <a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/elimina_menu.php">
                       Elimina Menù
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/crea_piatto.php" tabindex="1">
+                    <a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/crea_piatto.php">
                       Aggiungi Piatto
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/elimina_piatto.php" tabindex="1">
+                    <a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/elimina_piatto.php">
                       Elimina Piatto
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/modifica_piatto_00.php" tabindex="1">
+                    <a class="dropdown-item" href="<?= BASE_URL ?>gestione_cucina/modifica_piatto_00.php">
                       Modifica Piatto
                     </a>
                   </li>
@@ -106,7 +106,7 @@
               </li>
               
               <li class="nav-item dropdown d-flex align-content-center">
-                <a href="<?= BASE_URL ?>gestione_utenti.php" class="nav-link" tabindex="1">
+                <a href="<?= BASE_URL ?>gestione_utenti.php" class="nav-link">
                   Gestione Utenti
                 </a>
                 <a class="nav-link dropdown-toggle ps-1" href="#" id="navbarDropdown" role="button"
@@ -115,12 +115,12 @@
                 </a>
                 <ul class="dropdown-menu dropdownFont" aria-labelledby="navbarDropdown">
                   <li>
-                    <a class="dropdown-item" href="<?= BASE_URL ?>/gestione_utenti/crea_utente.php" tabindex="1">
+                    <a class="dropdown-item" href="<?= BASE_URL ?>/gestione_utenti/crea_utente.php">
                       Nuovo Utente
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="<?= BASE_URL ?>/gestione_utenti/elimina_utente.php" tabindex="1">
+                    <a class="dropdown-item" href="<?= BASE_URL ?>/gestione_utenti/elimina_utente.php">
                       Elimina Utente
                     </a>
                   </li>
@@ -131,7 +131,7 @@
           </div>
           
           <div>
-            <a href="<?= BASE_URL ?>logout.php" tabindex="1">
+            <a href="<?= BASE_URL ?>logout.php">
               <i class="bi bi-box-arrow-left pe-4 nav-link navLinkAdmin mioOver"></i>
               <span class="visually-hidden">Logout</span>
             </a>

@@ -29,8 +29,10 @@
     <h2 class="visually-hidden">Hero Section di Stranamore</h2>
     <div class="container hero-content" ng-app="myAppHome" ng-controller="myCtrl">
       <div class="row justify-content-center">
-        <p class="m-0 p-0 fontHeroSopra hidden" id="heroSopra">Associazione Culturale e Circolo ARCI</p>
-        <p class="px-1 fontHeroCentro" id="heroCentro"></p>
+        <p class="m-0 p-0 fontHeroSopra hidden" id="heroSopra" >Associazione Culturale e Circolo ARCI</p>
+        <p class="px-1 fontHeroCentro" id="heroCentro">
+          <!--<span class="visually-hidden">stranamore</span>--> <!-- Se metto questa riga Wave mi da un errore di contrasto-->
+        </p>
         <img src="Immagini/Logo_Stranamore_01.jpg" class="img-fluid myImgHero" alt="Logo dell'associazione culturale Stranamore">
         <p class="m-0 p-0 pb-2 fontHeroSotto hidden" id="heroSotto">PROMUOVIAMO CULTURA, INCLUSIONE E SOCIALITA'</p>
       </div>
@@ -112,7 +114,7 @@
             </p>
           </div>
           <div class="card-footer">
-            <a href="" class="btn bottoneRosso" aria-label="Clicca per iscriverti alla nostra newsletter">Iscriviti</a>
+            <a href="" class="btn bottoneRosso" aria-label="Iscriviti alla newsletter per stranamore">Iscriviti</a>
           </div>
         </div>
 
