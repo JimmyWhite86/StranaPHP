@@ -57,22 +57,12 @@
   
   #-----------------------------------------------------------------
   # Funzione per stabile se il link della navBar deve avere classe "active" o "non active" per poi essere gestito con CSS
-  /*function statoLink ($nomePagina, $nomeLink) {
-    return $nomePagina == $nomeLink ? "mioActive" : "mioOver";
-  }*/
   function statoLink($nomePagina, $nomeLink ) {
     if ($nomePagina == $nomeLink) {
       return "mioActive";
     }
     return "nav-link";
   }
-
-  /*function statoLink($nomePagina, $nomeLink, $isDropdown = false) {
-   if ($nomePagina == $nomeLink) {
-     return $isDropdown ? "dropdownActive" : "mioActive";
-   }
-    return "nav-link";
-  }*/
   #-----------------------------------------------------------------
   
   
@@ -86,7 +76,7 @@
     foreach ($datiEventi as $evento) {
       if ($evento['eliminato'] == 0) { ?>
         <div class="m-2 card col-md-4 evento-card" style="width: 20em;" data-evento="<?= date('Y-m-d', strtotime($evento['DataEvento']))?>">
-          <img src="<?= BASE_URL . $evento['Immagine']?>" class="img-fluid myImgCard mt-2" alt="Immagine evento" loading="lazy">
+          <img src="<?= BASE_URL . $evento['Immagine']?>" class="img-fluid myImgCard mt-2" alt="" loading="lazy">
           <div class="card-body">
             <h3><?= $evento['NomeEvento']?></h3>
             <p><?= $evento['Descrizione']?></p>

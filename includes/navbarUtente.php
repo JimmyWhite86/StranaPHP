@@ -31,18 +31,20 @@
                   "contatti" => "Contatti"
                 ];
                 $ultimoElemento = array_key_last($links); // Prendo l'ultimo elemento dell'array che contiene i link _ https://www.php.net/manual/it/function.array-key-last.php
-                foreach ($links as $nomeLink => $testoLink) { ?>
+                foreach ($links as $nomeLink => $testoLink) {
+                  $isActive = ($nomePagina == $nomeLink);?>
                   <li class="nav-item">
                     <a class="nav-link <?php echo htmlspecialchars(statoLink($nomePagina, $nomeLink), ENT_QUOTES, 'UTF-8'); ?>"
-                       aria-current="page" href="<?= htmlspecialchars($nomeLink, ENT_QUOTES, 'UTF-8') ?>.php"
-                       aria-label="<?= htmlspecialchars($testoLink, ENT_QUOTES, 'UTF-8') ?>">
+                       href="<?= htmlspecialchars($nomeLink, ENT_QUOTES, 'UTF-8') ?>.php"
+                       aria-label="<?= htmlspecialchars($testoLink, ENT_QUOTES, 'UTF-8') ?>"
+                       <?= $isActive ? 'aria-current="page"' : ''?>>
                        <?= htmlspecialchars($testoLink, ENT_QUOTES, 'UTF-8') ?>
                     </a>
                   </li>
                   <?php
                   if ($nomeLink != $ultimoElemento) { ?> <!-- Se non è l'ultimo elemento, aggiungo il separatore -->
                     <li class="nav-item">
-                      <span class="mioSpanNav">|</span>
+                      <span class="mioSpanNav" aria-hidden="true">|</span>
                     </li>
                     <?php
                   }

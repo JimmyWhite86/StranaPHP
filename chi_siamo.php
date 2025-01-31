@@ -34,9 +34,9 @@
 
       <!--<hr class="featurette-divider">-->
 
-      <div class="row featurette bg-bianco" title="chi siamo">
+      <section class="row featurette bg-bianco" aria-labelledby="chiSiamoTitolo" title="chi siamo">
         <div class="col-md-7">
-          <h2 class="fontChiSiamo01">
+          <h2 class="fontChiSiamo01" id="chiSiamoTitolo">
             chi siamo
           </h2>
           <p class="lead">
@@ -44,20 +44,20 @@
             Il nostro obiettivo è quello di promuovere iniziative sociali, culturali, ambientaliste, artistiche,
             ricreative e sportive. Attraverso questi progetti, ci impegniamo a creare uno spazio di dialogo e
             condivisione tra singoli e gruppi, incoraggiando l’autogestione culturale e sostenendo la comunità
-            del territorio pinerolese.
+            del nostro territorio.
           </p>
         </div>
         <div class="col-md-5">
           <img class="featurette-image img-fluid mx-auto" src="Immagini/Staff01.JPG"
                alt="Lo staff di Stranamore nel giardino dell'associazione">
         </div>
-      </div>
+      </section>
 
       <hr class="featurette-divider">
 
-      <div class="row featurette bg-bianco" title="la nostra vision bg-bianco">
+      <section class="row featurette bg-bianco" title="la nostra vision" aria-labelledby="iNostriValoriTitolo">
         <div class="col-md-7 order-md-2">
-          <h2 class="fontChiSiamo01">
+          <h2 class="fontChiSiamo01" id="iNostriValoriTitolo">
             i nostri valori
           </h2>
           <p class="lead">
@@ -73,13 +73,13 @@
           <img class="featurette-image img-fluid mx-auto" src="Immagini/Mani_01.png"
                alt="">
         </div>
-      </div>
+      </section>
 
       <hr class="featurette-divider">
 
-      <div class="row featurette bg-bianco" title="cosa facciamo">
+      <section class="row featurette bg-bianco" title="cosa facciamo" aria-labelledby="cosaFacciamoTitolo">
         <div class="col-md-7">
-          <h2 class="fontChiSiamo01">
+          <h2 class="fontChiSiamo01" id="cosaFacciamoTitolo">
             cosa facciamo
           </h2>
           <p class="lead">
@@ -95,9 +95,9 @@
         </div>
         <div class="col-md-5">
           <img class="featurette-image img-fluid mx-auto" src="Immagini/Emi_01.jpg"
-               alt="Concerto dei Mahout nel sotterraneo dell'associazione Stranamore">
+               alt="Concerto dei Mahout nello scantinato dell'associazione Stranamore">
         </div>
-      </div>
+      </section>
 
       <!--<hr class="featurette-divider">-->
 
@@ -106,35 +106,38 @@
 
   <hr>
 
-  <div class="container-fluid d-flex justify-content-center bg-giallo">
+  <section class="container-fluid d-flex justify-content-center bg-giallo" aria-labelledby="documentiTitolo" title="documenti">
     <div class="align-content-center bg-bianco text-center container marketing">
-      <h3 class="text-center p-3 m-3 fontChiSiamo02">statuto e atto costitutivo</h3>
-      <p class="lead">Da questa sezione puoi prendere visione dei documenti che danno vita alla nostra associazione.</p>
+      <h3 class="text-center p-3 m-3 fontChiSiamo02" id="documentiTitolo">statuto e atto costitutivo</h3>
+      <h4 class="lead">Da questa sezione puoi prendere visione dei documenti che danno vita alla nostra associazione.</h4>
       <br>
       <div class="text-center">
-        <a href="Documenti/Statuto%202022.pdf" target="_blank" class="btn btn-primary p-3 m-3">
+        <a href="Documenti/Statuto%202022.pdf" target="_blank" class="btn btn-primary p-3 m-3"
+           aria-label="Scarica o consulta lo statuto di Stranamore in formato PDF">
           Scarica lo Statuto
         </a>
-        <a href="Documenti/AttoCostitutivo93.pdf" target="_blank" class="btn btn-primary p-3 m-3">
+        <a href="Documenti/AttoCostitutivo93.pdf" target="_blank" class="btn btn-primary p-3 m-3"
+           aria-label="Scarica o consulta l'atto costitutivo di Stranamore in formato PDF">
           Scarica l'Atto Costitutivo
         </a>
-        <a href="Documenti/InfoPrivacyWix.pdf" target="_blank" class="btn btn-primary p-3 m-3">
+        <a href="Documenti/InfoPrivacyWix.pdf" target="_blank" class="btn btn-primary p-3 m-3"
+           aria-label="Scarica l'informativa sulla privacy">
           Scarica l'Informativa Privacy
         </a>
       </div>
     </div>
-  </div>
+  </section>
 
   <hr>
 
-  <div class="container-fluid d-flex justify-content-center bg-azzurro">
+  <section class="container-fluid d-flex justify-content-center bg-azzurro" aria-labelledby="direttivoTitolo">
     <div class="align-content-center bg-bianco container marketing">
 
-      <h3 class="p-3 m-3 fontChiSiamo02 text-center">il direttivo</h3>
+      <h3 class="p-3 m-3 fontChiSiamo02 text-center" id="direttivoTitolo">il direttivo</h3>
 
-      <p class="lead">
+      <h4 class="lead">
         Il nostro direttivo è composto da socə volontarə, che permettono all'associazione di esistere.
-      </p>
+      </h4>
 
       <div class="col-11">
         <ul class="lead">
@@ -150,7 +153,7 @@
 
       </div>
     </div>
-  </div>
+  </section>
 
 </main>
 

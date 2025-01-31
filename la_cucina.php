@@ -17,7 +17,7 @@
 <!-- Richiama la nav bar -->
 <?php richiamaNavBar($nomePagina); ?>
 
-<main>
+<main id="mioMain">
   
   <?php
     // ------------------ PROVA FUNZIONI ------------------
