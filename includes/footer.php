@@ -57,12 +57,12 @@
               <span class="visually-hidden">Facebook</span>
             </a>
             
-            <a href="" class="socialIcon p-2" title="Link alla pagine Twitter"
+            <!--<a href="" class="socialIcon p-2" title="Link alla pagine Twitter"
                aria-label="Vai alla pagina Twitter di Stranamore">
               <i class="fa-brands fa-square-x-twitter fa-3x" role="img" title="X / Twitter Icon" aria-hidden="true"></i>
               <span class="visually-hidden">Twitter</span>
             </a>
-            <br>
+            <br>-->
             
             <a href="https://www.instagram.com/stranamorepinerolo/" class="socialIcon p-2" title="Link alla pagina Instagram"
                aria-label="Vai alla pagina Instagram di Stranamore">
@@ -70,7 +70,8 @@
               <span class="visually-hidden">Instagram</span>
             </a>
             
-            <a href="" class="socialIcon p-2" title="Link alla pagina YouTube"
+            <a href="https://youtube.com/@associazionestranamore3422?si=kU7jX50TMWbQkmKW" class="socialIcon p-2"
+               title="Link alla pagina YouTube"
                aria-label="Vai alla pagina Youtube di Stranamore">
               <i class="fa-brands fa-square-youtube fa-3x" role="img" title="YouTube Icon" aria-hidden="true"></i>
               <span class="visually-hidden">YouTube</span>

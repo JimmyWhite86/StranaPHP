@@ -9,7 +9,7 @@
 
 <head>
   <?php generaHeadSection(); ?>
-  <title>Stranamore | Login</title>
+  <title>Stranamore | LogIn</title>
 </head>
 
 <body>

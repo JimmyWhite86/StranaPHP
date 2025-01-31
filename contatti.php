@@ -44,9 +44,9 @@
     <div class="row justify-content-center">
 
       <div class="card m-1 bg-5" style="width: 18rem;">
-        <i role="img" class="bi bi-envelope-at-fill fa-4x iconeRosse"></i>
+        <i role="img" class="bi bi-envelope-at-fill fa-4x iconeRosse" aria-hidden="true"></i>
         <div class="card-body">
-          <h5 class="card-title">Scrivici</h5>
+          <h3 class="card-title">Scrivici</h3>
           <p class="card-text">Manda una mail al nostro indirizzo</p>
           <p class="card-text">associazione.stranamore@gmail.com</p>
         </div>
@@ -56,9 +56,9 @@
       </div>
 
       <div class="card m-1 bg-5" style="width: 18rem;">
-        <i role="img" class="bi bi-telephone-outbound-fill fa-4x iconeGialle"></i>
+        <i role="img" class="bi bi-telephone-outbound-fill fa-4x iconeGialle" aria-hidden="true"></i>
         <div class="card-body">
-          <h5 class="card-title">Mandaci un WhatsApp</h5>
+          <h3 class="card-title">Mandaci un WhatsApp</h3>
           <p class="card-text">Puoi chiedere informazioni o prenotare un tavolo scrivendo al nostro numero</p>
           <p>351 623 0176</p>
         </div>
@@ -68,9 +68,9 @@
       </div>
 
       <div class="card m-1 bg-5" style="width: 18rem;">
-        <i role="img" class="bi bi-geo-alt-fill fa-4x iconeAzzurre"></i>
+        <i role="img" class="bi bi-geo-alt-fill fa-4x iconeAzzurre" aria-hidden="true"></i>
         <div class="card-body">
-          <h5 class="card-title">Raggiungici</h5>
+          <h3 class="card-title">Raggiungici</h3>
           <p class="card-text">Vieni a trovarci di persona nella nostra struttura</p>
           <p class="card-text">via Ettore Bignone 89,<br>10064 Pinerolo (TO)</p>
         </div>
@@ -104,21 +104,23 @@
       <hr class="d-md-none separatoreSpesso">
 
       <div class="col-md-6 text-right">
-        <h2 class="fontTitoloSezione text-center">
-          SEGUICI SUI SOCIAL
-        </h2>
+        <h2 class="fontTitoloSezione text-center">SEGUICI SUI SOCIAL</h2>
         <br>
-        <a href="https://www.facebook.com" class="btn btn-social-icon btn-facebook">
-          <i class="bi bi-facebook"></i>
+        
+        <a href="https://www.facebook.com/StranamorePinerolo" class="btn btn-social-icon btn-facebook">
+          <span class="visually-hidden">Facebook</span>
+          <i class="bi bi-facebook" aria-hidden="true"></i>
         </a>
-        <a href="https://www.twitter.com" class="btn btn-social-icon btn-twitter">
-          <i class="bi bi-twitter"></i>
+        
+        <a href="https://www.instagram.com/stranamorepinerolo/" class="btn btn-social-icon btn-instagram">
+          <span class="visually-hidden">Instagram</span>
+          <i class="bi bi-instagram" aria-hidden="true"></i>
         </a>
-        <a href="https://www.instagram.com" class="btn btn-social-icon btn-instagram">
-          <i class="bi bi-instagram"></i>
-        </a>
-        <a href="https://www.youtube.com" class="btn btn-social-icon btn-youtube">
-          <i class="bi bi-youtube"></i>
+        
+        <a href="https://youtube.com/@associazionestranamore3422?si=38eKoMVfxpJjKoiX"
+           class="btn btn-social-icon btn-youtube">
+          <span class="visually-hidden">YouTube</span>
+          <i class="bi bi-youtube" aria-hidden="true"></i>
         </a>
       </div>
 
@@ -135,7 +137,7 @@
         <form class="mioFormContatti" ng-app="myAppContatti" ng-controller="validateCtrl" name="formContatti"
               id="formContatti" novalidate>
 
-          <h3 class="fontTitoloSezione text-center mb-3">lasciaci un messaggio</h3>
+          <h2 class="fontTitoloSezione text-center mb-3">lasciaci un messaggio</h2>
 
           <div class="row">
             <div class="col-md-6">

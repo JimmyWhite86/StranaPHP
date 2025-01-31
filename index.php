@@ -114,7 +114,10 @@
             </p>
           </div>
           <div class="card-footer">
-            <a href="" class="btn bottoneRosso" aria-label="Iscriviti alla newsletter per stranamore">Iscriviti</a>
+            <a href="https://associazione-stranamore.voxmail.it/user/register" class="btn bottoneRosso"
+               aria-label="Iscriviti alla newsletter per stranamore">
+              Iscriviti
+            </a>
           </div>
         </div>
 

@@ -132,12 +132,12 @@
           <button type="button" class="carousel-control-prev" data-bs-target="#galleryCarousel" data-bs-slide="prev"
                   aria-label="Precedente">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Precedente</span>
+            <span class="visually-hidden">Immagine precedente</span>
           </button>
           <button type="button" class="carousel-control-next" data-bs-target="#galleryCarousel" data-bs-slide="next"
                   aria-label="Successiva">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Successiva</span>
+            <span class="visually-hidden">Immagine successiva</span>
           </button>
         </div>
       </div>

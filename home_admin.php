@@ -9,7 +9,7 @@
 
 <head>
   <?php generaHeadSection(); ?>
-  <title>StranaAdmin | HomeAdmin</title>
+  <title>StranAdmin | HomeAdmin</title>
 </head>
 
 <body>

@@ -8,7 +8,7 @@
 <html lang="it">
 <head>
   <?php generaHeadSection(); ?>
-  <title>Stranamore | <?php echo "$nomePagina"; ?></title>
+  <title>Stranamore | Eventi</title>
 </head>
 <body>
 
@@ -33,9 +33,18 @@
       </div>
       <div class="row justify-content-center mb-4">
         <div class="d-flex flex-wrap gap-2 justify-content-center col-12 col-md-4 mt-5 mb-5">
-          <button type="button" onclick="aggiornaTitolo(filtraEventi('futuri'))" class="btn btn-primary">Eventi futuri</button>
-          <button type="button" onclick="aggiornaTitolo(filtraEventi('passati'))" class="btn btn-primary">Eventi passati</button>
-          <button type="button" onclick="aggiornaTitolo(filtraEventi('tutti'))" class="btn btn-primary">Tutti gli eventi</button>
+          <button type="button" onclick="aggiornaTitolo(filtraEventi('futuri'))" class="btn btn-primary"
+                  aria-label="Mostra i prossimi eventi">
+            Eventi futuri
+          </button>
+          <button type="button" onclick="aggiornaTitolo(filtraEventi('passati'))" class="btn btn-primary"
+                  aria-label="Mostra gli eventi passati">
+            Eventi passati
+          </button>
+          <button type="button" onclick="aggiornaTitolo(filtraEventi('tutti'))" class="btn btn-primary"
+                  aria-label="Mostra tutti gli eventi">
+            Tutti gli eventi
+          </button>
         </div>
       </div>
     </div>
@@ -43,6 +52,7 @@
 
 </main>
 
+<!-- Richiamo il footer -->
 <?php HTMLfooter($nomePagina); ?>
 
 <!-- Funzione per mostrare solo eventi futuri al caricamento della pagina -->
