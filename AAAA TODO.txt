@@ -26,3 +26,34 @@
 - Briciole di pane nelle pagine per admin
 - Wireframe per la struttura del sito
 
+
+
+
+      Pagine a cui devo controllare l'accessibilità
+- Home admin                            OK
+- Gestione cucina                       OK
+    - nuovo_menu_00                     OK
+    - nuovo_menu_01                   <===== DA FARE
+    - controllo_crea_menu
+    - nuovo piatto
+    - controllo nuovo piatto
+    - elimina piatto
+    - controllo elimina piatto
+    - modifica piatto 00
+    - modifica piatto 01
+    - controllo modifica piatto
+- Gestione eventi
+    - crea nuovo evento
+    - controllo creawzione evento
+    - elimina evento
+    - controllo elimina
+    - modifica evento 00
+    - modifica evento 01
+    - controllo modifica evento
+- Gestione utenti
+    - crea nuovo utente
+    - controllo creazione utente
+    - elimina utente
+    - controllo elimina utente
+
+
