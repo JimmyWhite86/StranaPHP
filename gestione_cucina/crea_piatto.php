@@ -17,6 +17,8 @@
 <!-- NAV BAR -->
 <?php richiamaNavBar($nomePagina); ?>
 
+<main id="mioMain">
+
 <?php
   if (!isset($_SESSION["username"])) {    # Utente non loggato
     deviLoggarti();
@@ -152,7 +154,10 @@
     <?php   }
   }?>
 
-<!-- Footer -->
+
+</main>
+
+<!-- Richiamo la funzione che genera dinamicamente il Footer -->
 <?php HTMLfooter($nomePagina); ?>
 
 </body>

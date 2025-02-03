@@ -21,8 +21,6 @@
 
 <main id="mioMain">
 
-  <!-- TODO: Manca controllo utente come admin -->
-
   <!-- "Titolo" della pagina -->
   <div class="my-5 row justify-content-center">
     <div class="text-center">

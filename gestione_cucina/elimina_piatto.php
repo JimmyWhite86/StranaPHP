@@ -21,9 +21,11 @@
   richiamaNavBar($nomePagina);
   
   /* Richiamo la breadcrumb */
-  generaBreadcrumb();
+  /*generaBreadcrumb();*/
   
 ?>
+
+<main id="mioMain">
 
 <!-- "Titolo" della pagina -->
 <div class="my-5 row justify-content-center">
@@ -73,6 +75,8 @@
     }
   }
 ?>
+
+</main>
 
 
 <!-- Richiamo il footer -->

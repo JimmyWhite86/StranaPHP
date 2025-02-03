@@ -73,17 +73,47 @@
             $conn = connetti();
             $stmt = $conn->prepare($query);
             $stmt->execute($parametri);
-            $messaggio = "Evento modificato con successo";
-            echo $messaggio;
+            // $messaggio = "Piatto modificato con successo";
+            // echo $messaggio;
+            ?>
+            <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+              <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+                <h2>Il piatto è stato modificato con successo!</h2>
+                <hr>
+                <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
+                <a href="modifica_piatto_00.php" class="btn btn-primary mb-3">Modifica un altro piatto</a><br>
+                <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+              </div>
+            </div>
+          <?php
           } catch (PDOException $e) {
             echo "Errore: " . $e->getMessage();
           }
           
-        } else {
-          echo "Nessun campo modificato";
-        }
-      } else {
-        echo "Errore: metodo non consentito";
+        } else { ?>
+          <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+            <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+              <h2>Non è stato modificato nessun campo!</h2>
+              <hr>
+              <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
+              <a href="modifica_piatto_00.php" class="btn btn-primary mb-3">Prova nuovamente a modificare</a><br>
+              <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+            </div>
+          </div>
+<?php
+}
+      } else { ?>
+        <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+          <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+            <h2>Errore durante la modifica del piatto</h2>
+            <!-- <p>Metodo non consentito </p> -->
+            <hr>
+            <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
+            <a href="modifica_piatto_00.php" class="btn btn-primary mb-3">Modifica un altro piatto</a><br>
+            <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+          </div>
+        </div>
+     <?php
       }
       
     }

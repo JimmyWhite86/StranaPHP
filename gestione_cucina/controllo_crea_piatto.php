@@ -14,7 +14,10 @@
 
 <body>
 
+<!-- Richiamo la navbar -->
 <?php richiamaNavBar($nomePagina) ?>
+
+<main id="mioMain">
 
 <!-- "Titolo" della pagina -->
 <div class="my-5 row justify-content-center">
@@ -93,7 +96,13 @@
     }
   }
   
-  HTMLfooter($nomePagina);?>
+  ?>
+  
+  
+  </main>
+  
+<!-- Richiamo la funzione che genera il footer -->
+ <?php  HTMLfooter($nomePagina); ?>
 
 </body>
 </html>

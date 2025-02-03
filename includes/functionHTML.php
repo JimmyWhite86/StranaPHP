@@ -164,7 +164,10 @@
           <td><?= $piatto['cuoco']?></td>
           <td><?= $piatto['dataInserimento']?></td>
           <td class="text-center">
-            <input type="radio" name="piattoSelezionatoElimina" id="piattoSelezionatoElimina" value="<?= $piatto['idPiatto'] ?>">
+            <label for="piattoSelezionatoElimina<?=$piatto['idPiatto']?>" class="visually-hidden">
+              Selezione <?= $piatto['nomePiatto'] ?>
+            </label>
+            <input type="radio" name="piattoSelezionatoElimina" id="piattoSelezionatoElimina<?=$piatto['idPiatto']?>" value="<?= $piatto['idPiatto'] ?>">
           </td>
         </tr>
         <?php

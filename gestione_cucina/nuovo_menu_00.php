@@ -53,22 +53,26 @@
                   </h3>
 
                   <fieldset>
-
-                    <p>
+                    <legend>Seleziona il cuoco</legend>
+                    <!--<label for="cuocoMenu">
                       Inserisci il cuoco
                       <span class="mandatory">*</span>
-                    </p>
+                    </label>-->
                     <span ng-show="formNuovoMenu00.cuocoMenu.$touched && formNuovoMenu00.cuocoMenu.$error.required"
                           class="mioErrore01" role="alert">
                       Campo obbligatorio
                     </span>
+                    <br>
                     <br ng-show="formNuovoMenu00.cuocoMenu.$touched && formNuovoMenu00.cuocoMenu.$error.required">
                     <input type="radio" id="pino" name="cuocoMenu" value="Pino" ng-model="cuocoMenu" ng-required="true">
                     <label for="pino">Pino</label><br>
                     <input type="radio" id="tarta" name="cuocoMenu" value="Tarta" ng-model="cuocoMenu" ng-required="true">
                     <label for="tarta">Tarta</label>
                     <br><br><br>
+                  </fieldset>
 
+                  <fieldset>
+                    <legend>Inserisci il numero di piatti per ogni categoria</legend>
                     <label for="qtyAntipasti">Inserisci il numero di antipasti</label>
                     <span ng-show="formNuovoMenu00.qtyAntipasti.$error.min || formNuovoMenu00.qtyAntipasti.$error.max"
                           class="mioErrore01" role="alert">
@@ -80,6 +84,8 @@
                                       'is-invalid': formNuovoMenu00.qtyAntipasti.$touched && formNuovoMenu00.qtyAntipasti.$invalid,
                                       'is-valid': formNuovoMenu00.qtyAntipasti.$touched && formNuovoMenu00.qtyAntipasti.$valid}">
                     <br>
+
+
 
                     <label for="qtyPrimi">Inserisci il numero di primi</label>
                     <span ng-show="formNuovoMenu00.qtyPrimi.$error.min || formNuovoMenu00.qtyPrimi.$error.max"
@@ -93,6 +99,8 @@
                                       'is-valid': formNuovoMenu00.qtyPrimi.$touched && formNuovoMenu00.qtyPrimi.$valid }">
                     <br>
 
+
+
                     <label for="qtySecondi">Inserisci il numero di secondi</label>
                     <span ng-show="formNuovoMenu00.qtySecondi.$error.min || formNuovoMenu00.qtySecondi.$error.max"
                           class="mioErrore01" role="alert">
@@ -104,6 +112,8 @@
                                       'is-invalid': formNuovoMenu00.qtySecondi.$touched && formNuovoMenu00.qtySecondi.$invalid,
                                       'is-valid': formNuovoMenu00.qtySecondi.$touched && formNuovoMenu00.qtySecondi.$valid }">
                     <br>
+
+
 
                     <label for="qtyContorni">Inserisci il numero di contorni</label>
                     <span ng-show="formNuovoMenu00.qtyContorni.$error.min || formNuovoMenu00.qtyContorni.$error.max"
@@ -117,6 +127,8 @@
                                      'is-valid': formNuovoMenu00.qtyContorni.$touched && formNuovoMenu00.qtyContorni.$valid }" >
                     <br>
 
+
+
                     <label for="qtyDolci">Inserisci il numero di dolci</label>
                     <span ng-show="formNuovoMenu00.qtyDolci.$error.min || formNuovoMenu00.qtyDolci.$error.max"
                           class="mioErrore01" role="alert">
@@ -128,11 +140,14 @@
                                       'is-invalid': formNuovoMenu00.qtyDolci.$touched && formNuovoMenu00.qtyDolci.$invalid,
                                       'is-valid': formNuovoMenu00.qtyDolci.$touched && formNuovoMenu00.qtyDolci.$valid }" >
                     <br><br>
+                  </fieldset>
 
-                    <p>
+                  <fieldset>
+                    <legend>Scegli il tipo di menu</legend>
+                    <label for="tipoMenu">
                       Pasto Buffet / Menu fisso?
                       <span class="mandatory">*</span>
-                    </p>
+                    </label>
                     <span ng-show="formNuovoMenu00.tipoMenu.$touched && formNuovoMenu00.tipoMenu.$error.required"
                           class="mioErrore01" role="alert">
                       Campo obbligatorio
@@ -146,8 +161,8 @@
                     <div class="text-center">
                       <input type="submit" value="Prosegui" class="btn btn-success" ng-disabled="formNuovoMenu00.$invalid">
                     </div>
-
                   </fieldset>
+
                 </form>
               </div>
             </div>

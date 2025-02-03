@@ -17,59 +17,63 @@
 <!-- NAV BAR -->
 <?php richiamaNavBar($nomePagina); ?>
 
-<!-- "Titolo" della pagina -->
-<div class="my-5 row justify-content-center">
-  <div class="text-center">
-    <h1 class="titoloPagina">modifica un piatto esistente</h1>
-  </div>
-  <br>
-  <div class="text-center">
-    <h2>Passaggio 1 di 2</h2>
-  </div>
-</div>
+<main id="mioMain">
 
-<?php
+  <!-- "Titolo" della pagina -->
+  <div class="my-5 row justify-content-center">
+    <div class="text-center">
+      <h1 class="titoloPagina">modifica un piatto esistente</h1>
+    </div>
+    <br>
+    <div class="text-center">
+      <h2>Passaggio 1 di 2</h2>
+    </div>
+  </div>
   
-  if (!isset($_SESSION["username"])) {
-    deviLoggarti();
-  } else {
-    $amministratore = $_SESSION["admin"];
-    $username = $_SESSION["username"];
+  <?php
     
-    if ($amministratore == 0) {
-      deviEssereAdmin($username);
-    } else { ?>
+    if (!isset($_SESSION["username"])) {
+      deviLoggarti();
+    } else {
+      $amministratore = $_SESSION["admin"];
+      $username = $_SESSION["username"];
       
-      <!-- Sottotilo della pagina-->
-      <div class="my-5 row justify-content-center">
-        <div class="text-center">
-          <h2><?=$username?>, scegli quale piatto vuoi modificare</h2>
+      if ($amministratore == 0) {
+        deviEssereAdmin($username);
+      } else { ?>
+
+        <!-- Sottotilo della pagina-->
+        <div class="my-5 row justify-content-center">
+          <div class="text-center">
+            <h3><?=$username?>, scegli quale piatto vuoi modificare</h3>
+          </div>
         </div>
-      </div>
-      
-      <form method="POST" action="modifica_piatto_01.php" class="">
-        <div class="containerTabella my-5"> <!-- Mantiene il layout centrato e con margine verticale -->
-          <div class="row justify-content-center">  <!-- Riga per definire il layout. Centra la colonna orizzontalmente-->
-            <div class="col-10"> <!-- colonna che occupa 10 parti su 12 -->
-              <?php
-                $disponibilitaPiatto = 1;
-                generaTabellaPiatti($disponibilitaPiatto);
-              ?>
+
+        <form method="POST" action="modifica_piatto_01.php" class="">
+          <div class="containerTabella my-5"> <!-- Mantiene il layout centrato e con margine verticale -->
+            <div class="row justify-content-center">  <!-- Riga per definire il layout. Centra la colonna orizzontalmente-->
+              <div class="col-10"> <!-- colonna che occupa 10 parti su 12 -->
+                <?php
+                  $disponibilitaPiatto = 1;
+                  generaTabellaPiatti($disponibilitaPiatto);
+                ?>
+              </div>
+            </div>
+            <div class="text-center mt-4">
+              <input type="submit" name="invio" id="invio" value="MODIFICA" class="btn btn-danger">
             </div>
           </div>
-          <div class="text-center mt-4">
-            <input type="submit" name="invio" id="invio" value="MODIFICA" class="btn btn-danger">
-          </div>
-        </div>
-      </form>
-      
-      <?php
+        </form>
+        
+        <?php
+      }
     }
-  }
-  
-  /* Richiamo il footer */
-  HTMLfooter($nomePagina);
-?>
+  ?>
+
+</main>
+
+<!-- Richiamo la funzione che genera dinamicamente il footer-->
+<?php HTMLfooter($nomePagina); ?>
 
 </body>
 </html>
