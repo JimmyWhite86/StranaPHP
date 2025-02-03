@@ -202,7 +202,7 @@
             <?php
           }
         } else {
-          echo "<p>Devi compilare tutti i campi per creare un nuovo menu</p>";
+          echo "<p>Devi compilare tutti i campi per creare un nuovo menu</p>"; // TODO: Togliere eco
         }
       }
     }

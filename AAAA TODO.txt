@@ -30,26 +30,29 @@
 
 
       Pagine a cui devo controllare l'accessibilità
-- Home admin                             OK
-- Gestione cucina                       OK
+- Home admin                          OK
+
+- Gestione cucina                     OK
     - nuovo_menu_00                   OK
     - nuovo_menu_01                   OK
-    - controllo_crea_menu           OK
-    - nuovo piatto                        OK
-    - controllo nuovo piatto        OK
-    - elimina piatto                      OK
-    - controllo elimina piatto      OK
+    - controllo_crea_menu             OK
+    - nuovo piatto                    OK
+    - controllo nuovo piatto          OK
+    - elimina piatto                  OK
+    - controllo elimina piatto        OK
     - modifica piatto 00              OK
     - modifica piatto 01              OK
-    - controllo modifica piatto
+    - controllo modifica piatto       OK
+
 - Gestione eventi
-    - crea nuovo evento
-    - controllo creawzione evento
-    - elimina evento
-    - controllo elimina
-    - modifica evento 00
-    - modifica evento 01
-    - controllo modifica evento
+    - crea nuovo evento             OK
+    - controllo creazione evento    OK
+    - elimina evento                OK
+    - controllo elimina             OK
+    - modifica evento 00            OK
+    - modifica evento 01            OK
+    - controllo modifica evento     OK
+
 - Gestione utenti
     - crea nuovo utente
     - controllo creazione utente
