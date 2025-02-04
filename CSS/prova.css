@@ -1,0 +1,570 @@
+/* FILE CSS PER SITO DI STRANAMORE */
+/* Bianchi Andrea - 2024 _ UniTo */
+
+/* ------------------------------------------------ */
+/* DEFINIZIONE DEI COLORI */
+:root {
+  --rossoStrana: #fe4a49;
+  --gialloStrana: #fed766;
+  --azzurroStrana: #009fb7;
+  --neroStrana: #000000;
+  --biancoStrana: #ffffff;
+}
+
+/* ------------------------------------------------ */
+/* STRUTTURA GENERALE */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  margin-top: auto;
+}
+
+/* ------------------------------------------------ */
+/* COLORI DI SFONDO */
+.bg-azzurro { background-color: var(--azzurroStrana); }
+.bg-rosso { background-color: var(--rossoStrana); }
+.bg-giallo { background-color: var(--gialloStrana); }
+.bg-nero { background-color: var(--neroStrana); }
+.bg-bianco { background-color: var(--biancoStrana); }
+
+/* ------------------------------------------------ */
+/* COLORI ICONE */
+.iconeGialle { color: var(--gialloStrana); }
+.iconeRosse { color: var(--rossoStrana); }
+.iconeAzzurre { color: var(--azzurroStrana); }
+
+/* ------------------------------------------------ */
+/* NAVBAR */
+.navbar-nav {
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.myNavbar {
+  text-align: center;
+  justify-content: right;
+}
+
+.nav-link, .navLinkAdmin {
+  color: var(--biancoStrana);
+}
+
+.nav-link:hover { color: var(--azzurroStrana) !important; }
+.navLinkAdmin:hover { color: var(--gialloStrana) !important; }
+.mioActive, .dropdownActive { color: var(--rossoStrana) !important; }
+
+.navbar-brand img {
+  width: 10vw;
+  height: auto;
+}
+
+.dropdown-menu { background-color: var(--gialloStrana); }
+.dropdown-menu-lg { min-width: 300px; }
+
+/* Burger Menu Icon */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23fed766' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+}
+
+.navbar-toggler:hover .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23009fb7' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+}
+
+@media (max-width: 768px) {
+  .navbar-brand img { width: 40vw; }
+  .mioSpanNav { display: none; }
+}
+
+@media (max-width: 990px) and (min-width: 768px) {
+  .navbar-brand img { width: 25vw; }
+}
+
+/* ------------------------------------------------ */
+/* HERO SECTION */
+.hero-section {
+  position: relative;
+  background-image: url('../Immagini/Giardino02.jpeg');
+  background-size: cover;
+  background-position: center;
+  min-height: 80vh;
+}
+
+/* ------------------------------------------------ */
+/* FOOTER */
+footer a {
+  color: var(--biancoStrana) !important;
+}
+
+.socialIcon {
+  text-decoration: none;
+}
+
+.socialIcon:hover {
+  color: var(--azzurroStrana) !important;
+}
+
+/* ------------------------------------------------ */
+/* BOTTONI */
+.bottoneRosso, .bottoneGiallo, .bottoneAzzurro {
+  border-radius: .3rem;
+  border-width: .3rem;
+}
+
+.bottoneRosso { border-color: var(--rossoStrana); }
+.bottoneGiallo { border-color: var(--gialloStrana); }
+.bottoneAzzurro { border-color: var(--azzurroStrana); }
+
+.bottoneRosso:hover {
+  background-color: var(--rossoStrana);
+  color: black;
+  border-color: black;
+}
+
+.bottoneGiallo:hover {
+  background-color: var(--gialloStrana);
+  color: black;
+  border-color: black;
+}
+
+.bottoneAzzurro:hover {
+  background-color: var(--azzurroStrana);
+  color: black;
+  border-color: black;
+}
+
+/* ------------------------------------------------ */
+/* ANIMAZIONI TESTO */
+@keyframes slideInFromRight {
+  0% { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+.slide-in-right { animation: slideInFromRight 1s ease-out; }
+
+@keyframes slideInFromLeft {
+  0% { transform: translateX(-100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+.slide-in-left { animation: slideInFromLeft 1s ease-out; }
+
+/* ------------------------------------------------ */
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .containerIndexCentrale { width: 96% !important; }
+}
+
+/* Focus per la navbar*/
+.navbar-nav a:focus,
+.navbar-toggler:focus,
+.skip:focus {
+  outline: 3px solid var(--gialloStrana);
+  background-color: var(--azzurroStrana);
+}
+
+
+
+
+/* ============================================ */
+/* ============================================ */
+/* ============================================ */
+/* ============================================ */
+/* ============================================ */
+/* ============================================ */
+
+
+/* ==================================================== */
+/*                STILI FORM CONTATTI                   */
+/* ==================================================== */
+
+/* Margini personalizzati */
+.mioMargin01 {
+  margin-bottom: 2.813rem;
+}
+
+/* ----------------------------------------- */
+/*          STILI GENERALI FORM              */
+/* ----------------------------------------- */
+
+.contact-form {
+  background: var(--biancoStrana);
+  margin: 5% 2%;
+  width: 70%;
+  padding: 4% 8% 7%;
+}
+
+@media (max-width: 1150px) {
+  .contact-form {
+    width: 90% !important;
+  }
+  .separatoreVerticale {
+    border-right: 0;
+  }
+}
+
+/* Titolo del form */
+.contact-form .mioH3contatti {
+  font-family: Strana, Arial, Helvetica, sans-serif;
+  font-size: 4rem;
+  text-align: center;
+  color: var(--neroStrana);
+  margin: -10% 0 8%;
+}
+
+/* ----------------------------------------- */
+/*       INPUT FORM: STATI E STILI           */
+/* ----------------------------------------- */
+
+/* Bordo arrotondato per tutti gli input */
+.contact-form .form-control {
+  border-radius: 1rem;
+}
+
+/* Stato iniziale degli input */
+.form-control:focus {
+  border-color: var(--azzurroStrana);
+  box-shadow: 0 0 0 0.2rem rgba(0, 191, 255, 0.25);
+}
+
+/* Stati di validazione */
+.form-control.is-invalid {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.form-control.is-valid {
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.form-control.is-pristine {
+  border-color: #ced4da;
+  box-shadow: 0 0 0 0.2rem rgba(206, 212, 218, 0.25);
+}
+
+/* Stili personalizzati per input */
+.inputBlu {
+  border: 2px solid #00bfff;
+}
+
+.inputVerde {
+  border: 2px solid #28a745;
+}
+
+.inputRosso {
+  border: 2px solid #dc3545;
+}
+
+/* ----------------------------------------- */
+/*           BOTTONI FORM CONTATTI           */
+/* ----------------------------------------- */
+
+.contact-form .btnContact,
+.btnContactSubmit {
+  width: 50%;
+  border: none;
+  border-radius: 1rem;
+  padding: 1.5%;
+  cursor: pointer;
+}
+
+.contact-form .btnContact {
+  background: var(--gialloStrana);
+  font-weight: 600;
+  color: black;
+}
+
+.btnContactSubmit {
+  background-color: var(--azzurroStrana);
+  color: #fff;
+}
+
+/* ----------------------------------------- */
+/*         ELEMENTI AGGIUNTIVI FORM          */
+/* ----------------------------------------- */
+
+/* Contenitore form */
+.mioContainerContatti {
+  padding: 4.375rem 0;
+}
+
+/* Sezione immagine */
+.contact-image {
+  text-align: center;
+}
+
+.contact-image img {
+  border-radius: 6rem;
+  width: 11%;
+  margin-top: -3%;
+}
+
+/* Layout form */
+.contact-form form .row {
+  margin-bottom: -7%;
+}
+
+.form-group {
+  margin-bottom: 0.313rem;
+}
+
+/* Separatore */
+.separatoreVerticale {
+  border-right: 2px solid #000;
+  height: 80%;
+}
+
+.separatoreSpesso {
+  border: 0;
+  height: 2px;
+  background: black;
+  margin: 20px 0;
+}
+
+/* ----------------------------------------- */
+/*       BOTTONI SOCIAL MEDIA                */
+/* ----------------------------------------- */
+
+.btn-social-icon {
+  margin: 0 5px;
+  width: 4rem;
+  height: 4rem;
+  font-size: 3rem;
+  color: #fff;
+  background-color: #333;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-facebook {
+  background-color: #3b5998;
+}
+
+.btn-twitter {
+  background-color: #1da1f2;
+}
+
+.btn-instagram {
+  background-color: #e4405f;
+}
+
+.btn-youtube {
+  background-color: #cd201f;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==================================================== */
+/*                STILI FORM CONTATTI                   */
+/* ==================================================== */
+
+/* Margine inferiore personalizzato */
+.mioMargin01 {
+  margin-bottom: 2.813rem;
+}
+
+/* ----------------------------------------- */
+/*          STILI GENERALI FORM              */
+/* ----------------------------------------- */
+
+/* Contenitore principale del form di contatto */
+.contact-form {
+  background: var(--biancoStrana); /* Sfondo bianco */
+  margin: 5% 2%; /* Margine superiore/inferiore 5%, laterale 2% */
+  width: 70%; /* Larghezza del form */
+  padding: 4% 8% 7%; /* Spaziatura interna: top 4%, left/right 8%, bottom 7% */
+}
+
+/* Adatta il form agli schermi piccoli */
+@media (max-width: 1150px) {
+  .contact-form {
+    width: 90% !important; /* Il form diventa più largo nei dispositivi piccoli */
+  }
+  .separatoreVerticale {
+    border-right: 0; /* Rimuove il bordo verticale per schermi piccoli */
+  }
+}
+
+/* Titolo del form */
+.contact-form .mioH3contatti {
+  font-family: Strana, Arial, Helvetica, sans-serif; /* Font personalizzato */
+  font-size: 4rem; /* Dimensione del testo */
+  text-align: center; /* Testo centrato */
+  color: var(--neroStrana); /* Colore personalizzato */
+  margin: -10% 0 8%; /* Margine superiore negativo per avvicinarlo, inferiore 8% */
+}
+
+/* ----------------------------------------- */
+/*       INPUT FORM: STATI E STILI           */
+/* ----------------------------------------- */
+
+/* Tutti gli input avranno i bordi arrotondati */
+.contact-form .form-control {
+  border-radius: 1rem;
+}
+
+/* Stato quando l'input è attivo (cliccato) */
+.form-control:focus {
+  border-color: var(--azzurroStrana); /* Bordo blu */
+  box-shadow: 0 0 0 0.2rem rgba(0, 191, 255, 0.25); /* Effetto evidenziazione */
+}
+
+/* Stato di errore: bordo rosso */
+.form-control.is-invalid {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* Stato di successo: bordo verde */
+.form-control.is-valid {
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+/* Stato predefinito quando non è stato modificato */
+.form-control.is-pristine {
+  border-color: #ced4da;
+  box-shadow: 0 0 0 0.2rem rgba(206, 212, 218, 0.25);
+}
+
+/* Stili personalizzati per input con bordi colorati */
+.inputBlu {
+  border: 2px solid #00bfff; /* Bordo blu */
+}
+
+.inputVerde {
+  border: 2px solid #28a745; /* Bordo verde */
+}
+
+.inputRosso {
+  border: 2px solid #dc3545; /* Bordo rosso */
+}
+
+/* ----------------------------------------- */
+/*           BOTTONI FORM CONTATTI           */
+/* ----------------------------------------- */
+
+/* Stili di base per entrambi i pulsanti */
+.contact-form .btnContact,
+.btnContactSubmit {
+  width: 50%; /* Larghezza del pulsante */
+  border: none; /* Rimuove il bordo predefinito */
+  border-radius: 1rem; /* Angoli arrotondati */
+  padding: 1.5%; /* Spaziatura interna */
+  cursor: pointer; /* Indica che è cliccabile */
+}
+
+/* Pulsante giallo per l'invio del form */
+.contact-form .btnContact {
+  background: var(--gialloStrana); /* Sfondo giallo */
+  font-weight: 600; /* Testo in grassetto */
+  color: black; /* Testo nero */
+}
+
+/* Pulsante blu per l'invio del form */
+.btnContactSubmit {
+  background-color: var(--azzurroStrana); /* Sfondo azzurro */
+  color: #fff; /* Testo bianco */
+}
+
+/* ----------------------------------------- */
+/*         ELEMENTI AGGIUNTIVI FORM          */
+/* ----------------------------------------- */
+
+/* Contenitore generale per il form */
+.mioContainerContatti {
+  padding: 4.375rem 0; /* Spaziatura sopra e sotto */
+}
+
+/* Contenitore dell'immagine sopra il form */
+.contact-image {
+  text-align: center; /* Centra l'immagine */
+}
+
+/* Stile dell'immagine del form */
+.contact-image img {
+  border-radius: 6rem; /* Immagine arrotondata */
+  width: 11%; /* Dimensione dell'immagine */
+  margin-top: -3%; /* Avvicina l'immagine al form */
+}
+
+/* Distanza tra le righe del form */
+.contact-form form .row {
+  margin-bottom: -7%; /* Sovrappone leggermente le righe */
+}
+
+/* Margine inferiore per i gruppi di input */
+.form-group {
+  margin-bottom: 0.313rem;
+}
+
+/* Separatore verticale per dividere sezioni */
+.separatoreVerticale {
+  border-right: 2px solid #000; /* Bordo nero verticale */
+  height: 80%; /* Altezza del separatore */
+}
+
+/* Separatore spesso per sezionare il form */
+.separatoreSpesso {
+  border: 0;
+  height: 2px; /* Altezza della linea */
+  background: black; /* Colore della linea */
+  margin: 20px 0; /* Spaziatura sopra e sotto */
+}
+
+/* ----------------------------------------- */
+/*       BOTTONI SOCIAL MEDIA                */
+/* ----------------------------------------- */
+
+/* Stile base per tutti i bottoni social */
+.btn-social-icon {
+  margin: 0 5px; /* Spaziatura tra i bottoni */
+  width: 4rem; /* Dimensione del bottone */
+  height: 4rem; /* Altezza uguale alla larghezza */
+  font-size: 3rem; /* Dimensione dell'icona */
+  color: #fff; /* Testo bianco */
+  background-color: #333; /* Sfondo scuro */
+  display: inline-flex; /* Permette di centrare l'icona */
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra orizzontalmente */
+}
+
+/* Personalizzazione del colore per ogni social */
+.btn-facebook {
+  background-color: #3b5998; /* Blu Facebook */
+}
+
+.btn-twitter {
+  background-color: #1da1f2; /* Azzurro Twitter */
+}
+
+.btn-instagram {
+  background-color: #e4405f; /* Rosa Instagram */
+}
+
+.btn-youtube {
+  background-color: #cd201f; /* Rosso YouTube */
+}
+

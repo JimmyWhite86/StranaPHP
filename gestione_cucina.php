@@ -1,7 +1,7 @@
 <?php
   session_start();
   include 'includes/init.php';
-  $nomePagina = "gestioneCucina";
+  $nomePagina = "gestione_cucina";
 ?>
 
 <!DOCTYPE html>

@@ -1,0 +1,45 @@
+/* --------------------------------------------------------- */
+/* CAROSELLO */
+
+/* Titolo della finestra del carosello */
+.fontTitoloCarosello {
+  font-family: Strana, Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  color: #000000;
+  text-align: center;
+  margin: 0 auto; /* Centra il titolo orizzontalmente */
+  line-height: 1.2; /* Regola lo spazio tra le righe */
+}
+
+.modal-header .btn-close {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+@media (min-width: 992px) {
+  .modal-content {
+    max-width: 90%; /* Aumenta la larghezza del modal */
+  }
+
+  #galleryCarousel {
+    width: 100%; /* Larghezza massima del carosello */
+  }
+
+  .carousel-item img {
+    width: 100%; /* Assicura che l'immagine occupi tutta la larghezza */
+    height: auto; /* Mantiene le proporzioni originali */
+    max-height: 90vh; /* Limita l'altezza per evitare immagini troppo grandi */
+    margin: 0 auto; /* Centra l'immagine orizzontalmente */
+    object-fit: contain; /* Adatta l'immagine senza tagliarla */
+  }
+}
+/* --------------------------------------------------------- */
+/* --------------------------------------------------------- */

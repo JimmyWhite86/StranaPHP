@@ -1,0 +1,38 @@
+/* ------------------------------------------------- */
+/* ----------- ANIMAZIONI TESTO HOME PAGE ---------- */
+/* ------------------------------------------------- */
+
+/* Testo entra da dx verso sx */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.slide-in-right {
+  animation: slideInFromRight 1s ease-out;
+}
+
+/* Testo entra da sx verso dx */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.slide-in-left {
+  animation: slideInFromLeft 1s ease-out;
+}
+
+/* Classe per nascondere il testo*/
+.hidden {
+  opacity: 0;
+}

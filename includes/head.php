@@ -31,8 +31,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     
     <!-- Collegamento ai miei files CSS -->
-    <link href="<?= BASE_URL ?>CSS/base_css.css" rel="stylesheet" type="text/css">
-    <link href="<?= BASE_URL ?>CSS/fontCSS.css" rel="stylesheet" type="text/css">
+    <link href="<?= BASE_URL ?>CSS/common_css.css" rel="stylesheet" type="text/css">
+    <link href="<?= BASE_URL ?>CSS/fonts_css.css" rel="stylesheet" type="text/css">
+    <link href="<?= BASE_URL ?>CSS/animation_css.css" rel="stylesheet" type="text/css">
+    <link href="<?= BASE_URL ?>CSS/form_css.css" rel="stylesheet" type="text/css">
+    <link href="<?= BASE_URL ?>CSS/gallery_css.css" rel="stylesheet" type="text/css">
     
     <!-- Font Babas Neue -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

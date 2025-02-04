@@ -9,7 +9,7 @@
 
 <head>
   <?php generaHeadSection(); ?>
-  <title>Strana AggiungiPiatto</title>
+  <title>StranAdmin | Crea Piatto</title>
 </head>
 
 <body>
