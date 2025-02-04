@@ -66,8 +66,6 @@
       return $utente ? $utente : null; // Se non trova risultati restituisce il valore null
     } catch (PDOException $e) {
       die ("Errore nella funzione cercaUtente: " . $e->getMessage());
-    } finally { // Chiusura esplicita della connessione. La connessione viene altrimenti chiusa quando finisce la funzione. TODO: Lascio la chiusura esplicita?
-      $conn = null;
     }
   }
   # ------------------------------------
@@ -631,7 +629,7 @@
       }
       
       // Hash della password
-      $passwordHash = password_hash($passwordNew, PASSWORD_DEFAULT); // TODO: Quale algo devo usare?
+      $passwordHash = password_hash($passwordNew, PASSWORD_DEFAULT);
       
       // Inserisco l'utente
       $sqlInsert = "INSERT INTO User (Username, Password, admin, utenteAttivo) VALUES (:username, :password, :admin, :utenteAttivo)";

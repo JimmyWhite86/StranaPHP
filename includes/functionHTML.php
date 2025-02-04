@@ -35,27 +35,6 @@
   
   
   #-----------------------------------------------------------------
-  #Funzione per le scelte che può effettuare l'amministratore
-  # TODO: Da inserire in tutte le pagine che concludono un operazione svolta da admin
-  function azioni_amministratore () {
-    if (!is_admin()) {
-      header("Location: index.php");
-      exit();
-    }
-    ?>
-    <div class="">
-      <ul>
-        <li><a href="crea_evento.php">Aggiungi evento</a></li>
-        <li><a href="elimina_evento.php">Evento</a></li>
-        <!-- TODO: Inserire anche le altre opzioni-->
-      </ul>
-    </div>
-    <?php
-  }
-  #-----------------------------------------------------------------
-  
-  
-  #-----------------------------------------------------------------
   # Funzione per stabile se il link della navBar deve avere classe "active" o "non active" per poi essere gestito con CSS
   function statoLink($nomePagina, $nomeLink ) {
     if ($nomePagina == $nomeLink) {
@@ -199,9 +178,8 @@
   function loginUtenteAdmin ($username) { ?>
     <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
       <div class="row bg-bianco justify-content-center col-6 text-center">
-        <h1> Ciao <?= $username ?>! Accesso effettuato come Admin </h1>
+        <h2> Ciao <?= $username ?>! Accesso effettuato come Admin </h2>
         <hr>
-        <h3></h3>
         <a href="home_admin.php">Homepage per Admin</a>
         <a href="gestione_eventi.php">Gestione eventi</a>
         <a href="gestione_cucina.php">Gestione cucina</a>
@@ -217,7 +195,7 @@
       <div class="row bg-bianco justify-content-center col-6 text-center">
         <h2> Hai inserito una password errata </h2>
         <hr>
-        <h3>Prova nuovamente ad effettuare il login</h3>
+        <p><strong>Prova nuovamente ad effettuare il login</strong></p>
         <a href="login.php">LogIn</a>
       </div>
     </div>
@@ -228,9 +206,9 @@
   function nomeUtenteNonTrovato () { ?>
     <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
       <div class="row bg-bianco justify-content-center col-6 text-center">
-        <h2> Non abbiamo trovato lo username da te inserito </h2>
+        <h2> Nome utente non trovato </h2>
         <hr>
-        <h3>Prova nuovamente ad effettuare il login</h3>
+        <p><strong>Prova nuovamente ad effettuare il login</strong></p>
         <a href="login.php">LogIn</a>
       </div>
     </div>
@@ -243,7 +221,7 @@
       <div class="row bg-bianco justify-content-center col-6 text-center">
         <h2 class="m-3 p-3"> Non abbiamo trovato lo username da te inserito </h2>
         <hr>
-        <h3>Prova nuovamente ad effettuare il login</h3>
+        <p><strong>Prova nuovamente ad effettuare il login</strong></p>
         <a href="login.php">LogIn</a>
       </div>
     </div>
@@ -264,8 +242,8 @@
   
   
   # -----------------------------------------------------------------
-  # Funzione per generare il titolo della pagina -- TODO: inserire uno switch per assegnare dinamicamente il nome della pagina.
-  #                                                 TODO: Trovare un modo per gestire eventuali sottotitoli
+  # Funzione per generare il titolo della pagina
+  # Al momento usato solo per la pagina di login
   function titoloDellaPagina($nomePagina) { ?>
     <div class="my-5 row justify-content-center">
       <div class="text-center">

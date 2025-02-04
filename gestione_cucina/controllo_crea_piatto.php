@@ -75,7 +75,7 @@
             <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
               <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
                 <h2>Il piatto è stato aggiunto al menu con successo!</h2>
-                <h3>Hai aggiunto: <strong><?=$nomePiattoNew?></strong> al menu</h3>
+                <p>Hai aggiunto: <strong><?=$nomePiattoNew?></strong> al menu</p>
                 <hr>
                 <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
                 <a href="crea_piatto.php" class="btn btn-primary mb-3">Aggiungi un altro piatto</a><br>
@@ -84,14 +84,37 @@
             </div>
             <?php
           }
-          else { // TODO: impostare il layout come per messaggio di successo
-            echo "<p>Ci sono stati problemi con l'inserimento del nuovo piatto</p>";
-            azioni_amministratore();
+          else {
+            // echo "<p>Ci sono stati problemi con l'inserimento del nuovo piatto</p>";
+            // azioni_amministratore();
+            ?>
+            <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+              <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+                <h2>Errore durante la creazione del piatto!</h2>
+                <p><strong>Il piatto non è stato salvato a sistema</strong></p>
+                <hr>
+                <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
+                <a href="crea_piatto.php" class="btn btn-primary mb-3">Aggiungi un altro piatto</a><br>
+                <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+              </div>
+            </div>
+            <?php
           }
         }
       }
       else {
-        echo "<p> Attenzione $username! Devi compilare tutti i campi per aggiungere il piatto</p>";
+        //echo "<p> Attenzione $username! Devi compilare tutti i campi per aggiungere il piatto</p>";?>
+        <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+          <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+            <h2>Errore durante la creazione del piatto!</h2>
+            <p><strong></strong>Devi compilare tutti i campi del form per aggiungere il piatto</p>
+            <hr>
+            <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
+            <a href="crea_piatto.php" class="btn btn-primary mb-3">Aggiungi un altro piatto</a><br>
+            <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+          </div>
+        </div>
+        <?php
       }
     }
   }

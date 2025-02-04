@@ -9,7 +9,7 @@
 
 <head>
   <?php generaHeadSection(); ?>
-  <title>Strana nuovoMenu</title>
+  <title>StranAdmin | Nuovo Menu</title>
 </head>
 
 <body>
@@ -90,9 +90,7 @@
                         <?=$username?>, compila i dati del form sottostante per creare un nuovo menu
                       </h2>
                       <br>
-
                       
-                        
                         <?php
                           $categorie = [
                             'antipasti' => $qtyAntipasti,
@@ -202,7 +200,21 @@
             <?php
           }
         } else {
-          echo "<p>Devi compilare tutti i campi per creare un nuovo menu</p>"; // TODO: Togliere eco
+          // echo "<p>Devi compilare tutti i campi per creare un nuovo menu</p>";
+          ?>
+          <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
+            <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
+              <h2>Devi compilare tutti i campi del form precedente!</h2>
+              <p><strong>L'evento non è stato creato</strong></p>
+              <p><a href="nuovo_menu_00.php">Riprova</a></p>
+              <hr>
+              <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+              <a href="nuovo_menu_00.php" class="btn btn-primary mb-3">Crea un nuovo menu</a><br>
+              <a href="crea_piatto.php" class="btn btn-primary mb-3">Crea un nuovo piatto</a><br>
+              <a href="elimina_piatto.php" class="btn btn-primary mb-3">Elimina un piatto</a><br>
+            </div>
+          </div>
+          <?php
         }
       }
     }
@@ -211,9 +223,7 @@
 </main>
 
 <!-- Footer -->
-<?php
-  HTMLfooter($nomePagina);
-?>
+<?php HTMLfooter($nomePagina); ?>
 
 </body>
 </html>
