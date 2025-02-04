@@ -1,0 +1,289 @@
+
+/* ------------------------------------------------ */
+/* ---------- DEFINIZIONE DEI COLORI -------------- */
+/* ------------------------------------------------ */
+:root {
+  --rossoStrana: #fe4a49;
+  --gialloStrana: #fed766;
+  --azzurroStrana: #009fb7;
+  --neroStrana: #000000;
+  --biancoStrana: #ffffff;
+}
+/* ------------------------------------------------ */
+/* ------------------------------------------------ */
+
+
+/* ---------------------------------------------------- */
+/* -------- STRUTTURA GENERALE DELLA PAGINA ----------- */
+/* Fisso il footer in basso, anche con contenuto scarso */
+/* ---------------------------------------------------- */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Imposta l'altezza minima al 100% della viewport */
+}
+
+main { flex: 1; } /* Permette al main di espandersi per riempire lo spazio disponibile */
+
+footer { margin-top: auto; } /* Spinge il footer in fondo */
+/* ------------------------------------------------ */
+/* ------------------------------------------------ */
+
+
+/* ------------------------------------------------ */
+/* -------------- COLORI DI SFONDO ---------------- */
+/* ------------------------------------------------ */
+.bg-azzurro { background-color: var(--azzurroStrana); }
+.bg-rosso { background-color: var(--rossoStrana); }
+.bg-giallo { background-color: var(--gialloStrana); }
+.bg-nero { background-color: var(--neroStrana); }
+.bg-bianco { background-color: var(--biancoStrana); }
+/* ------------------------------------------------ */
+/* ------------------------------------------------ */
+
+
+/* ------------------------------------------------ */
+/* ---------------- COLORI ICONE -------------------*/
+/* ------------------------------------------------ */
+.iconeGialle { color: var(--gialloStrana); }
+.iconeRosse { color: var(--rossoStrana); }
+.iconeAzzurre { color: var(--azzurroStrana); }
+/* ------------------------------------------------ */
+/* ------------------------------------------------ */
+
+
+/* ----------------------------------------------------- */
+/* --------------------- SKIP TO MAIN ------------------ */
+/* Nascondo il link per accedere al contenuto principale */
+/* ----------------------------------------------------- */
+.skip {
+  position: absolute;
+  left: -1000px;
+  top: auto;
+  width: 0.06rem;
+  height: 0.06rem;
+  overflow: hidden;
+}
+
+.skip:focus {
+  position: static;
+  width: auto;
+  height: auto;
+}
+/* ----------------------------------------------------- */
+/* ----------------------------------------------------- */
+
+
+/* ------------------------------------------------ */
+/* -----------------NAV BAR ----------------------- */
+/* ------------------------------------------------ */
+.navbar-nav {
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.nav-link, .navLinkAdmin { color: var(--biancoStrana); }
+.nav-link:hover { color: var(--azzurroStrana) !important; }
+.mioActive { color: var(--rossoStrana) !important; }
+.mioSpanNav { color: var(--gialloStrana); }
+
+.navbar-brand img { /* Imposto la grandezza del logo */
+  width: 10vw;
+  height: auto;
+}
+.dropdown-menu { background-color: var(--gialloStrana); } /* Cambio la larghezza del dropdown*/
+
+.navbar-toggler-icon { /* Cambia colore dell'icona del burger menu */
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23fed766' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+}
+
+.navbar-toggler:hover .navbar-toggler-icon { /* Cambia colore al passaggio del mouse */
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23009fb7' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+}
+
+@media (max-width: 768px) { /* Aumento la dimensione del logo su dispositivi mobili */
+  .navbar-brand img { width: 40vw; } /* Aumenta la dimensione al 40% della larghezza dello schermo */
+  .mioSpanNav { display: none; } /* In schermi piccoli, quando i link diventano buerger menu, nascondo il carattere "|" */
+}
+@media (max-width: 990px) and (min-width: 768px) {
+  .navbar-brand img { width: 25vw; } /* Aumenta la dimensione al 25% della larghezza dello schermo */
+}
+/* ------------------------------------------------ */
+/* ------------------------------------------------ */
+
+
+/* ------------------------------------------------ */
+/* ---------------- HERO SECTION ------------------ */
+.hero-section {
+  position: relative;
+  background-image: url('../Immagini/Giardino02.jpeg');
+  background-size: cover;
+  background-position: center;
+  min-height: 80vh; /*Imposta altezza minima della sesione all'80% dello schermo*/
+}
+/* ------------------------------------------------ */
+/* ------------------------------------------------ */
+
+
+/* ------------------------------------------------ */
+/* -------------------- FOOTER -------------------- */
+/* ------------------------------------------------ */
+footer a { color: var(--biancoStrana); }
+
+.socialIcon { text-decoration: none; }
+
+.socialIcon:hover {
+  text-decoration: none;
+  color: var(--azzurroStrana);
+}
+/* ------------------------------------------------ */
+/* ------------------------------------------------ */
+
+
+/* ------------------------------------------------ */
+/* ----------- BLOCCHI HOMEPAGE ------------------- */
+/* ------------------------------------------------ */
+
+.mioFlowRoot {
+  display: flow-root;
+}
+/* ------------------------------------------------ */
+
+
+/* ------------------------------------------------ */
+/* --------------- BOTTONI ------------------------ */
+/* ------------------------------------------------ */
+.bottoneRosso, .bottoneGiallo, .bottoneAzzurro {
+  border-radius: .3rem;
+  border-width: .3rem;
+}
+
+.bottoneRosso { border-color: var(--rossoStrana); }
+.bottoneGiallo { border-color: var(--gialloStrana); }
+.bottoneAzzurro { border-color: var(--azzurroStrana); }
+
+.bottoneRosso:hover, .bottoneGiallo:hover, .bottoneAzzurro:hover{
+  border-color: var(--neroStrana);
+  color: var(--neroStrana);
+  border-radius: .3rem;
+}
+
+.bottoneRosso:hover { background-color: var(--rossoStrana); }
+.bottoneGiallo:hover { background-color: var(--gialloStrana); }
+.bottoneAzzurro:hover { background-color: var(--azzurroStrana); }
+
+.bottoneGiallo2 {
+  border-color: var(--gialloStrana);
+  border-radius: .3rem;
+  border-width: .3rem;
+  background-color: var(--biancoStrana);
+}
+.bottoneGiallo2:hover {
+  border-color: var(--biancoStrana);
+  background-color: var(--gialloStrana);
+  border-radius: .3rem;
+  color: var(--neroStrana);
+}
+
+.btn-social-icon { /* Usato in pagina contatti */
+  margin: 0 5px;
+  color: #ffffff;
+  background-color: #333;
+  width: 4rem;
+  height: 4rem;
+  font-size: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-facebook { background-color: #3b5998; }
+.btn-twitter { background-color: #1da1f2; }
+.btn-instagram { background-color: #e4405f; }
+.btn-youtube { background-color: #cd201f; }
+/* ------------------------------------------------ */
+/* ------------------------------------------------ */
+
+
+/* ------------------------------------------------ */
+/* ------------- STILE DEGLI ERRORI --------------- */
+/* ------------------------------------------------ */
+ .mioErrore01 { color: #e50000; }
+/* ------------------------------------------------ */
+/* ------------------------------------------------ */
+
+
+/* ------------------------------------------------ */
+/* ----------------- TABELLE ---------------------- */
+/* ------------------------------------------------ */
+.miaImmagineTabella {
+  width: 50px;
+  height: 50px;
+  max-width: 50px;
+  max-height: 50px;
+  object-fit: cover;
+}
+
+.intestazioneTabella {
+  background-color: var(--gialloStrana) !important;
+}
+
+thead th.intestazioneTabella {
+  background-color: var(--gialloStrana);
+}
+
+@media (max-width: 768px) {
+  .miaImmagineTabella, .miaColonnaImmagineTabella{
+    display: none !important;
+  }
+}
+/* ------------------------------------------------ */
+/* ------------------------------------------------ */
+
+
+/* ------------------------------------------------ */
+/* ----------- CONTAINER HOME PAGE ---------------- */
+@media (max-width: 768px) {
+  .containerIndexCentrale {
+    width: 96% !important;
+  }
+}
+/* ------------------------------------------------ */
+/* ------------------------------------------------ */
+
+
+/* ------------------------------------------------- */
+/* ------------------ FOCUS ------------------------ */
+/* Evidenziare il focus quando si naviga da tastiera */
+/* ------------------------------------------------- */
+/* TODO: DA MIGLIORARE VISIBILITA e UNIFORMARE TRA I VARI STILI */
+
+/* Focus per la navbar */
+.navbar-nav a:focus,
+.navbar-toggler:focus,
+.skip:focus {
+  outline: 3px solid var(--gialloStrana);
+  background-color: var(--azzurroStrana);
+  color: var(--biancoStrana);
+}
+
+/* Stile generale per il focus */
+
+/* Stile per focus su link e pulsanti */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--gialloStrana);
+  background-color: var(--azzurroStrana);
+  color: var(--biancoStrana);
+}
+
+/* Focus per campi di input */
+input:focus-visible,
+textarea:focus-visible {
+  border: 2px solid var(--gialloStrana);
+  box-shadow: 0 0 5px var(--gialloStrana);
+}
+/* ------------------------------------------------ */
+/* ------------------------------------------------ */

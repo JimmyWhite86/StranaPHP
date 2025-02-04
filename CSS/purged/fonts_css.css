@@ -1,0 +1,330 @@
+/* FILE CSS PER I FONT DI STRANAMORE */
+/* Bianchi Andrea */
+/* 2024 _ UniTo */
+
+/* ------------------------------------------------ */
+/* --------------- STILE DEI FONT ----------------- */
+/* ------------------------------------------------ */
+
+
+/* ----- CARICO I FONT -----------*/
+/* FONT EASYRIDING  */
+@font-face {
+  font-family: Easy;
+  src: url(../FONT/Easy.ttf);
+}
+
+/* FONT LOGO STRANAMORE */
+@font-face {
+  font-family: Strana;
+  src: url(../FONT/TerrabloX.ttf);
+}
+
+/* FONT BABAS NEUE */
+@font-face {
+  font-family: Babas;
+  src: url(../FONT/BebasNeue-Regular.ttf);
+}
+
+/* FONT LATO */
+@font-face {
+  font-family: Lato-Regular;
+  src: url(../FONT/Lato-Regular.ttf);
+}
+/* --------------------------------- */
+
+
+/* --------------------------------- */
+body {
+  font-family: Lato-Regular, arial, hevetica, sans-serif;
+  line-height: 1.8;
+}
+
+.fontNav {
+  font-family: Babas, arial, hevetica, sans-serif;
+  line-height: 1.8;
+  font-size: 3.5rem;
+  font-weight: 600;
+}
+
+.fontNavAdmin {
+  font-family: Babas, arial, hevetica, sans-serif;
+  line-height: 1.8;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.fontstranaBase {
+  font-family: Strana, arial, hevetica, sans-serif;
+  color: var(--azzurroStrana);
+  font-size: 6rem;
+}
+
+.fontStranaFooter {
+  font-family: Strana, arial, hevetica, sans-serif;
+  color: var(--gialloStrana);
+  font-size: 3rem;
+  line-height: 1.1;
+}
+
+.fontStranaTitoli {
+  font-family: Strana, arial, hevetica, sans-serif;
+  color: var(--gialloStrana);
+  font-size: 6rem;
+}
+
+.fontFooter01 {
+  font-family: Babas, Arial, Helvetica, sans-serif;
+  color: var(--gialloStrana);
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+
+.fontFooterSopra {
+  font-family: Babas, Arial, Helvetica, sans-serif;
+  color: var(--rossoStrana);
+  line-height: 0;
+}
+
+.fontFooterSotto {
+  font-family: Babas, Arial, Helvetica, sans-serif;
+  color: var(--azzurroStrana);
+  line-height: 0;
+}
+
+.fontChiSiamo01 {
+  font-family: strana, Arial, Helvetica, sans-serif;
+  color: var(--neroStrana);
+  font-size: 4rem;
+}
+
+.fontChiSiamo02 {
+  font-family: strana, Arial, Helvetica, sans-serif;
+  color: var(--neroStrana);
+  font-size: 4rem;
+}
+
+.fontTipoPiattiMenu {
+  font-family: strana, Arial, Helvetica, sans-serif;
+  color: var(--azzurroStrana);
+  font-size: 4rem;
+}
+
+.fontHeroSopra {
+  font-family: Babas, Arial, Helvetica, sans-serif;
+  font-size: 5rem;
+  color: var(--rossoStrana);
+  line-height: 0.7;
+  text-decoration: #000000;
+  text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000;
+}
+
+.fontHeroSotto {
+  font-family: Babas, Arial, Helvetica, sans-serif;
+  color: var(--azzurroStrana);
+  font-size: 4rem;
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+  line-height: 0.6;
+}
+
+.fontHeroCentro {
+  font-family: Strana, arial, hevetica, sans-serif;
+  font-size: 12rem;
+  color: var(--gialloStrana);
+  background-color: var(--neroStrana);
+  background-size: auto;
+  line-height: 0.7;
+}
+
+.titoloPagina {
+  font-family: Strana, arial, hevetica, sans-serif;
+  font-size: 6rem;
+  color: var(--gialloStrana);
+  background-color: var(--neroStrana);
+}
+
+.testoHome {
+  font-family: Lato-Regular, arial, hevetica, sans-serif;
+  font-size: 1.5rem;
+}
+
+.fontNomePiatto {
+  font-family: Lato-Regular, arial, hevetica, sans-serif;
+  font-size: 2.5rem;
+}
+
+.fontTitoloSezione {
+  font-family: Babas, arial, hevetica, sans-serif;
+  font-size: 3rem;
+  color: #000000;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px #808080;
+}
+
+.fontPrezzoPiatto {
+  color: var(--rossoStrana);
+}
+
+.dropdownFont {
+  font-size: 1.5rem;
+}
+
+
+
+
+/* --------------------------------------------------------- */
+/* ----- ADATTO I FONT ALLE VARIE GRANDEZZE DI SCHERMO ----- */
+/* --------------------------------------------------------- */
+
+/* Schermi tra 1399 e 1199px */
+@media (min-width: 1199px) and (max-width: 1399px) {
+  .fontHeroCentro {
+    font-size: 10rem;
+  }
+  .fontHeroSopra {
+    font-size: 4rem;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fontHeroCentro {
+    font-size: 8rem;
+  }
+  .fontHeroSopra {
+    font-size: 4rem;
+  }
+
+  .fontHeroSotto {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .fontHeroCentro {
+    font-size: 6rem;
+  }
+  .fontHeroSopra {
+    font-size: 3rem;
+  }
+
+  .fontHeroSotto {
+    font-size: 3rem;
+  }
+}
+/* --------------------------- */
+
+/* Schermi sotto i 768px */
+@media (max-width: 768px) {
+  .fontHeroCentro {
+    width: 90vw;
+    max-width: 90vw;
+  }
+
+  .fontHeroSopra {
+    font-size: 2.5rem;
+  }
+
+  .fontHeroSotto {
+    font-size: 2.5rem;
+  }
+
+  .testoHome {
+    font-size: 1rem;
+  }
+
+  .titoloPagina {
+    font-size: 4rem;
+  }
+
+  .fontTipoPiattiMenu {
+    font-size: 3rem;
+  }
+
+  .fontNomePiatto {
+    font-size: 1rem;
+  }
+
+  .fontPrezzoPiatto {
+    font-size: 1.3rem;
+  }
+
+  #titoloPaginaGallery {
+    font-size: 2.8rem !important;
+  }
+
+  .fontChiSiamo02 {
+    font-size: 2.4rem;
+  }
+}
+/* ------------------------ */
+
+/* SCHERMI SOTTO I 563px */
+@media (max-width: 563px) {
+  .fontHeroSopra {
+    font-size: 2rem;
+  }
+
+  .fontHeroCentro {
+    font-size: 4rem;
+  }
+
+  .fontHeroSotto {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 494px) {
+  .fontStranaTitoli {
+    font-size: 3.7rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .fontHeroSopra {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .fontHeroSotto {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1358px) {
+  .fontNav {
+    font-size: 2.5rem;
+  }
+
+  .fontNavAdmin {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 736px) {
+  .fontHeroCentro {
+    font-size: 4.7rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .fontHeroCentro {
+    display: none;
+  }
+}
+
+@media (min-width: 576px) {
+  .myImgHero {
+    display: none;
+  }
+}
+
+@media (max-width: 1200px) {
+  .fontNav {
+    font-size: 2rem;
+  }
+
+  .fontNavAdmin {
+    font-size: 1.5rem;
+  }
+}
+/* ------------------------------------------------ */
