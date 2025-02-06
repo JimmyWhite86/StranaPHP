@@ -1,7 +1,7 @@
 
-/* ------------------------------------------------ */
-/* ---------- DEFINIZIONE DEI COLORI -------------- */
-/* ------------------------------------------------ */
+/* ============================ */
+/*           DEFINIZIONE DEI COLORI              */
+/* ============================ */
 :root {
   --rossoStrana: #fe4a49;
   --gialloStrana: #fed766;
@@ -9,7 +9,6 @@
   --neroStrana: #000000;
   --biancoStrana: #ffffff;
 }
-/* ------------------------------------------------ */
 /* ------------------------------------------------ */
 
 
@@ -149,12 +148,8 @@ footer a { color: var(--biancoStrana); }
 
 
 /* ------------------------------------------------ */
-/* ----------- BLOCCHI HOMEPAGE ------------------- */
+/*                     BLOCCHI HOMEPAGE                       */
 /* ------------------------------------------------ */
-.mioBordo01 {
-  border: .3rem solid var(--azzurroStrana);
-}
-
 .mioFlowRoot {
   display: flow-root;
 }
@@ -162,7 +157,7 @@ footer a { color: var(--biancoStrana); }
 
 
 /* ------------------------------------------------ */
-/* --------------- BOTTONI ------------------------ */
+/* --------------- BOTTONI ---------------------- */
 /* ------------------------------------------------ */
 .bottoneRosso, .bottoneGiallo, .bottoneAzzurro {
   border-radius: .3rem;
@@ -273,7 +268,8 @@ thead th.intestazioneTabella {
 
 
 /* ------------------------------------------------ */
-/* ----------- CONTAINER HOME PAGE ---------------- */
+/* --------- CONTAINER HOME PAGE ----------- */
+/* ----------------------------------------------- */
 @media (max-width: 768px) {
   .containerIndexCentrale {
     width: 96% !important;

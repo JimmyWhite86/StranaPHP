@@ -1,7 +1,3 @@
-/* FILE CSS PER I FONT DI STRANAMORE */
-/* Bianchi Andrea */
-/* 2024 _ UniTo */
-
 /* ------------------------------------------------ */
 /* --------------- STILE DEI FONT ----------------- */
 /* ------------------------------------------------ */
@@ -78,13 +74,6 @@ body {
   color: var(--gialloStrana);
   font-size: 1.5rem;
   margin-bottom: 0;
-}
-
-.fontFooter02 {
-  font-family: Babas, Arial, Helvetica, sans-serif;
-  color: var(--gialloStrana);
-  font-size: 1.8rem;
-  margin-top: 0;
 }
 
 .fontFooterSopra {
@@ -183,46 +172,26 @@ body {
 }
 
 
-
-
 /* --------------------------------------------------------- */
 /* ----- ADATTO I FONT ALLE VARIE GRANDEZZE DI SCHERMO ----- */
 /* --------------------------------------------------------- */
 
 /* Schermi tra 1399 e 1199px */
 @media (min-width: 1199px) and (max-width: 1399px) {
-  .fontHeroCentro {
-    font-size: 10rem;
-  }
-  .fontHeroSopra {
-    font-size: 4rem;
-  }
+  .fontHeroCentro { font-size: 10rem;  }
+  .fontHeroSopra { font-size: 4rem;  }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-  .fontHeroCentro {
-    font-size: 8rem;
-  }
-  .fontHeroSopra {
-    font-size: 4rem;
-  }
-
-  .fontHeroSotto {
-    font-size: 3rem;
-  }
+  .fontHeroCentro { font-size: 8rem; }
+  .fontHeroSopra { font-size: 4rem; }
+  .fontHeroSotto { font-size: 3rem; }
 }
 
 @media (max-width: 991px) {
-  .fontHeroCentro {
-    font-size: 6rem;
-  }
-  .fontHeroSopra {
-    font-size: 3rem;
-  }
-
-  .fontHeroSotto {
-    font-size: 3rem;
-  }
+  .fontHeroCentro { font-size: 6rem; }
+  .fontHeroSopra { font-size: 3rem; }
+  .fontHeroSotto { font-size: 3rem; }
 }
 /* --------------------------- */
 
@@ -232,68 +201,28 @@ body {
     width: 90vw;
     max-width: 90vw;
   }
-
-  .fontHeroSopra {
-    font-size: 2.5rem;
-  }
-
-  .fontHeroSotto {
-    font-size: 2.5rem;
-  }
-
-  .testoHome {
-    font-size: 1rem;
-  }
-
-  .titoloPagina {
-    font-size: 4rem;
-  }
-
-  .mioH3contatti {
-    font-size: 3rem !important;
-  }
-
-  .fontTipoPiattiMenu {
-    font-size: 3rem;
-  }
-
-  .fontNomePiatto {
-    font-size: 1rem;
-  }
-
-  .fontPrezzoPiatto {
-    font-size: 1.3rem;
-  }
-
-  #titoloPaginaGallery {
-    font-size: 2.8rem !important;
-  }
-
-  .fontChiSiamo02 {
-    font-size: 2.4rem;
-  }
+  .fontHeroSopra { font-size: 2.5rem; }
+  .fontHeroSotto { font-size: 2.5rem; }
+  .testoHome { font-size: 1rem; }
+  .titoloPagina { font-size: 4rem; }
+  .mioH3contatti { font-size: 3rem !important; }
+  .fontTipoPiattiMenu { font-size: 3rem; }
+  .fontNomePiatto { font-size: 1rem; }
+  .fontPrezzoPiatto { font-size: 1.3rem; }
+  #titoloPaginaGallery { font-size: 2.8rem !important;  }
+  .fontChiSiamo02 { font-size: 2.4rem; }
 }
 /* ------------------------ */
 
 /* SCHERMI SOTTO I 563px */
 @media (max-width: 563px) {
-  .fontHeroSopra {
-    font-size: 2rem;
-  }
-
-  .fontHeroCentro {
-    font-size: 4rem;
-  }
-
-  .fontHeroSotto {
-    font-size: 2rem;
-  }
+  .fontHeroSopra { font-size: 2rem;  }
+  .fontHeroCentro { font-size: 4rem; }
+  .fontHeroSotto { font-size: 2rem; }
 }
 
 @media (max-width: 494px) {
-  .fontStranaTitoli {
-    font-size: 3.7rem;
-  }
+  .fontStranaTitoli { font-size: 3.7rem; }
 }
 
 @media (max-width: 420px) {
@@ -301,47 +230,28 @@ body {
     font-size: 1.5rem;
     line-height: 1;
   }
-
-  .fontHeroSotto {
-    font-size: 1rem;
-  }
+  .fontHeroSotto { font-size: 1rem; }
 }
 
 @media (max-width: 1358px) {
-  .fontNav {
-    font-size: 2.5rem;
-  }
-
-  .fontNavAdmin {
-    font-size: 2rem;
-  }
+  .fontNav { font-size: 2.5rem; }
+  .fontNavAdmin { font-size: 2rem; }
 }
 
 @media (max-width: 736px) {
-  .fontHeroCentro {
-    font-size: 4.7rem;
-  }
+  .fontHeroCentro { font-size: 4.7rem; }
 }
 
 @media (max-width: 576px) {
-  .fontHeroCentro {
-    display: none;
-  }
+  .fontHeroCentro { display: none; }
 }
 
 @media (min-width: 576px) {
-  .myImgHero {
-    display: none;
-  }
+  .myImgHero { display: none; }
 }
 
 @media (max-width: 1200px) {
-  .fontNav {
-    font-size: 2rem;
-  }
-
-  .fontNavAdmin {
-    font-size: 1.5rem;
-  }
+  .fontNav { font-size: 2rem; }
+  .fontNavAdmin { font-size: 1.5rem; }
 }
 /* ------------------------------------------------ */
