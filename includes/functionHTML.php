@@ -54,15 +54,25 @@
     # Genero le card:
     foreach ($datiEventi as $evento) {
       if ($evento['eliminato'] == 0) { ?>
-        <div class="m-2 card col-md-4 evento-card" style="width: 20em;" data-evento="<?= date('Y-m-d', strtotime($evento['DataEvento']))?>">
+        <div class="m-2 card col-md-4 evento-card d-flex flex-column" style="width: 20em;"
+             data-evento="<?= date('Y-m-d', strtotime($evento['DataEvento']))?>">
+          
+          <div class="">
+            <p class="dataEvento mb-0"><?= date('d M Y', strtotime($evento['DataEvento'])) ?></p>
+            <p class="orarioEvento"><?= date('H:i', strtotime($evento['orarioEvento'])) ?></p>
+          </div>
+         
           <img src="<?= BASE_URL . $evento['Immagine']?>" class="img-fluid myImgCard mt-2" alt="" loading="lazy">
+          
           <div class="card-body">
-            <h3><?= $evento['NomeEvento']?></h3>
-            <p><?= $evento['Descrizione']?></p>
+            <h3 class="titoloEvento"><?= $evento['NomeEvento']?></h3>
           </div>
-          <div class="card-footer">
-            <p><?= date('d M Y', strtotime($evento['DataEvento'])) ?></p>
+          
+          <div class="card-footer mt-auto">
+            <button class="btn bottoneAzzurro" onclick="toggleDescrizione(this)">SCOPRI DI PIU'</button>
+            <p class="descrizioneEvento" style="display: none;"> <?= $evento['Descrizione'] ?></p>
           </div>
+          
         </div>
         <?php
       }

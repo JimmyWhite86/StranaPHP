@@ -51,7 +51,7 @@
           <p class="card-text">associazione.stranamore@gmail.com</p>
         </div>
         <div class="card-footer">
-          <a href="mailto:associazione.stranamore@gmail.com" class="btn bottoneRosso">Scrivi</a>
+          <a href="mailto:associazione.stranamore@gmail.com" class="btn bottoneRosso bottoneBabas">Scrivici</a>
         </div>
       </div>
 
@@ -63,7 +63,7 @@
           <p>351 623 0176</p>
         </div>
         <div class="card-footer">
-          <a href="Tel:+393516230176" class="btn bottoneGiallo">Scrivici</a>
+          <a href="Tel:+393516230176" class="btn bottoneGiallo bottoneBabas">Whatsappaci</a>
         </div>
       </div>
 
@@ -75,7 +75,7 @@
           <p class="card-text">via Ettore Bignone 89,<br>10064 Pinerolo (TO)</p>
         </div>
         <div class="card-footer">
-          <a href="https://maps.app.goo.gl/4MWoWXnPmRvHGW3d9" class="btn bottoneAzzurro">Maps</a>
+          <a href="https://maps.app.goo.gl/4MWoWXnPmRvHGW3d9" class="btn bottoneAzzurro bottoneBabas">Raggiungici</a>
         </div>
       </div>
     </div>

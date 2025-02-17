@@ -2,10 +2,6 @@
 console.log("File modulo.js caricato correttamente");
 console.log("AngularJS caricato: ", angular.version.full);
 
-// -----------
-// ANGULAR
-// -----------
-
 // Validazione form contatti
 var appContatti = angular.module('myAppContatti', []);
 appContatti.controller('validateCtrl', function($scope) {
@@ -70,29 +66,40 @@ appNuovoUtente.controller('validateNuovoUtenteCtrl', function($scope) {
     return $scope.psw1 === $scope.psw2;
   }
 });
-
-
-
 // --------
-// JS
-// --------
+
+
 // Funzione per filtrare le card eventi in base alla data
 function filtraEventi(sceltaEventi) {
+
   const oggi = new Date().toISOString().split('T')[0]; // Data odierna in formato YYYY-MM-DD
   const eventi = document.querySelectorAll('.evento-card'); // Seleziona tutte le card degli eventi
   // console.log("Data odierna (oggi):", oggi);
+
   eventi.forEach(evento => {
     const dataEventoStr = evento.getAttribute("data-evento"); // Data evento come stringa
     // const dataEvento = new Date(dataEventoStr); // Converti la data evento in oggetto Date
     // console.log("Data evento [dataEventoStr]:", dataEventoStr, "| Oggetto Date [dataEvento]:", dataEvento);
+
     if (sceltaEventi === 'futuri') {
-      evento.style.display = dataEventoStr >= oggi ? 'block' : 'none'; // Mostra solo eventi futuri
+      evento.classList.toggle('d-flex', dataEventoStr >= oggi); // Mostra solo eventi futuri
+      evento.classList.toggle('d-none', dataEventoStr < oggi);
+
+      //evento.style.display = dataEventoStr >= oggi ? 'block' : 'none'; // Mostra solo eventi futuri
       // console.log(`Evento ${dataEventoStr} (futuro): `, dataEvento >= oggi ? 'mostrato' : 'nascosto');
+
     } else if (sceltaEventi === 'passati') {
-      evento.style.display = dataEventoStr < oggi ? 'block' : 'none'; // Mostra solo eventi passati
+      evento.classList.toggle('d-flex', dataEventoStr < oggi); // Mostra solo eventi passati
+      evento.classList.toggle('d-none', dataEventoStr >= oggi);
+
+      //evento.style.display = dataEventoStr < oggi ? 'block' : 'none'; // Mostra solo eventi passati
       // console.log(`Evento ${dataEventoStr} (passato): `, dataEvento < oggi ? 'mostrato' : 'nascosto');
+
     } else {
-      evento.style.display = 'block'; // Mostra tutti gli eventi
+      evento.classList.add('d-flex'); // Mostra tutti gli eventi
+      evento.classList.remove('d-none');
+
+      //evento.style.display = 'block'; // Mostra tutti gli eventi
       // console.log(`Evento ${dataEventoStr} (tutti): mostrato`);
     }
   });
@@ -187,3 +194,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 800);
   }, 3000);
 });
+// ------------
+
+
+// Funzione per mostrare/nascondere descrizione evento
+function toggleDescrizione(button) {
+  var descrizione = button.nextElementSibling;
+  if (descrizione.style.display === 'none') {
+    descrizione.style.display = 'block';
+    button.textContent = 'Nascondi';
+  } else {
+    descrizione.style.display = 'none';
+    button.textContent = 'Mostra di più';
+  }
+
+}

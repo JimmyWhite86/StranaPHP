@@ -112,15 +112,15 @@
       <h4 class="lead">Da questa sezione puoi prendere visione dei documenti che danno vita alla nostra associazione.</h4>
       <br>
       <div class="text-center">
-        <a href="Documenti/Statuto%202022.pdf" target="_blank" class="btn btn-primary p-3 m-3"
+        <a href="Documenti/Statuto%202022.pdf" target="_blank" class="btn bottoneNero bottoneBabas p-3 m-3"
            aria-label="Scarica o consulta lo statuto di Stranamore in formato PDF">
           Scarica lo Statuto
         </a>
-        <a href="Documenti/AttoCostitutivo93.pdf" target="_blank" class="btn btn-primary p-3 m-3"
+        <a href="Documenti/AttoCostitutivo93.pdf" target="_blank" class="btn bottoneNero bottoneBabas p-3 m-3"
            aria-label="Scarica o consulta l'atto costitutivo di Stranamore in formato PDF">
           Scarica l'Atto Costitutivo
         </a>
-        <a href="Documenti/InfoPrivacyWix.pdf" target="_blank" class="btn btn-primary p-3 m-3"
+        <a href="Documenti/InfoPrivacyWix.pdf" target="_blank" class="btn bottoneNero bottoneBabas p-3 m-3"
            aria-label="Scarica l'informativa sulla privacy">
           Scarica l'Informativa Privacy
         </a>

@@ -2,6 +2,7 @@
     # ------------------------------------
     # Funzione per connettersi al DataBase.
     function connetti() {
+        /* Parametri per MAMP */
         $dbname = "Strana01";
         $host = "localhost";
         $username = "root";

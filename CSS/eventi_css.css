@@ -1,0 +1,12 @@
+.evento-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body {
+  flex-grow: 1;
+}
+
+.card-footer {
+  margin-top: auto;
+}

@@ -33,15 +33,15 @@
       </div>
       <div class="row justify-content-center mb-4">
         <div class="d-flex flex-wrap gap-2 justify-content-center col-12 col-md-4 mt-5 mb-5">
-          <button type="button" onclick="aggiornaTitolo(filtraEventi('futuri'))" class="btn btn-primary"
+          <button type="button" onclick="aggiornaTitolo(filtraEventi('futuri'))" class="btn bottoneNero bottoneBabas"
                   aria-label="Mostra i prossimi eventi">
             Eventi futuri
           </button>
-          <button type="button" onclick="aggiornaTitolo(filtraEventi('passati'))" class="btn btn-primary"
+          <button type="button" onclick="aggiornaTitolo(filtraEventi('passati'))" class="btn bottoneNero bottoneBabas"
                   aria-label="Mostra gli eventi passati">
             Eventi passati
           </button>
-          <button type="button" onclick="aggiornaTitolo(filtraEventi('tutti'))" class="btn btn-primary"
+          <button type="button" onclick="aggiornaTitolo(filtraEventi('tutti'))" class="btn bottoneNero bottoneBabas"
                   aria-label="Mostra tutti gli eventi">
             Tutti gli eventi
           </button>
@@ -61,6 +61,18 @@
     filtraEventi('futuri');
     aggiornaTitolo(0);
   });
+
+  function toggleDescrizione(button) {
+    var descrizione = button.nextElementSibling;
+    if (descrizione.style.display === 'none') {
+      descrizione.style.display = 'block';
+      button.textContent = 'Nascondi';
+    } else {
+      descrizione.style.display = 'none';
+      button.textContent = 'Mostra di più';
+    }
+
+  }
 </script>
 
 </body>

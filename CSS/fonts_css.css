@@ -171,6 +171,34 @@ body {
   font-size: 1.5rem;
 }
 
+.dataEvento {
+  font-family: Babas, arial, hevetica, sans-serif;
+  font-size: 3rem;
+  color: var(--rossoStrana);
+  text-shadow: 2px 2px 4px #808080;
+}
+
+.orarioEvento {
+  font-family: Babas, arial, hevetica, sans-serif;
+  font-size: 2rem;
+  color: var(--rossoStrana);
+  text-shadow: 2px 2px 4px #808080;
+}
+
+.titoloEvento {
+  font-family: Babas, arial, hevetica, sans-serif;
+  font-size: 3rem;
+  color: var(--azzurroStrana);
+  text-shadow: 2px 2px 4px #808080;
+}
+
+.bottoneBabas {
+  font-family: Babas, arial, hevetica, sans-serif;
+  font-size: 2rem;
+  color: var(--neroStrana);
+  text-shadow: 2px 2px 4px #808080;
+}
+
 
 /* --------------------------------------------------------- */
 /* ----- ADATTO I FONT ALLE VARIE GRANDEZZE DI SCHERMO ----- */

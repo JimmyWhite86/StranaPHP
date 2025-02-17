@@ -50,7 +50,10 @@
                     </span>
                     <input type="text" name="username" id="username" class="form-control"
                            title="Inserisci il tuo username" required aria-required="true" ng-model="username"
-                           autocomplete="username" aria-labelledby="usarnameLabel">
+                           autocomplete="username" aria-labelledby="usarnameLabel"
+                           ng-class = "{ 'is-pristine': formLogin.username.$untouched,
+                                        'is-invalid': formLogin.username.$touched && formLogin.username.$invalid,
+                                        'is-valid': formLogin.username.$touched && formLogin.username.$valid }" >
                   </div>
 
                   <br>
@@ -66,13 +69,16 @@
                     </span>
                     <input type="password" name="psw1" id="psw1" class="form-control"
                            title="Inserisci la password" required aria-required="true" ng-model="psw1"
-                           autocomplete="current-password" aria-labelledby="pswLabel">
+                           autocomplete="current-password" aria-labelledby="pswLabel"
+                           ng-class = "{ 'is-pristine': formLogin.psw1.$untouched,
+                                        'is-invalid': formLogin.psw1.$touched && formLogin.psw1.$invalid,
+                                        'is-valid': formLogin.psw1.$touched && formLogin.psw1.$valid }" >
                   </div>
 
                   <br>
 
                   <div class="text-center">
-                    <button type="submit" name="invio" id="invio" value="Accedi" class="btn btn-primary"
+                    <button type="submit" name="invio" id="invio" value="Accedi" class="btn bottoneAzzurro bottoneBabas"
                             ng-disabled="formLogin.username.$invalid || formLogin.psw1.$invalid">
                       Accedi
                     </button>
