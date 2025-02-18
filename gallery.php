@@ -20,7 +20,7 @@
 
   <!-- "Titolo" della pagina -->
   <div class="my-5 row justify-content-center">
-    <div class="text-center">
+    <div class="text-center myShadowNera">
       <h1 class="titoloPagina" id="titoloPaginaGallery">gallery fotografica</h1>
     </div>
   </div>

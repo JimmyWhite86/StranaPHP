@@ -550,7 +550,7 @@
     
     # ------------------------------------
     # Funzione per inserire nuovo evento
-    function inserisciEvento($nomeEventoNew, $dataEventoNew, $descrizioneNew, $imagePath) {
+    function inserisciEvento($nomeEventoNew, $dataEventoNew, $orarioNew, $descrizioneNew, $imagePath) {
         try {
             $conn = connetti();
             if (!$conn) {
@@ -558,13 +558,14 @@
             }
             
             // Controllo che i campi non siano vuoti
-            if (empty($nomeEventoNew) || empty($dataEventoNew) || empty($imagePath)) {
+            if (empty($nomeEventoNew) || empty($dataEventoNew) || empty($orarioNew) || empty($imagePath)) {
                 return ["successo" => false, 'errore' => 'i campi non sono stati compilati'];
             }
             
             // Sanifico gli input
             $nomeEventoNew = sanificaInput($nomeEventoNew);
             $dataEventoNew = sanificaInput($dataEventoNew);
+            $orarioNew = sanificaInput($orarioNew);
             $descrizioneNew = sanificaInput($descrizioneNew);
             
             // Controllo se esistono già eventi con stessa data && stesso nome
@@ -580,12 +581,13 @@
             }
             
             // Inserisco il nuovo evento a sistema
-            $sqlInsert = "INSERT INTO Eventi (NomeEvento, DataEvento, Descrizione, eliminato, Immagine)
-                    VALUES (:nomeEvento, :dataEvento, :descrizioneEvento, :eliminato, :pathNameImmagine ) ";
+            $sqlInsert = "INSERT INTO Eventi (NomeEvento, DataEvento, orarioEvento, Descrizione, eliminato, Immagine)
+                    VALUES (:nomeEvento, :dataEvento, :orarioEvento, :descrizioneEvento, :eliminato, :pathNameImmagine ) ";
             $stmtInsert = $conn->prepare($sqlInsert);
             $parametri = [
                 ':nomeEvento' => $nomeEventoNew,
                 ':dataEvento' => $dataEventoNew,
+                ':orarioEvento' => $orarioNew,
                 ':pathNameImmagine' => $imagePath,
                 ':descrizioneEvento' => $descrizioneNew,
                 ':eliminato' => 0, ];

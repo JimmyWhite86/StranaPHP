@@ -23,7 +23,7 @@
 
   <!-- "Titolo" della pagina -->
   <div class="my-5 row justify-content-center">
-    <div class="text-center">
+    <div class="text-center myShadowNera">
       <h1 class="titoloPagina">cosa vuol dire strana</h1>
     </div>
   </div>
@@ -36,7 +36,7 @@
 
       <section class="row featurette bg-bianco" aria-labelledby="chiSiamoTitolo" title="chi siamo">
         <div class="col-md-7">
-          <h2 class="fontChiSiamo01" id="chiSiamoTitolo">
+          <h2 class="fontChiSiamo01 ombraFont" id="chiSiamoTitolo">
             chi siamo
           </h2>
           <p class="lead">
@@ -57,7 +57,7 @@
 
       <section class="row featurette bg-bianco" title="la nostra vision" aria-labelledby="iNostriValoriTitolo">
         <div class="col-md-7 order-md-2">
-          <h2 class="fontChiSiamo01" id="iNostriValoriTitolo">
+          <h2 class="fontChiSiamo01 ombraFont" id="iNostriValoriTitolo">
             i nostri valori
           </h2>
           <p class="lead">
@@ -79,7 +79,7 @@
 
       <section class="row featurette bg-bianco" title="cosa facciamo" aria-labelledby="cosaFacciamoTitolo">
         <div class="col-md-7">
-          <h2 class="fontChiSiamo01" id="cosaFacciamoTitolo">
+          <h2 class="fontChiSiamo01 ombraFont" id="cosaFacciamoTitolo">
             cosa facciamo
           </h2>
           <p class="lead">
@@ -108,7 +108,7 @@
 
   <section class="container-fluid d-flex justify-content-center bg-giallo" aria-labelledby="documentiTitolo" title="documenti">
     <div class="align-content-center bg-bianco text-center container marketing">
-      <h3 class="text-center p-3 m-3 fontChiSiamo02" id="documentiTitolo">statuto e atto costitutivo</h3>
+      <h3 class="text-center p-3 m-3 fontChiSiamo02 ombraFont" id="documentiTitolo">statuto e atto costitutivo</h3>
       <h4 class="lead">Da questa sezione puoi prendere visione dei documenti che danno vita alla nostra associazione.</h4>
       <br>
       <div class="text-center">
@@ -133,7 +133,7 @@
   <section class="container-fluid d-flex justify-content-center bg-azzurro" aria-labelledby="direttivoTitolo">
     <div class="align-content-center bg-bianco container marketing">
 
-      <h3 class="p-3 m-3 fontChiSiamo02 text-center" id="direttivoTitolo">il direttivo</h3>
+      <h3 class="p-3 m-3 fontChiSiamo02 text-center ombraFont" id="direttivoTitolo">il direttivo</h3>
 
       <h4 class="lead">
         Il nostro direttivo è composto da socə volontarə, che permettono all'associazione di esistere.

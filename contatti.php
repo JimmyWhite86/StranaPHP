@@ -21,13 +21,13 @@
 
   <!-- "Titolo" della pagina -->
   <div class="my-5 row justify-content-center">
-    <div class="text-center">
+    <div class="text-center myShadowNera">
       <h1 class="titoloPagina">mettiti in contatto con strana</h1>
     </div>
   </div>
 
   <!-- Sezione Card -->
-  <div class="container-fluid bg-rosso mioContainerContatti text-center">
+  <div class="container-fluid bg-rosso mioContainerContatti text-center myShadowRossa">
 
     <div>
       <h2 class="fontTitoloSezione text-center">
@@ -43,7 +43,7 @@
 
     <div class="row justify-content-center">
 
-      <div class="card m-1 bg-5" style="width: 18rem;">
+      <div class="card m-1 bg-5 myShadowNera" style="width: 18rem;">
         <i role="img" class="bi bi-envelope-at-fill fa-4x iconeRosse" aria-hidden="true"></i>
         <div class="card-body">
           <h3 class="card-title">Scrivici</h3>
@@ -55,7 +55,7 @@
         </div>
       </div>
 
-      <div class="card m-1 bg-5" style="width: 18rem;">
+      <div class="card m-1 bg-5 myShadowNera" style="width: 18rem;">
         <i role="img" class="bi bi-telephone-outbound-fill fa-4x iconeGialle" aria-hidden="true"></i>
         <div class="card-body">
           <h3 class="card-title">Mandaci un WhatsApp</h3>
@@ -67,7 +67,7 @@
         </div>
       </div>
 
-      <div class="card m-1 bg-5" style="width: 18rem;">
+      <div class="card m-1 myShadowNera" style="width: 18rem;">
         <i role="img" class="bi bi-geo-alt-fill fa-4x iconeAzzurre" aria-hidden="true"></i>
         <div class="card-body">
           <h3 class="card-title">Raggiungici</h3>
@@ -78,13 +78,14 @@
           <a href="https://maps.app.goo.gl/4MWoWXnPmRvHGW3d9" class="btn bottoneAzzurro bottoneBabas">Raggiungici</a>
         </div>
       </div>
+      
     </div>
+    
   </div>
-
-  <hr>
+  
 
   <!-- Sezione Orari di Apertura -->
-  <div class="container-fluid bg-giallo mioContainerContatti text-center">
+  <div class="container-fluid bg-giallo mioContainerContatti text-center myShadowGialla mb-2 mt-2">
     <div class="row">
 
       <div class="col-md-6 text-left separatoreVerticale ">
@@ -126,13 +127,11 @@
 
     </div>
   </div>
-
-  <hr>
-
+  
   <!-- Sezione Form -->
-  <div class="container-fluid bg-azzurro mb-1 mioContainerContatti">
+  <div class="container-fluid bg-azzurro mb-1 mioContainerContatti myShadowAzzurra">
     <div class="row justify-content-center">
-      <div class="container contact-form border-dark rounded m-3" >
+      <div class="container contact-form border-dark rounded m-3 myShadowNera" >
 
         <form class="mioFormContatti" ng-app="myAppContatti" ng-controller="validateCtrl" name="formContatti"
               id="formContatti" novalidate>

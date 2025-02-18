@@ -44,7 +44,8 @@
   <div class="bg-giallo container-fluid justify-content-center mioFlowRoot">
 
     <!-- Chi siamo breve -->
-    <div class="containerIndexCentrale container-fluid justify-content-center bg-nero w-75 mt-2" style="color: white;">
+    <div class="containerIndexCentrale container-fluid justify-content-center bg-nero w-75 mt-2 rounded-3 myShadowBianca"
+         style="color: white;">
       <h3 class="pt-5 text-center fontStranaTitoli" id="chiSiamoIndex">chi siamo</h3>
       <div class="row justify-content-center">
         <div class="col-sm-10 col-md-8">
@@ -56,14 +57,17 @@
             a valorizzare la comunità attraverso l'arte, la creatività e il dialogo.
           </p>
           <div class="text-end mb-3">
-            <a href="chi_siamo.php" class="btn bottoneGiallo2" aria-label="Scopri di più su chi siamo">Conoscici meglio</a>
+            <a href="chi_siamo.php" class="btn bottoneGiallo2 bottoneBabas" aria-label="Scopri di più su chi siamo">
+              Conoscici meglio
+            </a>
           </div>
         </div>
       </div>
     </div>
 
     <!-- La cucina breve -->
-    <div class="containerIndexCentrale container-fluid justify-content-center bg-nero w-75 mt-2 mb-2" style="color: white;">
+    <div class="containerIndexCentrale container-fluid justify-content-center bg-nero w-75 mt-2 mb-2 rounded-3 myShadowBianca"
+         style="color: white;">
       <h3 class="pt-5 text-center fontStranaTitoli" id="laCucinaIndex">la cucina</h3>
       <div class="row justify-content-center">
         <div class="col-sm-10 col-md-8">
@@ -72,14 +76,17 @@
             qualità. Promuoviamo la stagionalità dei prodotti e valorizziamo le eccellenze delle produzioni locali.
           </p>
           <div class="text-end mb-3">
-            <a href="la_cucina.php" class="btn bottoneGiallo2" aria-label="Clicca per conoscere il menu">Cosa bolle in pentola</a>
+            <a href="la_cucina.php" class="btn bottoneGiallo2 bottoneBabas" aria-label="Clicca per conoscere il menu">
+              Cosa bolle in pentola
+            </a>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Eventi breve -->
-    <div class="containerIndexCentrale container-fluid justify-content-center bg-nero w-75 mt-2 mb-2" style="color: white;">
+    <div class="containerIndexCentrale container-fluid justify-content-center bg-nero w-75 mt-2 mb-2 rounded-3 myShadowBianca"
+         style="color: white;">
       <h3 class="pt-5 text-center fontStranaTitoli" id="eventiIndex">eventi</h3>
       <div class="row justify-content-center">
         <div class="col-sm-10 col-md-8">
@@ -90,7 +97,7 @@
             perché non siamo sempre così seri.
           </p>
           <div class="text-end mb-3">
-            <a href="eventi.php" class="btn bottoneGiallo2">Guarda i prossimi eventi</a>
+            <a href="eventi.php" class="btn bottoneBabas bottoneGiallo2 ">Guarda i prossimi eventi</a>
           </div>
         </div>
       </div>
@@ -103,7 +110,7 @@
     <div class="container-fluid text-center bg-azzurro">
       <div class="row justify-content-center">
 
-        <div class="m-2 card col-md-4" style="width: 20em;" role="region" aria-label="Iscriviti alla nostra newsletter">
+        <div class="m-2 card col-md-4 myShadowNera" style="width: 20em;" role="region" aria-label="Iscriviti alla nostra newsletter">
           <i class="bi bi-envelope-paper-heart fa-10x iconeRosse"></i>
           <div class="card-body">
             <h4>Iscriviti alla nostra NewsLetter</h4>
@@ -116,12 +123,12 @@
           <div class="card-footer">
             <a href="https://associazione-stranamore.voxmail.it/user/register" class="btn bottoneRosso"
                aria-label="Iscriviti alla newsletter per stranamore">
-              Iscriviti
+              ISCRIVITI
             </a>
           </div>
         </div>
 
-        <div class="m-2 card col-md-4" style="width: 20em;" role="region" aria-label="Dona il tuo 8x1000">
+        <div class="m-2 card col-md-4 myShadowNera" style="width: 20em;" role="region" aria-label="Dona il tuo 8x1000">
           <i class="bi bi-piggy-bank fa-10x iconeGialle"></i>
           <div class="card-body">
             <h4>Dona il tuo 5x1000</h4>
@@ -129,11 +136,11 @@
             <p>Il tuo contributo per noi è davvero importante.</p>
           </div>
           <div class="card-footer">
-            <a href="" class="btn bottoneGiallo" aria-label="Clicca per donare il tuo 8x1000">Dona</a>
+            <a href="" class="btn bottoneGiallo" aria-label="Clicca per donare il tuo 8x1000">DONA</a>
           </div>
         </div>
 
-        <div class="m-2 card col-md-4" style="width: 20em;" role="region" aria-label="Proponici un evento">
+        <div class="m-2 card col-md-4 myShadowNera" style="width: 20em;" role="region" aria-label="Proponici un evento">
           <i class="bi bi-mic-fill fa-10x iconeAzzurre"></i>
           <div class="card-body">
             <h4>Vuoi proporre un dibattito o un evento?</h4>
@@ -142,7 +149,7 @@
               Facci sapere la tua proposta.</p>
           </div>
           <div class="card-footer">
-            <a href="contatti.php" class="btn bottoneAzzurro" aria-label="Clicca per contattarci">Contattaci</a>
+            <a href="contatti.php" class="btn bottoneAzzurro" aria-label="Clicca per contattarci">CONTATTACI</a>
           </div>
         </div>
 

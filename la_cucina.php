@@ -44,14 +44,14 @@
   <!-- "Titolo" della pagina -->
   <div class="my-5 row justify-content-center">
     <div class="text-center">
-      <h1 class="titoloPagina">il menu di oggi</h1>
-      <h2 class="fontTitoloSezione">Scopri il menu che Stranamore propone per questa sera</h2>
+      <h1 class="titoloPagina myShadowNera">il menu di oggi</h1>
+      <h2 class="fontTitoloSezione ombraFontGrigia">Scopri il menu che Stranamore propone per questa sera</h2>
     </div>
   </div>
 
   <!-- Richiamo la funzione che restituisce il menu dinamicamente -->
   <div class="container-fluid bg-giallo pb-4 pt-4 mt-4 mb-4">
-    <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
+    <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4 rounded-3 myShadowBianca">
       <div class="row justify-content-center">
         <?php
           $disponibilitaPiatto = 1;

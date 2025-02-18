@@ -1,6 +1,6 @@
 
 /* ============================ */
-/*           DEFINIZIONE DEI COLORI              */
+/*   DEFINIZIONE DEI COLORI     */
 /* ============================ */
 :root {
   --rossoStrana: #fe4a49;
@@ -149,11 +149,22 @@ footer a { color: var(--biancoStrana); }
 
 
 /* ------------------------------------------------ */
-/*                     BLOCCHI HOMEPAGE                       */
+/*                     BLOCCHI HOMEPAGE             */
 /* ------------------------------------------------ */
 .mioFlowRoot {
   display: flow-root;
 }
+
+/* ------------------------------------------------ */
+/*                     OMBRE ED EFFETTI             */
+/* ------------------------------------------------ */
+.myShadowRossa { filter: drop-shadow(0px 0px 10px var(--rossoStrana)); }
+.myShadowGialla { filter: drop-shadow(0px 0px 10px var(--gialloStrana)); }
+.myShadowAzzurra { filter: drop-shadow(0px 0px 10px var(--azzurroStrana)); }
+.myShadowBianca { filter: drop-shadow(0px 0px 10px var(--neroStrana)); }
+.myShadowNera { filter: drop-shadow(0px 0px 10px var(--neroStrana)); }
+.myShadowGrigio { filter: drop-shadow(0px 0px 10px #888888); }
+
 /* ------------------------------------------------ */
 
 
@@ -328,3 +339,13 @@ select:focus-visible {
 }
 /* ------------------------------------------------ */
 /* ------------------------------------------------ */
+
+
+/* VARIE */
+.separatoreMenu {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  max-width: 100%;
+}
+

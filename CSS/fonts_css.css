@@ -27,6 +27,13 @@
   font-family: Lato-Regular;
   src: url(../FONT/Lato-Regular.ttf);
 }
+
+.permanent-marker-regular {
+  font-family: "Permanent Marker", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 /* --------------------------------- */
 
 
@@ -159,8 +166,7 @@ body {
   font-family: Babas, arial, hevetica, sans-serif;
   font-size: 3rem;
   color: #000000;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px #808080;
+  /*font-weight: bold;*/
 }
 
 .fontPrezzoPiatto {
@@ -194,10 +200,36 @@ body {
 
 .bottoneBabas {
   font-family: Babas, arial, hevetica, sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: var(--neroStrana);
   text-shadow: 2px 2px 4px #808080;
 }
+
+.bottoneBabasPiccolo {
+  font-family: Babas, arial, hevetica, sans-serif; !important;
+  font-size: 1rem;
+  /*color: var(--neroStrana);*/
+  /*text-shadow: 2px 2px 4px #808080;*/
+}
+
+.fontFirma {
+  font-family: "Permanent Marker", arial, hevetica, sans-serif;
+  font-size: 1.3rem;
+}
+
+.fontFirma02 {
+  font-family: Babas, arial, hevetica, sans-serif;
+  font-size: 1rem;
+}
+
+
+.ombraFont { text-shadow: 2px 2px 4px #808080; }
+.ombraFontAzzurro { text-shadow: 2px 2px 4px var(--azzurroStrana); }
+.ombraFontGiallo { text-shadow: 2px 2px 4px var(--gialloStrana); }
+.ombraFontRosso { text-shadow: 2px 2px 4px var(--rossoStrana); }
+.ombraFontNero { text-shadow: 2px 2px 4px var(--neroStrana); }
+.ombraFontBianco { text-shadow: 2px 2px 4px var(--biancoStrana); }
+.ombraFontGrigia { text-shadow: 2px 2px 4px #808080; }
 
 
 /* --------------------------------------------------------- */
