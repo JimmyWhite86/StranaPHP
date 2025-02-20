@@ -1,8 +1,6 @@
 <?php
   session_start();
-  
   include 'includes/init.php';
-  
   $nomePagina = "chi_siamo";
 ?>
 
@@ -29,7 +27,7 @@
   </div>
 
   <!-- START THE FEATURETTES -->
-  <div class="bg-rosso">
+  <div class="bg-rosso py-3 myShadowRossa">
     <div class="container marketing bg-bianco">
 
       <!--<hr class="featurette-divider">-->
@@ -104,9 +102,9 @@
     </div>
   </div>
 
-  <hr>
 
-  <section class="container-fluid d-flex justify-content-center bg-giallo" aria-labelledby="documentiTitolo" title="documenti">
+  <section class="container-fluid d-flex justify-content-center bg-giallo py-3 myShadowGialla"
+           aria-labelledby="documentiTitolo" title="documenti">
     <div class="align-content-center bg-bianco text-center container marketing">
       <h3 class="text-center p-3 m-3 fontChiSiamo02 ombraFont" id="documentiTitolo">statuto e atto costitutivo</h3>
       <h4 class="lead">Da questa sezione puoi prendere visione dei documenti che danno vita alla nostra associazione.</h4>
@@ -128,9 +126,9 @@
     </div>
   </section>
 
-  <hr>
 
-  <section class="container-fluid d-flex justify-content-center bg-azzurro" aria-labelledby="direttivoTitolo">
+  <section class="container-fluid d-flex justify-content-center bg-azzurro py-3 myShadowAzzurra"
+           aria-labelledby="direttivoTitolo">
     <div class="align-content-center bg-bianco container marketing">
 
       <h3 class="p-3 m-3 fontChiSiamo02 text-center ombraFont" id="direttivoTitolo">il direttivo</h3>
@@ -156,8 +154,6 @@
   </section>
 
 </main>
-
-<hr>
 
 <!-- Footer -->
 <?php HTMLfooter($nomePagina);?>

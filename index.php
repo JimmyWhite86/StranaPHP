@@ -41,12 +41,12 @@
   
   
   <!-- sessione centrale -->
-  <div class="bg-giallo container-fluid justify-content-center mioFlowRoot">
+  <div class="bg-giallo container-fluid justify-content-center mioFlowRoot mb-2 mt-2 myShadowGialla">
 
     <!-- Chi siamo breve -->
     <div class="containerIndexCentrale container-fluid justify-content-center bg-nero w-75 mt-2 rounded-3 myShadowBianca"
          style="color: white;">
-      <h3 class="pt-5 text-center fontStranaTitoli" id="chiSiamoIndex">chi siamo</h3>
+      <h3 class="pt-5 text-center fontStranaTitoli myShadowBianca" id="chiSiamoIndex">chi siamo</h3>
       <div class="row justify-content-center">
         <div class="col-sm-10 col-md-8">
           <p class="testoHome">
@@ -66,7 +66,7 @@
     </div>
 
     <!-- La cucina breve -->
-    <div class="containerIndexCentrale container-fluid justify-content-center bg-nero w-75 mt-2 mb-2 rounded-3 myShadowBianca"
+    <div class="containerIndexCentrale container-fluid justify-content-center bg-nero w-75 mt-2 mb-2 rounded-3"
          style="color: white;">
       <h3 class="pt-5 text-center fontStranaTitoli" id="laCucinaIndex">la cucina</h3>
       <div class="row justify-content-center">
@@ -107,7 +107,7 @@
   
   <!-- Card Section -->
   <section>
-    <div class="container-fluid text-center bg-azzurro">
+    <div class="container-fluid text-center bg-azzurro myShadowAzzurra">
       <div class="row justify-content-center">
 
         <div class="m-2 card col-md-4 myShadowNera" style="width: 20em;" role="region" aria-label="Iscriviti alla nostra newsletter">

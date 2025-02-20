@@ -8,13 +8,10 @@
     #-----------------------------------------------------------------
     # Avviso l'utente che deve essere loggato per accedere alla pagina
     function deviLoggarti () { ?>
-      <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-        <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-          <h2>Devi essere loggatə per accedere a questa pagina</h2>
-          <p>
-            Puoi tornare alla <a href="index.php" aria-label="Home Page">home page</a>
-            o cercare usare la barra di navigazione per cercare la pagina che ti serve
-          </p>
+      <div class="container-fluid d-flex justify-content-center bg-rosso py-4 my-4 myShadowRossa">
+        <div class="row bg-bianco col-10 col-sm-6 text-center my-5 py-5 myShadowNera rounded-3">
+          <h2 class="fontTitoloSezione">Devi essere loggatə per accedere a questa pagina</h2>
+          <a href="<?= BASE_URL?>/login.php" class="btn bottoneAzzurro bottoneBabas w-auto mx-auto d-block">LOGIN</a>
         </div>
       </div>
         <?php
@@ -25,9 +22,11 @@
     #-----------------------------------------------------------------
     # Avviso che utente normale sta cercando di accedere a pagine consentite solo agli amministratori
     function deviEssereAdmin ($username) { ?>
-      <div class='titolo'>
-        <h2>Carə <?= htmlspecialchars($username, ENT_QUOTES, 'UTF-8') ?> questa area è riservata agli amministratori del sistema</h2>
-        <p>Puoi tornare alla <a href="index.php" aria-label="Home Page">home</a> o cercare i nostri servizi tramite la barra di navigazione</p>
+      <div class="container-fluid d-flex justify-content-center bg-rosso py-4 my-4 myShadowRossa">
+        <div class="row bg-bianco col-10 col-sm-6 text-center my-5 py-5 myShadowNera rounded-3">
+          <h2 class="fontTitoloSezione">Devi essere admin per accedere a questa pagina</h2>
+          <a href="<? BASE_URL ?>/index.php" class="btn bottoneAzzurro bottoneBabas w-auto mx-auto d-block">HOME</a>
+        </div>
       </div>
         <?php
     }
@@ -82,7 +81,7 @@
     
     
     #-----------------------------------------------------------------
-    #Funzione per generare il menu in maniera dinamica
+    #Funzione per generare il menu della cucina in maniera dinamica
     function generaMenu($disponibilitaPiatto) {
         $listaPiattiDisponibili = piattiInArray($disponibilitaPiatto);
         $categorie = contaCategoriePiatti($disponibilitaPiatto);
@@ -174,9 +173,10 @@
     #-----------------------------------------------------------------
     # Utente Loggato senza privilegi da admin
     function loginUtenteStandard ($username) { ?>
-      <div class="container-fluid d-flex justify-content-center bg-giallo pb-4 pt-4 mt-4 mb-4">
-        <div class="row bg-bianco justify-content-center col-6 text-center">
-          <h2> Bentornatə <?= $username ?>, accesso effettuato correttamente </h2>
+      <div class="container-fluid d-flex justify-content-center bg-rosso py-4 my-4 myShadowRossa">
+        <div class="row bg-bianco col-10 col-sm-6 text-center my-5 py-5 myShadowNera rounded-3">
+          <h2 class="fontTitoloSezione">Accesso effettuato correttamente</h2>
+          <h3>Bentornatə <?= $username ?></h3>
         </div>
       </div>
         <?php
@@ -184,14 +184,10 @@
     #-----------------------------------------------------------------
     #Utente loggato con privilegi da admin
     function loginUtenteAdmin ($username) { ?>
-      <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-        <div class="row bg-bianco justify-content-center col-6 text-center">
-          <h2> Ciao <?= $username ?>! Accesso effettuato come Admin </h2>
-          <hr>
-          <a href="home_admin.php">Homepage per Admin</a>
-          <a href="gestione_eventi.php">Gestione eventi</a>
-          <a href="gestione_cucina.php">Gestione cucina</a>
-          <a href="gestione_utenti.php">Gestione utenti</a>
+      <div class="container-fluid d-flex justify-content-center bg-rosso py-4 my-4 myShadowRossa">
+        <div class="row bg-bianco col-10 col-sm-6 text-center my-5 py-5 myShadowNera rounded-3">
+          <h2 class="fontTitoloSezione">Accesso effettuato correttamente</h2>
+          <h3>Bentornatə <?= $username ?></h3>
         </div>
       </div>
         <?php
@@ -199,12 +195,11 @@
     #-----------------------------------------------------------------
     # Utente ha inserito password errata
     function inseritoPswErrata () {   ?>
-      <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-        <div class="row bg-bianco justify-content-center col-6 text-center">
-          <h2> Hai inserito una password errata </h2>
-          <hr>
-          <p><strong>Prova nuovamente ad effettuare il login</strong></p>
-          <a href="login.php">LogIn</a>
+      <div class="container-fluid d-flex justify-content-center bg-rosso py-4 my-4 myShadowRossa">
+        <div class="row bg-bianco col-10 col-sm-6 text-center my-5 py-5 myShadowNera rounded-3">
+          <h2 class="fontTitoloSezione">La password inserita non è corretta</h2>
+          <p>Prova a effettuare nuovamente l'accesso</p>
+          <a href="<?= BASE_URL?>/login.php" class="btn bottoneAzzurro bottoneBabas w-auto mx-auto d-block">LOGIN</a>
         </div>
       </div>
         <?php
@@ -212,12 +207,11 @@
     #-----------------------------------------------------------------
     # Il nome utente inserito durante il login non è stato trovato nel db
     function nomeUtenteNonTrovato () { ?>
-      <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-        <div class="row bg-bianco justify-content-center col-6 text-center">
-          <h2> Nome utente non trovato </h2>
-          <hr>
-          <p><strong>Prova nuovamente ad effettuare il login</strong></p>
-          <a href="login.php">LogIn</a>
+      <div class="container-fluid d-flex justify-content-center bg-rosso py-4 my-4 myShadowRossa">
+        <div class="row bg-bianco col-10 col-sm-6 text-center my-5 py-5 myShadowNera rounded-3">
+          <h2 class="fontTitoloSezione">Il nome utente da te inserito è errato</h2>
+          <p>Prova a effettuare nuovamente l'accesso</p>
+          <a href="<?= BASE_URL?>/login.php" class="btn bottoneAzzurro bottoneBabas w-auto mx-auto d-block">LOGIN</a>
         </div>
       </div>
         <?php
@@ -225,12 +219,11 @@
     #-----------------------------------------------------------------
     # Il form non è stato compilato correttamente
     function erroreCompilazioneForm () { ?>
-      <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-        <div class="row bg-bianco justify-content-center col-6 text-center">
-          <h2 class="m-3 p-3"> Non abbiamo trovato lo username da te inserito </h2>
-          <hr>
-          <p><strong>Prova nuovamente ad effettuare il login</strong></p>
-          <a href="login.php">LogIn</a>
+      <div class="container-fluid d-flex justify-content-center bg-rosso py-4 my-4 myShadowRossa">
+        <div class="row bg-bianco col-10 col-sm-6 text-center my-5 py-5 myShadowNera rounded-3">
+          <h2 class="fontTitoloSezione">Ci sono stati dei problemi</h2>
+          <p>Prova a effettuare nuovamente l'accesso</p>
+          <a href="<?= BASE_URL?>/login.php" class="btn bottoneAzzurro bottoneBabas w-auto mx-auto d-block">LOGIN</a>
         </div>
       </div>
         <?php
@@ -238,9 +231,9 @@
     #-----------------------------------------------------------------
     # Utente già loggato
     function utenteGiaLoggato ($username) { ?>
-      <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-        <div class="row bg-bianco justify-content-center col-6 text-center">
-          <h2 class="m-3 p-3"> <?= $username ?>, hai già effettuato l'accesso!</h2>
+      <div class="container-fluid d-flex justify-content-center bg-rosso py-4 my-4 myShadowRossa">
+        <div class="row bg-bianco col-10 col-sm-6 text-center my-5 py-5 myShadowNera rounded-3">
+          <h2 class="fontTitoloSezione">Hai già effettuato l'accesso</h2>
         </div>
       </div>
         <?php
@@ -254,7 +247,7 @@
     # Al momento usato solo per la pagina di login
     function titoloDellaPagina($nomePagina) { ?>
       <div class="my-5 row justify-content-center">
-        <div class="text-center">
+        <div class="text-center myShadowNera">
           <h1 class="titoloPagina">log in</h1>
         </div>
       </div>

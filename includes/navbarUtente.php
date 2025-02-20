@@ -6,6 +6,7 @@
       <a href="#mioMain" class="skip text-center" tabindex="0">Vai al contenuto principale</a> <!--Salta al contenuto principale della pagina (Accessibilità) -->
       
       <div class="container-fluid">
+        
         <a class="navbar-brand fontstranaBase" href="index.php">
           <img src="Immagini/Logo_Stranamore_01.jpg" class="d-inline-block align-center"
                alt="Logo dell'associazione culturale Stranamore">

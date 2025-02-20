@@ -22,15 +22,15 @@
 
   <!-- "Titolo" della pagina -->
   <div class="my-5 row justify-content-center">
-    <div class="text-center">
+    <div class="text-center myShadowNera">
       <h1 class="titoloPagina">log out</h1>
     </div>
   </div>
 
-  <div class="container-fluid d-flex justify-content-center bg-giallo pb-4 pt-4 mt-4 mb-4">
-    <div class="row bg-bianco justify-content-center col-6 text-center rounded-3 shadow-lg">
-        <h1 class="fontTitoloSezione">Logout effettuato correttamente</h1>
-        <a href="index.php">Puoi tornare alla home page</a>
+  <div class="container-fluid d-flex justify-content-center bg-giallo py-4 my-4 myShadowGialla">
+    <div class="row bg-bianco justify-content-center col-10 col-sm-6 text-center rounded-3 myShadowNera my-3">
+        <h1 class="fontTitoloSezione my-4">Logout effettuato correttamente</h1>
+        <!--<a href="index.php">Puoi tornare alla home page</a>-->
     </div>
   </div>
 

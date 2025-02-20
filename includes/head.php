@@ -37,6 +37,7 @@
     <link href="<?= BASE_URL ?>CSS/form_css.css" rel="stylesheet" type="text/css">
     <link href="<?= BASE_URL ?>CSS/gallery_css.css" rel="stylesheet" type="text/css">
     <link href="<?= BASE_URL ?>CSS/eventi_css.css" rel="stylesheet" type="text/css">
+    <link href="<?= BASE_URL ?>CSS/admin_css.css" rel="stylesheet" type="text/css">
     
     <!-- Font Babas Neue -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -1,0 +1,55 @@
+/* Stile generale delle card */
+.card-link {
+  /*align-items: center;*/ /* Centra verticalmente */
+  /*justify-content: center;*/ /* Centra orizzontalmente */
+  text-transform: uppercase;
+  display: block;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  background-color: var(--gialloStrana);
+  color: var(--neroStrana);
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Icona all'interno delle card */
+.card-link i {
+  margin-right: 10px;
+  color: var(--azzurroStrana);
+  transition: transform 0.3s;
+}
+
+/* Hover effect: cambio colore e leggero movimento */
+.card-link:hover {
+  background-color: var(--azzurroStrana);
+  color: var(--biancoStrana);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-link:hover i {
+  transform: scale(1.2);
+}
+
+/* Effetto ripple al clic */
+.card-link::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.5s, opacity 1s;
+  opacity: 0;
+}
+
+.card-link:active::after {
+  transform: scale(4);
+  opacity: 1;
+  transition: 0s;
+}
+
+.maxWidthLinkAdmin { max-width: 400px }

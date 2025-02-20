@@ -1,23 +1,25 @@
 <?php
-#-----------------------------------------------------------------
   # Funzione per richiamare la navBar per utenti loggati come admin
-  # TODO: Dinamizzare i colori dei link a seconda dello stato
   function adminNavBar($nomePagina) { ?>
-    <nav class="navbar navbar-expand-lg bg-nero" id="navbarNav" role="navigation" aria-label="menù di navigazione">
+    <nav class="navbar navbar-expand-lg bg-nero" role="navigation" aria-label="menù di navigazione">
       <a href="#mioMain" class="skip text-center" tabindex="0">Vai al contenuto principale</a> <!--Salta al contenuto principale della pagina (Accessibilità) -->
       
       <div class="container-fluid">
+        
         <a class="navbar-brand fontstranaBase" href="index.php">
-          <img src="<?= BASE_URL ?>Immagini/Logo_Stranamore_03.jpg" class="d-inline-block align-center" alt="Logo dell'associazione culturale Stranamore">
+          <img src="<?= BASE_URL ?>Immagini/Logo_Stranamore_03.jpg" class="d-inline-block align-center"
+               alt="Logo dell'associazione culturale Stranamore">
         </a>
+        
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                 aria-label="Apre o chiude la navigazione">
           <span class="navbar-toggler-icon"></span>
         </button>
         
-        <div class="collapse navbar-collapse fontNavAdmin">
+        <div class="collapse navbar-collapse fontNavAdmin" id="navbarNav">
           <div class="d-flex justify-content-center flex-grow-1">
+            
             <ul class="navbar-nav" id="myNavBar">
               
               <li class="nav-item">
@@ -162,5 +164,4 @@
     </nav>
     <?php
   }
-  #-----------------------------------------------------------------
 ?>

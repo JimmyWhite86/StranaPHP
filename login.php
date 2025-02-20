@@ -20,7 +20,7 @@
 <main id="mioMain">
 
   <div class="my-5 row justify-content-center">
-    <div class="text-center">
+    <div class="text-center myShadowNera">
       <h1 class="titoloPagina">log in</h1>
     </div>
   </div>
@@ -28,10 +28,10 @@
   <?php
     if (!isset ($_SESSION["username"])) { #Verifico che l'utente non abbia ancora effettuato il login; ?>
 
-      <div class="container-fluid bg-rosso pb-4 pt-4 mt-4 mb-4">
-        <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4 rounded-3 shadow-lg">
+      <div class="container-fluid bg-rosso pb-4 pt-4 mt-4 mb-4 myShadowRossa">
+        <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4 rounded-3 shadow-lg myShadowNera">
           <div class="row justify-content-center">
-            <h2 class="text-center">Sei unə admin della pagina?</h2>
+            <h2 class="text-center fontTitoloSezione ombraFontGrigia">Sei unə admin della pagina?</h2>
             <h3 class="text-center">Inserisci le tue credenziali</h3>
             <div>
 
