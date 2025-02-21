@@ -2,6 +2,8 @@
   session_start();
   include '../includes/init.php';
   $nomePagina = "aggiungi_menu";
+  
+  $testoDelTitolo = "aggiungi un menu"
 ?>
 
   <!DOCTYPE html>
@@ -20,11 +22,7 @@
 
 
   <!-- "Titolo" della pagina -->
-  <div class="my-5 row justify-content-center">
-    <div class="text-center">
-      <h1 class="titoloPagina">aggiungi menu</h1>
-    </div>
-  </div>
+<?php titoloDellaPagina($testoDelTitolo) ?>
   
   <?php
     if (!isset($_SESSION["username"])) {  # Utente non loggato
@@ -44,14 +42,15 @@
         eliminaInteroMenu(); // Elimino il menu già presente per inserire quello nuovo
         
         $conn = connetti();
-        if (!$conn) { ?>
-          <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-            <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-              <h2>Ci sono stati problemi durante la connessio al database</h2>
+        if (!$conn) { ?> <!-- Errore di connessione -->
+          <div class="container-fluid d-flex justify-content-center bg-rosso py-4 my-4 myShadowRossa">
+            <div class="row bg-bianco justify-content-center col-md-10 col-lg-6 text-center m-3 p-3 myShadowNera rounded-4">
+              <h2 class="fontTitoloSezione fontRosso">Menu non creato</h2>
+              <p>Problemi di connessione con il database</p>
+              <p>Prova nuovamente a creare il menu</p>
               <hr>
-              <a href="nuovo_menu_00.php" class="btn btn-primary mb-3">Inserisci un nuovo menu</a><br>
-              <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
-              <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+              <a href="nuovo_menu_00.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">CREA UN MENU</a><br>
+              <a href="<?= BASE_URL ?>gestione_cucina.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">GESTIONE CUCINA</a><br>
             </div>
           </div>
           <?php
@@ -92,24 +91,24 @@
     
     // Controllo attraverso la variabile $erroreInserimentoQuery se ci sono stati errori durante l'inserimento dei piatti
     if ($erroreInserimentoQuery == 0) { ?>
-      <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-        <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-          <h2>Il nuovo menu è stato inserito con successo</h2>
+      <div class="container-fluid d-flex justify-content-center bg-rosso py-4 my-4 myShadowRossa">
+        <div class="row bg-bianco justify-content-center col-md-10 col-lg-6 text-center m-3 p-3 myShadowNera rounded-4">
+          <h2 class="fontTitoloSezione fontVerde">Menu creato correttamente</h2>
           <hr>
-          <a href="la_cucina.php" class="btn btn-primary mb-3">Visualizza la pagina con il menù</a><br>
-          <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
-          <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+          <a href="<?= BASE_URL ?>/home_admin.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">HOME ADMIN</a><br>
+          <a href="<?= BASE_URL ?>/gestione_cucina.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">GESTIONE CUCINA</a><br>
         </div>
       </div>
       <?php
     } else { ?>
-      <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-        <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-          <h2>Ci sono stati problemi durante l'inserimento del menu</h2>
+      <div class="container-fluid d-flex justify-content-center bg-rosso py-4 my-4 myShadowRossa">
+        <div class="row bg-bianco justify-content-center col-md-10 col-lg-6 text-center m-3 p-3 myShadowNera rounded-4">
+          <h2 class="fontTitoloSezione fontRosso">Menu non creato</h2>
+          <p>Ci sono stati problemi durante l'inserimento del menu</p>
+          <p>Prova nuovamente a creare il menu</p>
           <hr>
-          <a href="la_cucina.php" class="btn btn-primary mb-3">Visualizza la pagina con il menù</a><br>
-          <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
-          <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+          <a href="nuovo_menu_00.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">CREA UN MENU</a><br>
+          <a href="<?= BASE_URL ?>gestione_cucina.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">GESTIONE CUCINA</a><br>
         </div>
       </div>
       <?php

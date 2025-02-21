@@ -21,7 +21,7 @@
   <?php richiamaNavBar($nomePagina); ?>
 
   <!-- "Titolo" della pagina -->
-  <div class="my-5 row justify-content-center">
+  <div class="my-5">
     <div class="text-center myShadowNera">
       <h1 class="titoloPagina">log out</h1>
     </div>

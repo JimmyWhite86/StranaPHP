@@ -231,6 +231,12 @@ body {
 .ombraFontBianco { text-shadow: 2px 2px 4px var(--biancoStrana); }
 .ombraFontGrigia { text-shadow: 2px 2px 4px #808080; }
 
+.fontRosso { color: var(--rossoStrana); }
+.fontAzzurro { color: var(--azzurroStrana); }
+.fontGiallo { color: var(--gialloStrana); }
+.fontNero { color: var(--neroStrana); }
+.fontBianco { color: var(--biancoStrana); }
+.fontVerde { color: green; }
 
 /* --------------------------------------------------------- */
 /* ----- ADATTO I FONT ALLE VARIE GRANDEZZE DI SCHERMO ----- */

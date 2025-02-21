@@ -2,6 +2,8 @@
   session_start();
   include '../includes/init.php';
   $nomePagina = "modifica_evento";
+  
+  $testoDelTitolo = "modifica un evento"
 ?>
 
 <!DOCTYPE html>
@@ -20,11 +22,7 @@
 <main id="mioMain">
 
   <!-- "Titolo" della pagina -->
-  <div class="my-5 row justify-content-center">
-    <div class="text-center">
-      <h1 class="titoloPagina">modifica un evento</h1>
-    </div>
-  </div>
+  <?php titoloDellaPagina($testoDelTitolo) ?>
   
   <?php
     
@@ -79,25 +77,37 @@
               $stmt->execute($parametri);
               //$messaggio = "Evento modificato con successo";
               //echo $messaggio; ?>
-              <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-                <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-                  <h2>Evento modificato con successo</h2>
+              <div class="container-fluid d-flex justify-content-center bg-rosso bg-rosso py-4 my-4 myShadowRossa">
+                <div class="row bg-bianco justify-content-center col-md-10 col-lg-6 text-center m-3 p-3 myShadowNera rounded-3">
+                  <h2 class="fontTitoloSezione fontVerde">Evento modificato con successo</h2>
                   <hr>
-                  <!--<a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>-->
-                  <a href="modifica_evento_00.php" class="btn btn-primary mb-3">Modifica un altro evento</a><br>
-                  <a href="gestione_eventi.php" class="btn btn-primary mb-3">Gestione Eventi</a><br>
+                  <a href="modifica_evento_00.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">
+                    MODIFICA EVENTO
+                  </a>
+                  <br>
+                  <a href="<?= BASE_URL ?>gestione_eventi.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">
+                    GESTIONE EVENTI
+                  </a>
+                  <br>
                 </div>
               </div>
   <?php
             } catch (PDOException $e) {
               // echo "Errore: " . $e->getMessage(); ?>
-              <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-                <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-                  <h2>Errore durante la modifica dell'evento</h2>
+              <div class="container-fluid d-flex justify-content-center bg-rosso bg-rosso py-4 my-4 myShadowRossa">
+                <div class="row bg-bianco justify-content-center col-md-10 col-lg-6 text-center m-3 p-3 myShadowNera rounded-3">
+                  <h2 class="fontTitoloSezione fontRosso">Evento non modificato</h2>
+                  <p>Ci sono stati dei problemi durante il processo di modifica dell'evento.</p>
+                  <p><strong>L'evento non è stato modificato</strong></p>
                   <hr>
-                 <!-- <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>-->
-                  <a href="modifica_piatto_00.php" class="btn btn-primary mb-3">Modifica un altro piatto</a><br>
-                  <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+                  <a href="modifica_evento_00.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">
+                    MODIFICA EVENTO
+                  </a>
+                  <br>
+                  <a href="<?= BASE_URL ?>gestione_eventi.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">
+                    GESTIONE EVENTI
+                  </a>
+                  <br>
                 </div>
               </div>
   <?php
@@ -105,13 +115,20 @@
             
           } else {
             //$messaggio = "Nessun campo modificato"; ?>
-            <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-              <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-                <h2>Non è stato modificato nessun campo</h2>
+            <div class="container-fluid d-flex justify-content-center bg-rosso bg-rosso py-4 my-4 myShadowRossa">
+              <div class="row bg-bianco justify-content-center col-md-10 col-lg-6 text-center m-3 p-3 myShadowNera rounded-3">
+                <h2 class="fontTitoloSezione fontRosso">Evento non modificato</h2>
+                <p>Non è stato modificato nessun campo dell'evento</p>
+                <p><strong>L'evento non è stato modificato</strong></p>
                 <hr>
-                <!--<a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>-->
-                <a href="modifica_evento_00.php" class="btn btn-primary mb-3">Modifica un altro evento</a><br>
-                <a href="gestione_eventi.php" class="btn btn-primary mb-3">Gestione Eventi</a><br>
+                <a href="modifica_evento_00.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">
+                  MODIFICA EVENTO
+                </a>
+                <br>
+                <a href="<?= BASE_URL ?>gestione_eventi.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">
+                  GESTIONE EVENTI
+                </a>
+                <br>
               </div>
             </div>
   <?php
@@ -120,14 +137,20 @@
           
         } else {
           //echo "Errore: metodo non consentito"; ?>
-          <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-            <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-              <h2>Errore durante la modifica dell'evento</h2>
-              <!-- <p>Metodo non consentito </p> -->
+          <div class="container-fluid d-flex justify-content-center bg-rosso bg-rosso py-4 my-4 myShadowRossa">
+            <div class="row bg-bianco justify-content-center col-md-10 col-lg-6 text-center m-3 p-3 myShadowNera rounded-3">
+              <h2 class="fontTitoloSezione fontRosso">Evento non modificato</h2>
+              <p>Ci sono stati dei problemi durante il processo di modifica dell'evento.</p>
+              <p><strong>L'evento non è stato modificato</strong></p>
               <hr>
-              <!--<a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>-->
-              <a href="modifica_evento_00.php" class="btn btn-primary mb-3">Modifica un altro evento</a><br>
-              <a href="gestione_eventi.php" class="btn btn-primary mb-3">Gestione Eventi</a><br>
+              <a href="modifica_evento_00.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">
+                MODIFICA EVENTO
+              </a>
+              <br>
+              <a href="<?= BASE_URL ?>gestione_eventi.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">
+                GESTIONE EVENTI
+              </a>
+              <br>
             </div>
           </div>
   <?php

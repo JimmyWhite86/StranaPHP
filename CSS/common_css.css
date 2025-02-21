@@ -349,3 +349,11 @@ select:focus-visible {
   max-width: 100%;
 }
 
+
+/* Per le tabelle da mobile */
+@media (min-width: 768px) {
+  .rowDesktop {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

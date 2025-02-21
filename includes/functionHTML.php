@@ -245,10 +245,10 @@
     # -----------------------------------------------------------------
     # Funzione per generare il titolo della pagina
     # Al momento usato solo per la pagina di login
-    function titoloDellaPagina($nomePagina) { ?>
-      <div class="my-5 row justify-content-center">
+    function titoloDellaPagina($testoDelTitolo) { ?>
+      <div class="my-5">
         <div class="text-center myShadowNera">
-          <h1 class="titoloPagina">log in</h1>
+          <h1 class="titoloPagina px-2"><?= $testoDelTitolo ?></h1>
         </div>
       </div>
         <?php

@@ -11,7 +11,7 @@
 
 <head>
   <?php generaHeadSection(); ?>
-  <title>Strana modificaEvento</title>
+  <title>StranAdmin | modificaEvento</title>
 </head>
 
 <body>
@@ -21,10 +21,14 @@
 
 <main id="mioMain">
 
-  <!-- Titolo della pagina -->
-  <div class="my-5 row justify-content-center">
+  <!-- "Titolo" della pagina -->
+  <div class="my-5 justify-content-center">
+    <div class="text-center myShadowNera">
+      <h1 class="titoloPagina px-1">modifica un evento</h1>
+    </div>
+    <br>
     <div class="text-center">
-      <h1 class="titoloPagina">modifica un evento</h1>
+      <h2>Passaggio 2 di 2</h2>
     </div>
   </div>
   
@@ -52,13 +56,13 @@
           ?>
 
           <!-- Form per la modifica dell'evento -->
-          <div class="container-fluid bg-rosso pb-4 pt-4 mt-4 mb-4">
-            <div class="container col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
-              <div class="row justify-content-center">
+          <div class="container-fluid d-flex justify-content-center bg-rosso bg-rosso py-4 my-4 myShadowRossa">
+            <div class="row bg-bianco justify-content-center col-md-10 col-lg-6 m-3 p-3 myShadowNera rounded-3">
+              <!--<div class="row justify-content-center">-->
                 <div class="container my-5" id="containerForm">
                   <form method="POST" action="controllo_modifica_evento.php" id="formModificaEvento"
                         enctype="multipart/form-data" class="col-md-8 mx-auto">
-                    <h2 class="mb-5 text-center"><?= $username ?>, aggiorna i campi che vuoi modificare nel form sottostante</h2>
+                    <h2 class="mb-5 fontTitoloSezione text-center"><?= $username ?>, aggiorna i campi che vuoi modificare nel form sottostante</h2>
 
                     <fieldset>
                       <div class="form-group">
@@ -95,7 +99,7 @@
                     </fieldset>
                   </form>
                 </div>
-              </div>
+              <!--</div>-->
             </div>
           </div>
           

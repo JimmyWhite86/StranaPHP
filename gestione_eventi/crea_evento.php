@@ -24,6 +24,13 @@
 ?>
 
 <main id="mioMain">
+
+  <!-- "Titolo" della pagina -->
+  <div class="my-5 row justify-content-center">
+    <div class="text-center myShadowNera">
+      <h1 class="titoloPagina">crea un evento</h1>
+    </div>
+  </div>
     
     <?php
         if (!isset($_SESSION["username"])) {    # Utente non loggato
@@ -36,17 +43,10 @@
             if ($amministratore == 0) {   # Utente non ha diritti di admin
                 deviEssereAdmin($username);
             } else {  # Utente loggato con diritti di admin ?>
-
-              <!-- "Titolo" della pagina -->
-              <div class="my-5 row justify-content-center">
-                <div class="text-center">
-                  <h1 class="titoloPagina">crea un evento</h1>
-                </div>
-              </div>
-
+              
               <!-- Form della pagina -->
-              <div class="container-fluid bg-rosso pb-4 pt-4 mt-4 mb-4">
-                <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4 rounded-4 shadow-lg">
+              <div class="container-fluid bg-rosso pb-4 pt-4 mt-4 mb-4 myShadowRossa">
+                <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4 rounded-4 myShadowBianca">
                   <div class="row justify-content-center">
                     <div class="container-fluid my-5" id="containerForm">
 
@@ -54,7 +54,7 @@
                             class="col-md-8 mx-auto" name="formNuovoEvento" id="formNuovoEvento" ng-app="myAppNuovoEvento"
                             ng-controller="validateNuovoEventoCtrl" novalidate> <!-- Attributo enctype => Serve per caricamento dei file w3schools.com/tags/att_form_enctype.asp -->
 
-                        <h2 class="mb-5 text-center">
+                        <h2 class="mb-5 text-center fontTitoloSezione">
                             <?=$username?>, compila i dati del form sottostante per creare un nuovo evento
                         </h2>
 

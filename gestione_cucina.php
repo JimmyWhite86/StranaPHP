@@ -21,7 +21,7 @@
 
   <!-- "Titolo" della pagina -->
   <div class="my-5 row justify-content-center">
-    <div class="text-center">
+    <div class="text-center myShadowNera">
       <h1 class="titoloPagina">gestione cucina</h1>
     </div>
   </div>
@@ -37,16 +37,41 @@
         deviEssereAdmin($userName);
         } else { ?>
 
-            <div class="container-fluid bg-rosso pb-4 pt-4 mt-4 mb-4">
-              <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
-                <div class="row justify-content-center">
-                  <h2 class="text-center">Ciao <?php /*= $userName */?>, scegli un azione:</h2>
-                  <ul class="list-unstyled ml-5 pl-5">
-                    <li><a href="<?= BASE_URL ?>/gestione_cucina/nuovo_menu_00.php">Crea un nuovo menù</a></li>
-                    <li><a href="<?= BASE_URL ?>/gestione_cucina/elimina_menu.php">Elimina il menu presente</a></li>
-                    <li><a href="<?= BASE_URL ?>/gestione_cucina/crea_piatto.php">Aggiungi un singolo piatto al menu</a></li>
-                    <li><a href="<?= BASE_URL ?>/gestione_cucina/elimina_piatto.php">Elimina un singolo piatto dal menu</a></li>
-                    <li><a href="<?= BASE_URL ?>/gestione_cucina/modifica_piatto_00.php">Modifica un singolo piatto del menu</a></li>
+            <div class="container-fluid bg-rosso py-4 my-4 myShadowRossa justify-content-center">
+              <div class="container-fluid col-md-8 bg-bianco py-4 my-4 myShadowBianca rounded-4">
+                <div class="">
+                  <h2 class="text-center fontTitoloSezione">Ciao <?= $userName ?>, scegli un'azione:</h2>
+                  <ul class="list-unstyled ml-5 pl-5 d-flex flex-column align-items-center">
+                    <li>
+                      <a href="<?= BASE_URL ?>/gestione_cucina/nuovo_menu_00.php"
+                            class="card-link text-center maxWidthLinkAdmin">
+                        Crea un nuovo menu
+                      </a>
+                    </li>
+                    <li>
+                      <a href="<?= BASE_URL ?>/gestione_cucina/elimina_menu.php"
+                         class="card-link text-center maxWidthLinkAdmin">
+                        Elimina il menu presente
+                      </a>
+                    </li>
+                    <li>
+                      <a href="<?= BASE_URL ?>/gestione_cucina/crea_piatto.php"
+                         class="card-link text-center maxWidthLinkAdmin">
+                        Aggiungi un singolo piatto al menu
+                      </a>
+                    </li>
+                    <li>
+                      <a href="<?= BASE_URL ?>/gestione_cucina/elimina_piatto.php"
+                         class="card-link text-center maxWidthLinkAdmin">
+                        Elimina un singolo piatto dal menu
+                      </a>
+                    </li>
+                    <li>
+                      <a href="<?= BASE_URL ?>/gestione_cucina/modifica_piatto_00.php"
+                         class="card-link text-center maxWidthLinkAdmin">
+                        Modifica un singolo piatto del menu
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </div>

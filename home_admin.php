@@ -118,9 +118,9 @@
     }
   ?>
 
+  <br>
+  
 </main>
-
-<br>
 
 <!-- Funzione per creare dinamicamente il footer -->
 <?php HTMLfooter($nomePagina) ?>
