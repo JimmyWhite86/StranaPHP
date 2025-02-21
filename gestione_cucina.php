@@ -2,6 +2,8 @@
   session_start();
   include 'includes/init.php';
   $nomePagina = "gestione_cucina";
+  
+  $testoDelTitolo = "gestione cucina"
 ?>
 
 <!DOCTYPE html>
@@ -20,11 +22,7 @@
 <main id="mioMain">
 
   <!-- "Titolo" della pagina -->
-  <div class="my-5 row justify-content-center">
-    <div class="text-center myShadowNera">
-      <h1 class="titoloPagina">gestione cucina</h1>
-    </div>
-  </div>
+  <?php titoloDellaPagina($testoDelTitolo) ?>
   
   <?php
     if (!isset($_SESSION["username"])) {

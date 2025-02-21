@@ -19,7 +19,7 @@
 <!-- Richiamo la nav bar -->
 <?php richiamaNavBar($nomePagina); ?>
 
-<main>
+<main id="mioMain">
 
   <!-- Titolo della pagina -->
     <?php titoloDellaPagina($testoDelTitolo) ?>

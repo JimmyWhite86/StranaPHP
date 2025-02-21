@@ -2,6 +2,8 @@
   session_start();
   include '../includes/init.php';
   $nomePagina = "aggiungi_piatto";
+  
+  $testoDelTitolo = "aggiungi un singolo piatto al menu"
 ?>
 
 <!DOCTYPE html>
@@ -20,17 +22,12 @@
 <main id="mioMain">
 
 <!-- "Titolo" della pagina -->
-<div class="my-5 row justify-content-center">
-  <div class="text-center">
-    <h1 class="titoloPagina">aggiungi piatto</h1>
-  </div>
-</div>
+<?php titoloDellaPagina($testoDelTitolo) ?>
 
 <?php
   if (!isset($_SESSION["username"])) {  # Utente non loggato
     deviLoggarti();
-  }
-  else { # Utente loggato
+  } else { # Utente loggato
     
     $amministratore = $_SESSION ["admin"];
     $username = $_SESSION ["username"];
@@ -38,8 +35,7 @@
     
     if ($amministratore == 0) {   # Utente non ha diritti di admin
       deviEssereAdmin($username);
-    }
-    else { # Utente è admin --> controllo che i dati inseriti siano corretti
+    } else { # Utente è admin --> controllo che i dati inseriti siano corretti
       if (
         isset($_POST["nomePiattoNew"]) && $_POST["nomePiattoNew"] &&
         isset($_POST["categoriaPiattoNew"]) && $_POST["categoriaPiattoNew"] &&
@@ -54,16 +50,15 @@
         $disponibilitaPiatto = 1;
         $dataInserimentoPiatto = date("d/m/y");
         
-        if ($prezzoPiattoNew < 0) { ?>
-          <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-            <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-              <h2>Attenzione</h2>
-              <h3>Hai inserito un prezzo inferiore a zero!</h3>
-              <p>Prova nuovamente ad inserire il piatto</p>
+        if ($prezzoPiattoNew < 0) { ?> <!-- Prezzo inferiore a zero -->
+          <div class="container-fluid d-flex justify-content-center bg-rosso py-4 my-4 myShadowRossa">
+            <div class="row bg-bianco justify-content-center col-md-10 col-lg-6 text-center m-3 p-3 myShadowNera rounded-4">
+              <h2 class="fontTitoloSezione fontRosso">Piatto non inserito</h2>
+              <p>Attenzione! Il prezzo deve essere maggiore di zero</p>
               <hr>
-              <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
-              <a href="crea_piatto.php" class="btn btn-primary mb-3">Aggiungi un altro piatto</a><br>
-              <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+              <a href="crea_piatto.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">CREA UN SINGOLO PIATTO</a><br>
+              <a href="<?= BASE_URL ?>gestione_cucina.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">GESTIONE CUCINA</a>
+              <br>
             </div>
           </div>
           <?php
@@ -72,14 +67,13 @@
           $risultatoAggiuntaPiatto = aggiungiPiatto($nomePiattoNew, $descrizionePiattoNew, $categoriaPiattoNew, $prezzoPiattoNew, $cuocoPiattoNew, $disponibilitaPiatto, $dataInserimentoPiatto);
           
           if ($risultatoAggiuntaPiatto) { ?>
-            <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-              <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-                <h2>Il piatto è stato aggiunto al menu con successo!</h2>
-                <p>Hai aggiunto: <strong><?=$nomePiattoNew?></strong> al menu</p>
+            <div class="container-fluid d-flex justify-content-center bg-rosso py-4 my-4 myShadowRossa">
+              <div class="row bg-bianco justify-content-center col-md-10 col-lg-6 text-center m-3 p-3 myShadowNera rounded-4">
+                <h2 class="fontTitoloSezione fontVerde">Piatto inserito correttamente nel menu</h2>
                 <hr>
-                <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
-                <a href="crea_piatto.php" class="btn btn-primary mb-3">Aggiungi un altro piatto</a><br>
-                <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+                <a href="crea_piatto.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">CREA UN SINGOLO PIATTO</a><br>
+                <a href="<?= BASE_URL ?>gestione_cucina.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">GESTIONE CUCINA</a>
+                <br>
               </div>
             </div>
             <?php
@@ -88,14 +82,15 @@
             // echo "<p>Ci sono stati problemi con l'inserimento del nuovo piatto</p>";
             // azioni_amministratore();
             ?>
-            <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-              <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-                <h2>Errore durante la creazione del piatto!</h2>
-                <p><strong>Il piatto non è stato salvato a sistema</strong></p>
+            <div class="container-fluid d-flex justify-content-center bg-rosso py-4 my-4 myShadowRossa">
+              <div class="row bg-bianco justify-content-center col-md-10 col-lg-6 text-center m-3 p-3 myShadowNera rounded-4">
+                <h2 class="fontTitoloSezione fontRosso">Piatto non inserito</h2>
+                <p>Ci sono stati problemi durante l'inserimento</p>
+                <p>Prova nuovamente a creare il piatto</p>
                 <hr>
-                <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
-                <a href="crea_piatto.php" class="btn btn-primary mb-3">Aggiungi un altro piatto</a><br>
-                <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+                <a href="crea_piatto.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">CREA UN SINGOLO PIATTO</a><br>
+                <a href="<?= BASE_URL ?>gestione_cucina.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">GESTIONE CUCINA</a>
+                <br>
               </div>
             </div>
             <?php
@@ -104,14 +99,14 @@
       }
       else {
         //echo "<p> Attenzione $username! Devi compilare tutti i campi per aggiungere il piatto</p>";?>
-        <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-          <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-            <h2>Errore durante la creazione del piatto!</h2>
-            <p><strong></strong>Devi compilare tutti i campi del form per aggiungere il piatto</p>
+        <div class="container-fluid d-flex justify-content-center bg-rosso py-4 my-4 myShadowRossa">
+          <div class="row bg-bianco justify-content-center col-md-10 col-lg-6 text-center m-3 p-3 myShadowNera rounded-4">
+            <h2 class="fontTitoloSezione fontRosso">Piatto non inserito</h2>
+            <p>Attenzione! Devi compilare tutti i campi obbligatori per inserire il piatto a menu</p>
             <hr>
-            <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
-            <a href="crea_piatto.php" class="btn btn-primary mb-3">Aggiungi un altro piatto</a><br>
-            <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+            <a href="crea_piatto.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">CREA UN SINGOLO PIATTO</a><br>
+            <a href="<?= BASE_URL ?>gestione_cucina.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">GESTIONE CUCINA</a>
+            <br>
           </div>
         </div>
         <?php

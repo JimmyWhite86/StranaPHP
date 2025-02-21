@@ -127,10 +127,11 @@
     function generaTabellaPiatti($disponbilitaPiatto) {
         $listaPiattiDisponibili = piattiInArray($disponbilitaPiatto); ?>
 
-      <table class="table table-striped table-bordered text-center align-midle">
+      <div class="table-responsive">
+      <table class="table table-bordered table-striped text-center align-middle myShadowNera table-hover">
         <thead class="intestazioneTabella">
-        <tr class="intestazioneTabella">
-          <th class="intestazioneTabella">ID Piatto</th>
+        <tr class="intestazioneTabella text-uppercase">
+          <th class="intestazioneTabella miaColonnaImmagineTabella">ID Piatto</th>
           <th class="intestazioneTabella">Nome Piatto</th>
           <th class="intestazioneTabella">Prezzo</th>
           <th class="intestazioneTabella">Categoria</th>
@@ -143,7 +144,7 @@
         <tbody>
         <?php foreach ($listaPiattiDisponibili as $piatto) { ?>
           <tr>
-            <td><?= $piatto['idPiatto']?></td>
+            <td class="miaColonnaImmagineTabella"><?= $piatto['idPiatto']?></td>
             <td><?= $piatto['nomePiatto']?></td>
             <td><?= $piatto['prezzoPiatto']?></td>
             <td><?= $piatto['categoriaPiatto']?></td>
@@ -162,6 +163,7 @@
 
         </tbody>
       </table>
+      </div>
         <?php
     }
     #-----------------------------------------------------------------
