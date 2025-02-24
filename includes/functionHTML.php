@@ -128,41 +128,41 @@
         $listaPiattiDisponibili = piattiInArray($disponbilitaPiatto); ?>
 
       <div class="table-responsive">
-      <table class="table table-bordered table-striped text-center align-middle myShadowNera table-hover">
-        <thead class="intestazioneTabella">
-        <tr class="intestazioneTabella text-uppercase">
-          <th class="intestazioneTabella miaColonnaImmagineTabella">ID Piatto</th>
-          <th class="intestazioneTabella">Nome Piatto</th>
-          <th class="intestazioneTabella">Prezzo</th>
-          <th class="intestazioneTabella">Categoria</th>
-          <th class="intestazioneTabella">Cuoco</th>
-          <th class="intestazioneTabella">Data inserimento</th>
-          <th class="intestazioneTabella">Seleziona</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        <?php foreach ($listaPiattiDisponibili as $piatto) { ?>
-          <tr>
-            <td class="miaColonnaImmagineTabella"><?= $piatto['idPiatto']?></td>
-            <td><?= $piatto['nomePiatto']?></td>
-            <td><?= $piatto['prezzoPiatto']?></td>
-            <td><?= $piatto['categoriaPiatto']?></td>
-            <td><?= $piatto['cuoco']?></td>
-            <td><?= $piatto['dataInserimento']?></td>
-            <td class="text-center">
-              <label for="piattoSelezionatoElimina<?=$piatto['idPiatto']?>" class="visually-hidden">
-                Selezione <?= $piatto['nomePiatto'] ?>
-              </label>
-              <input type="radio" name="piattoSelezionatoElimina" id="piattoSelezionatoElimina<?=$piatto['idPiatto']?>" value="<?= $piatto['idPiatto'] ?>">
-            </td>
+        <table class="table table-bordered table-striped text-center align-middle myShadowNera table-hover">
+          <thead class="intestazioneTabella">
+          <tr class="intestazioneTabella text-uppercase">
+            <th class="intestazioneTabella miaColonnaImmagineTabella">ID Piatto</th>
+            <th class="intestazioneTabella">Nome Piatto</th>
+            <th class="intestazioneTabella">Prezzo</th>
+            <th class="intestazioneTabella">Categoria</th>
+            <th class="intestazioneTabella miaColonnaImmagineTabella">Cuoco</th>
+            <th class="intestazioneTabella">Data inserimento</th>
+            <th class="intestazioneTabella">Seleziona</th>
           </tr>
-            <?php
-        }
-        ?>
-
-        </tbody>
-      </table>
+          </thead>
+  
+          <tbody>
+          <?php foreach ($listaPiattiDisponibili as $piatto) { ?>
+            <tr>
+              <td class="miaColonnaImmagineTabella"><?= $piatto['idPiatto']?></td>
+              <td><?= $piatto['nomePiatto']?></td>
+              <td><?= $piatto['prezzoPiatto']?></td>
+              <td><?= $piatto['categoriaPiatto']?></td>
+              <td class="miaColonnaImmagineTabella"><?= $piatto['cuoco']?></td>
+              <td><?= $piatto['dataInserimento']?></td>
+              <td class="text-center">
+                <label for="piattoSelezionatoElimina<?=$piatto['idPiatto']?>" class="visually-hidden">
+                  Selezione <?= $piatto['nomePiatto'] ?>
+                </label>
+                <input type="radio" name="piattoSelezionatoElimina" id="piattoSelezionatoElimina<?=$piatto['idPiatto']?>" value="<?= $piatto['idPiatto'] ?>">
+              </td>
+            </tr>
+              <?php
+          }
+          ?>
+  
+          </tbody>
+        </table>
       </div>
         <?php
     }
@@ -188,7 +188,7 @@
     function loginUtenteAdmin ($username) { ?>
       <div class="container-fluid d-flex justify-content-center bg-rosso py-4 my-4 myShadowRossa">
         <div class="row bg-bianco col-10 col-sm-6 text-center my-5 py-5 myShadowNera rounded-3">
-          <h2 class="fontTitoloSezione">Accesso effettuato correttamente</h2>
+          <h2 class="fontTitoloSezione fontVerde">Accesso effettuato correttamente</h2>
           <h3>Bentornatə <?= $username ?></h3>
         </div>
       </div>
@@ -199,7 +199,7 @@
     function inseritoPswErrata () {   ?>
       <div class="container-fluid d-flex justify-content-center bg-rosso py-4 my-4 myShadowRossa">
         <div class="row bg-bianco col-10 col-sm-6 text-center my-5 py-5 myShadowNera rounded-3">
-          <h2 class="fontTitoloSezione">La password inserita non è corretta</h2>
+          <h2 class="fontTitoloSezione fontRosso">La password inserita non è corretta</h2>
           <p>Prova a effettuare nuovamente l'accesso</p>
           <a href="<?= BASE_URL?>/login.php" class="btn bottoneAzzurro bottoneBabas w-auto mx-auto d-block">LOGIN</a>
         </div>
@@ -211,7 +211,7 @@
     function nomeUtenteNonTrovato () { ?>
       <div class="container-fluid d-flex justify-content-center bg-rosso py-4 my-4 myShadowRossa">
         <div class="row bg-bianco col-10 col-sm-6 text-center my-5 py-5 myShadowNera rounded-3">
-          <h2 class="fontTitoloSezione">Il nome utente da te inserito è errato</h2>
+          <h2 class="fontTitoloSezione fontRosso">Il nome utente da te inserito è errato</h2>
           <p>Prova a effettuare nuovamente l'accesso</p>
           <a href="<?= BASE_URL?>/login.php" class="btn bottoneAzzurro bottoneBabas w-auto mx-auto d-block">LOGIN</a>
         </div>
@@ -223,7 +223,7 @@
     function erroreCompilazioneForm () { ?>
       <div class="container-fluid d-flex justify-content-center bg-rosso py-4 my-4 myShadowRossa">
         <div class="row bg-bianco col-10 col-sm-6 text-center my-5 py-5 myShadowNera rounded-3">
-          <h2 class="fontTitoloSezione">Ci sono stati dei problemi</h2>
+          <h2 class="fontTitoloSezione fontRosso">Ci sono stati dei problemi</h2>
           <p>Prova a effettuare nuovamente l'accesso</p>
           <a href="<?= BASE_URL?>/login.php" class="btn bottoneAzzurro bottoneBabas w-auto mx-auto d-block">LOGIN</a>
         </div>
@@ -235,7 +235,7 @@
     function utenteGiaLoggato ($username) { ?>
       <div class="container-fluid d-flex justify-content-center bg-rosso py-4 my-4 myShadowRossa">
         <div class="row bg-bianco col-10 col-sm-6 text-center my-5 py-5 myShadowNera rounded-3">
-          <h2 class="fontTitoloSezione">Hai già effettuato l'accesso</h2>
+          <h2 class="fontTitoloSezione fontRosso">Hai già effettuato l'accesso</h2>
         </div>
       </div>
         <?php

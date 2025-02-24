@@ -113,7 +113,7 @@
         <div class="m-2 card col-md-4 myShadowNera" style="width: 20em;" role="region" aria-label="Iscriviti alla nostra newsletter">
           <i class="bi bi-envelope-paper-heart fa-10x iconeRosse"></i>
           <div class="card-body">
-            <h4>Iscriviti alla nostra NewsLetter</h4>
+            <h4 class="text-uppercase">Iscriviti alla newsletter</h4>
             <p>Rimani aggiornato sulle nostre iniziative e non perderti nessun evento!</p>
             <p>
               La nostra NewsLetter ha cadenza settimanale e viene usata per tenerti informato sugli eventi organizzati
@@ -131,7 +131,7 @@
         <div class="m-2 card col-md-4 myShadowNera" style="width: 20em;" role="region" aria-label="Dona il tuo 8x1000">
           <i class="bi bi-piggy-bank fa-10x iconeGialle"></i>
           <div class="card-body">
-            <h4>Dona il tuo 5x1000</h4>
+            <h4 class="text-uppercase">Dona il tuo 5x1000</h4>
             <p>Tutte le nostre iniziative sono volte ad autofinanziarci</p>
             <p>Il tuo contributo per noi è davvero importante.</p>
           </div>
@@ -143,7 +143,7 @@
         <div class="m-2 card col-md-4 myShadowNera" style="width: 20em;" role="region" aria-label="Proponici un evento">
           <i class="bi bi-mic-fill fa-10x iconeAzzurre"></i>
           <div class="card-body">
-            <h4>Vuoi proporre un dibattito o un evento?</h4>
+            <h4 class="text-uppercase">Proponi un evento</h4>
             <p>Usa il form per contattarci</p>
             <p>Siamo sempre alla ricerca di incontri, musica e spettacoli che possano animare il nostro circolo.
               Facci sapere la tua proposta.</p>

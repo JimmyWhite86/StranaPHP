@@ -20,9 +20,9 @@
 <main id="mioMain">
 
   <!-- "Titolo" della pagina -->
-  <div class="my-5 row justify-content-center">
-    <div class="text-center">
-      <h1 class="titoloPagina">modifica un piatto esistente</h1>
+  <div class="my-5 justify-content-center">
+    <div class="text-center myShadowNera">
+      <h1 class="titoloPagina px-2">modifica un piatto del menu</h1>
     </div>
     <br>
     <div class="text-center">
@@ -49,10 +49,17 @@
           </div>
         </div>
 
+        <div class="my-5 justify-content-center">
+          <div class="text-center">
+            <p class="fontFirma02">Scorri a destra e sinistra per visualizzare l'intera tabella</p>
+            <i class="bi bi-arrow-left-right"></i>
+          </div>
+        </div>
+
         <form method="POST" action="modifica_piatto_01.php" class="">
-          <div class="containerTabella my-5"> <!-- Mantiene il layout centrato e con margine verticale -->
-            <div class="row justify-content-center">  <!-- Riga per definire il layout. Centra la colonna orizzontalmente-->
-              <div class="col-10"> <!-- colonna che occupa 10 parti su 12 -->
+          <div class="containerTabella my-5m">
+            <div class="row justify-content-center d-flex">
+              <div class="col-xl-10 col-lg-11 col-md-12">
                 <?php
                   $disponibilitaPiatto = 1;
                   generaTabellaPiatti($disponibilitaPiatto);
@@ -69,6 +76,7 @@
       }
     }
   ?>
+  <br>
 
 </main>
 

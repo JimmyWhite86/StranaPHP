@@ -2,6 +2,8 @@
   session_start();
   include '../includes/init.php';
   $nomePagina = "crea_utente";
+  
+  $testoDelTitolo = "crea un nuovo utente"
 ?>
 
 <!DOCTYPE html>
@@ -20,33 +22,27 @@
 <main id="mioMain">
 
   <!-- "Titolo" della pagina -->
-  <div class="my-5 row justify-content-center">
-    <div class="text-center">
-      <h1 class="titoloPagina">crea un nuovo utente</h1>
-    </div>
-  </div>
+  <?php titoloDellaPagina($testoDelTitolo) ?>
   
   
   <?php
     if (!isset($_SESSION["username"])) {    # Utente non loggato
       deviLoggarti();
-    }
-    else {    # Utente loggato
+    } else {    # Utente loggato
       
       $amministratore = $_SESSION["admin"];
       $username = $_SESSION['username'];
       
       if ($amministratore == 0) {   # Utente non ha diritti di admin
         deviEssereAdmin($username);
-      }
-      else {  # Utente loggato con diritti di admin ?>
+      } else {  # Utente loggato con diritti di admin ?>
 
 
 
         <!-- Form della pagina -->
-        <div class="container-fluid bg-rosso pb-4 pt-4 mt-4 mb-4">
-          <div class="container-fluid col-md-8 bg-bianco pb-4 mb-4 pt-4 mt-4">
-            <div class="row justify-content-center">
+        <div class="container-fluid bg-rosso py-4 my-4 myShadowRossa">
+          <div class="container-fluid col-md-8 bg-bianco py-4 my-4 myShadowBianca rounded-3">
+            <div class="row justify-content-center"> 
               <div class="container-fluid my-5" id="containerForm">
 
                 <form method="POST" action="controllo_crea_utente.php" class="col-md-8 mx-auto" name="formNuovoUtente"

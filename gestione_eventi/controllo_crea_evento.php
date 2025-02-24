@@ -2,6 +2,8 @@
     session_start();
     include '../includes/init.php';
     $nomePagina = "crea_evento";
+    
+    $testoDelTitolo = "crea un evento";
 ?>
 
 <!DOCTYPE html>
@@ -20,11 +22,7 @@
 <main id="mioMain">
 
   <!-- "Titolo" della pagina -->
-  <div class="my-5 row justify-content-center">
-    <div class="text-center">
-      <h1 class="titoloPagina">crea un evento</h1>
-    </div>
-  </div>
+  <?php titoloDellaPagina($testoDelTitolo) ?>
     
     <?php
         

@@ -20,7 +20,7 @@
 <!-- "Titolo" della pagina -->
 <div class="my-5 row justify-content-center">
   <div class="text-center">
-    <h1 class="titoloPagina">modifica un piatto</h1>
+    <h1 class="titoloPagina">modifica un piatto del menu</h1>
   </div>
 </div>
 
@@ -76,13 +76,16 @@
             // $messaggio = "Piatto modificato con successo";
             // echo $messaggio;
             ?>
-            <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-              <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-                <h2>Il piatto è stato modificato con successo!</h2>
+            <div class="container-fluid d-flex justify-content-center bg-rosso bg-rosso py-4 my-4 myShadowRossa">
+              <div class="row bg-bianco justify-content-center col-md-10 col-lg-6 text-center m-3 p-3 myShadowNera rounded-3">
+                <h2 class="fontTitoloSezione fontVerde">Piatto modificato con successo</h2>
                 <hr>
-                <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
-                <a href="modifica_piatto_00.php" class="btn btn-primary mb-3">Modifica un altro piatto</a><br>
-                <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+                <a href="modifica_piatto_00.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">
+                  MODIFICA PIATTO
+                </a>
+                <a href="<?= BASE_URL ?>/gestione_cucina.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">
+                  GESTIONE CUCINA
+                </a>
               </div>
             </div>
           <?php
@@ -91,26 +94,33 @@
           }
           
         } else { ?>
-          <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-            <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-              <h2>Non è stato modificato nessun campo!</h2>
+          <div class="container-fluid d-flex justify-content-center bg-rosso bg-rosso py-4 my-4 myShadowRossa">
+            <div class="row bg-bianco justify-content-center col-md-10 col-lg-6 text-center m-3 p-3 myShadowNera rounded-3">
+              <h2 class="fontTitoloSezione fontRosso"> Attenzione! Piatto non modificato</h2>
+              <p>Non hai modificato nessun campo nella pagina precedente</p>
               <hr>
-              <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
-              <a href="modifica_piatto_00.php" class="btn btn-primary mb-3">Prova nuovamente a modificare</a><br>
-              <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+              <a href="modifica_piatto_00.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">
+                MODIFICA PIATTO
+              </a>
+              <a href="<?= BASE_URL ?>/gestione_cucina.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">
+                GESTIONE CUCINA
+              </a>
             </div>
           </div>
 <?php
 }
-      } else { ?>
-        <div class="container-fluid d-flex justify-content-center bg-rosso pb-4 pt-4 mt-4 mb-4">
-          <div class="row bg-bianco justify-content-center col-6 text-center m-5 p-5">
-            <h2>Errore durante la modifica del piatto</h2>
-            <!-- <p>Metodo non consentito </p> -->
+      } else { ?> <!-- Errore durante la modifica del piatto -->
+        <div class="container-fluid d-flex justify-content-center bg-rosso bg-rosso py-4 my-4 myShadowRossa">
+          <div class="row bg-bianco justify-content-center col-md-10 col-lg-6 text-center m-3 p-3 myShadowNera rounded-3">
+            <h2 class="fontTitoloSezione fontRosso"> Attenzione! Piatto non modificato</h2>
+            <p>Ci sono stati dei problemi durante la modifica</p>
             <hr>
-            <a href="home_admin.php" class="btn btn-primary mb-3">Home Admin</a><br>
-            <a href="modifica_piatto_00.php" class="btn btn-primary mb-3">Modifica un altro piatto</a><br>
-            <a href="gestione_cucina.php" class="btn btn-primary mb-3">Gestione Cucina</a><br>
+            <a href="elimina_piatto.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">
+              ELIMINA PIATTO
+            </a>
+            <a href="<?= BASE_URL ?>/gestione_cucina.php" class="btn bottoneNero mb-3 maxWidthLinkAdmin">
+              GESTIONE CUCINA
+            </a>
           </div>
         </div>
      <?php

@@ -61,9 +61,9 @@
               <!-- Tabella della pagina -->
               <form method="POST" action="modifica_evento_01.php">
 
-                <div class="containerTabella my-5"> <!-- Mantiene il layout centrato e con margine verticale -->
-                  <div class="rowDesktop justify-content-center d-flex">  <!-- Riga per definire il layout. Centra la colonna orizzontalmente-->
-                    <div class="col-xl-10"> <!-- colonna che occupa 10 parti su 12 -->
+                <div class="containerTabella my-5">
+                  <div class="rowDesktop justify-content-center d-flex">
+                    <div class="col-xl-10">
 
                       <table class="table table-bordered table-striped text-center align-middle table-responsive table-hover myShadowNera">
 
