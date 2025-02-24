@@ -2,6 +2,8 @@
   session_start();
   include 'includes/init.php';
   $nomePagina = "la_cucina";
+  
+  $testoDelTitolo = "il menu di oggi";
 ?>
 
 <!DOCTYPE html>
@@ -42,12 +44,7 @@
   ?>
   
   <!-- "Titolo" della pagina -->
-  <div class="my-5 row justify-content-center">
-    <div class="text-center">
-      <h1 class="titoloPagina myShadowNera">il menu di oggi</h1>
-      <h2 class="fontTitoloSezione ombraFontGrigia">Scopri il menu che Stranamore propone per questa sera</h2>
-    </div>
-  </div>
+  <?php titoloDellaPagina($testoDelTitolo) ?>
 
   <!-- Richiamo la funzione che restituisce il menu dinamicamente -->
   <div class="container-fluid bg-giallo pb-4 pt-4 mt-4 mb-4">

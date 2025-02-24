@@ -2,6 +2,8 @@
   session_start();
   include 'includes/init.php';
   $nomePagina = "eventi";
+  
+  $testoDelTitolo = "gli eventi di strana";
 ?>
 
 <!DOCTYPE html>
@@ -17,11 +19,7 @@
 <main id="mioMain">
 
   <!-- "Titolo" della pagina -->
-  <div class="my-5 row justify-content-center">
-    <div class="text-center myShadowNera">
-      <h1 class="titoloPagina">gli eventi di strana</h1>
-    </div>
-  </div>
+  <?php titoloDellaPagina($testoDelTitolo) ?>
 
   <section>
     <div class="container-fluid text-center bg-giallo">

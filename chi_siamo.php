@@ -2,6 +2,8 @@
   session_start();
   include 'includes/init.php';
   $nomePagina = "chi_siamo";
+  
+  $testoDelTitolo = "cosa vuol dire strana";
 ?>
 
 <!DOCTYPE html>
@@ -20,11 +22,7 @@
 <main id="mioMain">
 
   <!-- "Titolo" della pagina -->
-  <div class="my-5 row justify-content-center">
-    <div class="text-center myShadowNera">
-      <h1 class="titoloPagina">cosa vuol dire strana</h1>
-    </div>
-  </div>
+  <?php titoloDellaPagina($testoDelTitolo) ?>
 
   <!-- START THE FEATURETTES -->
   <div class="bg-rosso py-3 myShadowRossa">

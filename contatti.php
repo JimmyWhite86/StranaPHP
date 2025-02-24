@@ -2,6 +2,8 @@
   session_start();
   include "includes/init.php";
   $nomePagina = "contatti";
+  
+  $testoDelTitolo = "mettiti in contatto con strana";
 ?>
 
 <!DOCTYPE html>
@@ -20,11 +22,7 @@
 <main id="mioMain" role="main">
 
   <!-- "Titolo" della pagina -->
-  <div class="my-5 row justify-content-center">
-    <div class="text-center myShadowNera">
-      <h1 class="titoloPagina">mettiti in contatto con strana</h1>
-    </div>
-  </div>
+  <?php titoloDellaPagina($testoDelTitolo) ?>
 
   <!-- Sezione Card -->
   <div class="container-fluid bg-rosso mioContainerContatti text-center myShadowRossa">
@@ -46,7 +44,7 @@
       <div class="card m-1 bg-5 myShadowNera" style="width: 18rem;">
         <i role="img" class="bi bi-envelope-at-fill fa-4x iconeRosse" aria-hidden="true"></i>
         <div class="card-body">
-          <h3 class="card-title">Scrivici</h3>
+          <h3 class="card-title text-uppercase">Scrivici</h3>
           <p class="card-text">Manda una mail al nostro indirizzo</p>
           <p class="card-text">associazione.stranamore@gmail.com</p>
         </div>
@@ -58,7 +56,7 @@
       <div class="card m-1 bg-5 myShadowNera" style="width: 18rem;">
         <i role="img" class="bi bi-telephone-outbound-fill fa-4x iconeGialle" aria-hidden="true"></i>
         <div class="card-body">
-          <h3 class="card-title">Mandaci un WhatsApp</h3>
+          <h3 class="card-title text-uppercase">Mandaci un WhatsApp</h3>
           <p class="card-text">Puoi chiedere informazioni o prenotare un tavolo scrivendo al nostro numero</p>
           <p>351 623 0176</p>
         </div>
@@ -70,7 +68,7 @@
       <div class="card m-1 myShadowNera" style="width: 18rem;">
         <i role="img" class="bi bi-geo-alt-fill fa-4x iconeAzzurre" aria-hidden="true"></i>
         <div class="card-body">
-          <h3 class="card-title">Raggiungici</h3>
+          <h3 class="card-title text-uppercase">Raggiungici</h3>
           <p class="card-text">Vieni a trovarci di persona nella nostra struttura</p>
           <p class="card-text">via Ettore Bignone 89,<br>10064 Pinerolo (TO)</p>
         </div>
