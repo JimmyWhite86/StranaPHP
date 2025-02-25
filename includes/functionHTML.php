@@ -1,8 +1,8 @@
 <?php
     
-    #------------------------------------------------------------------#
-    #----- FUNZIONI PHP PER LA CREAZIONE DINAMICA DI PAGINE HTML ------#
-    #------------------------------------------------------------------#
+    #------------------------------------------------------ #
+    # FUNZIONI PHP PER LA CREAZIONE DINAMICA DI PAGINE HTML #
+    #------------------------------------------------------ #
     
     
     #-----------------------------------------------------------------
@@ -61,7 +61,8 @@
                   <p class="orarioEvento"><?= date('H:i', strtotime($evento['orarioEvento'])) ?></p>
                 </div>
 
-                <img src="<?= BASE_URL . $evento['Immagine']?>" class="img-fluid myImgCard mt-2" alt="" loading="lazy">
+                <img src="<?= BASE_URL . $evento['Immagine']?>" class="img-fluid myImgCard mt-2" alt="" loading="lazy"
+                  aria-hidden="true">
 
                 <div class="card-body">
                   <h3 class="titoloEvento"><?= $evento['NomeEvento']?></h3>
@@ -97,7 +98,7 @@
         $ultimaCategoria = end($categorieOrdinate);
         foreach ($categorieOrdinate as $categoria => $titolo) {
             if ($categorie[$categoria] > 0) { ?>
-              <h3 class='fontTipoPiattiMenu text-center ombraFont'><?= $titolo ?></h3>
+              <h2 class='fontTipoPiattiMenu text-center ombraFont'><?= $titolo ?></h2>
                 <?php
                 foreach ($listaPiattiDisponibili as $piatto) {
                     if ($piatto['categoriaPiatto'] == $categoria) { ?>

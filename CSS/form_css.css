@@ -1,9 +1,4 @@
-/* ==================================================== */
-/*                STILE FORM                            */
-/* ==================================================== */
 
-
-/* --------------------------------------------------------- */
 /* ------------------ STILI GNERALI FORM ------------------- */
 .contact-form {
   background: var(--biancoStrana);
@@ -16,10 +11,10 @@
   .contact-form { width: 90% !important; } /* Il form diventa piu largo in dispositivi con schermi piccoli */
   .separatoreVerticale { border-right: 0; } /* Rimuove il bordo verticale in schermi piccoli */
 }
-/* ---------------------------------------------------------- */
 
 
-/* ---------------------------------------------------------- */
+
+
 /* ------------------ STILI INPUT FORM ---------------------- */
 .contact-form .form-control { border-radius:1rem; } /* Bordo arrotondato */
 
@@ -46,10 +41,10 @@
   border-color: #ced4da;
   box-shadow: 0 0 0 0.2rem rgba(206, 212, 218, 0.25);
 }
-/* ---------------------------------------------------------- */
 
 
-/* ---------------------------------------------------------- */
+
+
 /* ------------------   BOTTONI FORM   ---------------------- */
 .contact-form .btnContact {
   width: 50%;
@@ -71,12 +66,11 @@
   border: none;
   cursor: pointer;
 }
-/* ------------------------------------------------------------ */
 
 
-/* ------------------------------------------------------------ */
+
+
 /* ---------------- ELEMENTI AGGIUNTIVI DEL FORM -------------- x*/
-
 .contact-form form .row {
   margin-bottom: -7%;
 }
@@ -101,4 +95,3 @@
   background: black;
   margin: 20px 0;
 }
-/* --------------------------------------------------------- */

@@ -1,9 +1,9 @@
 <?php
-    #-----------------------------------------------------------------
+    
     # Funzione per visualizzare il footer
     function HTMLfooter ($nomePagina) { ?>
 
-      <footer class="text-center bg-nero" aria-label="Footer principale" role="contentinfo">
+      <footer class="text-center bg-nero" aria-label="Footer principale">
         <div class="container-fluid">
 
           <div class="p-1 border-bottom mb-3" style="border-color: #009fb7"></div> <!-- Riga sopra footer -->
@@ -119,8 +119,5 @@
         
         <?php
     }
-    #-----------------------------------------------------------------
+    
 ?>
-
-<!-- Note -->
-<!-- haria-hidden="true" => Per icone solo decorative-->

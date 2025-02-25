@@ -98,7 +98,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header bg-giallo text-center justify-content-center align-item-center">
-          <h5 class="modal-title fontTitoloCarosello" id="carouselModalLabel">le foto di strana</h5>
+          <h2 class="modal-title fontTitoloCarosello" id="carouselModalLabel">le foto di strana</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body bg-nero">

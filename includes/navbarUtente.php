@@ -2,7 +2,7 @@
 #-----------------------------------------------------------------
   # Funzione per visualizzare la navBar utenti non loggati
   function normalNavBar($nomePagina) { ?>
-    <nav class="navbar navbar-expand-lg bg-nero" role="navigation" aria-label="menù di navigazione">
+    <nav class="navbar navbar-expand-lg bg-nero" aria-label="menù di navigazione">
       <a href="#mioMain" class="skip text-center" tabindex="0">Vai al contenuto principale</a> <!--Salta al contenuto principale della pagina (Accessibilità) -->
       
       <div class="container-fluid">

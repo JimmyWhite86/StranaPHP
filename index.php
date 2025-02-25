@@ -111,7 +111,7 @@
       <div class="row justify-content-center">
 
         <div class="m-2 card col-md-4 myShadowNera" style="width: 20em;" role="region" aria-label="Iscriviti alla nostra newsletter">
-          <i class="bi bi-envelope-paper-heart fa-10x iconeRosse"></i>
+          <i class="bi bi-envelope-paper-heart fa-10x iconeRosse" aria-hidden="true"></i>
           <div class="card-body">
             <h4 class="text-uppercase">Iscriviti alla newsletter</h4>
             <p>Rimani aggiornato sulle nostre iniziative e non perderti nessun evento!</p>
@@ -129,7 +129,7 @@
         </div>
 
         <div class="m-2 card col-md-4 myShadowNera" style="width: 20em;" role="region" aria-label="Dona il tuo 8x1000">
-          <i class="bi bi-piggy-bank fa-10x iconeGialle"></i>
+          <i class="bi bi-piggy-bank fa-10x iconeGialle" aria-hidden="true"></i>
           <div class="card-body">
             <h4 class="text-uppercase">Dona il tuo 5x1000</h4>
             <p>Tutte le nostre iniziative sono volte ad autofinanziarci</p>
@@ -141,7 +141,7 @@
         </div>
 
         <div class="m-2 card col-md-4 myShadowNera" style="width: 20em;" role="region" aria-label="Proponici un evento">
-          <i class="bi bi-mic-fill fa-10x iconeAzzurre"></i>
+          <i class="bi bi-mic-fill fa-10x iconeAzzurre" aria-hidden="true"></i>
           <div class="card-body">
             <h4 class="text-uppercase">Proponi un evento</h4>
             <p>Usa il form per contattarci</p>

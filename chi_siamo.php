@@ -26,7 +26,7 @@
 
   <!-- START THE FEATURETTES -->
   <div class="bg-rosso py-3 myShadowRossa">
-    <div class="container marketing bg-bianco">
+    <div class="container marketing bg-bianco rounded-3 myShadowBianca rounded-3">
 
       <!--<hr class="featurette-divider">-->
 
@@ -103,7 +103,7 @@
 
   <section class="container-fluid d-flex justify-content-center bg-giallo py-3 myShadowGialla"
            aria-labelledby="documentiTitolo" title="documenti">
-    <div class="align-content-center bg-bianco text-center container marketing">
+    <div class="align-content-center bg-bianco text-center container marketing rounded-3 myShadowBianca">
       <h3 class="text-center p-3 m-3 fontChiSiamo02 ombraFont" id="documentiTitolo">statuto e atto costitutivo</h3>
       <h4 class="lead">Da questa sezione puoi prendere visione dei documenti che danno vita alla nostra associazione.</h4>
       <br>
@@ -127,7 +127,7 @@
 
   <section class="container-fluid d-flex justify-content-center bg-azzurro py-3 myShadowAzzurra"
            aria-labelledby="direttivoTitolo">
-    <div class="align-content-center bg-bianco container marketing">
+    <div class="align-content-center bg-bianco container marketing rounded-3 myShadowBianca">
 
       <h3 class="p-3 m-3 fontChiSiamo02 text-center ombraFont" id="direttivoTitolo">il direttivo</h3>
 

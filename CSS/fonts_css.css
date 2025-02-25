@@ -1,9 +1,8 @@
-/* ------------------------------------------------ */
-/* --------------- STILE DEI FONT ----------------- */
-/* ------------------------------------------------ */
+
+/*  STILE DEI FONT  */
 
 
-/* ----- CARICO I FONT -----------*/
+/*  CARICO I FONT */
 /* FONT EASYRIDING  */
 @font-face {
   font-family: Easy;
@@ -28,16 +27,32 @@
   src: url(../FONT/Lato-Regular.ttf);
 }
 
+/* FONT PERMANENT MARKER */
 .permanent-marker-regular {
   font-family: "Permanent Marker", serif;
   font-weight: 400;
   font-style: normal;
 }
 
-/* --------------------------------- */
+/* IMPOSTO I COLORI DEI FONT */
+.fontRosso { color: var(--rossoStrana); }
+.fontAzzurro { color: var(--azzurroStrana); }
+.fontGiallo { color: var(--gialloStrana); }
+.fontNero { color: var(--neroStrana); }
+.fontBianco { color: var(--biancoStrana); }
+.fontVerde { color: green; }
+
+/* IMPOSTO LE OMBRE DEI FONT */
+.ombraFont { text-shadow: 2px 2px 4px #808080; }
+.ombraFontAzzurro { text-shadow: 2px 2px 4px var(--azzurroStrana); }
+.ombraFontGiallo { text-shadow: 2px 2px 4px var(--gialloStrana); }
+.ombraFontRosso { text-shadow: 2px 2px 4px var(--rossoStrana); }
+.ombraFontNero { text-shadow: 2px 2px 4px var(--neroStrana); }
+.ombraFontBianco { text-shadow: 2px 2px 4px var(--biancoStrana); }
+.ombraFontGrigia { text-shadow: 2px 2px 4px #808080; }
 
 
-/* --------------------------------- */
+
 body {
   font-family: Lato-Regular, arial, hevetica, sans-serif;
   line-height: 1.8;
@@ -223,26 +238,11 @@ body {
 }
 
 
-.ombraFont { text-shadow: 2px 2px 4px #808080; }
-.ombraFontAzzurro { text-shadow: 2px 2px 4px var(--azzurroStrana); }
-.ombraFontGiallo { text-shadow: 2px 2px 4px var(--gialloStrana); }
-.ombraFontRosso { text-shadow: 2px 2px 4px var(--rossoStrana); }
-.ombraFontNero { text-shadow: 2px 2px 4px var(--neroStrana); }
-.ombraFontBianco { text-shadow: 2px 2px 4px var(--biancoStrana); }
-.ombraFontGrigia { text-shadow: 2px 2px 4px #808080; }
-
-.fontRosso { color: var(--rossoStrana); }
-.fontAzzurro { color: var(--azzurroStrana); }
-.fontGiallo { color: var(--gialloStrana); }
-.fontNero { color: var(--neroStrana); }
-.fontBianco { color: var(--biancoStrana); }
-.fontVerde { color: green; }
-
 /* --------------------------------------------------------- */
 /* ----- ADATTO I FONT ALLE VARIE GRANDEZZE DI SCHERMO ----- */
 /* --------------------------------------------------------- */
 
-/* Schermi tra 1399 e 1199px */
+
 @media (min-width: 1199px) and (max-width: 1399px) {
   .fontHeroCentro { font-size: 10rem;  }
   .fontHeroSopra { font-size: 4rem;  }
@@ -259,14 +259,9 @@ body {
   .fontHeroSopra { font-size: 3rem; }
   .fontHeroSotto { font-size: 3rem; }
 }
-/* --------------------------- */
 
-/* Schermi sotto i 768px */
 @media (max-width: 768px) {
-  .fontHeroCentro {
-    width: 90vw;
-    max-width: 90vw;
-  }
+  .fontHeroCentro { width: 90vw; max-width: 90vw; }
   .fontHeroSopra { font-size: 2.5rem; }
   .fontHeroSotto { font-size: 2.5rem; }
   .testoHome { font-size: 1rem; }
@@ -278,11 +273,10 @@ body {
   #titoloPaginaGallery { font-size: 2.8rem !important;  }
   .fontChiSiamo02 { font-size: 2.4rem; }
 }
-/* ------------------------ */
 
-/* SCHERMI SOTTO I 563px */
+
 @media (max-width: 563px) {
-  .fontHeroSopra { font-size: 2rem;  }
+  .fontHeroSopra { font-size: 2rem; }
   .fontHeroCentro { font-size: 4rem; }
   .fontHeroSotto { font-size: 2rem; }
 }
@@ -292,11 +286,8 @@ body {
 }
 
 @media (max-width: 420px) {
-  .fontHeroSopra {
-    font-size: 1.5rem;
-    line-height: 1;
-  }
-  .fontHeroSotto { font-size: 1rem; }
+  .fontHeroSopra { font-size: 1.5rem; line-height: 1; }
+  .fontHeroSotto { font-size: 1rem;}
 }
 
 @media (max-width: 1358px) {
@@ -309,11 +300,9 @@ body {
 }
 
 @media (max-width: 576px) {
-  .fontHeroCentro { display: none; }
-}
-
-@media (min-width: 576px) {
-  .myImgHero { display: none; }
+  .fontHeroCentro { display: none !important;}
+  .fontHeroSotto { display: none !important; }
+  .fontHeroSopra { display: none !important; }
 }
 
 @media (max-width: 1200px) {

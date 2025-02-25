@@ -1,7 +1,7 @@
 
-/* ============================ */
-/*   DEFINIZIONE DEI COLORI     */
-/* ============================ */
+
+
+/* -------------- DEFINISCO I COLORI  ---------------- */
 :root {
   --rossoStrana: #fe4a49;
   --gialloStrana: #fed766;
@@ -9,52 +9,43 @@
   --neroStrana: #000000;
   --biancoStrana: #ffffff;
 }
-/* ------------------------------------------------ */
 
-
-/* ---------------------------------------------------- */
-/* -------- STRUTTURA GENERALE DELLA PAGINA ----------- */
-/* Fisso il footer in basso, anche con contenuto scarso */
-/* ---------------------------------------------------- */
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Imposta l'altezza minima al 100% della viewport */
-}
-
-main { flex: 1; } /* Permette al main di espandersi per riempire lo spazio disponibile */
-
-footer { margin-top: auto; } /* Spinge il footer in fondo */
-/* ------------------------------------------------ */
-/* ------------------------------------------------ */
-
-
-/* ------------------------------------------------ */
 /* -------------- COLORI DI SFONDO ---------------- */
-/* ------------------------------------------------ */
 .bg-azzurro { background-color: var(--azzurroStrana); }
 .bg-rosso { background-color: var(--rossoStrana); }
 .bg-giallo { background-color: var(--gialloStrana); }
 .bg-nero { background-color: var(--neroStrana); }
 .bg-bianco { background-color: var(--biancoStrana); }
-/* ------------------------------------------------ */
-/* ------------------------------------------------ */
 
-
-/* ------------------------------------------------ */
 /* ---------------- COLORI ICONE -------------------*/
-/* ------------------------------------------------ */
 .iconeGialle { color: var(--gialloStrana); }
 .iconeRosse { color: var(--rossoStrana); }
 .iconeAzzurre { color: var(--azzurroStrana); }
-/* ------------------------------------------------ */
-/* ------------------------------------------------ */
+
+/* ----------- OMBRE ED EFFETTI ----------- */
+.myShadowRossa { filter: drop-shadow(0px 0px 10px var(--rossoStrana)); }
+.myShadowGialla { filter: drop-shadow(0px 0px 10px var(--gialloStrana)); }
+.myShadowAzzurra { filter: drop-shadow(0px 0px 10px var(--azzurroStrana)); }
+.myShadowBianca { filter: drop-shadow(0px 0px 10px var(--neroStrana)); }
+.myShadowNera { filter: drop-shadow(0px 0px 10px var(--neroStrana)); }
+.myShadowGrigio { filter: drop-shadow(0px 0px 10px #888888); }
 
 
-/* ----------------------------------------------------- */
+
+/* -------- STRUTTURA GENERALE DELLA PAGINA ----------- */
+/* Fisso il footer in basso, anche con contenuto scarso */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Imposta l'altezza minima al 100% della viewport */
+}
+main { flex: 1; } /* Permette al main di espandersi per riempire lo spazio disponibile */
+footer { margin-top: auto; } /* Spinge il footer in fondo */
+
+
+
 /* --------------------- SKIP TO MAIN ------------------ */
 /* Nascondo il link per accedere al contenuto principale */
-/* ----------------------------------------------------- */
 .skip {
   position: absolute;
   left: -1000px;
@@ -69,13 +60,10 @@ footer { margin-top: auto; } /* Spinge il footer in fondo */
   width: auto;
   height: auto;
 }
-/* ----------------------------------------------------- */
-/* ----------------------------------------------------- */
 
 
-/* ------------------------------------------------ */
+
 /* -----------------NAV BAR ----------------------- */
-/* ------------------------------------------------ */
 .navbar-nav {
   flex-grow: 1;
   justify-content: center;
@@ -115,27 +103,37 @@ footer { margin-top: auto; } /* Spinge il footer in fondo */
 @media (max-width: 990px) and (min-width: 768px) {
   .navbar-brand img { width: 25vw; } /* Aumenta la dimensione al 25% della larghezza dello schermo */
 }
-/* ------------------------------------------------ */
-/* ------------------------------------------------ */
 
 
-/* ------------------------------------------------ */
+
 /* ---------------- HERO SECTION ------------------ */
-/* ------------------------------------------------ */
 .hero-section {
   position: relative;
   background-image: url('../Immagini/Giardino02.jpeg');
   background-size: cover;
   background-position: center;
-  min-height: 80vh; /*Imposta altezza minima della sesione all'80% dello schermo*/
+  min-height: 80vh; /*Imposta altezza minima della sezione all'80% dello schermo*/
 }
-/* ------------------------------------------------ */
-/* ------------------------------------------------ */
+
+@media (min-width: 576px) {
+  .myImgHero { display: none; }
+}
 
 
-/* ------------------------------------------------ */
-/* -------------------- FOOTER -------------------- */
-/* ------------------------------------------------ */
+
+/* PAGINA IN COSTRUZINE */
+.inCostruzione {
+  position: relative;
+  background-image: url('../Immagini/under_construction.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 80vh; /*Imposta altezza minima della sezione all'80% dello schermo*/
+}
+
+
+
+
+/* ----------- FOOTER ---------- */
 footer a { color: var(--biancoStrana); }
 
 .socialIcon { text-decoration: none; }
@@ -144,33 +142,14 @@ footer a { color: var(--biancoStrana); }
   text-decoration: none;
   color: var(--azzurroStrana);
 }
-/* ------------------------------------------------ */
-/* ------------------------------------------------ */
 
 
-/* ------------------------------------------------ */
-/*                     BLOCCHI HOMEPAGE             */
-/* ------------------------------------------------ */
-.mioFlowRoot {
-  display: flow-root;
-}
-
-/* ------------------------------------------------ */
-/*                     OMBRE ED EFFETTI             */
-/* ------------------------------------------------ */
-.myShadowRossa { filter: drop-shadow(0px 0px 10px var(--rossoStrana)); }
-.myShadowGialla { filter: drop-shadow(0px 0px 10px var(--gialloStrana)); }
-.myShadowAzzurra { filter: drop-shadow(0px 0px 10px var(--azzurroStrana)); }
-.myShadowBianca { filter: drop-shadow(0px 0px 10px var(--neroStrana)); }
-.myShadowNera { filter: drop-shadow(0px 0px 10px var(--neroStrana)); }
-.myShadowGrigio { filter: drop-shadow(0px 0px 10px #888888); }
-
-/* ------------------------------------------------ */
+/* ------- BLOCCHI HOMEPAGE -------- */
+.mioFlowRoot { display: flow-root; }
 
 
-/* ------------------------------------------------ */
+
 /* --------------- BOTTONI ---------------------- */
-/* ------------------------------------------------ */
 .bottoneRosso, .bottoneGiallo, .bottoneAzzurro, .bottoneNero {
   border-radius: .3rem;
   border-width: .3rem;
@@ -225,13 +204,11 @@ footer a { color: var(--biancoStrana); }
 .btn-twitter { background-color: #1da1f2; }
 .btn-instagram { background-color: #e4405f; }
 .btn-youtube { background-color: #cd201f; }
-/* ------------------------------------------------ */
-/* ------------------------------------------------ */
 
 
-/* ------------------------------------------------ */
+
+
 /* ------------- STILE DEGLI ERRORI --------------- */
-/* ------------------------------------------------ */
  .mioErrore01 { color: #e50000; }
 
 input.ng-invalid {
@@ -253,13 +230,11 @@ textarea.ng-valid {
   border: rgb(69, 123, 47) solid 0.08rem;
   background-color: rgba(201, 212, 57, .09);
 }
-/* ------------------------------------------------ */
-/* ------------------------------------------------ */
 
 
-/* ------------------------------------------------ */
+
+
 /* ----------------- TABELLE ---------------------- */
-/* ------------------------------------------------ */
 .miaImmagineTabella {
   width: 50px;
   height: 50px;
@@ -281,26 +256,27 @@ thead th.intestazioneTabella {
     display: none !important;
   }
 }
-/* ------------------------------------------------ */
-/* ------------------------------------------------ */
+
+/* Per le tabelle da mobile */
+@media (min-width: 768px) {
+  .rowDesktop {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
 
 
-/* ------------------------------------------------ */
 /* --------- CONTAINER HOME PAGE ----------- */
-/* ----------------------------------------------- */
 @media (max-width: 768px) {
   .containerIndexCentrale {
     width: 96% !important;
   }
 }
-/* ------------------------------------------------ */
-/* ------------------------------------------------ */
 
 
-/* ------------------------------------------------- */
+
 /* ------------------ FOCUS ------------------------ */
 /* Evidenziare il focus quando si naviga da tastiera */
-/* ------------------------------------------------- */
 /* TODO: DA MIGLIORARE VISIBILITA e UNIFORMARE TRA I VARI STILI */
 
 /* Focus per la navbar */
@@ -337,8 +313,7 @@ select:focus-visible {
   border: 2px solid var(--gialloStrana);
   box-shadow: 0 0 5px var(--gialloStrana);
 }
-/* ------------------------------------------------ */
-/* ------------------------------------------------ */
+
 
 
 /* VARIE */
@@ -350,10 +325,3 @@ select:focus-visible {
 }
 
 
-/* Per le tabelle da mobile */
-@media (min-width: 768px) {
-  .rowDesktop {
-    display: flex;
-    flex-wrap: wrap;
-  }
-}
